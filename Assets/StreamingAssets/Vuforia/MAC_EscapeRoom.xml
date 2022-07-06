@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Shield" size="3.000000 3.076301" />
+    <ImageTarget name="Trojan" size="3.000000 2.860502" />
+    <ImageTarget name="Bacteria" size="3.000000 2.967721" />
+    <ImageTarget name="Firewall" size="3.000000 2.651042" />
+    <ImageTarget name="Target" size="3.000000 3.002068" />
+  </Tracking>
+</QCARConfig>
