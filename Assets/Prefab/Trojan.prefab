@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3730188171811556591}
   - component: {fileID: 8074841133787332493}
   m_Layer: 0
-  m_Name: Test
+  m_Name: Trojan
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,4 +112,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  type: 
+  type: Trojan
