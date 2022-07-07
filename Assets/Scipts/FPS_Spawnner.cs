@@ -53,5 +53,11 @@ public class FPS_Spawnner : MonoBehaviour
         delayRunning = false;
     }
 
+
+    public void EnterView()
+    {
+        delayRunning = false;
+
+    }
     //private void trac
 }
