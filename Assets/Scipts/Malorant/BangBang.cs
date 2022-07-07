@@ -34,7 +34,7 @@ public class BangBang : MonoBehaviour
                     enemyScript.health = enemyScript.health - 10;
                 }
 
-                else if (enemyScript.type != weaponEquipped)
+                else
                 {
                     enemyScript.health = enemyScript.health - 5;
                 }

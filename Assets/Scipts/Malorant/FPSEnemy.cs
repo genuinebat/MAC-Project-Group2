@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vuforia;
 
 public class FPSEnemy : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class FPSEnemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        transform.LookAt(Camera.main.transform.position);
+        //transform.position(Camera.main.transform.position);
     }
 
 
