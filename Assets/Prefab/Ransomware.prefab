@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b69874519e00a4ea305b9cf8152141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  type: Ransomware
+  Type: 2
+  MaxHealth: 10
