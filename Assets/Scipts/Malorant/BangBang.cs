@@ -23,24 +23,18 @@ namespace Malorant
         List<Weapon> weapons = new List<Weapon>();
         Weapon weaponEquipped;
 
-        // Start is called before the first frame update
         void Start()
         {
             CreateWeapons();
             EquipWeapon(0);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
         void CreateWeapons()
         {
-            Weapon adware = new Weapon("Adware", Malware.Adware);
-            Weapon botware = new Weapon("Adware", Malware.Botware);
-            Weapon ransomware = new Weapon("Adware", Malware.Ransomware);
-            Weapon trojan = new Weapon("Adware", Malware.Trojan);
+            Weapon adware = new Weapon("Adware Gun", Malware.Adware);
+            Weapon botware = new Weapon("Botware Gun", Malware.Botware);
+            Weapon ransomware = new Weapon("Ransomware Gun", Malware.Ransomware);
+            Weapon trojan = new Weapon("Trojan Gun", Malware.Trojan);
 
             weapons.Add(adware);
             weapons.Add(botware);

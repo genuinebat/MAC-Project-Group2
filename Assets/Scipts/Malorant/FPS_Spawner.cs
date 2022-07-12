@@ -7,35 +7,34 @@ namespace Malorant
 {
     public class FPS_Spawner : MonoBehaviour
     {
+        public Transform ImageTarget;
+
         //list to store enemy GamObjects
         public List<GameObject> enemies = new List<GameObject>();
-        //boolean to check if the timer is still running
-        private bool delayRunning;
         //set the delay in between the enemies running
         public int timeBetweenEnemies;
 
+        //boolean to check if the timer is still running
+        bool delayRunning = true;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            //set the delay to be false so that the first enemy can be spawnned
-            delayRunning = false;
-        }
-
-        // Update is called once per frame
         void Update()
         {
-            if (delayRunning == false && enemies.Count > 0)
+            if (!delayRunning && enemies.Count > 0)
             {
                 //gets a random enemy from the list
                 int enemyType = Random.Range(0, enemies.Count);
+
                 //timer to ensure that the code doesnt run too fast and spawn all enemies at once
                 StartCoroutine(Timer(timeBetweenEnemies));
-                int randomPoint = Random.Range(-(enemies.Count), enemies.Count);
+
                 //instantiate enemy
-                var newEnemy = Instantiate(enemies[enemyType], new Vector3(gameObject.transform.position.x + randomPoint, gameObject.transform.position.y, gameObject.transform.position.z ), Quaternion.identity);
+                var newEnemy = Instantiate(enemies[enemyType], transform.position, Quaternion.identity);
+
+                newEnemy.GetComponent<FPSEnemy>().ImageTarget = ImageTarget;
+
                 //child enemy to the spawnner
                 newEnemy.transform.parent = gameObject.transform;
+
                 //remove the enemy from the list so that it only spawns once
                 enemies.RemoveAt(enemyType);
             }
@@ -61,8 +60,6 @@ namespace Malorant
         public void EnterView()
         {
             delayRunning = false;
-
         }
-        //private void trac
     }
 }
