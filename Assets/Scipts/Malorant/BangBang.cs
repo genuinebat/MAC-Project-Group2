@@ -2,51 +2,80 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BangBang : MonoBehaviour
+namespace Malorant
 {
+    public enum Malware {Adware, Botware, Ransomware, Trojan}
 
-    public string weaponEquipped;
-    // Start is called before the first frame update
-    void Start()
+    class Weapon
     {
-        weaponEquipped = "Adware";
-    }
+        public string Name { get; private set; }
+        public Malware Target { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void Bang()
-    {
-        //GetComponent<Collider>().Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)));
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        public Weapon(string _name, Malware _target)
         {
-            if(hit.transform.tag == "Enemy")
-            {
-                //Destroy(hit.transform.gameObject);
-                FPSEnemy enemyScript = hit.transform.gameObject.GetComponent<FPSEnemy>();
-                if (enemyScript.type == weaponEquipped)
-                {
-                    enemyScript.health = enemyScript.health - 10;
-                }
-
-                else
-                {
-                    enemyScript.health = enemyScript.health - 5;
-                }
-
-                Debug.Log(enemyScript.type);
-            }
-
+            Name = _name;
+            Target = _target;
         }
     }
 
-    public void WeaponPicker(string weaponName)
+    public class BangBang : MonoBehaviour
     {
-        weaponEquipped = weaponName;
+        List<Weapon> weapons = new List<Weapon>();
+        Weapon weaponEquipped;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            CreateWeapons();
+            EquipWeapon(0);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        }
+
+        void CreateWeapons()
+        {
+            Weapon adware = new Weapon("Adware", Malware.Adware);
+            Weapon botware = new Weapon("Adware", Malware.Botware);
+            Weapon ransomware = new Weapon("Adware", Malware.Ransomware);
+            Weapon trojan = new Weapon("Adware", Malware.Trojan);
+
+            weapons.Add(adware);
+            weapons.Add(botware);
+            weapons.Add(ransomware);
+            weapons.Add(trojan);
+        }
+
+        public void Bang()
+        {
+            //GetComponent<Collider>().Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)));
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if(hit.transform.tag == "Enemy")
+                {
+                    FPSEnemy enemy = hit.transform.gameObject.GetComponent<FPSEnemy>();
+
+                    if (enemy.Type == weaponEquipped.Target)
+                    {
+                        enemy.TakeDamage(true);
+                    }
+                    else
+                    {
+                        enemy.TakeDamage(false);
+                    }
+                }
+
+            }
+        }
+
+        public void EquipWeapon(int num)
+        {
+            weaponEquipped = weapons[num];
+        }
     }
 }

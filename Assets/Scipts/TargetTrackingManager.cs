@@ -16,13 +16,13 @@ public class TargetTrackingManager : MonoBehaviour
         
     }
 
-    public void OpenWhenSeen(GameObject UI)
+    public void EnableObject(GameObject go)
     {
-        UI.SetActive(true);
+        go.SetActive(true);
     }
 
-    public void closeWhenUnseen(GameObject UI)
+    public void DisableObject(GameObject go)
     {
-        UI.SetActive(false);
+        go.SetActive(false);
     }
 }

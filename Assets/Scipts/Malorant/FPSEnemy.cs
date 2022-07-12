@@ -3,28 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 
-public class FPSEnemy : MonoBehaviour
+namespace Malorant
 {
-    public int health;
-    public string type;
-
-    // Start is called before the first frame update
-    void Start()
+    public class FPSEnemy : MonoBehaviour
     {
-        health = 10;
-    }
+        public Malware Type;
+        public float MaxHealth;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (health <= 0)
+        public float Health { get; private set; }
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(gameObject);
+            Health = MaxHealth;
         }
 
-        transform.LookAt(Camera.main.transform.position);
-        //transform.position(Camera.main.transform.position);
+        // Update is called once per frame
+        void Update()
+        {
+            if (Health <= 0)
+            {
+                Destroy(gameObject);
+            }
+
+            transform.LookAt(Camera.main.transform.position);
+            //transform.position(Camera.main.transform.position);
+        }
+
+        public void TakeDamage(bool correctWeapon)
+        {
+            Health -= correctWeapon ? 10 : 5;
+        }
     }
-
-
 }
