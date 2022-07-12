@@ -2269,4 +2269,4 @@ MonoBehaviour:
   - {fileID: 5192622719284385059, guid: 0dffe73088bb9bc419f6fd5c23f7ad08, type: 3}
   - {fileID: 5192622719284385059, guid: 70d66fcc60489134e8245d846e928162, type: 3}
   - {fileID: 5192622719284385059, guid: 0dffe73088bb9bc419f6fd5c23f7ad08, type: 3}
-  timeBetweenEnemies: 1
+  timeBetweenEnemies: 5

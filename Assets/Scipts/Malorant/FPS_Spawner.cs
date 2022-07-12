@@ -31,8 +31,9 @@ namespace Malorant
                 int enemyType = Random.Range(0, enemies.Count);
                 //timer to ensure that the code doesnt run too fast and spawn all enemies at once
                 StartCoroutine(Timer(timeBetweenEnemies));
+                int randomPoint = Random.Range(-(enemies.Count), enemies.Count);
                 //instantiate enemy
-                var newEnemy = Instantiate(enemies[enemyType], gameObject.transform.position, Quaternion.identity);
+                var newEnemy = Instantiate(enemies[enemyType], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z ), Quaternion.identity);
                 //child enemy to the spawnner
                 newEnemy.transform.parent = gameObject.transform;
                 //remove the enemy from the list so that it only spawns once
