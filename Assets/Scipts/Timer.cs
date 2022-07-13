@@ -21,8 +21,8 @@ public class Timer : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
 
-        string minutes = ((int)timeLeft / 60).ToString();
-        string seconds = Mathf.Round(timeLeft % 60).ToString();
+        string minutes = ((int)timeLeft / 60).ToString("00");
+        string seconds = Mathf.Round(timeLeft % 60).ToString("00");
         timerUI.text = minutes + ":" + seconds;
 
         if (timeLeft < 0)
