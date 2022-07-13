@@ -51,7 +51,7 @@ namespace Malorant
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                var currenteffect = Instantiate(hitEffect, hit.transform.position, Quaternion.identity) as GameObject;
+                Instantiate(hitEffect, hit.transform.position, Quaternion.identity);
 
                 if (hit.transform.tag == "Enemy")
                 {
