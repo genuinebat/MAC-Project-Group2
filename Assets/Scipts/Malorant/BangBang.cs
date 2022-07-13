@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Malorant
 {
     public enum Malware {Adware, Botware, Ransomware, Trojan}
-
     class Weapon
     {
         public string Name { get; private set; }
@@ -22,6 +21,8 @@ namespace Malorant
     {
         List<Weapon> weapons = new List<Weapon>();
         Weapon weaponEquipped;
+        public GameObject hitEffect;
+
 
         void Start()
         {
@@ -50,9 +51,12 @@ namespace Malorant
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if(hit.transform.tag == "Enemy")
+                var currenteffect = Instantiate(hitEffect, hit.transform.position, Quaternion.identity) as GameObject;
+
+                if (hit.transform.tag == "Enemy")
                 {
                     FPSEnemy enemy = hit.transform.gameObject.GetComponent<FPSEnemy>();
+
 
                     if (enemy.Type == weaponEquipped.Target)
                     {
