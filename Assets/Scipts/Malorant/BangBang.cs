@@ -22,6 +22,7 @@ namespace Malorant
         List<Weapon> weapons = new List<Weapon>();
         Weapon weaponEquipped;
         public GameObject hitEffect;
+        private bool delayRunning;
 
 
         void Start()
@@ -53,20 +54,9 @@ namespace Malorant
             {
                 Instantiate(hitEffect, hit.transform.position, Quaternion.identity);
 
-                if (hit.transform.tag == "Enemy")
-                {
-                    FPSEnemy enemy = hit.transform.gameObject.GetComponent<FPSEnemy>();
+                StartCoroutine(DelayShot(hit));
 
 
-                    if (enemy.Type == weaponEquipped.Target)
-                    {
-                        enemy.TakeDamage(true);
-                    }
-                    else
-                    {
-                        enemy.TakeDamage(false);
-                    }
-                }
 
             }
         }
@@ -74,6 +64,26 @@ namespace Malorant
         public void EquipWeapon(int num)
         {
             weaponEquipped = weapons[num];
+        }
+
+        IEnumerator DelayShot(RaycastHit hit)
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            if (hit.transform.tag == "Enemy")
+            {
+                FPSEnemy enemy = hit.transform.gameObject.GetComponent<FPSEnemy>();
+
+
+                if (enemy.Type == weaponEquipped.Target)
+                {
+                    enemy.TakeDamage(true);
+                }
+                else
+                {
+                    enemy.TakeDamage(false);
+                }
+            }
         }
     }
 }
