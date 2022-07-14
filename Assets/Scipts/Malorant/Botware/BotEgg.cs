@@ -7,10 +7,13 @@ public class BotEgg : MonoBehaviour
     public float dissapearSpeed;
     public Renderer rend;
     public GameObject enemyPrefab;
+    private GameObject enemyStore;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(FadeOutMaterial(dissapearSpeed));
+        enemyStore = GameObject.Find("Spawner");
 
     }
 
@@ -36,6 +39,8 @@ public class BotEgg : MonoBehaviour
         }
 
         GameObject newEnemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
+        newEnemy.transform.parent = enemyStore.transform;
+
         Destroy(gameObject);
         //rend.material.color = new Color(matColor.r, matColor.g, matColor.b, 0f);
     }

@@ -16,7 +16,7 @@ namespace Malorant
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Instantiate(hitEffect, hit.transform.position, Quaternion.identity);
+                GameObject shotvfx = Instantiate(hitEffect, hit.transform.position, Quaternion.identity);
                 StartCoroutine(DelayShot(hit));
             }
         }
@@ -24,7 +24,6 @@ namespace Malorant
         IEnumerator DelayShot(RaycastHit hit)
         {
             yield return new WaitForSeconds(0.5f);
-
             if (hit.transform.tag == "Enemy")
             {
                 // FPSEnemy enemy = hit.transform.gameObject.GetComponent<FPSEnemy>();
