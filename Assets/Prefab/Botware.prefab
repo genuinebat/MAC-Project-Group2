@@ -111,5 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a801694aba58994cabb6076b56b9e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ImageTarget: {fileID: 0}
   eggPrefab: {fileID: 8621609566553743613, guid: 5855818d04add12478232db6330c0946, type: 3}
+  eggStore: {fileID: 0}
   timebetweenSpawn: 5
+  Speed: 1

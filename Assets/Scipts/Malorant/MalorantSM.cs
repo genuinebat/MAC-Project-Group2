@@ -25,7 +25,7 @@ namespace Malorant
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space)) EnablePopup();
+            if (Input.GetKeyDown(KeyCode.Space)) Initialize();
         }
 
         public override void EnablePopup()
