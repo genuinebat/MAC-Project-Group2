@@ -27,7 +27,8 @@ public class Timer : MonoBehaviour
 
         if (timeLeft < 0)
         {
-            Debug.Log("timer done");
+            timeLeft = 0;
+            // Debug.Log("timer done");
             //Do something useful or Load a new game scene depending on your use-case
         }
     }

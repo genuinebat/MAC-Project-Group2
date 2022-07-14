@@ -53,11 +53,7 @@ namespace Malorant
             if (Physics.Raycast(ray, out hit))
             {
                 Instantiate(hitEffect, hit.transform.position, Quaternion.identity);
-
                 StartCoroutine(DelayShot(hit));
-
-
-
             }
         }
 
