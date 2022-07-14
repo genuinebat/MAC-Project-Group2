@@ -2,33 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using TMPro;
 
 namespace Malorant
 {
     public enum Gun {Raygun, Scanner}
 
-    public class Weapons : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class Weapons : MonoBehaviour
     {
-        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair;
+        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair, TargetFound;
 
         public Button ShootBtn;
         public Image ScannerFill;
+        public TextMeshProUGUI TargetFoundTxt;
 
-        public float ScanDuration;
+        public float ScanDuration = 2;
 
         BangBang bangScript;
+        PressingButton pressShootScript;
         Gun equipped;
 
-        bool pressingShoot;
         float elap;
+        bool inScan;
 
         void Start()
         {
             bangScript = GetComponent<BangBang>();
+            pressShootScript = ShootBtn.gameObject.GetComponent<PressingButton>();
 
             equipped = Gun.Raygun;
-            pressingShoot = false;
             SwitchToRaygun();
         }
 
@@ -36,9 +38,10 @@ namespace Malorant
         {
             if (equipped == Gun.Scanner)
             {
-                if (pressingShoot)
+                WithinScan();
+                if (inScan)
                 {
-                    if (WithinScan())
+                    if (pressShootScript.Pressing)
                     {
                         ScannerFill.fillAmount = elap / ScanDuration;
 
@@ -51,6 +54,7 @@ namespace Malorant
                     else
                     {
                         ScannerFill.fillAmount = 0f;
+                        elap = 0f;
                     }
                 }
             }
@@ -64,20 +68,28 @@ namespace Malorant
         void CompleteScan()
         {
             ScannerFill.fillAmount = 0f;
-        }
-
-        bool WithinScan()
-        {
-            return true;
-        }
-
-        public void OnPointerDown(PointerEventData eventData){
-            pressingShoot = true;
-        }
-        
-        public void OnPointerUp(PointerEventData eventData){
-            pressingShoot = false;
             elap = 0f;
+        }
+
+        void WithinScan()
+        {
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.tag == "ScannableEnemy")
+                {
+                    TargetFound.SetActive(true);
+                    TargetFoundTxt.text = "???";
+                    inScan = true;
+                    return;
+                }
+            }
+
+            TargetFound.SetActive(false);
+            TargetFoundTxt.text = "No Target Found";
+            inScan = false;
         }
 
         public void SwitchToRaygun()
@@ -100,6 +112,10 @@ namespace Malorant
             ScannerUI.SetActive(true);
             RaygunCrosshair.SetActive(false);
             ScannerCrosshair.SetActive(true);
+            TargetFound.SetActive(false);
+            TargetFoundTxt.text = "No Target Found";
+
+            ScannerFill.fillAmount = 0f;
 
             ShootBtn.onClick.RemoveListener(RaygunOnClick);
         }

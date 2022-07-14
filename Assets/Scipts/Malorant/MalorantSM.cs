@@ -153,7 +153,6 @@ namespace Malorant
             base.Cancel();
 
             UI.SetActive(false);
-            Spawner.SetActive(false);
         }
     }
 }
