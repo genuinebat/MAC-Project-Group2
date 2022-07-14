@@ -8,14 +8,14 @@ namespace Malorant
     {
         public GameObject Spawner, UI, Popup, PopupDisplay;
 
-        FPS_Spawner spawnerScript;
+        Malorant_Spawner spawnerScript;
         Coroutine closingCor;
 
         float popupHeight, popupWidth;
 
         void Start()
         {
-            spawnerScript = Spawner.GetComponent<FPS_Spawner>();
+            spawnerScript = Spawner.GetComponent<Malorant_Spawner>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
@@ -145,7 +145,7 @@ namespace Malorant
             UI.SetActive(true);
             Spawner.SetActive(true);
 
-            spawnerScript.EnterView();
+            spawnerScript.SpawnMalwares();
         }
 
         public override void Cancel()
