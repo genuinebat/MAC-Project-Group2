@@ -6,18 +6,23 @@ using TMPro;
 
 namespace Malorant
 {
-    public enum Gun {Raygun, Scanner}
+    interface IDamageable
+    {
+        void GetHit();
+    }
+    
+    enum Gun {Raygun, Scanner}
 
     public class Weapons : MonoBehaviour
     {
-        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair, TargetFound;
+        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair, TargetFound, Trigger;
 
-        public Button ShootBtn;
         public Image ScannerFill;
         public TextMeshProUGUI TargetFoundTxt;
 
         public float ScanDuration = 2;
 
+        Button shootBtn;
         BangBang bangScript;
         PressingButton pressShootScript;
         Gun equipped;
@@ -27,8 +32,10 @@ namespace Malorant
 
         void Start()
         {
+            shootBtn = Trigger.GetComponent<Button>();
+
             bangScript = GetComponent<BangBang>();
-            pressShootScript = ShootBtn.gameObject.GetComponent<PressingButton>();
+            pressShootScript = shootBtn.gameObject.GetComponent<PressingButton>();
 
             equipped = Gun.Raygun;
             SwitchToRaygun();
@@ -100,9 +107,11 @@ namespace Malorant
             RaygunCrosshair.SetActive(true);
             ScannerCrosshair.SetActive(false);
 
-            ShootBtn.onClick.RemoveListener(RaygunOnClick);
+            Trigger.GetComponent<Image>().color = Color.red;
 
-            ShootBtn.onClick.AddListener(RaygunOnClick);
+            shootBtn.onClick.RemoveListener(RaygunOnClick);
+
+            shootBtn.onClick.AddListener(RaygunOnClick);
         }
 
         public void SwitchToScanner()
@@ -115,9 +124,11 @@ namespace Malorant
             TargetFound.SetActive(false);
             TargetFoundTxt.text = "No Target Found";
 
+            Trigger.GetComponent<Image>().color = Color.yellow;
+
             ScannerFill.fillAmount = 0f;
 
-            ShootBtn.onClick.RemoveListener(RaygunOnClick);
+            shootBtn.onClick.RemoveListener(RaygunOnClick);
         }
     }
 }

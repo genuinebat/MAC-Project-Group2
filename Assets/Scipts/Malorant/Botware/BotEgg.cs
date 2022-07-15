@@ -2,46 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotEgg : MonoBehaviour
+namespace Malorant
 {
-    public float dissapearSpeed;
-    public Renderer rend;
-    public GameObject enemyPrefab;
-    private GameObject enemyStore;
-
-    // Start is called before the first frame update
-    void Start()
+    public class BotEgg : MonoBehaviour, IDamageable
     {
-        StartCoroutine(FadeOutMaterial(dissapearSpeed));
-        enemyStore = GameObject.Find("Spawner");
+        public GameObject enemyPrefab;
+        public Renderer rend;
 
-    }
+        public float dissapearSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        GameObject enemyStore;
 
-    IEnumerator FadeOutMaterial(float fadeSpeed)
-    {
-        yield return new WaitForSeconds(1f);
-
-        //Renderer rend = gameObject.transform.GetComponent<Renderer>();
-        Color matColor = rend.material.color;
-        float alphaValue = rend.material.color.a;
-
-        while (rend.material.color.a > 0f)
+        void Start()
         {
-            alphaValue -= Time.deltaTime / fadeSpeed;
-            rend.material.color = new Color(matColor.r, matColor.g, matColor.b, alphaValue);
-            yield return null;
+            StartCoroutine(FadeOutMaterial(dissapearSpeed));
+            enemyStore = GameObject.Find("Spawner");
         }
 
-        GameObject newEnemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
-        newEnemy.transform.parent = enemyStore.transform;
+        public void GetHit()
+        {
 
-        Destroy(gameObject);
-        //rend.material.color = new Color(matColor.r, matColor.g, matColor.b, 0f);
+        }
+
+        IEnumerator FadeOutMaterial(float fadeSpeed)
+        {
+            yield return new WaitForSeconds(1f);
+
+            Color matColor = rend.material.color;
+            float alphaValue = rend.material.color.a;
+
+            while (rend.material.color.a > 0f)
+            {
+                alphaValue -= Time.deltaTime / fadeSpeed;
+                rend.material.color = new Color(matColor.r, matColor.g, matColor.b, alphaValue);
+                yield return null;
+            }
+
+            GameObject newEnemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.Euler(0f, 90f, 0f));
+            newEnemy.transform.parent = enemyStore.transform;
+
+            Destroy(gameObject);
+        }
     }
 }

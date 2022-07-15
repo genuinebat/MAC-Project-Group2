@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c0691752755434c8971ed93556d436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissapearSpeed: 5
+  enemyPrefab: {fileID: 1849226383675950650, guid: cbbb3708c19f5e047be7ab16f255b956, type: 3}
   rend: {fileID: 6201144691399250899}
-  enemyPrefab: {fileID: 5192622719284385059, guid: 0950d29171405c24bbba9e0e298bd28f, type: 3}
+  dissapearSpeed: 5
