@@ -25,7 +25,7 @@ namespace Malorant
             scanner = GameObject.Find("Scanner").GetComponent<Button>();
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
-            scannerNotification = GameObject.Find("ScannerUnlockedUI").transform.gameObject ;
+            scannerNotification = GameObject.Find("ScannerUnlocked UI");
 
             targetLocation = transform.position;
             StartCoroutine(PeriodicallySetBoundaries());
@@ -50,8 +50,8 @@ namespace Malorant
 
             scanner.interactable = true;
             scannerIcon.color=new Color32(255, 255, 255, 255);
-            //StartCoroutine(WaitToSpawn());
-            spawnnerScript.SpawnMalwares2();
+            StartCoroutine(WaitToSpawn());
+            //spawnnerScript.SpawnMalwares2();
 
         }
 
@@ -94,14 +94,14 @@ namespace Malorant
                 );
         }
 
-        //IEnumerator WaitToSpawn()
-        //{
-        //    scannerNotification.SetActive(true);
-        //    yield return new WaitForSeconds(1);
-        //    scannerNotification.SetActive(false);
+        IEnumerator WaitToSpawn()
+        {
+            //scannerNotification.SetActive(true);
+            yield return new WaitForSeconds(1);
+            //scannerNotification.SetActive(false);
 
-        //    spawnnerScript.SpawnMalwares2();
-        //}
+            spawnnerScript.SpawnMalwares2();
+        }
     }
 }
 
