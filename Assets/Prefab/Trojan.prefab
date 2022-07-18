@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4067536332948043013}
   m_Layer: 0
   m_Name: Trojan
-  m_TagString: Enemy
+  m_TagString: ScannableEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

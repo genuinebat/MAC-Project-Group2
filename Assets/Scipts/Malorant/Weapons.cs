@@ -10,6 +10,12 @@ namespace Malorant
     {
         void GetHit();
     }
+
+    interface IScannable
+    {
+        bool Scanned { get; }
+        void Scan();
+    }
     
     enum Gun {Raygun, Scanner}
 
@@ -27,8 +33,10 @@ namespace Malorant
         PressingButton pressShootScript;
         Gun equipped;
 
+        GameObject scannableObj;
+
         float elap;
-        bool inScan;
+        bool scannable;
 
         void Start()
         {
@@ -46,7 +54,7 @@ namespace Malorant
             if (equipped == Gun.Scanner)
             {
                 WithinScan();
-                if (inScan)
+                if (scannable)
                 {
                     if (pressShootScript.Pressing)
                     {
@@ -64,6 +72,11 @@ namespace Malorant
                         elap = 0f;
                     }
                 }
+                else
+                {
+                    ScannerFill.fillAmount = 0f;
+                    elap = 0f;
+                }
             }
         }
 
@@ -76,6 +89,8 @@ namespace Malorant
         {
             ScannerFill.fillAmount = 0f;
             elap = 0f;
+
+            scannableObj.GetComponent<IScannable>().Scan();
         }
 
         void WithinScan()
@@ -89,14 +104,25 @@ namespace Malorant
                 {
                     TargetFound.SetActive(true);
                     TargetFoundTxt.text = "???";
-                    inScan = true;
+                    scannable = true;
+                    scannableObj = hit.transform.gameObject;
+
+                    return;
+                }
+
+                if (hit.transform.tag == "Enemy")
+                {
+                    TargetFound.SetActive(true);
+                    TargetFoundTxt.text = hit.transform.name.Replace("(Clone)", "");
+                    scannable = false;
+
                     return;
                 }
             }
 
             TargetFound.SetActive(false);
             TargetFoundTxt.text = "No Target Found";
-            inScan = false;
+            scannable = false;
         }
 
         public void SwitchToRaygun()
