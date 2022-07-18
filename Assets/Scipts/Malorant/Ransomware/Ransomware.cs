@@ -12,6 +12,7 @@ namespace Malorant
         Image scannerIcon;
         Malorant_Spawner spawnnerScript;
         GameObject scannerNotification;
+
         public float Speed;
         Transform imageTarget;
         Vector3 targetLocation;
@@ -25,7 +26,8 @@ namespace Malorant
             scanner = GameObject.Find("Scanner").GetComponent<Button>();
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
-            scannerNotification = GameObject.Find("ScannerUnlocked UI");
+            scannerNotification = GameObject.Find("ScannerUnlockUI");
+            scannerNotification.SetActive(false);
 
             targetLocation = transform.position;
             StartCoroutine(PeriodicallySetBoundaries());
@@ -51,7 +53,6 @@ namespace Malorant
             scanner.interactable = true;
             scannerIcon.color=new Color32(255, 255, 255, 255);
             StartCoroutine(WaitToSpawn());
-            //spawnnerScript.SpawnMalwares2();
 
         }
 
@@ -96,9 +97,16 @@ namespace Malorant
 
         IEnumerator WaitToSpawn()
         {
-            //scannerNotification.SetActive(true);
+            scannerNotification.SetActive(true);
             yield return new WaitForSeconds(1);
-            //scannerNotification.SetActive(false);
+            // loop over 1 second backwards
+            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            {
+                // set color with i as alpha
+                scannerNotification.GetComponent<Image>().color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+            scannerNotification.SetActive(false);
 
             spawnnerScript.SpawnMalwares2();
         }
