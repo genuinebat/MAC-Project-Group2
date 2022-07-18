@@ -7,9 +7,11 @@ namespace Malorant
 {
     public class Ransomware : MonoBehaviour, IDamageable
     {
-        private GameObject lockedScanner;
-        private Button scanner;
-        private Image scannerIcon;
+        GameObject lockedIcon;
+        Button scanner;
+        Image scannerIcon;
+        Malorant_Spawner spawnnerScript;
+        GameObject scannerNotification;
         public float Speed;
         Transform imageTarget;
         Vector3 targetLocation;
@@ -19,8 +21,11 @@ namespace Malorant
         void Start()
         {
             imageTarget = GameObject.Find("Target").transform;
+
             scanner = GameObject.Find("Scanner").GetComponent<Button>();
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
+            spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
+            scannerNotification = GameObject.Find("ScannerUnlockedUI").transform.gameObject ;
 
             targetLocation = transform.position;
             StartCoroutine(PeriodicallySetBoundaries());
@@ -44,8 +49,10 @@ namespace Malorant
         {
 
             scanner.interactable = true;
-            scannerIcon.color=new Color32(255, 255, 255, 250);
-            //lockedScanner.SetActive(false);
+            scannerIcon.color=new Color32(255, 255, 255, 255);
+            //StartCoroutine(WaitToSpawn());
+            spawnnerScript.SpawnMalwares2();
+
         }
 
         void SetBoundaries()
@@ -86,6 +93,15 @@ namespace Malorant
                     Random.Range(minZ, maxZ)
                 );
         }
+
+        //IEnumerator WaitToSpawn()
+        //{
+        //    scannerNotification.SetActive(true);
+        //    yield return new WaitForSeconds(1);
+        //    scannerNotification.SetActive(false);
+
+        //    spawnnerScript.SpawnMalwares2();
+        //}
     }
 }
 

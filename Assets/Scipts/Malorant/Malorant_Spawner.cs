@@ -43,5 +43,24 @@ namespace Malorant
             //botware.transform.parent = transform;
             //adware.transform.parent = transform;
         }
+
+        public void SpawnMalwares2()
+        {
+            GameObject botware = Instantiate(
+                Malwares[2],
+                ImageTarget.position +
+                new Vector3(3, 0, -1),
+                Quaternion.Euler(0f, 90f, 0f)
+            );
+            GameObject adware = Instantiate(
+                Malwares[3],
+                ImageTarget.position +
+                new Vector3(3, 3, -1),
+                Quaternion.Euler(0f, 180f, 0f)
+            );
+
+            botware.transform.parent = transform;
+            adware.transform.parent = transform;
+        }
     }
 }
