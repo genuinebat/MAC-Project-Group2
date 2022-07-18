@@ -16,7 +16,7 @@ namespace Malorant
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject shotvfx = Instantiate(hitEffect, hit.transform.position, Quaternion.identity);
+                GameObject shotvfx = Instantiate(hitEffect,hit.point, Quaternion.identity);
                 StartCoroutine(DelayShot(hit));
             }
         }
@@ -26,16 +26,8 @@ namespace Malorant
             yield return new WaitForSeconds(0.5f);
             if (hit.transform.tag == "Enemy")
             {
-                // FPSEnemy enemy = hit.transform.gameObject.GetComponent<FPSEnemy>();
+                hit.transform.gameObject.GetComponent<IDamageable>().GetHit();
 
-                // if (enemy.Type == weaponEquipped.Target)
-                // {
-                //     enemy.TakeDamage(true);
-                // }
-                // else
-                // {
-                //     enemy.TakeDamage(false);
-                // }
             }
         }
     }

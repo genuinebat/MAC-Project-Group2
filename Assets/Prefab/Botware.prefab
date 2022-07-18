@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360673357866556544}
   - component: {fileID: 1224582839855776790}
+  - component: {fileID: 4444493126868661298}
   m_Layer: 0
   m_Name: Botware
   m_TagString: Enemy
@@ -52,6 +53,20 @@ MonoBehaviour:
   eggPrefab: {fileID: 8621609566553743613, guid: 5855818d04add12478232db6330c0946, type: 3}
   timebetweenSpawn: 6
   Speed: 1
+--- !u!64 &4444493126868661298
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849226383675950650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2264452986223682900
 GameObject:
   m_ObjectHideFlags: 0
