@@ -8,7 +8,8 @@ public class Timer : MonoBehaviour
 {
     public float timeMin;
     public float timeSec;
-    private float timeLeft;
+    float timeLeft;
+    public GameObject LoseUI;
     public Text timerUI;
 
     // Start is called before the first frame update
@@ -28,6 +29,9 @@ public class Timer : MonoBehaviour
         if (timeLeft < 0)
         {
             timeLeft = 0;
+            Time.timeScale = 0;
+            LoseUI.SetActive(true);
+
         }
     }
 }

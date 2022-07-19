@@ -98,7 +98,7 @@ namespace Malorant
         IEnumerator WaitToSpawn()
         {
             scannerNotification.SetActive(true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
             // loop over 1 second backwards
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
