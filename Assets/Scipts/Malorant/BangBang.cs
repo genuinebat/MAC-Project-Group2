@@ -7,6 +7,7 @@ namespace Malorant
     public class BangBang : MonoBehaviour
     {
         public GameObject hitEffect;
+        public MalorantTimer timer;
         private bool delayRunning;
 
         public void Bang()
@@ -19,21 +20,10 @@ namespace Malorant
                 GameObject shotvfx = Instantiate(hitEffect,hit.point, Quaternion.identity);
                 if (hit.transform.tag == "Enemy")
                 {
+                    timer.checkWin();
                     hit.transform.gameObject.GetComponent<IDamageable>().GetHit();
-
                 }
             }
         }
-
-        //IEnumerator DelayShot(RaycastHit hit)
-        //{
-        //    //yield return new WaitForSeconds(0.5f);
-        //    if (hit.transform.tag == "Enemy")
-        //    {
-        //        hit.transform.gameObject.GetComponent<IDamageable   >().GetHit();
-
-        //    }
-        //    yield return null;
-        //}
     }
 }

@@ -21,7 +21,7 @@ namespace Malorant
 
         public void GetHit()
         {
-
+            Destroy(gameObject);
         }
 
         IEnumerator FadeOutMaterial(float fadeSpeed)
