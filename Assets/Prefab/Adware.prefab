@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8824727601604464671}
   - component: {fileID: 8394560712804120153}
   - component: {fileID: 3730188171811556591}
+  - component: {fileID: -995561660880413823}
   m_Layer: 0
   m_Name: Adware
   m_TagString: ScannableEnemy
@@ -98,3 +99,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-995561660880413823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192622719284385059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe90d87addb24e4f81d651ad7410dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  MoveRange: 5

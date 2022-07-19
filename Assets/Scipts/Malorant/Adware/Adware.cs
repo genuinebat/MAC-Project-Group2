@@ -6,43 +6,48 @@ namespace Malorant
 {
     public class Adware : MonoBehaviour, IDamageable, IScannable
     {
-        class Quad
+        struct Quad
         {
             public float MinX, MaxX, MinY, MaxY, Z;
-            public Quad()
+            public Quad(float _minX, float _maxX, float _minY, float _maxY, float _z)
             {
-
+                MinX = _minX;
+                MaxX = _maxX;
+                MinY = _minY;
+                MaxY = _maxY;
+                Z = _z;
             }
         }
+
+        public float Speed;
+
         public bool Scanned { get; private set; }
 
+        public float MoveRange;
+
+        List<Quad> quads = new List<Quad>();
+
+        Vector3 targetLocation;
         int quad;
 
         void Start()
         {
+            CreateQuads();
             quad = 0;
+
+            targetLocation = transform.position;
         }
 
         void Update()
         {
-            // swith(quad)
-            // {
-            //     case 1:
-
-            //         break;
-                
-            //     case 2:
-
-            //         break;
-
-            //     case 3:
-
-            //         break;
-
-            //     case 4:
-
-            //         break;
-            // }
+            if (Vector3.Distance(transform.position, targetLocation) < 0.01f)
+            {
+                SetNewRandomTargetLocation();
+            }
+            else
+            {
+                MoveToTargetLocation();
+            }
         }
 
         public void GetHit()
@@ -55,6 +60,65 @@ namespace Malorant
             Scanned = true;
 
             gameObject.tag = "Enemy";
+        }
+
+        void MoveToTargetLocation()
+        {
+            transform.position = 
+                Vector3.MoveTowards(
+                    transform.position,
+                    targetLocation, 
+                    Speed * Time.deltaTime
+                );
+        }
+
+        void SetNewRandomTargetLocation()
+        {
+            targetLocation =
+                new Vector3(
+                    Random.Range(quads[quad].MinX, quads[quad].MaxX),
+                    Random.Range(quads[quad].MinY, quads[quad].MaxY),
+                    quads[quad].Z
+                );
+            
+            if (quad < 3) quad++;
+            else quad = 0;
+        }
+
+        void CreateQuads()
+        {
+            quads.Clear();
+
+            Vector3 pos = transform.position;
+
+            quads.Add(new Quad(
+                pos.x,
+                pos.x + MoveRange,
+                pos.y,
+                pos.y + MoveRange,
+                pos.z
+            ));
+            quads.Add(new Quad(
+                pos.x,
+                pos.x + MoveRange,
+                pos.y - MoveRange,
+                pos.y,
+                pos.z
+            ));
+            quads.Add(new Quad(
+                pos.x - MoveRange,
+                pos.x,
+                pos.y - MoveRange,
+                pos.y,
+                pos.z
+            ));
+            quads.Add(new Quad(
+                pos.x - MoveRange,
+                pos.x,
+                pos.y,
+                pos.y + MoveRange,
+                pos.z
+            ));
         }
     }
 }
