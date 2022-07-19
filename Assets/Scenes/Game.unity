@@ -3982,6 +3982,7 @@ MonoBehaviour:
   PopupDisplay: {fileID: 1016789565}
   malorantState: {fileID: 1873579883}
   loseUI: {fileID: 999840224}
+  ScannerUnlockUI: {fileID: 905995695}
 --- !u!114 &1873579881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4032,6 +4033,7 @@ MonoBehaviour:
   timeMin: 0
   timeSec: 10
   timeLeft: 0
+  gameStarted: 0
   loseUI: {fileID: 999840224}
   winUI: {fileID: 1826570267}
   enemies: {fileID: 0}

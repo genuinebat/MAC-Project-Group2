@@ -11,6 +11,7 @@ namespace Malorant
         public float timeMin;
         public float timeSec;
         public float timeLeft;
+        public bool gameStarted;
         public GameObject loseUI;
         public GameObject winUI;
         public GameObject enemies;
@@ -21,22 +22,26 @@ namespace Malorant
         {
             enemies = GameObject.Find("Spawner");
             timeLeft = timeMin * 60 + timeSec;
+            gameStarted = false;
         }
 
         void Update()
         {
-            timeLeft -= Time.deltaTime;
-
-            string minutes = ((int)timeLeft / 60).ToString("00");
-            string seconds = Mathf.Round(timeLeft % 60).ToString("00");
-            timerUI.text = minutes + ":" + seconds;
-
-            if (timeLeft < 0)
+            if (gameStarted == true)
             {
-                timeLeft = 0;
-                Time.timeScale = 0;
-                loseUI.SetActive(true);
+                timeLeft -= Time.deltaTime;
 
+                string minutes = ((int)timeLeft / 60).ToString("00");
+                string seconds = Mathf.Round(timeLeft % 60).ToString("00");
+                timerUI.text = minutes + ":" + seconds;
+
+                if (timeLeft < 0)
+                {
+                    timeLeft = 0;
+                    Time.timeScale = 0;
+                    loseUI.SetActive(true);
+
+                }
             }
         }
 

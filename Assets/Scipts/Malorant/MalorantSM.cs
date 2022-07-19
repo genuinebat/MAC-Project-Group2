@@ -16,6 +16,7 @@ namespace Malorant
         Image scannerIcon;
         public MalorantGameState malorantState;
         public GameObject loseUI;
+        public GameObject ScannerUnlockUI;
 
         float popupHeight, popupWidth;
 
@@ -145,13 +146,13 @@ namespace Malorant
             if (IsRunning) return;
 
             base.Initialize();
+            ScannerUnlockUI.SetActive(true);
             Popup.SetActive(false);
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
-
             UI.SetActive(true);
             Spawner.SetActive(true);
-
             spawnerScript.SpawnMalwares();
+            malorantState.gameStarted = true;
         }
 
         public override void Cancel()
@@ -171,6 +172,7 @@ namespace Malorant
             //make sure lose UI is closed
             loseUI.SetActive(false);
             spawnerScript.ResetMalorant();
+            malorantState.gameStarted = false;
         }
     }
 }
