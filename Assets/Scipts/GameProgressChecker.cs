@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Timer : MonoBehaviour
+public class GameProgressChecker : MonoBehaviour
 {
     public float timeMin;
     public float timeSec;
