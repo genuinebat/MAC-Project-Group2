@@ -17,18 +17,23 @@ namespace Malorant
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject shotvfx = Instantiate(hitEffect,hit.point, Quaternion.identity);
-                StartCoroutine(DelayShot(hit));
+                if (hit.transform.tag == "Enemy")
+                {
+                    hit.transform.gameObject.GetComponent<IDamageable>().GetHit();
+
+                }
             }
         }
 
-        IEnumerator DelayShot(RaycastHit hit)
-        {
-            yield return new WaitForSeconds(0.5f);
-            if (hit.transform.tag == "Enemy")
-            {
-                hit.transform.gameObject.GetComponent<IDamageable   >().GetHit();
+        //IEnumerator DelayShot(RaycastHit hit)
+        //{
+        //    //yield return new WaitForSeconds(0.5f);
+        //    if (hit.transform.tag == "Enemy")
+        //    {
+        //        hit.transform.gameObject.GetComponent<IDamageable   >().GetHit();
 
-            }
-        }
+        //    }
+        //    yield return null;
+        //}
     }
 }
