@@ -1290,7 +1290,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
-  m_projectionMatrixMode: 2
+  m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
@@ -4050,7 +4050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageTarget: {fileID: 1110621566}
   Malwares:
-  - {fileID: 8810719688146075729, guid: 182d3c14dcdc25e47a6375a12efdf953, type: 3}
+  - {fileID: 5380496104650219564, guid: dbf56de61f2304347a691972eb40e3da, type: 3}
   - {fileID: 5192622719284385059, guid: 0dffe73088bb9bc419f6fd5c23f7ad08, type: 3}
   - {fileID: 1849226383675950650, guid: cbbb3708c19f5e047be7ab16f255b956, type: 3}
   - {fileID: 5192622719284385059, guid: eaa85c2494c185141a6dca83b9e912c8, type: 3}
