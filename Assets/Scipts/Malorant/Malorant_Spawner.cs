@@ -16,7 +16,7 @@ namespace Malorant
             GameObject trojan = Instantiate(
                 Malwares[0],
                 ImageTarget.position +
-                new Vector3(-3, 0, -1),
+                new Vector3(3, 2, -1),
                 Quaternion.Euler(0f, 180f, 0f)      
             );
             GameObject ransomware = Instantiate(
@@ -25,23 +25,9 @@ namespace Malorant
                 new Vector3(0, 0, -1),
                 Quaternion.identity     
             );
-            //GameObject botware = Instantiate(
-            //    Malwares[2],
-            //    ImageTarget.position +
-            //    new Vector3(3, 0, -1),
-            //    Quaternion.Euler(0f, 90f, 0f)      
-            //);
-            //GameObject trojan = Instantiate(
-            //    Malwares[3],
-            //    ImageTarget.position +
-            //    new Vector3(3, 3, -1),
-            //    Quaternion.Euler(0f, 180f, 0f)          
-            //);
 
             trojan.transform.parent = transform;
             ransomware.transform.parent = transform;
-            //botware.transform.parent = transform;
-            //adware.transform.parent = transform;
         }
 
         public void SpawnMalwares2()
@@ -49,13 +35,13 @@ namespace Malorant
             GameObject botware = Instantiate(
                 Malwares[2],
                 ImageTarget.position +
-                new Vector3(3, 0, -1),
+                new Vector3(2, 0, -1),
                 Quaternion.Euler(0f, 90f, 0f)
             );
             GameObject adware = Instantiate(
                 Malwares[3],
                 ImageTarget.position +
-                new Vector3(3, 3, -1),
+                new Vector3(-2, 0, -1),
                 Quaternion.Euler(0f, 180f, 0f)
             );
 

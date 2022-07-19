@@ -3485,7 +3485,7 @@ MonoBehaviour:
   Trigger: {fileID: 229593270}
   ScannerFill: {fileID: 2109427256}
   TargetFoundTxt: {fileID: 2139365123}
-  ScanDuration: 2
+  ScanDuration: 1
 --- !u!1 &1883153874
 GameObject:
   m_ObjectHideFlags: 0
