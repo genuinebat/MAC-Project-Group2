@@ -52,8 +52,10 @@ namespace Malorant
 
             scanner.interactable = true;
             scannerIcon.color=new Color32(255, 255, 255, 255);
-            StartCoroutine(WaitToSpawn());
-
+            spawnnerScript.SpawnMalwares2();
+            StartCoroutine(scannerNoti());
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
         }
 
         void SetBoundaries()
@@ -95,10 +97,10 @@ namespace Malorant
                 );
         }
 
-        IEnumerator WaitToSpawn()
+        IEnumerator scannerNoti()
         {
             scannerNotification.SetActive(true);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             // loop over 1 second backwards
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
@@ -108,7 +110,8 @@ namespace Malorant
             }
             scannerNotification.SetActive(false);
 
-            spawnnerScript.SpawnMalwares2();
+            Destroy(gameObject);
+
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Malorant
             yield return new WaitForSeconds(0.5f);
             if (hit.transform.tag == "Enemy")
             {
-                hit.transform.gameObject.GetComponent<IDamageable>().GetHit();
+                hit.transform.gameObject.GetComponent<IDamageable   >().GetHit();
 
             }
         }

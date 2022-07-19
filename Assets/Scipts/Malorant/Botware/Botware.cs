@@ -41,7 +41,7 @@ namespace Malorant
 
         public void GetHit()
         {
-
+            Destroy(gameObject);
         }
 
         //integer so that the delay can be controlled in the inspector
