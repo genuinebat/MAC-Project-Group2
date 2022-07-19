@@ -53,6 +53,8 @@ namespace Malorant
         public void GetHit()
         {
             if (!Scanned) return;
+
+            Destroy(gameObject);
         }
 
         public void Scan()

@@ -12,7 +12,7 @@ namespace Malorant
         {
             if (!Scanned) return;
 
-            
+            Destroy(gameObject);
         }
 
         public void Scan()
