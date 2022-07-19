@@ -14,8 +14,10 @@ namespace Malorant
         public bool gameStarted;
         public GameObject loseUI;
         public GameObject winUI;
-        public GameObject enemies;
         public Text timerUI;
+
+        [HideInInspector]
+        public GameObject enemies;
 
         // Start is called before the first frame update
         void Start()

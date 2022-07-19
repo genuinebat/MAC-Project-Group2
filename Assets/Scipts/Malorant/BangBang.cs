@@ -8,7 +8,6 @@ namespace Malorant
     {
         public GameObject hitEffect;
         public MalorantGameState timer;
-        private bool delayRunning;
 
         public void Bang()
         {
@@ -17,7 +16,8 @@ namespace Malorant
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject shotvfx = Instantiate(hitEffect,hit.point, Quaternion.identity);
+                Instantiate(hitEffect,hit.point, Quaternion.identity);
+
                 if (hit.transform.tag == "Enemy")
                 {
                     timer.CheckWin();

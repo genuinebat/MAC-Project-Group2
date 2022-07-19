@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Malorant
 {
-    public class Adware : MonoBehaviour, IDamageable, IScannable
+    public class Adware : MonoBehaviour, IScannable
     {
         struct Quad
         {
@@ -18,7 +18,8 @@ namespace Malorant
                 Z = _z;
             }
         }
-
+        
+        public GameObject X;
         public float Speed;
 
         public bool Scanned { get; private set; }
@@ -32,6 +33,8 @@ namespace Malorant
 
         void Start()
         {
+            X.SetActive(false);
+
             CreateQuads();
             quad = 0;
 
@@ -50,18 +53,12 @@ namespace Malorant
             }
         }
 
-        public void GetHit()
-        {
-            if (!Scanned) return;
-
-            Destroy(gameObject);
-        }
-
         public void Scan()
         {
             Scanned = true;
 
-            gameObject.tag = "Enemy";
+            gameObject.tag = "Untagged";
+            X.SetActive(true);
         }
 
         void MoveToTargetLocation()
