@@ -460,6 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4746948074767448726}
   - component: {fileID: 1657501457261338860}
+  - component: {fileID: 8521688081462808837}
   m_Layer: 0
   m_Name: Trojan
   m_TagString: Untagged
@@ -476,7 +477,7 @@ Transform:
   m_GameObject: {fileID: 5380496104650219564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.8214114, y: 0, z: -7.849907}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 986533316623768066}
@@ -504,6 +505,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &8521688081462808837
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380496104650219564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5742099408189421614
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1509159373816900560}
   - component: {fileID: 627940401992118693}
+  - component: {fileID: 1507705268051471050}
   m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
@@ -611,6 +627,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00032362342, y: 0.15313697, z: 0.026421368}
     m_Extent: {x: 0.28388524, y: 0.33523166, z: 0.16808408}
   m_DirtyAABB: 0
+--- !u!136 &1507705268051471050
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742099408189421614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.28461996
+  m_Height: 0.67170256
+  m_Direction: 1
+  m_Center: {x: 0.00031395172, y: 0.26269612, z: 0.02077347}
 --- !u!1 &6040271083633996230
 GameObject:
   m_ObjectHideFlags: 0

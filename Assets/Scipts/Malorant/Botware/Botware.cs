@@ -18,7 +18,7 @@ namespace Malorant
 
         void Start()
         {
-            eggStore = GameObject.Find("EggStore");
+            eggStore = GameObject.Find("Spawner");
             imageTarget = GameObject.Find("Target").transform;
 
             StartCoroutine(SpawnEgg(timebetweenSpawn));
