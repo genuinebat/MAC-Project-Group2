@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Malorant
 {
@@ -11,6 +12,11 @@ namespace Malorant
         Malorant_Spawner spawnerScript;
         Coroutine closingCor;
 
+        Button scannerUI;
+        Image scannerIcon;
+        public MalorantGameState malorantState;
+        public GameObject loseUI;
+
         float popupHeight, popupWidth;
 
         void Start()
@@ -19,7 +25,8 @@ namespace Malorant
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
-
+            scannerUI = GameObject.Find("Scanner").GetComponent<Button>();
+            scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             Cancel();
         }
 
@@ -138,7 +145,6 @@ namespace Malorant
             if (IsRunning) return;
 
             base.Initialize();
-
             Popup.SetActive(false);
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
@@ -151,8 +157,20 @@ namespace Malorant
         public override void Cancel()
         {
             base.Cancel();
-
+            //reset timer for malorant
+            malorantState.timeLeft = malorantState.timeMin * 60 + malorantState.timeSec;
+            Debug.Log(malorantState.timeMin);
+            Debug.Log(malorantState.timeSec);
+            Time.timeScale = 1f;
+            Debug.Log(loseUI);
             UI.SetActive(false);
+
+            //lock the scanner
+            scannerUI.interactable = false;
+            scannerIcon.color = new Color32(255, 255, 255, 0);
+            //make sure lose UI is closed
+            loseUI.SetActive(false);
+            spawnerScript.ResetMalorant();
         }
     }
 }

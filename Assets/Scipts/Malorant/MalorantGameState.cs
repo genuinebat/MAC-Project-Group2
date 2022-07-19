@@ -6,11 +6,11 @@ using TMPro;
 
 namespace Malorant
 {
-    public class MalorantTimer : MonoBehaviour
+    public class MalorantGameState : MonoBehaviour
     {
         public float timeMin;
         public float timeSec;
-        float timeLeft;
+        public float timeLeft;
         public GameObject loseUI;
         public GameObject winUI;
         public GameObject enemies;
@@ -40,7 +40,7 @@ namespace Malorant
             }
         }
 
-        public void checkWin()
+        public void CheckWin()
         {
             if(enemies.transform.childCount <= 1)
             {

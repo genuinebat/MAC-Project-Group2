@@ -48,5 +48,13 @@ namespace Malorant
             botware.transform.parent = transform;
             adware.transform.parent = transform;
         }
+
+        public void ResetMalorant()
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
     }
 }

@@ -21,14 +21,13 @@ namespace Malorant
         // Start is called before the first frame update
         void Start()
         {
-            imageTarget = GameObject.Find("Target").transform;
-
             scanner = GameObject.Find("Scanner").GetComponent<Button>();
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
             scannerNotification = GameObject.Find("ScannerUnlockUI");
-            scannerNotification.SetActive(false);
+            imageTarget = GameObject.Find("Target").transform;
 
+            scannerNotification.SetActive(false);
             targetLocation = transform.position;
             StartCoroutine(PeriodicallySetBoundaries());
 
