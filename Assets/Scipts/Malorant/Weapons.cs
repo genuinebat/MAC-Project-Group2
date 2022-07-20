@@ -21,7 +21,7 @@ namespace Malorant
 
     public class Weapons : MonoBehaviour
     {
-        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair, TargetFound, Trigger;
+        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair, Trigger, ScannerFillBack, ScannedTxt;
 
         public Image ScannerFill;
         public TextMeshProUGUI TargetFoundTxt;
@@ -44,6 +44,8 @@ namespace Malorant
 
             bangScript = GetComponent<BangBang>();
             pressShootScript = shootBtn.gameObject.GetComponent<PressingButton>();
+
+            ScannedTxt.SetActive(false);
 
             equipped = Gun.Raygun;
             SwitchToRaygun();
@@ -91,6 +93,8 @@ namespace Malorant
             elap = 0f;
 
             scannableObj.GetComponent<IScannable>().Scan();
+
+            StartCoroutine(ScannedText());
         }
 
         void WithinScan()
@@ -102,7 +106,7 @@ namespace Malorant
             {
                 if (hit.transform.tag == "ScannableEnemy")
                 {
-                    TargetFound.SetActive(true);
+                    ScannerFillBack.SetActive(true);
                     TargetFoundTxt.text = "???";
                     scannable = true;
                     scannableObj = hit.transform.gameObject;
@@ -112,15 +116,15 @@ namespace Malorant
 
                 if (hit.transform.tag == "Enemy")
                 {
-                    TargetFound.SetActive(true);
+                    ScannerFillBack.SetActive(true);
                     TargetFoundTxt.text = hit.transform.name.Replace("(Clone)", "");
                     scannable = false;
-
+                    
                     return;
                 }
             }
 
-            TargetFound.SetActive(false);
+            ScannerFillBack.SetActive(false);
             TargetFoundTxt.text = "No Target Found";
             scannable = false;
         }
@@ -128,10 +132,12 @@ namespace Malorant
         public void SwitchToRaygun()
         {
             equipped = Gun.Raygun;
+
             RaygunUI.SetActive(true);
             ScannerUI.SetActive(false);
             RaygunCrosshair.SetActive(true);
             ScannerCrosshair.SetActive(false);
+            ScannerFillBack.SetActive(false);
 
             Trigger.GetComponent<Image>().color = Color.red;
 
@@ -143,11 +149,12 @@ namespace Malorant
         public void SwitchToScanner()
         {
             equipped = Gun.Scanner;
+
             RaygunUI.SetActive(false);
             ScannerUI.SetActive(true);
             RaygunCrosshair.SetActive(false);
             ScannerCrosshair.SetActive(true);
-            TargetFound.SetActive(false);
+
             TargetFoundTxt.text = "No Target Found";
 
             Trigger.GetComponent<Image>().color = Color.yellow;
@@ -155,6 +162,34 @@ namespace Malorant
             ScannerFill.fillAmount = 0f;
 
             shootBtn.onClick.RemoveListener(RaygunOnClick);
+        }
+        
+        IEnumerator ScannedText()
+        {            
+            RectTransform rt = ScannedTxt.GetComponent<RectTransform>();
+
+            Vector2 ogPos = rt.position;
+            Vector3 ogScale = rt.localScale;
+            
+            Vector2 targetPos = ogPos + new Vector2(0f, 80f);
+            Vector3 targetScale = ogScale * 0.6f;
+            targetScale.z = 1;
+
+            ScannedTxt.SetActive(true);
+
+            while (Vector2.Distance(rt.position, targetPos) > 20f)
+            {
+                rt.position = Vector2.MoveTowards(rt.position, targetPos, Time.deltaTime * 60);
+
+                rt.localScale = Vector3.Lerp(rt.localScale, targetScale, Time.deltaTime * 2);
+                
+                yield return null;
+            }
+
+            ScannedTxt.SetActive(false);
+            
+            rt.position = ogPos;
+            rt.localScale = ogScale;
         }
     }
 }

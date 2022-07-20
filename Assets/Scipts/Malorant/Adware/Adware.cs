@@ -57,7 +57,7 @@ namespace Malorant
         {
             Scanned = true;
 
-            gameObject.tag = "Untagged";
+            gameObject.tag = "Enemy";
             X.SetActive(true);
         }
 
