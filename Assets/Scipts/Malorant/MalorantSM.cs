@@ -7,37 +7,41 @@ namespace Malorant
 {
     public class MalorantSM : PuzzleSM
     {
-        public GameObject Spawner, UI, Popup, PopupDisplay;
+        [Header("Reference Variables")]
+        public GameObject Spawner;
+        public GameObject UI;
+        public GameObject Popup;
+        public GameObject PopupDisplay;
+        public GameObject LoseUI;
+        public GameObject WinUI;
+        public GameObject ScannerUnlockUI;
+        public MalorantGameState malorantState;
 
         Malorant_Spawner spawnerScript;
         Coroutine closingCor;
 
         Button scannerUI;
         Image scannerIcon;
-        public MalorantGameState malorantState;
-        public GameObject loseUI;
-        public GameObject ScannerUnlockUI;
 
         float popupHeight, popupWidth;
 
         void Start()
         {
             spawnerScript = Spawner.GetComponent<Malorant_Spawner>();
+            scannerUI = GameObject.Find("Scanner").GetComponent<Button>();
+            scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
-            scannerUI = GameObject.Find("Scanner").GetComponent<Button>();
-            scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
+
             Cancel();
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) Initialize();
-        }
-
+        // function that is called when the image target is first detected
+        // it uses a coroutine to popup a panel that allows the player to start the puzzle
         public override void EnablePopup()
         {
+            // check if the puzzle is either running or completed
             if (IsRunning || IsCompleted) return;
 
             base.EnablePopup();
@@ -45,18 +49,23 @@ namespace Malorant
             if (closingCor != null) StopCoroutine(closingCor);
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
+
             PopupDisplay.SetActive(false);
             Popup.SetActive(true);
+
             StartCoroutine(OpenPopup());
         }
 
+        // function that is called if the player chooses to not start the puzzle
         public override void DisablePopup()
         {
             closingCor = StartCoroutine(ClosePopup());
         }
 
+        // coroutine for the opening popup animation
         IEnumerator OpenPopup()
         {
+            // expanding the popup horizontally
             while (Popup.transform.localScale.x < (popupWidth - 0.02f))
             {
                 Popup.transform.localScale = 
@@ -76,6 +85,7 @@ namespace Malorant
 
             yield return new WaitForSeconds(.1f);
 
+            // expanding the popup vertically
             while (Popup.transform.localScale.y < (popupHeight - 0.02f))
             {
                 Popup.transform.localScale = 
@@ -96,10 +106,12 @@ namespace Malorant
             PopupDisplay.SetActive(true);
         }
 
+        // coroutine for the closing popup animation
         IEnumerator ClosePopup()
         {
             PopupDisplay.SetActive(false);
 
+            // closing the popup vertically
             while (Popup.transform.localScale.y > (0.1f + 0.02f))
             {
                 Popup.transform.localScale = 
@@ -119,6 +131,7 @@ namespace Malorant
             
             yield return new WaitForSeconds(.1f);
 
+            // closing the popup horizontally
             while (Popup.transform.localScale.x > 0.02f)
             {
                 Popup.transform.localScale = 
@@ -141,38 +154,43 @@ namespace Malorant
             Popup.SetActive(false);
         }
 
+        // function that is called to start the game
         public override void Initialize()
         {
             if (IsRunning) return;
 
             base.Initialize();
+
+            Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
+
+            UI.SetActive(true);
             ScannerUnlockUI.SetActive(true);
             Popup.SetActive(false);
-            Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
-            UI.SetActive(true);
             Spawner.SetActive(true);
             spawnerScript.SpawnMalwares();
-            malorantState.gameStarted = true;
+
+            malorantState.GameStarted = true;
         }
 
+        // function that is called to close and restart the game
         public override void Cancel()
         {
             base.Cancel();
+
             //reset timer for malorant
-            malorantState.timeLeft = malorantState.timeMin * 60 + malorantState.timeSec;
-            Debug.Log(malorantState.timeMin);
-            Debug.Log(malorantState.timeSec);
+            malorantState.timeLeft = malorantState.TimeMin * 60 + malorantState.TimeSec;
             Time.timeScale = 1f;
-            Debug.Log(loseUI);
             UI.SetActive(false);
 
             //lock the scanner
             scannerUI.interactable = false;
             scannerIcon.color = new Color32(255, 255, 255, 0);
+
             //make sure lose UI is closed
-            loseUI.SetActive(false);
+            WinUI.SetActive(false);
+            LoseUI.SetActive(false);
             spawnerScript.ResetMalorant();
-            malorantState.gameStarted = false;
+            malorantState.GameStarted = false;
         }
     }
 }

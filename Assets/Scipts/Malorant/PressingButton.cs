@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class PressingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    // boolean to check if the button is being pressed and held down
     public bool Pressing { get; private set; }
 
     void Start()

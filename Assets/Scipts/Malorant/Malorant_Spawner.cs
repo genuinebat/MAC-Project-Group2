@@ -6,11 +6,14 @@ namespace Malorant
 {
     public class Malorant_Spawner : MonoBehaviour
     {
-        public Transform ImageTarget;
-
+        [Header("Malware Prefabs")]
         //list to store enemy GamObjects
         public List<GameObject> Malwares = new List<GameObject>();
 
+        [Header("Reference Variables")]
+        public Transform ImageTarget;
+
+        // function that spawns the first set of malwares
         public void SpawnMalwares()
         {
             GameObject trojan = Instantiate(
@@ -30,6 +33,7 @@ namespace Malorant
             ransomware.transform.parent = transform;
         }
 
+        // function that spawns the second set of malwares
         public void SpawnMalwares2()
         {
             GameObject botware = Instantiate(
@@ -49,6 +53,7 @@ namespace Malorant
             adware.transform.parent = transform;
         }
 
+        // function to clear all of the malwares that are currently in the scene
         public void ResetMalorant()
         {
             foreach (Transform child in gameObject.transform)

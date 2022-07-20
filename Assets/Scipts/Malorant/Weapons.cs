@@ -6,31 +6,42 @@ using TMPro;
 
 namespace Malorant
 {
+    // interface that all entities that are able to take damage will implement
     interface IDamageable
     {
         void GetHit();
     }
 
+    // interface that all entities that are able to be scanned will implement
     interface IScannable
     {
         bool Scanned { get; }
         void Scan();
     }
     
+    // enumerator of all types of guns
     enum Gun {Raygun, Scanner}
 
     public class Weapons : MonoBehaviour
     {
-        public GameObject RaygunUI, ScannerUI, RaygunCrosshair, ScannerCrosshair, Trigger, ScannerFillBack, ScannedTxt;
-
+        [Header("Reference Variables")]
+        public GameObject RaygunUI;
+        public GameObject ScannerUI;
+        public GameObject RaygunCrosshair;
+        public GameObject ScannerCrosshair;
+        public GameObject Trigger;
+        public GameObject ScannerFillBack;
+        public GameObject ScannedTxt;
         public Image ScannerFill;
         public TextMeshProUGUI TargetFoundTxt;
 
+        [Header("Functionality Variables")]
         public float ScanDuration = 2;
 
         Button shootBtn;
         BangBang bangScript;
         PressingButton pressShootScript;
+
         Gun equipped;
 
         GameObject scannableObj;
@@ -41,12 +52,12 @@ namespace Malorant
         void Start()
         {
             shootBtn = Trigger.GetComponent<Button>();
-
             bangScript = GetComponent<BangBang>();
-            pressShootScript = shootBtn.gameObject.GetComponent<PressingButton>();
+            pressShootScript = shootBtn.GetComponent<PressingButton>();
 
             ScannedTxt.SetActive(false);
 
+            // equipping the raygun by default
             equipped = Gun.Raygun;
             SwitchToRaygun();
         }
@@ -55,11 +66,16 @@ namespace Malorant
         {
             if (equipped == Gun.Scanner)
             {
+                // checking if an enitity is within the scanner's crosshair
                 WithinScan();
                 if (scannable)
                 {
+                    // checking if the shoot button is being held down
                     if (pressShootScript.Pressing)
                     {
+                        // updating the scanner fill amount based on
+                        // the required scan duration and the amount
+                        // of time that has been spent scanning
                         ScannerFill.fillAmount = elap / ScanDuration;
 
                         if (elap >= ScanDuration)
@@ -82,19 +98,10 @@ namespace Malorant
             }
         }
 
+        // function that executes when the raygun is equipped and shot
         void RaygunOnClick()
         {
             bangScript.Bang();
-        }
-
-        void CompleteScan()
-        {
-            ScannerFill.fillAmount = 0f;
-            elap = 0f;
-
-            scannableObj.GetComponent<IScannable>().Scan();
-
-            StartCoroutine(ScannedText());
         }
 
         void WithinScan()
@@ -129,6 +136,18 @@ namespace Malorant
             scannable = false;
         }
 
+        // function that calls once scanning is complete
+        void CompleteScan()
+        {
+            ScannerFill.fillAmount = 0f;
+            elap = 0f;
+
+            scannableObj.GetComponent<IScannable>().Scan();
+
+            StartCoroutine(ScannedText());
+        }
+
+        // function that calls when switching to the raygun
         public void SwitchToRaygun()
         {
             equipped = Gun.Raygun;
@@ -139,13 +158,13 @@ namespace Malorant
             ScannerCrosshair.SetActive(false);
             ScannerFillBack.SetActive(false);
 
-            Trigger.GetComponent<Image>().color = Color.red;
-
+            // removing all instances of the respective listener function
+            // then attaching 1 instance of it
             shootBtn.onClick.RemoveListener(RaygunOnClick);
-
             shootBtn.onClick.AddListener(RaygunOnClick);
         }
 
+        // function that calls when switching to the scanner
         public void SwitchToScanner()
         {
             equipped = Gun.Scanner;
@@ -157,10 +176,9 @@ namespace Malorant
 
             TargetFoundTxt.text = "No Target Found";
 
-            Trigger.GetComponent<Image>().color = Color.yellow;
-
             ScannerFill.fillAmount = 0f;
 
+            // removing all instances of the other listener function
             shootBtn.onClick.RemoveListener(RaygunOnClick);
         }
         

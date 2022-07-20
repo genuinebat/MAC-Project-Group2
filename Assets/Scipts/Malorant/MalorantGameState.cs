@@ -8,52 +8,63 @@ namespace Malorant
 {
     public class MalorantGameState : MonoBehaviour
     {
-        public float timeMin;
-        public float timeSec;
-        public float timeLeft;
-        public bool gameStarted;
-        public GameObject loseUI;
-        public GameObject winUI;
-        public Text timerUI;
+        [Header("Reference Variables")]
+        public GameObject LoseUI;
+        public GameObject WinUI;
+        public Text TimerUI;
+
+        [Header("Functionality Variables")]
+        public float TimeMin;
+        public float TimeSec;
 
         [HideInInspector]
-        public GameObject enemies;
+        public GameObject Enemies;
 
-        // Start is called before the first frame update
+        [HideInInspector]
+        public bool GameStarted;
+
+        [HideInInspector]
+        public float timeLeft;
+
         void Start()
         {
-            enemies = GameObject.Find("Spawner");
-            timeLeft = timeMin * 60 + timeSec;
-            gameStarted = false;
+            Enemies = GameObject.Find("Spawner");
+
+            timeLeft = TimeMin * 60 + TimeSec;
+            GameStarted = false;
         }
 
         void Update()
         {
-            if (gameStarted == true)
+            // checking if the game has started already
+            if (GameStarted == true)
             {
                 timeLeft -= Time.deltaTime;
 
                 string minutes = ((int)timeLeft / 60).ToString("00");
                 string seconds = Mathf.Round(timeLeft % 60).ToString("00");
-                timerUI.text = minutes + ":" + seconds;
+
+                TimerUI.text = minutes + ":" + seconds;
 
                 if (timeLeft < 0)
                 {
                     timeLeft = 0;
                     Time.timeScale = 0;
-                    loseUI.SetActive(true);
 
+                    LoseUI.SetActive(true);
                 }
             }
         }
 
+        // function to check if all of the malwares have been destroyed
         public void CheckWin()
         {
-            if(enemies.transform.childCount <= 1)
+            if (Enemies.transform.childCount <= 1)
             {
                 timeLeft = 0;
                 Time.timeScale = 0;
-                winUI.SetActive(true);
+
+                WinUI.SetActive(true);
             }
         }
     }
