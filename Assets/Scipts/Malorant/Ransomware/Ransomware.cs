@@ -7,13 +7,13 @@ namespace Malorant
 {
     public class Ransomware : MonoBehaviour, IDamageable
     {
+        public float Speed;
+
         GameObject lockedIcon;
         Button scanner;
         Image scannerIcon;
         Malorant_Spawner spawnnerScript;
-        GameObject scannerNotification;
-
-        public float Speed;
+        GameObject scannerNotification;     
         Transform imageTarget;
         Vector3 targetLocation;
         float minX, maxX, minY, maxY, minZ, maxZ;

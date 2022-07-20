@@ -6,19 +6,23 @@ namespace Malorant
 {
     public class Botware : MonoBehaviour, IDamageable
     {
+        //botegg prefab
         public GameObject eggPrefab;
-        
+        //to set how long is the delay between eggs being spawnned
         public float timebetweenSpawn;
+        //speed of movement for the botware
         public float Speed;
 
-        GameObject eggStore;
+        //gameobject to child what is being spawnned
+        GameObject enemyStore;
         Transform imageTarget;
         Vector3 targetLocation;
         float minX, maxX, minY, maxY, minZ, maxZ;
 
         void Start()
         {
-            eggStore = GameObject.Find("Spawner");
+            //assigns the spawnner gameobejct to the enemystore variable
+            enemyStore = GameObject.Find("Spawner");
             imageTarget = GameObject.Find("Target").transform;
 
             StartCoroutine(SpawnEgg(timebetweenSpawn));
@@ -39,20 +43,23 @@ namespace Malorant
             }
         }
 
+        //if the enemy is shot
         public void GetHit()
         {
+            //destroy enemy
             Destroy(gameObject);
         }
 
         //integer so that the delay can be controlled in the inspector
         IEnumerator SpawnEgg(float timeBetween)
         {
-            //yield on a new YieldInstruction that waits for 5 seconds.
+            //yield on a new YieldInstruction that waits for a number of seconds which can be set in the inspector.
             yield return new WaitForSeconds(timeBetween);
-
+            //instantiates an egg gameobject whic h will later spawn more eggs
             GameObject newEnemy = Instantiate(eggPrefab, gameObject.transform.position, Quaternion.identity);
-            newEnemy.transform.parent = eggStore.transform;
-
+            //childs the egg to the enemy store so that it can be checked in the inspector
+            newEnemy.transform.parent = enemyStore.transform;
+            //repeats the function constantly unless the botware is destroyed 
             StartCoroutine(SpawnEgg(timeBetween));
         }
 
