@@ -4937,7 +4937,7 @@ MonoBehaviour:
   WinUI: {fileID: 1204962268}
   TimerUI: {fileID: 1007374250}
   TimeMin: 0
-  TimeSec: 40
+  TimeSec: 30
   Enemies: {fileID: 0}
   GameStarted: 0
   timeLeft: 0

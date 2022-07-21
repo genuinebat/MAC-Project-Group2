@@ -16,7 +16,8 @@ namespace Malorant
         void Start()
         {
             //start the coroutine to make the egg fade away
-            StartCoroutine(FadeOutMaterial(5));
+            StartCoroutine(FadeOutMaterial());
+           // FadeOutMaterial();
             //assign the enemystore Gameobject
             enemyStore = GameObject.Find("Spawner");
         }
@@ -27,9 +28,9 @@ namespace Malorant
             Destroy(gameObject);
         }
 
-        IEnumerator FadeOutMaterial(float fadeSpeed)
+        IEnumerator FadeOutMaterial()
         {
-            //wait for one second
+            ////wait for one second
             yield return new WaitForSeconds(1f);
             //get the current color of the material
             Color matColor = rend.material.color;
@@ -39,7 +40,7 @@ namespace Malorant
             while (rend.material.color.a > 0f)
             {
                 //slowly decrease the colour of the egg
-                alphaValue -= Time.deltaTime / fadeSpeed;
+                alphaValue -= Time.deltaTime / 1f;
                 rend.material.color = new Color(matColor.r, matColor.g, matColor.b, alphaValue);
                 yield return null;
             }
@@ -50,5 +51,26 @@ namespace Malorant
             //destroys the egg
             Destroy(gameObject);
         }
+
+        //void FadeOutMaterial()
+        //{
+        //    //get the current color of the material
+        //    Color matColor = rend.material.color;
+        //    //get the starting alpha value
+        //    float alphaValue = rend.material.color.a;
+        //    //while the alpha value of the egg is more than zero
+        //    while (rend.material.color.a <255f)
+        //    {
+        //        //slowly decrease the colour of the egg
+        //        alphaValue += Time.deltaTime / 5f;
+        //        rend.material.color = new Color(matColor.r, matColor.g, matColor.b, alphaValue);
+        //    }
+        //    //when the egg is completely see through
+        //    GameObject newEnemy = Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.Euler(0f, 90f, 255f));
+        //    //child the enemy to the enmystore gameobject to check win condition
+        //    newEnemy.transform.parent = enemyStore.transform;
+        //    //destroys the egg
+        //    Destroy(gameObject);
+        //}
     }
 }

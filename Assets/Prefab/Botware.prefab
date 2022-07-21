@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggPrefab: {fileID: 8621609566553743613, guid: 5855818d04add12478232db6330c0946, type: 3}
-  timebetweenSpawn: 10
+  timebetweenSpawn: 4
   Speed: 1
 --- !u!136 &5163730509734155784
 CapsuleCollider:
