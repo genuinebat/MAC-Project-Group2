@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Malorant
 {
@@ -15,9 +16,13 @@ namespace Malorant
         public GameObject LoseUI;
         public GameObject WinUI;
         public GameObject ScannerUnlockUI;
+        public GameObject HintTxt;
+        public GameObject LockUI;
+        public GameObject UnlockUI;
         public MalorantGameState malorantState;
 
         Malorant_Spawner spawnerScript;
+        Weapons weaponScript;
         Coroutine closingCor;
 
         Button scannerUI;
@@ -30,9 +35,12 @@ namespace Malorant
             spawnerScript = Spawner.GetComponent<Malorant_Spawner>();
             scannerUI = GameObject.Find("Scanner").GetComponent<Button>();
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
+            weaponScript = GetComponent<Weapons>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
+
+            HintTxt.GetComponent<TMP_Text>().text = "hint: you should always have a target in mind";
 
             Cancel();
         }
@@ -163,10 +171,15 @@ namespace Malorant
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
+            HintTxt.SetActive(false);
             UI.SetActive(true);
             ScannerUnlockUI.SetActive(true);
             Popup.SetActive(false);
             Spawner.SetActive(true);
+            LockUI.SetActive(true);
+            UnlockUI.SetActive(true);
+
+            weaponScript.SwitchToRaygun();
             spawnerScript.SpawnMalwares();
 
             malorantState.GameStarted = true;
@@ -191,6 +204,8 @@ namespace Malorant
             LoseUI.SetActive(false);
             spawnerScript.ResetMalorant();
             malorantState.GameStarted = false;
+
+            HintTxt.SetActive(true);
         }
     }
 }

@@ -7,14 +7,18 @@ namespace Malorant
 {
     public class Ransomware : MonoBehaviour, IDamageable
     {
+        [Header("Function Variables")]
         public float Speed;
 
+        GameObject scannerNotification; 
         GameObject lockedIcon;
+        GameObject lockUI;
+        GameObject unlockUI;
+        Transform imageTarget;
         Button scanner;
         Image scannerIcon;
         Malorant_Spawner spawnnerScript;
-        GameObject scannerNotification;     
-        Transform imageTarget;
+
         Vector3 targetLocation;
         float minX, maxX, minY, maxY, minZ, maxZ;
 
@@ -25,15 +29,18 @@ namespace Malorant
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
             scannerNotification = GameObject.Find("ScannerUnlockUI");
+            lockUI = GameObject.Find("Locked");
+            unlockUI = GameObject.Find("Unlocked");
             imageTarget = GameObject.Find("Target").transform;
 
             scannerNotification.SetActive(false);
+            unlockUI.SetActive(false);
+            lockUI.SetActive(true);
+
             targetLocation = transform.position;
             StartCoroutine(PeriodicallySetBoundaries());
-
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Vector3.Distance(transform.position, targetLocation) < 0.01f)
@@ -51,8 +58,12 @@ namespace Malorant
 
             scanner.interactable = true;
             scannerIcon.color=new Color32(255, 255, 255, 255);
+
+            StartCoroutine(Unlock());
+            StartCoroutine(ScannerNoti());
+
             spawnnerScript.SpawnMalwares2();
-            StartCoroutine(scannerNoti());
+            
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
         }
@@ -96,22 +107,50 @@ namespace Malorant
                 );
         }
 
-        IEnumerator scannerNoti()
+        IEnumerator ScannerNoti()
         {
             scannerNotification.SetActive(true);
             scannerNotification.GetComponent<Image>().color = new Color(1, 1, 1, 255);
-            yield return new WaitForSeconds(2);
+
+            yield return new WaitForSeconds(1.5f);
+
             // loop over 1 second backwards
-            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            for (float i = 1f; i >= 0; i -= Time.deltaTime)
             {
                 // set color with i as alpha
                 scannerNotification.GetComponent<Image>().color = new Color(1, 1, 1, i);
+                
                 yield return null;
             }
             scannerNotification.SetActive(false);
 
             Destroy(gameObject);
 
+        }
+
+        IEnumerator Unlock()
+        {
+            lockUI.SetActive(false);
+            unlockUI.SetActive(true);
+
+            RectTransform rt = unlockUI.GetComponent<RectTransform>();
+
+            Vector2 ogPos = rt.position;
+            Vector2 targetPos = ogPos + new Vector2(0, 200f);
+
+            for (float i = 1.5f; i >= 0; i -= Time.deltaTime)
+            {
+                unlockUI.GetComponent<Image>().color = new Color(1, 1, 1, i);
+
+                rt.position = Vector2.MoveTowards(rt.position, targetPos, Time.deltaTime * 100);
+
+                yield return null;
+            }
+
+            unlockUI.SetActive(false);
+
+            rt.position = ogPos;
+            unlockUI.GetComponent<Image>().color = new Color(1, 1, 1, 255);
         }
     }
 }
