@@ -99,6 +99,7 @@ namespace Malorant
         IEnumerator scannerNoti()
         {
             scannerNotification.SetActive(true);
+            scannerNotification.GetComponent<Image>().color = new Color(1, 1, 1, 255);
             yield return new WaitForSeconds(2);
             // loop over 1 second backwards
             for (float i = 1; i >= 0; i -= Time.deltaTime)
