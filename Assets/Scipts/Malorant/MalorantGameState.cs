@@ -61,7 +61,6 @@ namespace Malorant
         {
             if (Enemies.transform.childCount <= 1)
             {
-                timeLeft = 0;
                 Time.timeScale = 0;
 
                 WinUI.SetActive(true);
