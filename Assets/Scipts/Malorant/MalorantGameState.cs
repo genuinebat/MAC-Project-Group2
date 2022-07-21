@@ -11,7 +11,7 @@ namespace Malorant
         [Header("Reference Variables")]
         public GameObject LoseUI;
         public GameObject WinUI;
-        public Text TimerUI;
+        public TMP_Text TimerUI;
 
         [Header("Functionality Variables")]
         public float TimeMin;
@@ -26,12 +26,24 @@ namespace Malorant
         [HideInInspector]
         public float timeLeft;
 
+        public bool DialogueEnd { private get; set;}
+
+        Dialogue dialogueScript;
+
+        bool won;
+
         void Start()
         {
             Enemies = GameObject.Find("Spawner");
+            dialogueScript = GetComponent<Dialogue>();
 
             timeLeft = TimeMin * 60 + TimeSec;
             GameStarted = false;
+            DialogueEnd = false;
+            won = false;
+
+            StartCoroutine(FlashRed());
+            StartCoroutine(Pulse());
         }
 
         void Update()
@@ -39,7 +51,7 @@ namespace Malorant
             // checking if the game has started already
             if (GameStarted == true)
             {
-                timeLeft -= Time.deltaTime;
+                if (!won) timeLeft -= Time.deltaTime;
 
                 string minutes = ((int)timeLeft / 60).ToString("00");
                 string seconds = Mathf.Round(timeLeft % 60).ToString("00");
@@ -59,11 +71,58 @@ namespace Malorant
         // function to check if all of the malwares have been destroyed
         public void CheckWin()
         {
-            if (Enemies.transform.childCount <= 1)
+            Debug.Log("check");
+            if (Enemies.transform.childCount < 1)
             {
-                Time.timeScale = 0;
+                Debug.Log("pass");
+                won = true;
+                StartCoroutine(WaitForDialogue());
+            }
+        }
 
-                WinUI.SetActive(true);
+        IEnumerator WaitForDialogue()
+        {
+            DialogueEnd = false;
+            dialogueScript.NextPhase = true;
+
+            for (;;)
+            {
+                Debug.Log("running");
+                if (DialogueEnd)
+                {
+                    WinUI.SetActive(true);
+                    yield break;
+                }
+            }
+        }
+
+        IEnumerator FlashRed()
+        {
+            for (;;)
+            {
+                yield return new WaitForSeconds(.5f);
+                TimerUI.color = Color.red;
+
+                yield return new WaitForSeconds(.5f);
+                TimerUI.color = Color.white;
+            }
+        }
+
+        IEnumerator Pulse()
+        {
+            for (;;)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    TimerUI.fontSize += 1;
+                    yield return new WaitForSeconds(.05f);
+                }
+                
+                for (int i = 0; i < 20; i++)
+                {
+                    TimerUI.fontSize -= 1;
+                    yield return new WaitForSeconds(.05f);
+                }
             }
         }
     }

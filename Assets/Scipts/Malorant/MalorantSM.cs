@@ -22,8 +22,10 @@ namespace Malorant
         public MalorantGameState malorantState;
 
         Malorant_Spawner spawnerScript;
+        Dialogue dialogueScript;
         Weapons weaponScript;
         Coroutine closingCor;
+        Coroutine runDialogueCor;
 
         Button scannerUI;
         Image scannerIcon;
@@ -36,6 +38,7 @@ namespace Malorant
             scannerUI = GameObject.Find("Scanner").GetComponent<Button>();
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             weaponScript = GetComponent<Weapons>();
+            dialogueScript = GetComponent<Dialogue>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
@@ -171,6 +174,9 @@ namespace Malorant
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
+            weaponScript.SwitchToRaygun();
+            spawnerScript.SpawnMalwares();
+
             HintTxt.SetActive(false);
             UI.SetActive(true);
             ScannerUnlockUI.SetActive(true);
@@ -179,10 +185,11 @@ namespace Malorant
             LockUI.SetActive(true);
             UnlockUI.SetActive(true);
 
-            weaponScript.SwitchToRaygun();
-            spawnerScript.SpawnMalwares();
-
             malorantState.GameStarted = true;
+
+            if (runDialogueCor != null) StopCoroutine(runDialogueCor);
+            
+            runDialogueCor = StartCoroutine(dialogueScript.RunDialogue());
         }
 
         // function that is called to close and restart the game

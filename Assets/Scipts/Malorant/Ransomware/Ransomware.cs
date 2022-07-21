@@ -18,6 +18,7 @@ namespace Malorant
         Button scanner;
         Image scannerIcon;
         Malorant_Spawner spawnnerScript;
+        Dialogue dialogueScript;
 
         Vector3 targetLocation;
         float minX, maxX, minY, maxY, minZ, maxZ;
@@ -25,8 +26,9 @@ namespace Malorant
         // Start is called before the first frame update
         void Start()
         {
-            scanner = GameObject.Find("Scanner").GetComponent<Button>();
+            Debug.Log(GameObject.Find("Scanner"));
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
+            scanner = GameObject.Find("Scanner").GetComponent<Button>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
             scannerNotification = GameObject.Find("ScannerUnlockUI");
             lockUI = GameObject.Find("Locked");
@@ -55,7 +57,6 @@ namespace Malorant
 
         public void GetHit()
         {
-
             scanner.interactable = true;
             scannerIcon.color=new Color32(255, 255, 255, 255);
 
@@ -66,6 +67,8 @@ namespace Malorant
             
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
+
+            GameObject.Find("Malorant").GetComponent<Dialogue>().NextPhase = true;
         }
 
         void SetBoundaries()
