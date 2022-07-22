@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Malorant
 {
-    public class Adware : MonoBehaviour, IScannable
+    public class Adware : MonoBehaviour, IScannable, IDamageable
     {
         struct Quad
         {
@@ -18,6 +18,8 @@ namespace Malorant
                 Z = _z;
             }
         }
+
+        public GameObject AdwarePrefab;
         
         public GameObject X;
         public float Speed;
@@ -51,6 +53,11 @@ namespace Malorant
             {
                 MoveToTargetLocation();
             }
+        }
+
+        public void GetHit()
+        {
+            Instantiate(AdwarePrefab, transform.position, Quaternion.Euler(0f, 180f, 0f));
         }
 
         public void Scan()
