@@ -7,6 +7,9 @@ namespace Malorant
 {
     public class Ransomware : MonoBehaviour, IDamageable
     {
+        [Header("Reference Variables")]
+        public GameObject PlaceholderText;
+
         [Header("Function Variables")]
         public float Speed;
 
@@ -57,6 +60,8 @@ namespace Malorant
 
         public void GetHit()
         {
+            PlaceholderText.SetActive(false);
+
             scanner.interactable = true;
             scannerIcon.color=new Color32(255, 255, 255, 255);
 
@@ -128,7 +133,6 @@ namespace Malorant
             scannerNotification.SetActive(false);
 
             Destroy(gameObject);
-
         }
 
         IEnumerator Unlock()
