@@ -72,7 +72,7 @@ namespace Malorant
         public void CheckWin()
         {
             Debug.Log("check");
-            if (Enemies.transform.childCount < 1)
+            if (Enemies.transform.childCount <= 1)
             {
                 Debug.Log("pass");
                 won = true;
@@ -87,12 +87,13 @@ namespace Malorant
 
             for (;;)
             {
-                Debug.Log("running");
                 if (DialogueEnd)
                 {
                     WinUI.SetActive(true);
                     yield break;
                 }
+
+                yield return null;
             }
         }
 
