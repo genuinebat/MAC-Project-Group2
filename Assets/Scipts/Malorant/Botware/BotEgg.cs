@@ -31,7 +31,7 @@ namespace Malorant
         IEnumerator FadeInMaterial()
         {
             ////wait for one second
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.5f);
             //get the current color of the material
             Color matColor = rend.material.color;
             //get the starting alpha value
