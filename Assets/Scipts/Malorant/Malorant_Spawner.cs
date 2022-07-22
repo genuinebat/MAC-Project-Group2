@@ -19,7 +19,7 @@ namespace Malorant
             GameObject trojan = Instantiate(
                 Malwares[0],
                 ImageTarget.position +
-                new Vector3(3, 3, -1),
+                new Vector3(3, 2, -1),
                 Quaternion.Euler(0f, 180f, 0f)      
             );
             GameObject ransomware = Instantiate(

@@ -71,10 +71,19 @@ namespace Malorant
         // function to check if all of the malwares have been destroyed
         public void CheckWin()
         {
-            Debug.Log("check");
+            if (Enemies.transform.childCount == 2)
+            {
+                Transform trojan = Enemies.transform.Find("Trojan(Clone)");
+
+                if (trojan != null)
+                {
+                    trojan.Find("SpeechBubble").gameObject.SetActive(true);
+                    trojan.gameObject.tag = "ScannableEnemy";
+                }
+            }
+
             if (Enemies.transform.childCount <= 1)
             {
-                Debug.Log("pass");
                 won = true;
                 StartCoroutine(WaitForDialogue());
             }

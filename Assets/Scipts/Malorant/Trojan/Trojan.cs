@@ -19,7 +19,7 @@ namespace Malorant
             Destroy(gameObject);
         }
 
-        //
+        // if the trojan is scanned
         public void Scan()
         {
             //if it has been scanned 

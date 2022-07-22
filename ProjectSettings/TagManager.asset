@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - ScannableEnemy
+  - Trojan
   layers:
   - Default
   - TransparentFX

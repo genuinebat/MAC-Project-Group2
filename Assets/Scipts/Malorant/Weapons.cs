@@ -111,6 +111,16 @@ namespace Malorant
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                if (hit.transform.tag == "Trojan")
+                {
+                    ScannerFillBack.SetActive(true);
+                    TargetFoundTxt.text = "!?Error~?";
+                    TargetFoundTxt.color = Color.red;
+                    scannable = false;
+
+                    return;
+                }
+
                 if (hit.transform.tag == "ScannableEnemy")
                 {
                     ScannerFillBack.SetActive(true);
@@ -129,6 +139,10 @@ namespace Malorant
                     
                     return;
                 }
+            }
+            else
+            {
+                TargetFoundTxt.color = Color.white;
             }
 
             ScannerFillBack.SetActive(false);
