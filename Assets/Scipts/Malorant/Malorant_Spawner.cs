@@ -20,13 +20,13 @@ namespace Malorant
                 Malwares[0],
                 ImageTarget.position +
                 new Vector3(3, 2, -1),
-                Quaternion.Euler(0f, 180f, 0f)      
+                Quaternion.Euler(0f, 180f, 0f)    
             );
             GameObject ransomware = Instantiate(
                 Malwares[1],
                 ImageTarget.position +
                 new Vector3(0, 0, -1),
-                Quaternion.identity     
+                Quaternion.Euler(0f, 180f, 0f)    
             );
 
             trojan.transform.parent = transform;
