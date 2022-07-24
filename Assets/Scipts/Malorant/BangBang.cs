@@ -24,14 +24,11 @@ namespace Malorant
                 // spawning the particle effect
                 Instantiate(hitEffect,hit.point, Quaternion.identity);
 
-                if (hit.transform.tag == "Enemy")
-                {
-                    IDamageable i = hit.transform.gameObject.GetComponent<IDamageable>();
+                IDamageable i = hit.transform.gameObject.GetComponent<IDamageable>();
 
-                    if (i != null) i.GetHit();
+                if (i != null) i.GetHit();
 
-                    timer.CheckWin();
-                }
+                timer.CheckWin();
             }
         }
     }

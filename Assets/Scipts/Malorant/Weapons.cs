@@ -128,9 +128,6 @@ namespace Malorant
                     scannable = true;
                     scannableObj = hit.transform.gameObject;
 
-                    // IDamageable interface = hit.transform.gameObject.GetComponent<IDamageable>();
-                    // if (interface != null) interface.GetHit(); 
-
                     return;
                 }
 

@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe90d87addb24e4f81d651ad7410dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AdwarePrefab: {fileID: 5192622719284385059}
   X: {fileID: 7291413331492601227}
   Speed: 1
   MoveRange: 3

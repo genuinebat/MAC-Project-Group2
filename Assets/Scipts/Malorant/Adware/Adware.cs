@@ -57,7 +57,22 @@ namespace Malorant
 
         public void GetHit()
         {
-            Instantiate(AdwarePrefab, transform.position, Quaternion.Euler(0f, 180f, 0f));
+            float minX = transform.position.x - 3;
+            float maxX = transform.position.x + 3;
+            float minY = transform.position.y - 3;
+            float maxY = transform.position.y + 3;
+
+            GameObject adware = Instantiate(
+                AdwarePrefab,
+                new Vector3(
+                    Random.Range(minX, maxX),
+                    Random.Range(minY, maxY),
+                    transform.position.z
+                ),
+                Quaternion.Euler(0f, 180f, 0f)
+            );
+
+            adware.transform.parent = transform.parent;
         }
 
         public void Scan()
