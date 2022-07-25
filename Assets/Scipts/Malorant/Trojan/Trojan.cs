@@ -10,6 +10,11 @@ namespace Malorant
         //to chekck if the gameobject has been scanned
         public bool Scanned { get; private set; }
 
+        void Start()
+        {
+            Scanned = false;
+        }
+
         //if the Trojan is shot
         public void GetHit()
         {
