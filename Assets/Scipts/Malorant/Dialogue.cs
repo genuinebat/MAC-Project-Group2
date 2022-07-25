@@ -27,7 +27,7 @@ namespace Malorant
 
         void Start()
         {
-            dialogueTxt = DialogueUI.transform.Find("DialoguePanel").Find("Dialogue").gameObject.GetComponent<TMP_Text>();
+            dialogueTxt = DialogueUI.transform.Find("DialogueUI").Find("DialoguePanel").Find("Dialogue").gameObject.GetComponent<TMP_Text>();
             gameState = GetComponent<MalorantGameState>();
 
             phases[0] = Phase1;
