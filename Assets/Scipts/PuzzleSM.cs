@@ -25,7 +25,7 @@ public class PuzzleSM : MonoBehaviour
 
     public virtual void EnablePopup()
     {
-
+        if (IsRunning || IsCompleted) return;
     }
 
     public virtual void DisablePopup()

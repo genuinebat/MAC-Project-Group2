@@ -52,9 +52,6 @@ namespace Malorant
         // it uses a coroutine to popup a panel that allows the player to start the puzzle
         public override void EnablePopup()
         {
-            // check if the puzzle is either running or completed
-            if (IsRunning || IsCompleted) return;
-
             base.EnablePopup();
 
             if (closingCor != null) StopCoroutine(closingCor);
