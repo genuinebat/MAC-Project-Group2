@@ -74,6 +74,7 @@ namespace Malorant
             );
 
             adware.transform.parent = transform.parent;
+            adware.tag = "ScannableEnemy";
         }
 
         public void Scan()

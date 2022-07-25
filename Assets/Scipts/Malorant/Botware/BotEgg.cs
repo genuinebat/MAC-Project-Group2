@@ -39,7 +39,6 @@ namespace Malorant
             //while the alpha value of the egg is more than zero
             while (rend.material.color.a < 1)
             {
-                Debug.Log(rend.material.color.a);
                 //slowly decrease the colour of the egg
                 alphaValue += Time.deltaTime / 1f;
                 rend.material.color = new Color(matColor.r, matColor.g, matColor.b, alphaValue);

@@ -7,9 +7,6 @@ namespace Malorant
 {
     public class Ransomware : MonoBehaviour, IDamageable
     {
-        [Header("Reference Variables")]
-        public GameObject PlaceholderText;
-
         [Header("Function Variables")]
         public float Speed;
 
@@ -22,9 +19,11 @@ namespace Malorant
         Image scannerIcon;
         Malorant_Spawner spawnnerScript;
         Dialogue dialogueScript;
+        Animator anim;
 
         Vector3 targetLocation;
         float minX, maxX, minY, maxY, minZ, maxZ;
+        bool move;
 
         // Start is called before the first frame update
         void Start()
@@ -37,10 +36,13 @@ namespace Malorant
             lockUI = GameObject.Find("Locked");
             unlockUI = GameObject.Find("Unlocked");
             imageTarget = GameObject.Find("Target").transform;
+            anim = GetComponent<Animator>();
 
             scannerNotification.SetActive(false);
             unlockUI.SetActive(false);
             lockUI.SetActive(true);
+
+            move = true;
 
             targetLocation = transform.position;
             StartCoroutine(PeriodicallySetBoundaries());
@@ -60,18 +62,16 @@ namespace Malorant
 
         public void GetHit()
         {
-            PlaceholderText.SetActive(false);
+            spawnnerScript.SpawnMalwares2();
 
             scanner.interactable = true;
-            scannerIcon.color=new Color32(255, 255, 255, 255);
+            scannerIcon.color = new Color32(255, 255, 255, 255);
 
+            StartCoroutine(OpenLid());
             StartCoroutine(Unlock());
             StartCoroutine(ScannerNoti());
-
-            spawnnerScript.SpawnMalwares2();
             
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
 
             GameObject.Find("Malorant").GetComponent<Dialogue>().NextPhase = true;
         }
@@ -97,12 +97,15 @@ namespace Malorant
 
         void MoveToTargetLocation()
         {
-            transform.position =
+            if (move)
+            {
+                transform.position =
                 Vector3.MoveTowards(
                     transform.position,
                     targetLocation,
                     Speed * Time.deltaTime
                 );
+            }
         }
 
         void SetNewRandomTargetLocation()
@@ -158,6 +161,22 @@ namespace Malorant
 
             rt.position = ogPos;
             unlockUI.GetComponent<Image>().color = new Color(1, 1, 1, 255);
+        }
+
+        IEnumerator OpenLid()
+        {
+            move = false;
+            anim.SetTrigger("OpenLid");
+                
+            yield return new WaitForSeconds(1f);
+
+            GameObject top = transform.Find("Top").gameObject;
+            GameObject bot = transform.Find("Base").gameObject;
+            GameObject loc = transform.Find("LockPivot").Find("Lock").gameObject;
+
+            top.GetComponent<MeshRenderer>().enabled = false;
+            bot.GetComponent<MeshRenderer>().enabled = false;
+            loc.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }

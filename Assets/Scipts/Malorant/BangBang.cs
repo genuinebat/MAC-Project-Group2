@@ -29,6 +29,7 @@ namespace Malorant
                 if (i != null) i.GetHit();
 
                 timer.CheckWin();
+
             }
         }
     }
