@@ -45,6 +45,7 @@ namespace Malorant
 
         void Update()
         {
+            Debug.Log(gameObject.tag);
             if (Vector3.Distance(transform.position, targetLocation) < 0.01f)
             {
                 SetNewRandomTargetLocation();
