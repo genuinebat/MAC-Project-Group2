@@ -65,24 +65,24 @@ namespace Malorant
 
                     LoseUI.SetActive(true);
                 }
+
+                if (Enemies.transform.childCount == 1)
+                {
+                    Transform trojan = Enemies.transform.Find("Trojan(Clone)");
+
+                    if (trojan != null)
+                    {
+                        trojan.Find("SpeechBubble").gameObject.SetActive(true);
+                        
+                        trojan.gameObject.tag = "ScannableEnemy";
+                    }
+                }
             }
         }
 
         // function to check if all of the malwares have been destroyed
         public void CheckWin()
         {
-            Debug.Log(Enemies.transform.childCount);
-            if (Enemies.transform.childCount <= 2)
-            {
-                Transform trojan = Enemies.transform.Find("Trojan(Clone)");
-
-                if (trojan != null)
-                {
-                    trojan.Find("SpeechBubble").gameObject.SetActive(true);
-                    trojan.gameObject.tag = "ScannableEnemy";
-                }
-            }
-
             if (Enemies.transform.childCount <= 1)
             {
                 won = true;

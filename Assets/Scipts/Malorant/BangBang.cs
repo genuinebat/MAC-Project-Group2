@@ -26,10 +26,9 @@ namespace Malorant
 
                 IDamageable i = hit.transform.gameObject.GetComponent<IDamageable>();
 
-                if (i != null) i.GetHit();
+                if (i != null && hit.transform.gameObject.tag == "Enemy") i.GetHit();
 
                 timer.CheckWin();
-
             }
         }
     }
