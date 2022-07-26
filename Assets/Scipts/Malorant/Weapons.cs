@@ -32,6 +32,7 @@ namespace Malorant
         public GameObject Trigger;
         public GameObject ScannerFillBack;
         public GameObject ScannedTxt;
+        public GameObject WeaponNotification;
         public Image ScannerFill;
         public TextMeshProUGUI TargetFoundTxt;
 
@@ -41,6 +42,7 @@ namespace Malorant
         Button shootBtn;
         BangBang bangScript;
         PressingButton pressShootScript;
+        Coroutine weaponNotif;
 
         Gun equipped;
 
@@ -56,6 +58,7 @@ namespace Malorant
             pressShootScript = shootBtn.GetComponent<PressingButton>();
 
             ScannedTxt.SetActive(false);
+            WeaponNotification.SetActive(false);
 
             // equipping the raygun by default
             equipped = Gun.Raygun;
@@ -176,6 +179,9 @@ namespace Malorant
             // then attaching 1 instance of it
             shootBtn.onClick.RemoveListener(RaygunOnClick);
             shootBtn.onClick.AddListener(RaygunOnClick);
+
+            if (weaponNotif != null) StopCoroutine(weaponNotif);
+            weaponNotif = StartCoroutine(WeaponNotif("Raygun"));
         }
 
         // function that calls when switching to the scanner
@@ -194,6 +200,9 @@ namespace Malorant
 
             // removing all instances of the other listener function
             shootBtn.onClick.RemoveListener(RaygunOnClick);
+
+            if (weaponNotif != null) StopCoroutine(weaponNotif);
+            weaponNotif = StartCoroutine(WeaponNotif("Scanner"));
         }
         
         IEnumerator ScannedText()
@@ -222,6 +231,27 @@ namespace Malorant
             
             rt.position = ogPos;
             rt.localScale = ogScale;
+        }
+
+        IEnumerator WeaponNotif(string weapon)
+        {
+            WeaponNotification.transform.Find("WeaponNotifTxt").gameObject.GetComponent<TMP_Text>().text = weapon + " Equiped";
+
+            WeaponNotification.SetActive(true);
+            WeaponNotification.GetComponent<Image>().color = new Color(1, 1, 1, 255);
+
+            yield return new WaitForSeconds(1f);
+
+            // loop over 1 second backwards
+            for (float i = 1f; i >= 0; i -= Time.deltaTime * 2)
+            {
+                // set color with i as alpha
+                WeaponNotification.GetComponent<Image>().color = new Color(1, 1, 1, i);
+                
+                yield return null;
+            }
+
+            WeaponNotification.SetActive(false);
         }
     }
 }

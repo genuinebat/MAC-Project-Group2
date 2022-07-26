@@ -10,7 +10,6 @@ namespace Malorant
         [Header("Function Variables")]
         public float Speed;
 
-        GameObject scannerNotification; 
         GameObject lockedIcon;
         GameObject lockUI;
         GameObject unlockUI;
@@ -32,13 +31,11 @@ namespace Malorant
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             scanner = GameObject.Find("Scanner").GetComponent<Button>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
-            scannerNotification = GameObject.Find("ScannerUnlockUI");
             lockUI = GameObject.Find("Locked");
             unlockUI = GameObject.Find("Unlocked");
             imageTarget = GameObject.Find("Target").transform;
             anim = GetComponent<Animator>();
 
-            scannerNotification.SetActive(false);
             unlockUI.SetActive(false);
             lockUI.SetActive(true);
 
@@ -69,7 +66,6 @@ namespace Malorant
 
             StartCoroutine(OpenLid());
             StartCoroutine(Unlock());
-            StartCoroutine(ScannerNoti());
             
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
@@ -118,26 +114,6 @@ namespace Malorant
                 );
         }
 
-        IEnumerator ScannerNoti()
-        {
-            scannerNotification.SetActive(true);
-            scannerNotification.GetComponent<Image>().color = new Color(1, 1, 1, 255);
-
-            yield return new WaitForSeconds(1.5f);
-
-            // loop over 1 second backwards
-            for (float i = 1f; i >= 0; i -= Time.deltaTime)
-            {
-                // set color with i as alpha
-                scannerNotification.GetComponent<Image>().color = new Color(1, 1, 1, i);
-                
-                yield return null;
-            }
-            scannerNotification.SetActive(false);
-
-            Destroy(gameObject);
-        }
-
         IEnumerator Unlock()
         {
             lockUI.SetActive(false);
@@ -161,6 +137,8 @@ namespace Malorant
 
             rt.position = ogPos;
             unlockUI.GetComponent<Image>().color = new Color(1, 1, 1, 255);
+
+            Destroy(gameObject);
         }
 
         IEnumerator OpenLid()

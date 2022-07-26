@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace Malorant
@@ -15,12 +16,15 @@ namespace Malorant
         [Header("Reference Variables")]
         public GameObject DialogueUI;
         public GameObject WeaponsUI;
+        public Image RaygunUI;
+        public Image ScannerUI;
 
         public bool NextPhase { private get; set; }
 
         List<string>[] phases = new List<string>[3];
 
         MalorantGameState gameState;
+        Weapons weaponScript;
         TMP_Text dialogueTxt;
 
         bool animating;
@@ -29,6 +33,7 @@ namespace Malorant
         {
             dialogueTxt = DialogueUI.transform.Find("DialogueUI").Find("DialoguePanel").Find("Dialogue").gameObject.GetComponent<TMP_Text>();
             gameState = GetComponent<MalorantGameState>();
+            weaponScript = GetComponent<Weapons>();
 
             phases[0] = Phase1;
             phases[1] = Phase2;
@@ -53,6 +58,15 @@ namespace Malorant
 
                     yield return StartCoroutine(AnimateDialogue(dialogue));
                     yield return StartCoroutine(WaitForNextDialogue());
+                }
+
+                if (phase == phases[0])
+                {
+                    weaponScript.SwitchToRaygun();
+                }
+                else if (phase == phases[1])
+                {
+                    weaponScript.SwitchToScanner();
                 }
 
                 gameState.DialogueEnd = true;
@@ -110,6 +124,42 @@ namespace Malorant
                 
                 yield return null;
             }
+        }
+
+        IEnumerator FlashRaygun()
+        {
+            Color grey = new Color(0, 0, 0, 100);
+            Color yellow = new Color(255, 255, 0, 255);
+
+            for (int i = 0; i < 5; i++)
+            {
+                float a = 0f;
+                for (int n = 0; n < 500; n++)
+                {
+                    a += Time.deltaTime / 500;
+
+                    RaygunUI.color = Color.Lerp(yellow, grey, a);
+
+                    yield return null;
+                }
+
+                float b = 0f;
+                for (int m = 0; m < 500; m++)
+                {
+                    b += Time.deltaTime / 500;
+
+                    RaygunUI.color = Color.Lerp(yellow, grey, b);
+
+                    yield return null;
+                }
+                
+                yield return new WaitForSeconds(.5f);
+            }
+        }
+
+        IEnumerator FlashScanner()
+        {
+            yield return null;
         }
     }
 }

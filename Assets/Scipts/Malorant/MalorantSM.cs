@@ -19,6 +19,7 @@ namespace Malorant
         public GameObject HintTxt;
         public GameObject LockUI;
         public GameObject UnlockUI;
+        public GameObject WeaponNotificationUI;
         public MalorantGameState malorantState;
 
         Malorant_Spawner spawnerScript;
@@ -173,7 +174,6 @@ namespace Malorant
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
-            weaponScript.SwitchToRaygun();
             spawnerScript.SpawnMalwares();
 
             HintTxt.SetActive(false);
@@ -183,6 +183,7 @@ namespace Malorant
             Spawner.SetActive(true);
             LockUI.SetActive(true);
             UnlockUI.SetActive(true);
+            WeaponNotificationUI.SetActive(false);
 
             malorantState.GameStarted = true;
 
