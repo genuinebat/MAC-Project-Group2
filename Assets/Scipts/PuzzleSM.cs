@@ -23,6 +23,11 @@ public class PuzzleSM : MonoBehaviour
         currentState = State.NotCompleted;
     }
 
+    public virtual void StartPuzzle()
+    {
+        
+    }
+
     public virtual void EnablePopup()
     {
 
