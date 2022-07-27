@@ -41,12 +41,12 @@ namespace WhackaAd
 
         void SpawnAdware()
         {
-            adware = Instantiate(
+            GameObject adware = Instantiate(
                 Adware,
                 new Vector3(
                     Random.Range(minX, maxX),
                     Random.Range(minY, maxY),
-                    ImageTarget.position.z - ImageTarget.forward
+                    ImageTarget.position.z - 1
                 ),
                 Quaternion.Euler(0f, 0f, 0f)
             );
