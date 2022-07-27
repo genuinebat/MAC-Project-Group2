@@ -2,42 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseAdware : MonoBehaviour
+namespace WhackaAd
 {
-    public GameObject XButton;
-
-    [HideInInspector]
-    public bool IsDestroyable { get; set; }
-
-    //GameObject currentHitObject;
-
-    void CloseAd(GameObject tappedOn)
+    public class BaseAdware : MonoBehaviour
     {
-        if (IsDestroyable == true)
+        public GameObject AdwarePrefab;
+
+        [HideInInspector]
+        public bool IsDestroyable { get; set; }
+
+        void Start()
         {
-            Destroy(tappedOn);
+            IsDestroyable = true;
         }
-    }
 
-    void fixedUpdate()
-    {
-        //public GameObject particle;
-        for (var i = 0; i < Input.touchCount; ++i)
+        public void CloseAd()
         {
-            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            if (IsDestroyable == true)
             {
-                // Construct a ray from the current touch coordinates
-                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-                RaycastHit hit;
-                // Create a particle if hit
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.transform.position == XButton.transform.position)
-                    {
-                        CloseAd(hit.transform.gameObject);
-                    }
-                }
+                Debug.Log("des");
+                Destroy(gameObject);
             }
+        }
+
+        public void DuplicateEnemy()
+        {
+            Instantiate(
+                AdwarePrefab,
+                new Vector3(
+                    gameObject.transform.position.x,
+                    gameObject.transform.position.y,
+                    gameObject.transform.position.z
+                ),
+                Quaternion.identity
+            );
+            transform.position = new Vector3(
+                gameObject.transform.position.x + .01f,
+                gameObject.transform.position.y - .01f,
+                gameObject.transform.position.z - .01f
+            );
         }
     }
 }

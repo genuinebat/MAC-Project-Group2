@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - ScannableEnemy
   - Trojan
+  - ADWare
   layers:
   - Default
   - TransparentFX
