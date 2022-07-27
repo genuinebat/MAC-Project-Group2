@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f9f4cf6f5c9778948882806bb094f47a
+guid: 574dfbde06b733b44b1eeedd69a8f4cc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: nod
+    second: nails
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: nod
+      name: nails
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 78
+      lastFrame: 133
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
