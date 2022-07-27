@@ -11,20 +11,27 @@ namespace WhackaAd
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
                 RaycastHit hit;
-                //Clic i = hit.transform.gameObject.GetComponent<Clicked>();
                 if (Physics.Raycast(ray, out hit))
                 {
                     if (hit.transform.gameObject.name == "CloseAD")
                     {
-                        Debug.Log("x");
+                        AdwareEffects effects = hit.transform.gameObject.GetComponent<AdwareEffects>();
+
+                        if (effects.Teleport)
+                        {
+                            effects.CheckTeleport();
+                        }
+                        else
+                        {
                             hit.transform.gameObject
-                                .GetComponentInParent<BaseAdware>()
+                                .GetComponent<BaseAdware>()
                                 .CloseAd();
+                        }
                     }
                     else if (hit.transform.gameObject.tag == "ADWare")
                     {
-                        Debug.Log("click on panel");
                         hit.transform.gameObject
                             .GetComponentInParent<BaseAdware>()
                             .DuplicateEnemy();

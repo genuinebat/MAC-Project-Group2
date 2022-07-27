@@ -13,6 +13,11 @@ namespace WhackaAd
             Active = _active;
         }
 
+        public virtual void Init()
+        {
+            
+        }
+
         public virtual void Update()
         {
             if (!Active) return;

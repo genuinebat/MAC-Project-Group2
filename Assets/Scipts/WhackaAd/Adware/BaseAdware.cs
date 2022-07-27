@@ -8,8 +8,8 @@ namespace WhackaAd
     {
         public GameObject AdwarePrefab;
 
-        [HideInInspector]
         public bool IsDestroyable { get; set; }
+        public bool IsTeleport { get; set; }
 
         void Start()
         {
@@ -20,7 +20,6 @@ namespace WhackaAd
         {
             if (IsDestroyable == true)
             {
-                Debug.Log("des");
                 Destroy(gameObject);
             }
         }
