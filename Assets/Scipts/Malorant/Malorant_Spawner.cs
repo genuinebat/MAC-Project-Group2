@@ -42,7 +42,7 @@ namespace Malorant
             GameObject adware = Instantiate(
                 Malwares[3],
                 ImageTarget.position + new Vector3(-3, 0, -1),
-                Quaternion.Euler(0f, 180f, 0f)
+                Quaternion.Euler(0f, 0f, 0f)
             );
 
             botware.transform.parent = transform;

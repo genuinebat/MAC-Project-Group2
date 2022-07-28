@@ -159,7 +159,8 @@ namespace Malorant
             ScannerFill.fillAmount = 0f;
             elap = 0f;
 
-            scannableObj.GetComponent<IScannable>().Scan();
+            Debug.Log(scannableObj.name);
+            scannableObj.GetComponentInParent<IScannable>().Scan();
 
             StartCoroutine(ScannedText());
         }
