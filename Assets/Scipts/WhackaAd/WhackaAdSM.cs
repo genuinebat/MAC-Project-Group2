@@ -29,7 +29,10 @@ namespace WhackaAd
 
         public override void EnablePopup()
         {
+            Debug.Log("called");
             if (IsRunning || IsCompleted) return;
+
+            Debug.Log("got thru");
 
             base.EnablePopup();
 
