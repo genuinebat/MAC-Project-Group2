@@ -160,5 +160,4 @@ namespace WhackaAd
             HintTxt.SetActive(true);
         }
     }
-
-    }
+}
