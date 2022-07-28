@@ -44,6 +44,7 @@ namespace WhackaAd
         {
             base.Update();
 
+            Debug.Log(Active);
             if (Vector3.Distance(adware.transform.position, targetLocation) < 0.01f)
             {
                 SetNewRandomTargetLocation();

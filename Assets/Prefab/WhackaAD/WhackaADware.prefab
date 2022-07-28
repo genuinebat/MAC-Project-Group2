@@ -280,7 +280,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2326316208160000544}
   - component: {fileID: 4817671294035432615}
-  - component: {fileID: 9187564414869662229}
+  - component: {fileID: 5254633579880408824}
+  - component: {fileID: 5638346587177497721}
   m_Layer: 0
   m_Name: WhackaADware
   m_TagString: Untagged
@@ -327,7 +328,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9187564414869662229
+--- !u!114 &5254633579880408824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,10 +337,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3099440714600943770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19dda674565d772439176a58efcd1240, type: 3}
+  m_Script: {fileID: 11500000, guid: 11569f23e8ad0c24a856a28a5c6c046c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AdwarePrefab: {fileID: 3099440714600943770}
+--- !u!114 &5638346587177497721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099440714600943770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1f31ba2bf73444da85f458181c1020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movement: 1
+  Teleport: 1
+  Speed: 0.01
+  MoveRange: 6
+  TeleportCooldown: 0
+  TeleportRange: 5
 --- !u!1 &3321467013338810520
 GameObject:
   m_ObjectHideFlags: 0

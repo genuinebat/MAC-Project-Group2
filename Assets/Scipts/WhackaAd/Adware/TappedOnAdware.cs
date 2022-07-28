@@ -17,7 +17,7 @@ namespace WhackaAd
                 {
                     if (hit.transform.gameObject.name == "CloseAD")
                     {
-                        AdwareEffects effects = hit.transform.gameObject.GetComponent<AdwareEffects>();
+                        AdwareEffects effects = hit.transform.gameObject.GetComponentInParent<AdwareEffects>();
 
                         if (effects.Teleport)
                         {
