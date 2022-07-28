@@ -13,6 +13,7 @@ namespace WhackaAd
         public GameObject HintTxt;
 
         Coroutine closingCor;
+        WhackaAdSpawner spawner;
 
         float popupHeight, popupWidth; 
 
@@ -146,6 +147,8 @@ namespace WhackaAd
             base.Initialize();
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
+
+            spawner.GameStarted = true;
 
             HintTxt.SetActive(false);
         }

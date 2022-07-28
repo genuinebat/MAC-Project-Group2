@@ -7,7 +7,7 @@ namespace WhackaAd
     public class WhackaAdSpawner : MonoBehaviour
     {
         [Header("Adware Prefabs")]
-        public GameObject Adware;
+        public List<GameObject> Adwares = new List<GameObject>();
 
         [Header("Reference Variables")]
         public Transform ImageTarget;
@@ -16,16 +16,22 @@ namespace WhackaAd
         public float SpawnTime;
         public float SpawnRadius;
 
+        public bool GameStarted { get; set; }
+
         float elap, minX, maxX, minY, maxY;
 
         void Start()
         {
             SetBoundaries();
             elap = 0f;
+
+            GameStarted = false;
         }
 
         void Update()
         {
+            if (!GameStarted) return;
+
             if (elap >= SpawnTime)
             {
                 SpawnAdware();
@@ -37,12 +43,16 @@ namespace WhackaAd
         void SetBoundaries()
         {
             // set x and y boundaries based on image target
+            minX = ImageTarget.position.x - SpawnRadius;
+            maxX = ImageTarget.position.x + SpawnRadius;
+            minY = ImageTarget.position.y - SpawnRadius;
+            maxY = ImageTarget.position.y + SpawnRadius;
         }
 
         void SpawnAdware()
         {
             GameObject adware = Instantiate(
-                Adware,
+                Adwares[Random.Range(0, Adwares.Count)],
                 new Vector3(
                     Random.Range(minX, maxX),
                     Random.Range(minY, maxY),
@@ -51,7 +61,12 @@ namespace WhackaAd
                 Quaternion.Euler(0f, 0f, 0f)
             );
 
-            // randomize the effects using random.range(0, 1)
+            AdwareEffects effectScript = adware.GetComponent<AdwareEffects>();
+
+            effectScript.Speed = Random.Range(1f, 2f);
+            effectScript.MoveRange = Random.Range(1f, 3f);
+            effectScript.TeleportCooldown = Random.Range(2, 5);
+            effectScript.TeleportRange = Random.Range(2f, 4f);
         }
     }
 }
