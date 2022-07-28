@@ -1273,10 +1273,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78308bcc4fb9025488901116013ec05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Adwares: []
-  ImageTarget: {fileID: 1592802141}
-  SpawnTime: 3
-  SpawnRadius: 0
+  Adwares:
+  - {fileID: 5525115819334006352, guid: 631885c6aee0ad64b8ca8953b16cf17a, type: 3}
+  - {fileID: 6978472487029639089, guid: 2b27ab49e62a8bf479d48a57c63a2541, type: 3}
+  ImageTarget: {fileID: 5181100262180990186, guid: 631885c6aee0ad64b8ca8953b16cf17a, type: 3}
+  SpawnTime: 1
+  SpawnRadius: 3
 --- !u!1 &693962250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2308,7 @@ GameObject:
   - component: {fileID: 1592802139}
   - component: {fileID: 1592802142}
   m_Layer: 0
-  m_Name: Shield
+  m_Name: image target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2382,13 +2384,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: Shield
+  mTrackableName: Firewall
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/MAC_EscapeRoom.xml
-  mAspectRatio: 1.0254337
+  mAspectRatio: 0.88368064
   mImageTargetType: 0
   mWidth: 3
-  mHeight: 3.076301
+  mHeight: 2.651042
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mPreview: {fileID: 1592802142}
@@ -2421,7 +2423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1592802140}
   mHiddenRoot: {fileID: 0}
-  mTargetName: Shield
+  mTargetName: Firewall
   mDatasetName: Vuforia/MAC_EscapeRoom.xml
   mCastedBehaviour: {fileID: 1592802140}
   mMeshFilter: {fileID: 0}

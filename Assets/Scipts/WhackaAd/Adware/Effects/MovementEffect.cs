@@ -25,7 +25,7 @@ namespace WhackaAd
         float speed, moveRange;
         int quad;
 
-        public MovementEffect(bool active, GameObject _adware, float _speed, float _moveRange) : base (active)
+        public MovementEffect(GameObject _adware, float _speed, float _moveRange)
         {
             adware = _adware;
             speed = _speed;
@@ -44,7 +44,6 @@ namespace WhackaAd
         {
             base.Update();
 
-            Debug.Log(Active);
             if (Vector3.Distance(adware.transform.position, targetLocation) < 0.01f)
             {
                 SetNewRandomTargetLocation();

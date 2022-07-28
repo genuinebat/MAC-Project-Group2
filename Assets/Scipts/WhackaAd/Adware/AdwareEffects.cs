@@ -25,8 +25,8 @@ namespace WhackaAd
 
         void Start()
         {
-            movementEffect = new MovementEffect(Movement ,gameObject, Speed, MoveRange);
-            teleportEffect = new TeleportEffect(Teleport, gameObject, TeleportCooldown, TeleportRange);
+            movementEffect = new MovementEffect(gameObject, Speed, MoveRange);
+            teleportEffect = new TeleportEffect(gameObject, TeleportCooldown, TeleportRange);
 
             movementEffect.Init();
             teleportEffect.Init();
@@ -34,14 +34,14 @@ namespace WhackaAd
 
         void Update()
         {
-            movementEffect.Update();
-            teleportEffect.Update();
+            if (Movement) movementEffect.Update();
+            if (Teleport) teleportEffect.Update();
         }
 
         void FixedUpdate()
         {
-            movementEffect.FixedUpdate();
-            teleportEffect.FixedUpdate();
+            if (Movement) movementEffect.FixedUpdate();
+            if (Teleport) teleportEffect.FixedUpdate();
         }
 
         public void CheckTeleport()

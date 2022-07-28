@@ -11,7 +11,7 @@ namespace WhackaAd
         GameObject adware;
         float cooldown, range, elap;
 
-        public TeleportEffect(bool active, GameObject _adware, float _cooldown, float _range) : base (active)
+        public TeleportEffect(GameObject _adware, float _cooldown, float _range)
         {
             adware = _adware;
             cooldown = _cooldown;

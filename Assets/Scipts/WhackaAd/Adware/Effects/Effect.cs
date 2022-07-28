@@ -6,11 +6,9 @@ namespace WhackaAd
 {
     public class Effect
     {
-        public bool Active;
-
-        public Effect(bool _active)
+        public Effect()
         {
-            Active = _active;
+            
         }
 
         public virtual void Init()
@@ -20,12 +18,12 @@ namespace WhackaAd
 
         public virtual void Update()
         {
-            if (!Active) return;
+            
         }
 
         public virtual void FixedUpdate()
         {
-            if (!Active) return;
+            
         }
     }
 }

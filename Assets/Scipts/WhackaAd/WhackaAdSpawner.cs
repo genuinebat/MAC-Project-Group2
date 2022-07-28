@@ -23,7 +23,7 @@ namespace WhackaAd
         void Start()
         {
             SetBoundaries();
-            elap = 0f;
+            elap = Mathf.Infinity;
 
             GameStarted = false;
         }
@@ -61,9 +61,11 @@ namespace WhackaAd
                 Quaternion.Euler(0f, 0f, 0f)
             );
 
+            adware.transform.parent = transform;
+
             AdwareEffects effectScript = adware.GetComponent<AdwareEffects>();
 
-            effectScript.Speed = Random.Range(1f, 2f);
+            effectScript.Speed = Random.Range(0.5f, 1f);
             effectScript.MoveRange = Random.Range(1f, 3f);
             effectScript.TeleportCooldown = Random.Range(2, 5);
             effectScript.TeleportRange = Random.Range(2f, 4f);

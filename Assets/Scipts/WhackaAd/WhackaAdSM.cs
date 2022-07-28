@@ -19,6 +19,8 @@ namespace WhackaAd
 
         void Start()
         {
+            spawner = transform.Find("Spawner").gameObject.GetComponent<WhackaAdSpawner>();
+
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
