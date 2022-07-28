@@ -26,7 +26,7 @@ namespace WhackaAd
                         else
                         {
                             hit.transform.gameObject
-                                .GetComponent<BaseAdware>()
+                                .GetComponentInParent<BaseAdware>()
                                 .CloseAd();
                         }
                     }

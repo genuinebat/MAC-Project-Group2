@@ -18,10 +18,21 @@ namespace WhackaAd
 
         public bool GameStarted { get; set; }
 
-        float elap, minX, maxX, minY, maxY;
+                //[HideInInspector]
+        public List<GameObject> AdwareTemp = new List<GameObject>();
+        
+        float elap,
+            minX,
+            maxX,
+            minY,
+            maxY;
+
+
 
         void Start()
         {
+            AdwareTemp.AddRange(Adwares);
+
             SetBoundaries();
             elap = Mathf.Infinity;
 
@@ -30,14 +41,16 @@ namespace WhackaAd
 
         void Update()
         {
-            if (!GameStarted) return;
+            if (!GameStarted)
+                return;
 
             if (elap >= SpawnTime)
             {
                 SpawnAdware();
                 elap = 0f;
             }
-            else elap += Time.deltaTime;
+            else
+                elap += Time.deltaTime;
         }
 
         void SetBoundaries()
@@ -52,10 +65,10 @@ namespace WhackaAd
         void SpawnAdware()
         {
             GameObject adware = Instantiate(
-                Adwares[Random.Range(0, Adwares.Count)],
+                AdwareTemp[Random.Range(0, AdwareTemp.Count)],
                 new Vector3(
                     Random.Range(minX, maxX),
-                    Random.Range(minY, maxY),
+                    Random.Range(minY, maxY), 
                     ImageTarget.position.z - 1
                 ),
                 Quaternion.Euler(0f, 0f, 0f)
