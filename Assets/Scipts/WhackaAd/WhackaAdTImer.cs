@@ -10,15 +10,19 @@ namespace WhackaAd
     {
         [Header("Referencce variables")]
         public TMP_Text TimerUI;
+        public TMP_Text EnemyCounter;
         public GameObject WinUI;
         public GameObject LoseUI;
+        public Slider EnemyCounterSlider;
 
         [Header("Functionality Variables")]
         public float TimeMin;
         public float TimeSec;
+        public int MaxAds;
 
         [HideInInspector]
         public float TimeLeft;
+        int ADTempCount;
 
         bool won;
 
@@ -27,16 +31,20 @@ namespace WhackaAd
         {
             TimeLeft = TimeMin * 60 + TimeSec;
             won = false;
+
+            EnemyCounterSlider.maxValue = MaxAds;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!won)
-            {
-                TimeLeft -= Time.deltaTime;
-            }
+            //Display enemies
+            ADTempCount = GameObject.Find("Spawner").transform.childCount;
+            EnemyCounter.SetText(ADTempCount + "/ " + MaxAds);
+            EnemyCounterSlider.value = ADTempCount;
 
+            //Timer
+            TimeLeft -= Time.deltaTime;
             string minutes = ((int)TimeLeft / 60).ToString("00");
             string seconds = Mathf.Round(TimeLeft % 60).ToString("00");
 
@@ -50,9 +58,15 @@ namespace WhackaAd
                     WinUI.SetActive(true);
                 }
             }
+
+            if (GameObject.Find("Spawner").transform.childCount >= MaxAds)
+            {
+                won = false;
+                GameOver();
+            }
         }
 
-        public void CheckLose()
+        public void GameOver()
         {
             Time.timeScale = 0;
             LoseUI.SetActive(true);
