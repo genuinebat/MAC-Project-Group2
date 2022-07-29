@@ -38,12 +38,13 @@ namespace WhackaAd
         // Update is called once per frame
         void Update()
         {
-            //Display enemies
+            #region ShowEnemy
             ADTempCount = GameObject.Find("Spawner").transform.childCount;
             EnemyCounter.SetText(ADTempCount + "/ " + MaxAds);
             EnemyCounterSlider.value = ADTempCount;
+            #endregion
 
-            //Timer
+            # region Timer
             TimeLeft -= Time.deltaTime;
             string minutes = ((int)TimeLeft / 60).ToString("00");
             string seconds = Mathf.Round(TimeLeft % 60).ToString("00");
@@ -64,6 +65,7 @@ namespace WhackaAd
                 won = false;
                 GameOver();
             }
+            #endregion
         }
 
         public void GameOver()
