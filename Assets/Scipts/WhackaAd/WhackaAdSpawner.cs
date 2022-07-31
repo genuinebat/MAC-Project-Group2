@@ -16,10 +16,10 @@ namespace WhackaAd
         public float SpawnTime;
         public float SpawnRadius;
 
-        public bool GameStarted { get; set; }
-
-                //[HideInInspector]
+        [HideInInspector]
         public List<GameObject> AdwareTemp = new List<GameObject>();
+
+        public bool GameStarted { get; set; }
         
         float elap,
             minX,

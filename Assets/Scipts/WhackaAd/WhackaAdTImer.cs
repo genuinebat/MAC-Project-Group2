@@ -6,14 +6,14 @@ using TMPro;
 
 namespace WhackaAd
 {
-    public class WhackaAdTImer : MonoBehaviour
+    public class WhackaAdTimer : MonoBehaviour
     {
         [Header("Referencce variables")]
         public TMP_Text TimerUI;
         public TMP_Text EnemyCounter;
         public GameObject WinUI;
         public GameObject LoseUI;
-        public Slider EnemyCounterSlider;
+        public Image EnemyCounterFill;
 
         [Header("Functionality Variables")]
         public float TimeMin;
@@ -22,34 +22,42 @@ namespace WhackaAd
 
         [HideInInspector]
         public float TimeLeft;
-        int ADTempCount;
+
+        public bool GameStarted { private get; set; }
+
+        Transform spawner;
 
         bool won;
 
         // Start is called before the first frame update
         void Start()
         {
+            spawner = GameObject.Find("Spawner").transform;
+
             TimeLeft = TimeMin * 60 + TimeSec;
             won = false;
 
-            EnemyCounterSlider.maxValue = MaxAds;
+            GameStarted = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            #region ShowEnemy
-            ADTempCount = GameObject.Find("Spawner").transform.childCount;
-            EnemyCounter.SetText(ADTempCount + "/ " + MaxAds);
-            EnemyCounterSlider.value = ADTempCount;
-            #endregion
+            if (!GameStarted) return;
 
-            # region Timer
+            // modifying the UI for showing the number of enemies
+            EnemyCounter.SetText("Number of Adware: " + spawner.childCount + " /  " + MaxAds);
+
+            EnemyCounterFill.fillAmount = Mathf.Lerp(EnemyCounterFill.fillAmount, (float) spawner.childCount / MaxAds, Time.deltaTime * 10);
+
+            // updating the timer UI
             TimeLeft -= Time.deltaTime;
+
             string minutes = ((int)TimeLeft / 60).ToString("00");
             string seconds = Mathf.Round(TimeLeft % 60).ToString("00");
 
             TimerUI.text = minutes + ":" + seconds;
+
             if (TimeLeft < 0)
             {
                 TimeLeft = 0;
@@ -60,12 +68,11 @@ namespace WhackaAd
                 }
             }
 
-            if (GameObject.Find("Spawner").transform.childCount >= MaxAds)
+            if (spawner.childCount >= MaxAds)
             {
                 won = false;
                 GameOver();
             }
-            #endregion
         }
 
         public void GameOver()

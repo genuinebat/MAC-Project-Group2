@@ -9,6 +9,7 @@ namespace WhackaAd
     {
         public WhackaAdSpawner Spawnner;
         public GameObject AntivirusUI;
+        public Image Icon;
         public float AntiVirusCooldownTime;
 
         int removed;
@@ -34,6 +35,7 @@ namespace WhackaAd
             removed = index;
             AntivirusUI.SetActive(false);
             Time.timeScale = 1f;
+            StartCoroutine(ChangeFill());
             StartCoroutine(AntiVirusCooldown());
         }
 
@@ -42,6 +44,20 @@ namespace WhackaAd
             GameObject.Find("AntiVirusBtn").GetComponent<Button>().enabled = false;
             yield return new WaitForSeconds(AntiVirusCooldownTime);
             GameObject.Find("AntiVirusBtn").GetComponent<Button>().enabled = true;
+        }
+
+        IEnumerator ChangeFill()
+        {
+            float elap = 0f;
+
+            while (elap < AntiVirusCooldownTime)
+            {
+                Icon.fillAmount = elap / AntiVirusCooldownTime;
+                elap += Time.deltaTime;
+                yield return null;
+            }
+
+            Icon.fillAmount = 1f;
         }
     }
 }

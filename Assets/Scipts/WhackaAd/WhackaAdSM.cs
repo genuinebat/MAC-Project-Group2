@@ -11,15 +11,18 @@ namespace WhackaAd
         public GameObject Popup;
         public GameObject PopupDisplay;
         public GameObject HintTxt;
+        public GameObject UI;
 
         Coroutine closingCor;
         WhackaAdSpawner spawner;
+        WhackaAdTimer timer;
 
         float popupHeight, popupWidth; 
 
         void Start()
         {
             spawner = transform.Find("Spawner").gameObject.GetComponent<WhackaAdSpawner>();
+            timer = GetComponent<WhackaAdTimer>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
@@ -31,10 +34,7 @@ namespace WhackaAd
 
         public override void EnablePopup()
         {
-            Debug.Log("called");
             if (IsRunning || IsCompleted) return;
-
-            Debug.Log("got thru");
 
             base.EnablePopup();
 
@@ -156,12 +156,16 @@ namespace WhackaAd
             spawner.GameStarted = true;
 
             HintTxt.SetActive(false);
+            UI.SetActive(true);
+
+            timer.GameStarted = true;
         }
 
         public override void Cancel()
         {
             base.Cancel();
 
+            UI.SetActive(false);
             HintTxt.SetActive(true);
         }
     }

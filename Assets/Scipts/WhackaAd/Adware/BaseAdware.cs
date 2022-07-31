@@ -26,7 +26,7 @@ namespace WhackaAd
 
         public void DuplicateEnemy()
         {
-            Instantiate(
+            GameObject dup = Instantiate(
                 AdwarePrefab,
                 new Vector3(
                     gameObject.transform.position.x,
@@ -40,6 +40,8 @@ namespace WhackaAd
                 gameObject.transform.position.y - .01f,
                 gameObject.transform.position.z - .01f
             );
+
+            dup.transform.parent = transform.parent;
         }
     }
 }
