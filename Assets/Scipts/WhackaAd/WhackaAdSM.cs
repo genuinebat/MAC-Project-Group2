@@ -27,7 +27,7 @@ namespace WhackaAd
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
-            HintTxt.GetComponent<TMP_Text>().text = "hint: always be cautious of the shield";
+            HintTxt.GetComponent<TMP_Text>().text = "hint: my wall is on fire lol";
 
             Cancel();
         }

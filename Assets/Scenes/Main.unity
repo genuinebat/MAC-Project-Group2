@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 693533541}
   - component: {fileID: 693533540}
   m_Layer: 5
-  m_Name: TempBtn
+  m_Name: TempPuzzle2Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,8 +386,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 50, y: 50}
+  m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &693533540
 MonoBehaviour:
@@ -965,7 +965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: puzzle 2
+  m_text: Puzzle 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e74ddd0afc81dd4cb841e15a8e2c142, type: 2}
   m_sharedMaterial: {fileID: -3412428676038638241, guid: 8e74ddd0afc81dd4cb841e15a8e2c142, type: 2}
@@ -1190,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864213295670987602, guid: c7fe5ea2be0cc754cbababde8ce539a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8864213295670987603, guid: c7fe5ea2be0cc754cbababde8ce539a7, type: 3}
       propertyPath: m_RootOrder
