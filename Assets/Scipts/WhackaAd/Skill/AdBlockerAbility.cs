@@ -9,14 +9,24 @@ namespace WhackaAd
     {
         [Header("Reference Variables")]
         public GameObject SpawnnerHolder;
+
         public Image Icon;
+
         public float AdBlockerCooldownTime;
+
+        public GameObject AdblockerUI;
+
+        public GameObject AdblockUIText;
 
         float fill;
 
-        void Start() { }
+        void Start()
+        {
+        }
 
-        void Update() { }
+        void Update()
+        {
+        }
 
         public void AdBlockerPressed()
         {
@@ -30,9 +40,11 @@ namespace WhackaAd
 
         IEnumerator ADBlockCooldown()
         {
-            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled = false;
+            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
+                false;
             yield return new WaitForSeconds(AdBlockerCooldownTime);
-            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled = true;
+            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
+                true;
         }
 
         IEnumerator ChangeFill()
@@ -47,6 +59,13 @@ namespace WhackaAd
             }
 
             Icon.fillAmount = 1f;
+        }
+
+        public void AdblockerUIActive()
+        {
+            AdblockerUI.SetActive(true);
+            AdblockerUI.Image.SetColor(255, 255, 255, 255);
+            AdblockUIText.SetColor(255, 255, 255, 255);
         }
     }
 }
