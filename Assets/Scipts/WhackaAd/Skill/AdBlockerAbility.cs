@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,26 +17,24 @@ namespace WhackaAd
 
         public GameObject AdblockerUI;
 
-        public GameObject AdblockUIText;
-
         float fill;
-
-        void Start()
-        {
-        }
-
-        void Update()
-        {
-        }
 
         public void AdBlockerPressed()
         {
+            StartCoroutine(AdblockerUIFade());
             foreach (Transform child in SpawnnerHolder.transform)
             {
                 GameObject.Destroy(child.gameObject);
                 StartCoroutine(ChangeFill());
                 StartCoroutine(ADBlockCooldown());
             }
+        }
+
+        IEnumerator AdblockerUIFade()
+        {
+            AdblockerUI.SetActive(true);
+            yield return new WaitForSeconds(1);
+            AdblockerUI.SetActive(false);
         }
 
         IEnumerator ADBlockCooldown()
@@ -59,13 +58,6 @@ namespace WhackaAd
             }
 
             Icon.fillAmount = 1f;
-        }
-
-        public void AdblockerUIActive()
-        {
-            AdblockerUI.SetActive(true);
-            AdblockerUI.Image.SetColor(255, 255, 255, 255);
-            AdblockUIText.SetColor(255, 255, 255, 255);
         }
     }
 }
