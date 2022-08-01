@@ -75,6 +75,7 @@ namespace WhackaAd
             }
         }
 
+        // function to and the game
         public void GameOver()
         {
             Time.timeScale = 0;
