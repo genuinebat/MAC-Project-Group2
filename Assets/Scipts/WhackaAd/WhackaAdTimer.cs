@@ -50,7 +50,7 @@ namespace WhackaAd
 
             EnemyCounterFill.fillAmount = Mathf.Lerp(EnemyCounterFill.fillAmount, (float) spawner.childCount / MaxAds, Time.deltaTime * 10);
 
-            // updating the timer UI
+            // updating and changing the timer UI
             TimeLeft -= Time.deltaTime;
 
             string minutes = ((int)TimeLeft / 60).ToString("00");

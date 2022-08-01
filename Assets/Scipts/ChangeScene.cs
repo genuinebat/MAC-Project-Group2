@@ -8,7 +8,7 @@ public class ChangeScene : MonoBehaviour
     public Animator doors;
     public Animator door1;
     public Animator door2;
-
+    
     public void nextScene(string scenename)
     {
         StartCoroutine(NextSceneCor(scenename));
