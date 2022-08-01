@@ -15,14 +15,14 @@ namespace WhackaAd
 
         Coroutine closingCor;
         WhackaAdSpawner spawner;
-        WhackaAdTimer timer;
+        WhackaAdTime timer;
 
         float popupHeight, popupWidth; 
 
         void Start()
         {
             spawner = transform.Find("Spawner").gameObject.GetComponent<WhackaAdSpawner>();
-            timer = GetComponent<WhackaAdTimer>();
+            timer = GetComponent<WhackaAdTime>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3076,10 +3076,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1443064768}
   - component: {fileID: 1443064769}
-  - component: {fileID: 1443064770}
   - component: {fileID: 1443064771}
   - component: {fileID: 1443064772}
   - component: {fileID: 1443064773}
+  - component: {fileID: 1443064774}
   m_Layer: 0
   m_Name: WhackaAd
   m_TagString: Untagged
@@ -3119,27 +3119,6 @@ MonoBehaviour:
   PopupDisplay: {fileID: 1254923539}
   HintTxt: {fileID: 2087307522}
   UI: {fileID: 1465802092}
---- !u!114 &1443064770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443064767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a006291ee5ca7f40a7b90fa25cb6b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimerUI: {fileID: 400042372}
-  EnemyCounter: {fileID: 699033661}
-  WinUI: {fileID: 814893271}
-  LoseUI: {fileID: 1905369273}
-  EnemyCounterFill: {fileID: 2141958024}
-  TimeMin: 0
-  TimeSec: 30
-  MaxAds: 10
-  TimeLeft: 0
 --- !u!114 &1443064771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3183,6 +3162,27 @@ MonoBehaviour:
   SpawnnerHolder: {fileID: 669202767}
   Icon: {fileID: 2041503796}
   AdBlockerCooldownTime: 12
+--- !u!114 &1443064774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443064767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662f480f03eb05842bf12ec27905c3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerUI: {fileID: 400042372}
+  EnemyCounter: {fileID: 699033661}
+  WinUI: {fileID: 814893271}
+  LoseUI: {fileID: 1905369273}
+  EnemyCounterFill: {fileID: 2141958024}
+  TimeMin: 0
+  TimeSec: 30
+  MaxAds: 10
+  TimeLeft: 0
 --- !u!1 &1465802092
 GameObject:
   m_ObjectHideFlags: 0
