@@ -5,7 +5,7 @@ using TMPro;
 
 namespace TempName
 {
-    public class RansomwareSM : PuzzleSM
+    public class RansomManSM : PuzzleSM
     {
         [Header("Reference Variables")]
         public GameObject Popup;
@@ -22,7 +22,7 @@ namespace TempName
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
-            HintTxt.GetComponent<TMP_Text>().text = "hint: the gears do we working";
+            HintTxt.GetComponent<TMP_Text>().text = "hint: the gears do be working";
 
             Cancel();
         }

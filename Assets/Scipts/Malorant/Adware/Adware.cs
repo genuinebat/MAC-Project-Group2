@@ -20,13 +20,12 @@ namespace Malorant
         }
 
         public GameObject AdwarePrefab;
-        
         public GameObject X;
+
         public float Speed;
+        public float MoveRange;
 
         public bool Scanned { get; private set; }
-
-        public float MoveRange;
 
         List<Quad> quads = new List<Quad>();
 
