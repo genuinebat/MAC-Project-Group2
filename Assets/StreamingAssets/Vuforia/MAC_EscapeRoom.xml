@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Gear_crank" size="3.000000 4.000000" />
+    <ImageTarget name="GearCrank" size="2.000000 1.949074" />
     <ImageTarget name="Trojan" size="3.000000 2.860502" />
     <ImageTarget name="Bacteria" size="3.000000 2.967721" />
     <ImageTarget name="Firewall" size="3.000000 2.651042" />

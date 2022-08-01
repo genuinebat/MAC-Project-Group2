@@ -62,7 +62,7 @@ namespace WhackaAd
             {
                 TimeLeft = 0;
                 Time.timeScale = 0;
-                if (won = true)
+                if (won == true)
                 {
                     WinUI.SetActive(true);
                 }
