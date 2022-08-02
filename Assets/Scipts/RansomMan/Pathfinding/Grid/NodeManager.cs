@@ -64,11 +64,10 @@ namespace Pathfinding
 
             Debug.Log(map[26, 28]);
             
-            for (int a = 0; a < map.GetLength(1) - 1; a++)
+            for (int a = 0; a < map.GetLength(1); a++)
             {
-                for (int b = 0; b < map.GetLength(0) - 1; b++)
+                for (int b = 0; b < map.GetLength(0); b++)
                 {
-                    
                     grid.Get(b, a).Obstacle = map[b, a] == '1' ? true : false;
                 }
             }
@@ -79,9 +78,9 @@ namespace Pathfinding
             string content = File.ReadAllText(Application.dataPath + "/RansomManMap.txt");
             char[,] map =  new char[27, 29];
 
-            for (int a = 0; a < map.GetLength(1) - 1; a++)
+            for (int a = 0; a < map.GetLength(1); a++)
             {
-                for (int b = 0; b < map.GetLength(0) - 1; b++)
+                for (int b = 0; b < map.GetLength(0); b++)
                 {
                     map[b, (map.GetLength(1) - 1- a)] = content.Split("\n")[a][b];
                 }
