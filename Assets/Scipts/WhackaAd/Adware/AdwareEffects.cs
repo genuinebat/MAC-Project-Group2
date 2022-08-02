@@ -8,20 +8,26 @@ namespace WhackaAd
     {
         [Header("Active effects the adware will spawn with")]
         public bool Movement;
+
         public bool Teleport;
- 
+
         public float Speed;
+
         public float MoveRange;
+
         public float TeleportCooldown;
+
         public float TeleportRange;
 
         MovementEffect movementEffect;
+
         TeleportEffect teleportEffect;
 
         void Start()
         {
             movementEffect = new MovementEffect(gameObject, Speed, MoveRange);
-            teleportEffect = new TeleportEffect(gameObject, TeleportCooldown, TeleportRange);
+            teleportEffect =
+                new TeleportEffect(gameObject, TeleportCooldown, TeleportRange);
 
             movementEffect.Init();
             teleportEffect.Init();
@@ -39,11 +45,11 @@ namespace WhackaAd
             if (Teleport) teleportEffect.FixedUpdate();
         }
 
-        public void CheckTeleport()
+        public void CheckTeleport(Transform CurrentLocation)
         {
             if (teleportEffect.CanTele)
             {
-                teleportEffect.Teleport();
+                teleportEffect.Teleport (CurrentLocation);
             }
             else
             {

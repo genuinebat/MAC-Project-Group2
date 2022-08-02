@@ -6,10 +6,17 @@ namespace WhackaAd
 {
     public class TeleportEffect : Effect
     {
+        public GameObject TeleEffect;
+
         public bool CanTele { get; private set; }
 
         GameObject adware;
-        float cooldown, range, elap;
+
+        float
+
+                cooldown,
+                range,
+                elap;
 
         public TeleportEffect(GameObject _adware, float _cooldown, float _range)
         {
@@ -36,8 +43,9 @@ namespace WhackaAd
             base.FixedUpdate();
         }
 
-        public void Teleport()
+        public void Teleport(Transform CurrentLocation)
         {
+            //GameObject.Instantiate(TeleEffect,CurrentLocation.position,Quaternion.identity);
             if (!CanTele) return;
 
             float minX = adware.transform.position.x - 1;
@@ -45,11 +53,10 @@ namespace WhackaAd
             float minY = adware.transform.position.y - 1;
             float maxY = adware.transform.position.y + 1;
 
-            Vector3 dir = new Vector3(
-                Random.Range(minX, maxX),
-                Random.Range(minY, maxY),
-                adware.transform.position.z
-            );
+            Vector3 dir =
+                new Vector3(Random.Range(minX, maxX),
+                    Random.Range(minY, maxY),
+                    adware.transform.position.z);
 
             dir.Normalize();
 
