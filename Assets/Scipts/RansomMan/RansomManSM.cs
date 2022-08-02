@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace TempName
+namespace RansomMan
 {
     public class RansomManSM : PuzzleSM
     {

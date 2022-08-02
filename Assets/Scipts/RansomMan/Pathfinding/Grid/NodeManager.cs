@@ -1,23 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 namespace Pathfinding
 {
     // class to initialize and manage all the nodes and the grid
     public class NodeManager : MonoBehaviour
     {
+        public GameObject temp1, temp2;
         // the length of the grid on the x and y axis respectively
-        public int Width = 40;
-        public int Height = 40;
+        [Header("grid width, height and spacing")]
+        public int Width;
+        public int Height;
         // the spacing between each node both vertically and horizontally
-        public float CellSize = 1f;
+        public float CellSize;
 
         // grid object of nodes
         PFGrid<Node> grid;
 
         void Start()
         {
+            Width++;
+            Height++;
+
+            transform.position = new Vector3(
+                transform.position.x - (Mathf.Ceil(Width / 2) * CellSize),
+                transform.position.y - (Mathf.Ceil(Height / 2) * CellSize),
+                transform.position.z
+            );
+
             grid = new PFGrid<Node>(Width, Height);
 
             for (int x = 0; x < Width - 1; x++)
@@ -28,12 +40,54 @@ namespace Pathfinding
                 }
             }
 
-            // checking and setting whichever nodes overlap with obstacles
-            foreach (GameObject obst in GameObject.FindGameObjectsWithTag("Obstacle"))
+            SetupRansomManMap();
+
+            for (int x = 0; x < Width - 1; x++)
             {
-                Renderer r = obst.GetComponent<Renderer>();
-                SetObstacle(r.bounds.center, r.bounds.size.x, r.bounds.size.z);
+                for (int y = 0; y < Height - 1; y++)
+                {
+                    if (grid.Get(x, y).Obstacle)
+                    {
+                        Instantiate(temp2, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(temp1, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                    }
+                }
             }
+        }
+
+        void SetupRansomManMap()
+        {
+            char[,] map = GetMap();
+
+            Debug.Log(map[26, 28]);
+            
+            for (int a = 0; a < map.GetLength(1) - 1; a++)
+            {
+                for (int b = 0; b < map.GetLength(0) - 1; b++)
+                {
+                    
+                    grid.Get(b, a).Obstacle = map[b, a] == '1' ? true : false;
+                }
+            }
+        }
+
+        char[,] GetMap()
+        {
+            string content = File.ReadAllText(Application.dataPath + "/RansomManMap.txt");
+            char[,] map =  new char[27, 29];
+
+            for (int a = 0; a < map.GetLength(1) - 1; a++)
+            {
+                for (int b = 0; b < map.GetLength(0) - 1; b++)
+                {
+                    map[b, (map.GetLength(1) - 1- a)] = content.Split("\n")[a][b];
+                }
+            }
+
+            return map;
         }
 
         // function for getting the node that is closest to the given world position
@@ -62,7 +116,7 @@ namespace Pathfinding
         }
 
         // function for returning all neighboring nodes to the given node (minimum of 3, maximum of 8)
-        public List<Node> GetNeighbourNodes(Node curr)
+        public List<Node> GetNeighbourNodes(Node curr, bool diagonal)
         {
             List<Node> list = new List<Node>();
 
@@ -72,10 +126,10 @@ namespace Pathfinding
                 list.Add(grid.Get(curr.GridX - 1, curr.GridY));
 
                 // bottom left node
-                if (curr.GridY > 0) list.Add(grid.Get(curr.GridX - 1, curr.GridY - 1));
+                if (curr.GridY > 0 && diagonal) list.Add(grid.Get(curr.GridX - 1, curr.GridY - 1));
 
                 // top left node
-                if (curr.GridY < Height - 1) list.Add(grid.Get(curr.GridX - 1, curr.GridY + 1));
+                if (curr.GridY < Height - 1 && diagonal) list.Add(grid.Get(curr.GridX - 1, curr.GridY + 1));
             }
 
             if (curr.GridY > 0)
@@ -84,10 +138,10 @@ namespace Pathfinding
                 list.Add(grid.Get(curr.GridX, curr.GridY - 1));
 
                 // bottom right node
-                if (curr.GridX > 0) list.Add(grid.Get(curr.GridX + 1, curr.GridY - 1));
+                if (curr.GridX > 0 && diagonal) list.Add(grid.Get(curr.GridX + 1, curr.GridY - 1));
 
                 // top right node
-                if (curr.GridX < Width - 1) list.Add(grid.Get(curr.GridX + 1, curr.GridY + 1));
+                if (curr.GridX < Width - 1 && diagonal) list.Add(grid.Get(curr.GridX + 1, curr.GridY + 1));
             }
 
             // right node
@@ -104,8 +158,8 @@ namespace Pathfinding
         {
             return new Vector3(
                 transform.position.x + (node.GridX * CellSize),
-                transform.position.y,
-                transform.position.z + (node.GridY * CellSize)
+                transform.position.y + (node.GridY * CellSize),
+                transform.position.z
             );
         }
 
@@ -117,26 +171,6 @@ namespace Pathfinding
                 for (int y = 0; y < Height - 1; y++)
                 {
                     grid.Get(x, y).ResetValues();
-                }
-            }
-        }
-
-        // function that sets the respective nodes that overlap with the given object
-        void SetObstacle(Vector3 obstPos, float obstWidth, float obstHeight)
-        {
-            for (int x = 0; x < Width - 1; x++)
-            {
-                for (int y = 0; y < Height - 1; y++)
-                {
-                    Node n = grid.Get(x, y);
-                    Vector3 pos = GetNodeWorldPosition(n);
-
-                    if (
-                        pos.x <= (obstPos.x + Mathf.Ceil(obstWidth / 2)) &&
-                        pos.x >= (obstPos.x - Mathf.Ceil(obstWidth / 2)) &&
-                        pos.z <= (obstPos.z + Mathf.Ceil(obstHeight / 2)) &&
-                        pos.z >= (obstPos.z - Mathf.Ceil(obstHeight / 2))
-                    ) n.Obstacle = true;
                 }
             }
         }

@@ -10,13 +10,16 @@ namespace Pathfinding
         const int StraightMoveCost = 10;
         const int DiagonalMoveCost = 14;
 
+        bool diagonal;
+
         NodeManager nm;
 
         List<Node> open, closed;
 
-        public Pathfinder(NodeManager _nm)
+        public Pathfinder(NodeManager _nm, bool _diagonal)
         {
             nm = _nm;
+            diagonal = _diagonal;
         }
 
         // function that is used to get a list of vector3 that form the shortest path from a start position to an end position
@@ -58,7 +61,7 @@ namespace Pathfinding
                 open.Remove(current);
                 closed.Add(current);
 
-                foreach (Node node in nm.GetNeighbourNodes(current))
+                foreach (Node node in nm.GetNeighbourNodes(current, diagonal))
                 {
                     // continue if the neighbornode does not need to be searched
                     if (closed.Contains(node)) continue;
