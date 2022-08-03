@@ -12,7 +12,7 @@ namespace RansomMan
 
         void Start()
         {
-            nm = GameObject.Find("NodeManager");
+            nm = GameObject.Find("NodeManager").GetComponent<NodeManager>();
             pf = new Pathfinder(nm, false);
         }
 
