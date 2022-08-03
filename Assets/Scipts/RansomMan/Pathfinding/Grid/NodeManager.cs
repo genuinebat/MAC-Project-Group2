@@ -84,8 +84,6 @@ namespace Pathfinding
         void SetupRansomManMap()
         {
             char[,] map = GetMap();
-
-            Debug.Log(map[26, 28]);
             
             for (int a = 0; a < map.GetLength(1); a++)
             {
@@ -98,7 +96,18 @@ namespace Pathfinding
 
         char[,] GetMap()
         {
-            string content = File.ReadAllText(Application.dataPath + "/RansomManMap.txt");
+            string content = "";
+
+            #if UNITY_EDITOR && UNITY_ANDROID
+                content = File.ReadAllText(Application.dataPath + "/RansomManMap.txt");
+            #endif
+
+            #if !UNITY_EDITOR && UNITY_ANDROID
+                content = File.ReadAllText(Application.streamingAssetsPath + "/RansomManMap.txt");
+            #endif
+
+            Debug.Log(content);
+
             char[,] map =  new char[27, 29];
 
             for (int a = 0; a < map.GetLength(1); a++)
