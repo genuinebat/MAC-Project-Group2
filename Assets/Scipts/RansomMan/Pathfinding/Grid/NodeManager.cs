@@ -8,7 +8,9 @@ namespace Pathfinding
     // class to initialize and manage all the nodes and the grid
     public class NodeManager : MonoBehaviour
     {
-        public GameObject temp1, temp2;
+        [Header("Prefabs")]
+        public GameObject BytePrefab;
+        public GameObject ObstaclePrefab;
         // the length of the grid on the x and y axis respectively
         [Header("grid width, height and spacing")]
         public int Width;
@@ -16,25 +18,21 @@ namespace Pathfinding
         // the spacing between each node both vertically and horizontally
         public float CellSize;
 
+        [Header("Reference Variables")]
+        public Transform ImageTarget;
+
         // grid object of nodes
         PFGrid<Node> grid;
 
         void Start()
         {
-            Width++;
-            Height++;
-
-            transform.position = new Vector3(
-                transform.position.x - (Mathf.Ceil(Width / 2) * CellSize),
-                transform.position.y - (Mathf.Ceil(Height / 2) * CellSize),
-                transform.position.z
-            );
+            StartCoroutine(UpdatePosition());
 
             grid = new PFGrid<Node>(Width, Height);
 
-            for (int x = 0; x < Width - 1; x++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < Height - 1; y++)
+                for (int y = 0; y < Height; y++)
                 {
                     grid.Get(x, y).SetPosition(x, y);
                 }
@@ -42,20 +40,42 @@ namespace Pathfinding
 
             SetupRansomManMap();
 
-            for (int x = 0; x < Width - 1; x++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < Height - 1; y++)
+                for (int y = 0; y < Height; y++)
                 {
+                    GameObject cube = null;
                     if (grid.Get(x, y).Obstacle)
                     {
-                        Instantiate(temp2, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                        cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(temp1, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                        cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
                     }
+                    cube.transform.parent = transform;
                 }
             }
+        }
+
+        IEnumerator UpdatePosition()
+        {
+            for (;;)
+            {
+                SetPositionInfronOfImageTarget();
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        void SetPositionInfronOfImageTarget()
+        {
+            transform.position = ImageTarget.position - ImageTarget.forward;
+
+            transform.position = new Vector3(
+                transform.position.x - (Mathf.Ceil(Width / 2) * CellSize),
+                transform.position.y - (Mathf.Ceil(Height / 2) * CellSize),
+                transform.position.z
+            );
         }
 
         void SetupRansomManMap()
@@ -95,9 +115,9 @@ namespace Pathfinding
             float closestDist = Mathf.Infinity;
             Node closest = null;
 
-            for (int x = 0; x < Width - 1; x++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < Height - 1; y++)
+                for (int y = 0; y < Height; y++)
                 {
                     Node node = grid.Get(x, y);
                     Vector3 nodePos = GetNodeWorldPosition(node);
@@ -165,9 +185,9 @@ namespace Pathfinding
         // function that resets all nodes for recalculation of path
         public void ResetNodes()
         {
-            for (int x = 0; x < Width - 1; x++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < Height - 1; y++)
+                for (int y = 0; y < Height; y++)
                 {
                     grid.Get(x, y).ResetValues();
                 }
