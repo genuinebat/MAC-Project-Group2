@@ -42,7 +42,7 @@ namespace WhackaAd
             if (IsRunning || IsCompleted) return;
 
             base.EnablePopup();
-            
+
             Debug.Log("got thru");
 
             if (closingCor != null) StopCoroutine(closingCor);
@@ -175,16 +175,12 @@ namespace WhackaAd
 
             Time.timeScale = 1f;
 
-            foreach (Transform child in SpawnStore.transform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-
             UI.SetActive(false);
             LoseUI.SetActive(false);
             timer.GameStarted = false;
             spawner.GameStarted = false;
             AntivirusBtn.enabled = true;
+            HintTxt.SetActive(true);
 
             spawner.AdwareTemp.AddRange(spawner.Adwares);
 
@@ -195,7 +191,6 @@ namespace WhackaAd
             }
 
 
-            HintTxt.SetActive(true);
         }
     }
 }
