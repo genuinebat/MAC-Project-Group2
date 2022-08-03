@@ -3345,6 +3345,7 @@ MonoBehaviour:
   UI: {fileID: 1465802092}
   LoseUI: {fileID: 1905369273}
   SpawnStore: {fileID: 669202767}
+  AntivirusBtn: {fileID: 1181522406}
 --- !u!114 &1443064771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3373,6 +3374,7 @@ MonoBehaviour:
   AntivirusUI: {fileID: 1229197748}
   Icon: {fileID: 1729823184}
   AntiVirusCooldownTime: 5
+  AntivirusBtn: {fileID: 1181522406}
 --- !u!114 &1443064773
 MonoBehaviour:
   m_ObjectHideFlags: 0

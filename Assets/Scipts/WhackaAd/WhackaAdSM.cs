@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 namespace WhackaAd
@@ -14,6 +15,7 @@ namespace WhackaAd
         public GameObject UI;
         public GameObject LoseUI;
         public GameObject SpawnStore;
+        public Button AntivirusBtn;
 
         Coroutine closingCor;
         WhackaAdSpawner spawner;
@@ -173,10 +175,16 @@ namespace WhackaAd
             LoseUI.SetActive(false);
             timer.GameStarted = false;
             spawner.GameStarted = false;
+            AntivirusBtn.enabled = true;
+
+            spawner.AdwareTemp.AddRange(spawner.Adwares);
+
+            timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)
             {
                 GameObject.Destroy(child.gameObject);
             }
+
         }
     }
 }

@@ -11,6 +11,7 @@ namespace WhackaAd
         public GameObject AntivirusUI;
         public Image Icon;
         public float AntiVirusCooldownTime;
+        public Button AntivirusBtn;
 
         int removed;
 
@@ -41,9 +42,9 @@ namespace WhackaAd
 
         IEnumerator AntiVirusCooldown()
         {
-            GameObject.Find("AntiVirusBtn").GetComponent<Button>().enabled = false;
+            AntivirusBtn.enabled = false;
             yield return new WaitForSeconds(AntiVirusCooldownTime);
-            GameObject.Find("AntiVirusBtn").GetComponent<Button>().enabled = true;
+            AntivirusBtn.enabled = true;
         }
 
         IEnumerator ChangeFill()
