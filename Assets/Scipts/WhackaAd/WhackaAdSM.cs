@@ -52,7 +52,7 @@ namespace WhackaAd
 
         public override void DisablePopup()
         {
-            base.DisablePopup();
+            closingCor = StartCoroutine(ClosePopup());
         }
 
         // coroutine for the opening popup animation
@@ -166,12 +166,13 @@ namespace WhackaAd
         public override void Cancel()
         {
             base.Cancel();
+
+            Time.timeScale = 1f;
             UI.SetActive(false);
             HintTxt.SetActive(true);
             LoseUI.SetActive(false);
             timer.GameStarted = false;
             spawner.GameStarted = false;
-            Popup.SetActive(false);
             foreach (Transform child in SpawnStore.transform)
             {
                 GameObject.Destroy(child.gameObject);
