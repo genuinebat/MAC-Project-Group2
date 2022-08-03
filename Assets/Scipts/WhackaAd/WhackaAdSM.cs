@@ -36,9 +36,12 @@ namespace WhackaAd
 
         public override void EnablePopup()
         {
+            Debug.Log("called");
             if (IsRunning || IsCompleted) return;
 
             base.EnablePopup();
+            
+            Debug.Log("got thru");
 
             if (closingCor != null) StopCoroutine(closingCor);
 
@@ -61,6 +64,7 @@ namespace WhackaAd
             // expanding the popup horizontally
             while (Popup.transform.localScale.x < (popupWidth - 0.02f))
             {
+                Debug.Log("running");
                 Popup.transform.localScale =
                     Vector3.Lerp(
                         Popup.transform.localScale,
@@ -168,15 +172,18 @@ namespace WhackaAd
             base.Cancel();
 
             Time.timeScale = 1f;
-            UI.SetActive(false);
-            HintTxt.SetActive(true);
-            LoseUI.SetActive(false);
-            timer.GameStarted = false;
-            spawner.GameStarted = false;
+
             foreach (Transform child in SpawnStore.transform)
             {
                 GameObject.Destroy(child.gameObject);
             }
+
+            UI.SetActive(false);
+            LoseUI.SetActive(false);
+            timer.GameStarted = false;
+            spawner.GameStarted = false;
+
+            HintTxt.SetActive(true);
         }
     }
 }

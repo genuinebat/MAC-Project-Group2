@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Pathfinding;
 
 namespace RansomMan
 {
@@ -12,6 +13,7 @@ namespace RansomMan
         public GameObject PopupDisplay;
         public GameObject HintTxt;
         public GameObject UI;
+        public NodeManager nm;
 
         Coroutine closingCor;
 
@@ -150,6 +152,8 @@ namespace RansomMan
 
             HintTxt.SetActive(false);
             UI.SetActive(true);
+
+            nm.SpawnMapPrefabs();
         }
 
         public override void Cancel()

@@ -39,23 +39,6 @@ namespace Pathfinding
             }
 
             SetupRansomManMap();
-
-            for (int x = 0; x < Width; x++)
-            {
-                for (int y = 0; y < Height; y++)
-                {
-                    GameObject cube = null;
-                    if (grid.Get(x, y).Obstacle)
-                    {
-                        cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
-                    }
-                    else
-                    {
-                        cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
-                    }
-                    cube.transform.parent = transform;
-                }
-            }
         }
 
         IEnumerator UpdatePosition()
@@ -76,6 +59,26 @@ namespace Pathfinding
                 transform.position.y - (Mathf.Ceil(Height / 2) * CellSize),
                 transform.position.z
             );
+        }
+
+        public void SpawnMapPrefabs()
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    GameObject cube = null;
+                    if (grid.Get(x, y).Obstacle)
+                    {
+                        cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                    }
+                    else
+                    {
+                        cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                    }
+                    cube.transform.parent = transform;
+                }
+            }
         }
 
         void SetupRansomManMap()
