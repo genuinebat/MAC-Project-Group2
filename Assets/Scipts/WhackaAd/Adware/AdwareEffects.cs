@@ -18,6 +18,7 @@ namespace WhackaAd
         public float TeleportCooldown;
 
         public float TeleportRange;
+        public GameObject TeleportParticles;
 
         MovementEffect movementEffect;
 
@@ -49,7 +50,9 @@ namespace WhackaAd
         {
             if (teleportEffect.CanTele)
             {
-                teleportEffect.Teleport (CurrentLocation);
+                Instantiate(TeleportParticles, CurrentLocation.parent.GetChild(0).position, Quaternion.identity);
+
+                teleportEffect.Teleport(CurrentLocation);
             }
             else
             {

@@ -555,6 +555,7 @@ MonoBehaviour:
   MoveRange: 0
   TeleportCooldown: 0
   TeleportRange: 0
+  TeleportParticles: {fileID: 3693497032949565318, guid: 40f750ab6b2904b46963a2704e3b67f7, type: 3}
 --- !u!1 &6978472487034346430
 GameObject:
   m_ObjectHideFlags: 0
