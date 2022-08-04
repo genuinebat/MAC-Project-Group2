@@ -48,7 +48,7 @@ namespace RansomMan
 
         public override void DisablePopup()
         {
-            base.DisablePopup();
+            closingCor = StartCoroutine(ClosePopup());
         }
 
         // coroutine for the opening popup animation

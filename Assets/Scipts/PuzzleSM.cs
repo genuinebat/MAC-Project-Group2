@@ -32,12 +32,12 @@ public class PuzzleSM : MonoBehaviour
 
     }
 
-    public virtual void EnablePopup(GameObject PopupTemp, GameObject DisplayTemp)
+    public virtual void EnablePopup()
     {
 
     }
 
-    public virtual void DisablePopup(GameObject PopupTemp, GameObject DisplayTemp)
+    public virtual void DisablePopup()
     {
 
     }

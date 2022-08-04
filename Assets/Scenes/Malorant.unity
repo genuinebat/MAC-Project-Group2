@@ -5655,7 +5655,7 @@ MonoBehaviour:
   Spawner: {fileID: 2137139521}
   UI: {fileID: 653220820}
   Popup: {fileID: 1421296282}
-  PopupDisplay: {fileID: 2066027671}
+  PopupDisplay: {fileID: 1752913036}
   LoseUI: {fileID: 1884176390}
   WinUI: {fileID: 1204962268}
   ScannerUnlockUI: {fileID: 905995695}
@@ -5905,6 +5905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d77288ae9e5fbc439dff6f77d0b8bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TutorialPanel: {fileID: 0}
 --- !u!114 &1908890395
 MonoBehaviour:
   m_ObjectHideFlags: 0

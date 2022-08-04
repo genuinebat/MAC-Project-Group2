@@ -38,7 +38,7 @@ namespace WhackaAd
             Cancel();
         }
 
-        public override void EnablePopup(GameObject PopUpTemp, GameObject DisplayTemp)
+        public override void EnablePopup()
         {
             Debug.Log("called");
             if (IsRunning || IsCompleted) return;
@@ -49,124 +49,123 @@ namespace WhackaAd
 
             if (closingCor != null) StopCoroutine(closingCor);
 
-            PopUpTemp.transform.localScale = new Vector3(0f, 0.1f, PopUpTemp.transform.localScale.z);
+            Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
-            DisplayTemp.SetActive(false);
-            PopUpTemp.SetActive(true);
+            PopupDisplay.SetActive(false);
+            Popup.SetActive(true);
 
-            StartCoroutine(OpenPopup(PopUpTemp, DisplayTemp));
+            StartCoroutine(OpenPopup());
         }
 
-        public override void DisablePopup(GameObject PopUpTemp, GameObject DisplayTemp)
+        public override void DisablePopup()
         {
-            closingCor = StartCoroutine(ClosePopup(PopUpTemp, DisplayTemp));
+            closingCor = StartCoroutine(ClosePopup());
         }
 
         // coroutine for the opening popup animation
-        IEnumerator OpenPopup(GameObject PopUpTemp, GameObject DisplayTemp)
+        IEnumerator OpenPopup()
         {
 
             // expanding the popup horizontally
-            while (PopUpTemp.transform.localScale.x < (popupWidth - 0.02f))
+            while (Popup.transform.localScale.x < (popupWidth - 0.02f))
             {
-                Debug.Log("running");
-                PopUpTemp.transform.localScale =
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        PopUpTemp.transform.localScale,
+                        Popup.transform.localScale,
                         new Vector3(
                             popupWidth,
-                            PopUpTemp.transform.localScale.y,
-                            PopUpTemp.transform.localScale.z
+                            Popup.transform.localScale.y,
+                            Popup.transform.localScale.z
                         ),
                         5 * Time.deltaTime
                     );
 
                 yield return null;
             }
-            PopUpTemp.transform.localScale = new Vector3(popupWidth, PopUpTemp.transform.localScale.y, Popup.transform.localScale.z);
+            Popup.transform.localScale = new Vector3(popupWidth, Popup.transform.localScale.y, Popup.transform.localScale.z);
 
             yield return new WaitForSeconds(.1f);
 
             // expanding the popup vertically
-            while (PopUpTemp.transform.localScale.y < (popupHeight - 0.02f))
+            while (Popup.transform.localScale.y < (popupHeight - 0.02f))
             {
-                PopUpTemp.transform.localScale =
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        PopUpTemp.transform.localScale,
+                        Popup.transform.localScale,
                         new Vector3(
                             popupWidth,
                             popupHeight,
-                            PopUpTemp.transform.localScale.z
+                            Popup.transform.localScale.z
                         ),
                         5 * Time.deltaTime
                     );
 
                 yield return null;
             }
-            PopUpTemp.transform.localScale = new Vector3(popupWidth, popupHeight, PopUpTemp.transform.localScale.z);
+            Popup.transform.localScale = new Vector3(popupWidth, popupHeight, Popup.transform.localScale.z);
 
-            DisplayTemp.SetActive(true);
+            PopupDisplay.SetActive(true);
         }
 
         // coroutine for the closing popup animation
-        IEnumerator ClosePopup(GameObject PopUpTemp, GameObject DisplayTemp)
+        IEnumerator ClosePopup()
         {
-            DisplayTemp.SetActive(false);
+            PopupDisplay.SetActive(false);
 
             // closing the popup vertically
             while (Popup.transform.localScale.y > (0.1f + 0.02f))
             {
-                PopUpTemp.transform.localScale =
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        PopUpTemp.transform.localScale,
+                        Popup.transform.localScale,
                         new Vector3(
-                            PopUpTemp.transform.localScale.x,
+                            Popup.transform.localScale.x,
                             0.1f,
-                            PopUpTemp.transform.localScale.z
+                            Popup.transform.localScale.z
                         ),
                         5 * Time.deltaTime
                     );
 
                 yield return null;
             }
-            PopUpTemp.transform.localScale = new Vector3(Popup.transform.localScale.x, 0.1f, PopUpTemp.transform.localScale.z);
+            Popup.transform.localScale = new Vector3(Popup.transform.localScale.x, 0.1f, Popup.transform.localScale.z);
 
             yield return new WaitForSeconds(.1f);
 
             // closing the popup horizontally
-            while (PopUpTemp.transform.localScale.x > 0.02f)
+            while (Popup.transform.localScale.x > 0.02f)
             {
-                PopUpTemp.transform.localScale =
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        PopUpTemp.transform.localScale,
+                        Popup.transform.localScale,
                         new Vector3(
                             0f,
                             0.1f,
-                            PopUpTemp.transform.localScale.z
+                            Popup.transform.localScale.z
                         ),
                         5 * Time.deltaTime
                     );
 
                 yield return null;
             }
-            PopUpTemp.transform.localScale = new Vector3(0f, 0.1f, PopUpTemp.transform.localScale.z);
+            Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             closingCor = null;
 
-            PopUpTemp.SetActive(false);
+            Popup.SetActive(false);
         }
 
         public override void Initialize()
         {
-            DisablePopup(TutorialPanel, TutorialPanelDisplay);
             if (IsRunning) return;
 
             base.Initialize();
 
-            PopUpTemp.transform.localScale = new Vector3(0f, 0.1f, PopUpTemp.transform.localScale.z);
+            Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             spawner.GameStarted = true;
 
+            TutorialPanel.SetActive(false);
             HintTxt.SetActive(false);
             UI.SetActive(true);
 
@@ -199,8 +198,7 @@ namespace WhackaAd
         public void OpenTutorialPanel()
         {
             TutorialPanel.SetActive(true);
-            EnablePopup(TutorialPanel, TutorialPanelDisplay);
-            DisablePopup(Popup, PopupDisplay);
+            DisablePopup();
         }
     }
 }

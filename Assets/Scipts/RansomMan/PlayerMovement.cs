@@ -14,6 +14,7 @@ namespace RansomMan
 
         NodeManager nm;
         Pathfinder pf;
+        Coroutine turningCor;
 
         List<Vector3> path;
         Vector3 targetLocation;
@@ -66,27 +67,45 @@ namespace RansomMan
                     //swipe upwards
                     if(currentSwipe.y > 0 && currentSwipe.x > -0.5f  &&currentSwipe.x < 0.5f)
                     {
-                        transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+                        if (turningCor != null) StopCoroutine(turningCor);
+
+                        turningCor = StartCoroutine(Turn(Quaternion.Euler(-90f, 0f, 0f)));
                     }
                     
                     //swipe down
                     if(currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
                     {
-                        transform.rotation = Quaternion.Euler(90f, 180f, 0f);
+                        if (turningCor != null) StopCoroutine(turningCor);
+
+                        turningCor = StartCoroutine(Turn(Quaternion.Euler(90f, 180f, 0f)));
                     }
 
                     //swipe left
                     if(currentSwipe.x < 0 && currentSwipe.y > -0.5f &&currentSwipe.y < 0.5f)
                     {
-                        transform.rotation = Quaternion.Euler(0f, -90f, 90f);
+                        if (turningCor != null) StopCoroutine(turningCor);
+
+                        turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, -90f, 90f)));
                     }
 
                     //swipe right
                     if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
                     {
-                        transform.rotation = Quaternion.Euler(0f, 90f, -90f);
+                        if (turningCor != null) StopCoroutine(turningCor);
+
+                        turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, 90f, -90f)));
                     }
                 }
+            }
+        }
+
+        IEnumerator Turn(Quaternion lookRot)
+        {
+            for (;;)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime);
+
+                yield return null;
             }
         }
     }
