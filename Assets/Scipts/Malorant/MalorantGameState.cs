@@ -73,8 +73,12 @@ namespace Malorant
                     if (trojan != null)
                     {
                         trojan.Find("SpeechBubble").gameObject.SetActive(true);
+                        if (trojan.gameObject.tag == "Trojan")
+                        {
+                            trojan.gameObject.tag = "Scannable";
 
-                        trojan.gameObject.tag = "Scannable";
+                        }
+
                     }
                 }
             }
