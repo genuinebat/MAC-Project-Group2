@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PuzzleSM : MonoBehaviour
 {
-    public enum State {NotCompleted, Running, Completed}
+    public enum State { NotCompleted, Running, Completed }
     State currentState;
 
-    public bool IsRunning {
-        get {
+    public bool IsRunning
+    {
+        get
+        {
             return currentState == State.Running ? true : false;
         }
     }
-    public bool IsCompleted {
-        get {
+    public bool IsCompleted
+    {
+        get
+        {
             return currentState == State.Completed ? true : false;
         }
     }
@@ -25,17 +29,17 @@ public class PuzzleSM : MonoBehaviour
 
     public virtual void StartPuzzle()
     {
-        
+
     }
 
-    public virtual void EnablePopup()
+    public virtual void EnablePopup(GameObject PopupTemp, GameObject DisplayTemp)
     {
 
     }
 
-    public virtual void DisablePopup()
+    public virtual void DisablePopup(GameObject PopupTemp, GameObject DisplayTemp)
     {
-        
+
     }
 
     public virtual void Initialize()

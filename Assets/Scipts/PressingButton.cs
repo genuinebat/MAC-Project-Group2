@@ -8,17 +8,20 @@ public class PressingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 {
     // boolean to check if the button is being pressed and held down
     public bool Pressing { get; private set; }
+    public GameObject TutorialPanel;
 
     void Start()
     {
         Pressing = false;
     }
 
-    public void OnPointerDown(PointerEventData eventData){
+    public void OnPointerDown(PointerEventData eventData)
+    {
         Pressing = true;
     }
-    
-    public void OnPointerUp(PointerEventData eventData){
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
         Pressing = false;
     }
 }
