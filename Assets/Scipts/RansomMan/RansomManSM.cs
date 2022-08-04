@@ -155,7 +155,11 @@ namespace RansomMan
             UI.SetActive(true);
 
             nm.SpawnMapPrefabs();
-            Player.GetComponent<PlayerMovement>().PlayerStartPosition();
+
+            PlayerMovement pm = Player.GetComponent<PlayerMovement>();
+
+            pm.PlayerStartPosition();
+            pm.GameStarted = true;
         }
 
         public override void Cancel()
