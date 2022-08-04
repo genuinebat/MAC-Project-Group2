@@ -68,7 +68,7 @@ namespace Malorant
                     Random.Range(minY, maxY),
                     transform.position.z
                 ),
-                Quaternion.Euler(0f, 180f, 0f)
+                Quaternion.Euler(0f, 0f, 0f)
             );
 
             adware.transform.parent = transform.parent;
@@ -85,10 +85,10 @@ namespace Malorant
 
         void MoveToTargetLocation()
         {
-            transform.position = 
+            transform.position =
                 Vector3.MoveTowards(
                     transform.position,
-                    targetLocation, 
+                    targetLocation,
                     Speed * Time.deltaTime
                 );
         }
@@ -101,7 +101,7 @@ namespace Malorant
                     Random.Range(quads[quad].MinY, quads[quad].MaxY),
                     quads[quad].Z
                 );
-            
+
             if (quad < 3) quad++;
             else quad = 0;
         }
