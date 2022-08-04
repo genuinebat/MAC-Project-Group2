@@ -18,9 +18,9 @@ namespace Malorant
         bool Scanned { get; }
         void Scan();
     }
-    
+
     // enumerator of all types of guns
-    enum Gun {Raygun, Scanner}
+    enum Gun { Raygun, Scanner }
 
     public class Weapons : MonoBehaviour
     {
@@ -124,7 +124,7 @@ namespace Malorant
                     return;
                 }
 
-                if (hit.transform.tag == "ScannableEnemy")
+                if (hit.transform.tag == "Scannable")
                 {
                     ScannerFillBack.SetActive(true);
                     TargetFoundTxt.text = "???";
@@ -139,7 +139,7 @@ namespace Malorant
                     ScannerFillBack.SetActive(true);
                     TargetFoundTxt.text = hit.transform.name.Replace("(Clone)", "");
                     scannable = false;
-                    
+
                     return;
                 }
             }
@@ -160,6 +160,7 @@ namespace Malorant
             elap = 0f;
 
             Debug.Log(scannableObj.name);
+            scannableObj.GetComponent<IScannable>().Scan();
             scannableObj.GetComponentInParent<IScannable>().Scan();
 
             StartCoroutine(ScannedText());
@@ -205,14 +206,14 @@ namespace Malorant
             if (weaponNotif != null) StopCoroutine(weaponNotif);
             weaponNotif = StartCoroutine(WeaponNotif("Scanner"));
         }
-        
+
         IEnumerator ScannedText()
-        {            
+        {
             RectTransform rt = ScannedTxt.GetComponent<RectTransform>();
 
             Vector2 ogPos = rt.position;
             Vector3 ogScale = rt.localScale;
-            
+
             Vector2 targetPos = ogPos + new Vector2(0f, 80f);
             Vector3 targetScale = ogScale * 0.6f;
             targetScale.z = 1;
@@ -224,12 +225,12 @@ namespace Malorant
                 rt.position = Vector2.MoveTowards(rt.position, targetPos, Time.deltaTime * 60);
 
                 rt.localScale = Vector3.Lerp(rt.localScale, targetScale, Time.deltaTime * 2);
-                
+
                 yield return null;
             }
 
             ScannedTxt.SetActive(false);
-            
+
             rt.position = ogPos;
             rt.localScale = ogScale;
         }
@@ -248,7 +249,7 @@ namespace Malorant
             {
                 // set color with i as alpha
                 WeaponNotification.GetComponent<Image>().color = new Color(1, 1, 1, i);
-                
+
                 yield return null;
             }
 

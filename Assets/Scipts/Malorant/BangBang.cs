@@ -22,13 +22,17 @@ namespace Malorant
             if (Physics.Raycast(ray, out hit))
             {
                 // spawning the particle effect
-                Instantiate(hitEffect,hit.point, Quaternion.identity);
+                Instantiate(hitEffect, hit.point, Quaternion.identity);
 
                 IDamageable i = hit.transform.gameObject.GetComponent<IDamageable>();
 
-                if (i != null && hit.transform.gameObject.tag == "Enemy") i.GetHit();
+                if (i != null && hit.transform.gameObject.tag == "Enemy")
+                {
+                    i.GetHit();
+                    timer.CheckWin();
 
-                timer.CheckWin();
+                }
+
             }
         }
     }

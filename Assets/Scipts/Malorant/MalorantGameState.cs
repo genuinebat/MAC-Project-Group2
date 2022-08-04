@@ -26,7 +26,7 @@ namespace Malorant
         [HideInInspector]
         public float timeLeft;
 
-        public bool DialogueEnd { private get; set;}
+        public bool DialogueEnd { private get; set; }
 
         Dialogue dialogueScript;
 
@@ -73,8 +73,8 @@ namespace Malorant
                     if (trojan != null)
                     {
                         trojan.Find("SpeechBubble").gameObject.SetActive(true);
-                        
-                        trojan.gameObject.tag = "ScannableEnemy";
+
+                        trojan.gameObject.tag = "Scannable";
                     }
                 }
             }
@@ -95,7 +95,7 @@ namespace Malorant
             DialogueEnd = false;
             dialogueScript.NextPhase = true;
 
-            for (;;)
+            for (; ; )
             {
                 if (DialogueEnd)
                 {
@@ -109,7 +109,7 @@ namespace Malorant
 
         IEnumerator FlashRed()
         {
-            for (;;)
+            for (; ; )
             {
                 yield return new WaitForSeconds(.5f);
                 TimerUI.color = Color.red;
@@ -121,14 +121,14 @@ namespace Malorant
 
         IEnumerator Pulse()
         {
-            for (;;)
+            for (; ; )
             {
                 for (int i = 0; i < 20; i++)
                 {
                     TimerUI.fontSize += 1;
                     yield return new WaitForSeconds(.05f);
                 }
-                
+
                 for (int i = 0; i < 20; i++)
                 {
                     TimerUI.fontSize -= 1;

@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 8775951060420697651}
   m_Layer: 0
   m_Name: Adware
-  m_TagString: ScannableEnemy
+  m_TagString: Scannable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
