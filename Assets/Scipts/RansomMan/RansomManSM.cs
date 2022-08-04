@@ -13,6 +13,7 @@ namespace RansomMan
         public GameObject PopupDisplay;
         public GameObject HintTxt;
         public GameObject UI;
+        public GameObject Player;
         public NodeManager nm;
 
         Coroutine closingCor;
@@ -154,6 +155,7 @@ namespace RansomMan
             UI.SetActive(true);
 
             nm.SpawnMapPrefabs();
+            Player.GetComponent<PlayerMovement>().PlayerStartPosition();
         }
 
         public override void Cancel()

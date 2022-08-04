@@ -18,7 +18,12 @@ namespace RansomMan
 
         void Update()
         {
+            
+        }
 
+        public void PlayerStartPosition()
+        {
+            transform.position = nm.GetNodeWorldPosition(nm.grid.Get(13, 7));
         }
     }
 }

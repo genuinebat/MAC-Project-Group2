@@ -23,7 +23,7 @@ namespace Pathfinding
         public Transform ImageTarget;
 
         // grid object of nodes
-        PFGrid<Node> grid;
+        public PFGrid<Node> grid;
 
         void Start()
         {
