@@ -11,8 +11,9 @@ namespace Pathfinding
         [Header("Prefabs")]
         public GameObject BytePrefab;
         public GameObject ObstaclePrefab;
-        // the length of the grid on the x and y axis respectively
+
         [Header("grid width, height and spacing")]
+        // the length of the grid on the x and y axis respectively
         public int Width;
         public int Height;
         // the spacing between each node both vertically and horizontally
@@ -98,13 +99,9 @@ namespace Pathfinding
         {
             string content = "";
 
-            #if UNITY_EDITOR && UNITY_ANDROID
-                content = File.ReadAllText(Application.dataPath + "/RansomManMap.txt");
-            #endif
+            Debug.Log(Application.platform);
 
-            #if !UNITY_EDITOR && UNITY_ANDROID
-                content = File.ReadAllText(Application.streamingAssetsPath + "/RansomManMap.txt");
-            #endif
+            content = Resources.Load<TextAsset>("RansomManMap").text;
 
             Debug.Log(content);
 
