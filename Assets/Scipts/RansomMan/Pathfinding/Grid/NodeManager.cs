@@ -44,7 +44,7 @@ namespace Pathfinding
 
         IEnumerator UpdatePosition()
         {
-            for (;;)
+            for (; ; )
             {
                 SetPositionInfronOfImageTarget();
                 yield return new WaitForSeconds(1f);
@@ -68,16 +68,20 @@ namespace Pathfinding
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    GameObject cube = null;
-                    if (grid.Get(x, y).Obstacle)
+
+                    if (!grid.Get(x, y).Empty)
                     {
-                        cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                        GameObject cube = null;
+                        if (grid.Get(x, y).Obstacle)
+                        {
+                            cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                        }
+                        else
+                        {
+                            cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                        }
+                        cube.transform.parent = transform;
                     }
-                    else
-                    {
-                        cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
-                    }
-                    cube.transform.parent = transform;
                 }
             }
         }
@@ -85,12 +89,13 @@ namespace Pathfinding
         void SetupRansomManMap()
         {
             char[,] map = GetMap();
-            
+
             for (int a = 0; a < map.GetLength(1); a++)
             {
                 for (int b = 0; b < map.GetLength(0); b++)
                 {
                     grid.Get(b, a).Obstacle = map[b, a] == '1' ? true : false;
+                    grid.Get(b, a).Empty = map[b, a] == '2' ? true : false;
                 }
             }
         }
@@ -101,13 +106,13 @@ namespace Pathfinding
 
             content = Resources.Load<TextAsset>("RansomManMap").text;
 
-            char[,] map =  new char[27, 29];
+            char[,] map = new char[Width, Height];
 
             for (int a = 0; a < map.GetLength(1); a++)
             {
                 for (int b = 0; b < map.GetLength(0); b++)
                 {
-                    map[b, (map.GetLength(1) - 1- a)] = content.Split("\n")[a][b];
+                    map[b, (map.GetLength(1) - 1 - a)] = content.Split("\n")[a][b];
                 }
             }
 
@@ -170,10 +175,10 @@ namespace Pathfinding
 
             // right node
             if (curr.GridX < Width - 1) list.Add(grid.Get(curr.GridX + 1, curr.GridY));
-            
+
             // top node
             if (curr.GridY < Height - 1) list.Add(grid.Get(curr.GridX, curr.GridY + 1));
-            
+
             return list;
         }
 

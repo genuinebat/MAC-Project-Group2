@@ -1267,6 +1267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3632456533956020404, guid: bec34122cbf6cf7418251f8ca805c328, type: 3}
+      propertyPath: Speed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3632456533956020406, guid: bec34122cbf6cf7418251f8ca805c328, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1547,9 +1551,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BytePrefab: {fileID: 7262194993636267871, guid: 8dffb4e42ed5b9243a1ee825c9349b5e, type: 3}
   ObstaclePrefab: {fileID: 7262194993636267871, guid: 1d6de7ecabb8cb243990658729a9c9be, type: 3}
-  Width: 27
-  Height: 29
-  CellSize: 0.4
+  Width: 23
+  Height: 25
+  CellSize: 0.5
   ImageTarget: {fileID: 2083121281}
 --- !u!1 &1928599301
 GameObject:

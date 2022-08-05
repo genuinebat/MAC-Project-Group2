@@ -13,6 +13,8 @@ namespace Pathfinding
         // bool for if this node overlaps with an obstacle obeject
         public bool Obstacle { get; set; }
 
+        public bool Empty { get; set; }
+
         // the x and y coordinates of this node in the figurative grid created by the node manager
         public int GridX { get; private set; }
         public int GridY { get; private set; }
@@ -22,10 +24,11 @@ namespace Pathfinding
         // the estimated cost to get from this node to the end node ignoring all obstacles
         public int H { get; set; }
         // the sum of G cost and H cost
-        public int F { 
+        public int F
+        {
             get { return G + H; }
-            set {}
-        }        
+            set { }
+        }
 
         public Node()
         {
@@ -42,7 +45,7 @@ namespace Pathfinding
         public void ResetValues()
         {
             PreviousNode = null;
-            
+
             G = int.MaxValue;
             H = 0;
         }

@@ -18,7 +18,7 @@ namespace RansomMan
 
         Coroutine closingCor;
 
-        float popupHeight, popupWidth; 
+        float popupHeight, popupWidth;
 
         void Start()
         {
@@ -67,17 +67,17 @@ namespace RansomMan
             // expanding the popup horizontally
             while (Popup.transform.localScale.x < (popupWidth - 0.02f))
             {
-                Popup.transform.localScale = 
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        Popup.transform.localScale, 
+                        Popup.transform.localScale,
                         new Vector3(
                             popupWidth,
                             Popup.transform.localScale.y,
                             Popup.transform.localScale.z
-                        ), 
+                        ),
                         5 * Time.deltaTime
                     );
-                
+
                 yield return null;
             }
             Popup.transform.localScale = new Vector3(popupWidth, Popup.transform.localScale.y, Popup.transform.localScale.z);
@@ -87,21 +87,21 @@ namespace RansomMan
             // expanding the popup vertically
             while (Popup.transform.localScale.y < (popupHeight - 0.02f))
             {
-                Popup.transform.localScale = 
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        Popup.transform.localScale, 
+                        Popup.transform.localScale,
                         new Vector3(
                             popupWidth,
                             popupHeight,
                             Popup.transform.localScale.z
-                        ), 
+                        ),
                         5 * Time.deltaTime
                     );
-                
+
                 yield return null;
             }
             Popup.transform.localScale = new Vector3(popupWidth, popupHeight, Popup.transform.localScale.z);
-            
+
             PopupDisplay.SetActive(true);
         }
 
@@ -113,43 +113,43 @@ namespace RansomMan
             // closing the popup vertically
             while (Popup.transform.localScale.y > (0.1f + 0.02f))
             {
-                Popup.transform.localScale = 
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        Popup.transform.localScale, 
+                        Popup.transform.localScale,
                         new Vector3(
                             Popup.transform.localScale.x,
                             0.1f,
                             Popup.transform.localScale.z
-                        ), 
+                        ),
                         5 * Time.deltaTime
                     );
-                
+
                 yield return null;
             }
             Popup.transform.localScale = new Vector3(Popup.transform.localScale.x, 0.1f, Popup.transform.localScale.z);
-            
+
             yield return new WaitForSeconds(.1f);
 
             // closing the popup horizontally
             while (Popup.transform.localScale.x > 0.02f)
             {
-                Popup.transform.localScale = 
+                Popup.transform.localScale =
                     Vector3.Lerp(
-                        Popup.transform.localScale, 
+                        Popup.transform.localScale,
                         new Vector3(
                             0f,
                             0.1f,
                             Popup.transform.localScale.z
-                        ), 
+                        ),
                         5 * Time.deltaTime
                     );
-                
+
                 yield return null;
             }
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             closingCor = null;
-            
+
             Popup.SetActive(false);
         }
 
