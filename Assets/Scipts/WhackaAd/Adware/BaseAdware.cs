@@ -26,17 +26,22 @@ namespace WhackaAd
 
         public void DuplicateEnemy()
         {
+            float minX = transform.position.x - 3;
+            float maxX = transform.position.x + 3;
+            float minY = transform.position.y - 3;
+            float maxY = transform.position.y + 3;
+
             GameObject dup = Instantiate(
                 AdwarePrefab,
                 new Vector3(
-                    gameObject.transform.position.x,
-                    gameObject.transform.position.y,
+                    Random.Range(minX, maxX),
+                    Random.Range(minY, maxY),
                     gameObject.transform.position.z
                 ),
                 Quaternion.identity
             );
             transform.position = new Vector3(
-                gameObject.transform.position.x + .01f,
+                transform.position.x + .01f,
                 gameObject.transform.position.y - .01f,
                 gameObject.transform.position.z - .01f
             );

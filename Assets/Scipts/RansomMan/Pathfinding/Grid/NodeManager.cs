@@ -21,6 +21,7 @@ namespace Pathfinding
 
         [Header("Reference Variables")]
         public Transform ImageTarget;
+        public GameObject Back;
 
         // grid object of nodes
         public PFGrid<Node> grid;
@@ -28,6 +29,10 @@ namespace Pathfinding
         void Start()
         {
             StartCoroutine(UpdatePosition());
+
+            Back.transform.localScale = new Vector3(Width / 2, Height / 2, 0.01f);
+            Back.transform.position = new Vector3(ImageTarget.position.x, ImageTarget.position.y, ImageTarget.position.z + 0.05f);
+            Back.SetActive(false);
 
             grid = new PFGrid<Node>(Width, Height);
 
@@ -57,7 +62,7 @@ namespace Pathfinding
 
             transform.position = new Vector3(
                 transform.position.x - (Mathf.Ceil(Width / 2) * CellSize),
-                transform.position.y - (Mathf.Ceil(Height / 2) * CellSize),
+                transform.position.y - (Mathf.Ceil(Height / 2) * CellSize) + 1,
                 transform.position.z
             );
         }
@@ -84,6 +89,7 @@ namespace Pathfinding
                     }
                 }
             }
+            Back.SetActive(true);
         }
 
         void SetupRansomManMap()
