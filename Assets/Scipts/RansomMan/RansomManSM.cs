@@ -28,6 +28,16 @@ namespace RansomMan
             HintTxt.GetComponent<TMP_Text>().text = "hint: the gears do be working";
 
             Cancel();
+
+            // FOR DEVLOPMENT ONLY
+            //StartCoroutine(LateStart());
+        }
+
+        // FOR DEVELOPMENT ONLY
+        IEnumerator LateStart()
+        {
+            yield return new WaitForSeconds(3f);
+            Initialize();
         }
 
         public override void EnablePopup()
@@ -168,6 +178,7 @@ namespace RansomMan
 
             UI.SetActive(false);
             HintTxt.SetActive(true);
+            Player.transform.position = new Vector3(100, 100, 100);
         }
     }
 }

@@ -99,11 +99,7 @@ namespace Pathfinding
         {
             string content = "";
 
-            Debug.Log(Application.platform);
-
             content = Resources.Load<TextAsset>("RansomManMap").text;
-
-            Debug.Log(content);
 
             char[,] map =  new char[27, 29];
 
