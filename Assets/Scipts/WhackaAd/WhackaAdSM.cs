@@ -201,5 +201,4 @@ namespace WhackaAd
             DisablePopup();
         }
     }
-    //hi
 }
