@@ -32,6 +32,9 @@ namespace RansomMan
         {
             if (!GameStarted) return;
 
+            // FOR DEVELOPMENT ONLY
+            ArrowInput();
+
             SwipeInput();
 
             path = pf.GetPath(transform.position, transform.position + (transform.forward * nm.CellSize));
@@ -106,6 +109,35 @@ namespace RansomMan
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * 720);
 
                 yield return null;
+            }
+        }
+
+        // FOR DEVELOPMENT ONLY
+        void ArrowInput()
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (turningCor != null) StopCoroutine(turningCor);
+
+                turningCor = StartCoroutine(Turn(Quaternion.Euler(-90f, 0f, 0f)));
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (turningCor != null) StopCoroutine(turningCor);
+
+                turningCor = StartCoroutine(Turn(Quaternion.Euler(90f, 180f, 0f)));
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (turningCor != null) StopCoroutine(turningCor);
+
+                turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, -90f, 90f)));
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (turningCor != null) StopCoroutine(turningCor);
+
+                turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, 90f, -90f)));
             }
         }
     }
