@@ -10,6 +10,7 @@ namespace WhackaAd
 
         public bool CanTele { get; private set; }
 
+        MonoBehaviour mb;
         GameObject adware;
 
         float
@@ -18,11 +19,12 @@ namespace WhackaAd
                 range,
                 elap;
 
-        public TeleportEffect(GameObject _adware, float _cooldown, float _range)
+        public TeleportEffect(GameObject _adware, float _cooldown, float _range, MonoBehaviour _mb)
         {
             adware = _adware;
             cooldown = _cooldown;
             range = _range;
+            mb = _mb;
         }
 
         public override void Init()
@@ -62,9 +64,18 @@ namespace WhackaAd
 
             Vector3 pos = adware.transform.position + (dir * range);
 
-            adware.transform.position = pos;
+            mb.StartCoroutine(MoveToTeleportLocation(pos));
 
             elap = 0f;
+        }
+
+        IEnumerator MoveToTeleportLocation(Vector3 pos)
+        {
+            while (Vector3.Distance(adware.transform.position, pos) > 0.02f)
+            {
+                adware.transform.position = Vector3.MoveTowards(adware.transform.position, pos, Time.deltaTime * 50);
+                yield return null;
+            }
         }
     }
 }

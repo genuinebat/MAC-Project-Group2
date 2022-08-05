@@ -2061,8 +2061,8 @@ MonoBehaviour:
   - {fileID: 5525115819334006352, guid: 631885c6aee0ad64b8ca8953b16cf17a, type: 3}
   - {fileID: 6978472487029639089, guid: 2b27ab49e62a8bf479d48a57c63a2541, type: 3}
   ImageTarget: {fileID: 5181100262180990186, guid: 631885c6aee0ad64b8ca8953b16cf17a, type: 3}
-  SpawnTime: 2
-  SpawnRadius: 3
+  SpawnTime: 1
+  SpawnRadius: 2
   AdwareTemp: []
 --- !u!1 &693962250
 GameObject:
@@ -4453,7 +4453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnnerHolder: {fileID: 669202767}
   Icon: {fileID: 2041503796}
-  AdBlockerCooldownTime: 12
+  AdBlockerCooldownTime: 15
   AdblockerUI: {fileID: 1168325405}
 --- !u!114 &1443064774
 MonoBehaviour:

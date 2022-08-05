@@ -28,7 +28,7 @@ namespace WhackaAd
         {
             movementEffect = new MovementEffect(gameObject, Speed, MoveRange);
             teleportEffect =
-                new TeleportEffect(gameObject, TeleportCooldown, TeleportRange);
+                new TeleportEffect(gameObject, TeleportCooldown, TeleportRange, this);
 
             movementEffect.Init();
             teleportEffect.Init();
