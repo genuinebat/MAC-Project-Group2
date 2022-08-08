@@ -3,38 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Pathfinding;
 
 namespace RansomMan
 {
     public class ByteTracker : MonoBehaviour
     {
-        public int StartByte;
-        public int CurrentByte;
-        public List<GameObject> TempByte;
-        public Transform NodeStore;
-        public TMP_Text tracker;
+        public TMP_Text TrackerTxt;
+        
+        [HideInInspector]
+        public int Collected = 0;
+        [HideInInspector]
+        public List<Node> Temp = new List<Node>();
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            // int children = NodeStore.childCount;
-            // for (int i = 0; i < children; ++i)
-            //     if (NodeStore.GetChild(i).gameObject.tag == ("Byte"))
-            //     {
-            //         StartByte++;
-            //     }
-            StartByte = GameObject.FindGameObjectsWithTag("Byte").Length;
-            tracker.text = ((StartByte - CurrentByte), "/", StartByte).ToString();
+        int total;
 
-        }
-
-        // Update is called once per frame
         void Update()
         {
-            CurrentByte = GameObject.FindGameObjectsWithTag("Byte").Length;
-            tracker.text = ((StartByte - CurrentByte), "/", StartByte).ToString();
-
+            TrackerTxt.text = "Bytes Collected: " + (Collected + Temp.Count).ToString() +  " / " + total;
         }
 
+        public void SetTotal()
+        {
+            total = GameObject.FindGameObjectsWithTag("Byte").Length;
+        }
     }
 }

@@ -9,6 +9,8 @@ TagManager:
   - ADWare
   - Scannable
   - Byte
+  - ScannableEnemy
+  - Backup
   layers:
   - Default
   - TransparentFX

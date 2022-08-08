@@ -10,10 +10,14 @@ namespace Pathfinding
         // the node that this node came from when calcualting the path
         public Node PreviousNode { get; set; }
 
-        // bool for if this node overlaps with an obstacle obeject
+        // bool to keep track if the node is walkable or not
         public bool Obstacle { get; set; }
-
+        
+        // bool to check if the node is empty (neither a byte or an obstacle)
         public bool Empty { get; set; }
+
+        // variable to store the object that is associated with this node (either Byte or Obstacle)
+        public GameObject Object { get; set; }
 
         // the x and y coordinates of this node in the figurative grid created by the node manager
         public int GridX { get; private set; }

@@ -12,14 +12,17 @@ namespace RansomMan
         public float ChaseSpeed;
 
         [HideInInspector]
-        public bool GameStarted = false;
+        public bool Active = false;
         [HideInInspector]
         public NodeManager nm;
+        [HideInInspector]
+        public Vector3 TimeOutLocation;
 
         Pathfinder pf;
 
-        Transform player;
+        GameObject player;
         List<Vector3> chasePlayerPath, wanderPath;
+        Vector3 spawnLocation;
 
         bool chase;
         int wanderNode;
@@ -31,7 +34,7 @@ namespace RansomMan
 
             pf = new Pathfinder(nm, false);
 
-            player = GameObject.Find("Player").transform;
+            player = GameObject.Find("Player");
 
             chase = false;
             wanderPath = new List<Vector3>();
@@ -40,7 +43,7 @@ namespace RansomMan
         
         void Update()
         {
-            if (!GameStarted) return;
+            if (!Active) return;
 
             CheckChasePlayer();
 
@@ -52,6 +55,8 @@ namespace RansomMan
         {
             transform.position = nm.GetNodeWorldPosition(nm.grid.Get(x, y));
             transform.rotation = Quaternion.Euler(-90f, 90f, -90f);
+            
+            spawnLocation = transform.position;
             
             SetWanderBoundaries();
         }
@@ -99,7 +104,7 @@ namespace RansomMan
 
         void CheckChasePlayer()
         {
-            chasePlayerPath = pf.GetPath(transform.position, player.position);
+            chasePlayerPath = pf.GetPath(transform.position, player.transform.position);
 
             if (chase)
             {
@@ -130,7 +135,31 @@ namespace RansomMan
 
         void CatchPlayer()
         {
-            Debug.Log("CAUGHT!!");
+            RansomManCollector rmCollector = player.GetComponent<RansomManCollector>();
+
+            if (rmCollector.BackedUp)
+            {
+                rmCollector.RevertToBackup();
+                StartCoroutine(TimeOut());
+            }
+            else
+            {
+                // end game
+                Debug.Log("YOU LOSE!");
+            }
+        }
+
+        IEnumerator TimeOut()
+        {
+            Active = false;
+            transform.position = TimeOutLocation;
+
+            yield return new WaitForSeconds(10f);
+
+            transform.position = spawnLocation;
+            Active = true;
+
+            //spawn backup
         }
     }
 }

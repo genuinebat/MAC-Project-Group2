@@ -41,14 +41,15 @@ namespace RansomMan
             r4Script.nm = nm;
             r4Script.SetSpawnPosition(18, 20);
 
-            r1Script.GameStarted = true;
-            r2Script.GameStarted = true;
-            r3Script.GameStarted = true;
-            r4Script.GameStarted = true;
-            Debug.Log(r1Script.GameStarted);
-            Debug.Log(r2Script.GameStarted);
-            Debug.Log(r3Script.GameStarted);
-            Debug.Log(r4Script.GameStarted);
+            r1Script.TimeOutLocation = nm.GetNodeWorldPosition(nm.grid.Get(9, 14));
+            r2Script.TimeOutLocation = nm.GetNodeWorldPosition(nm.grid.Get(10, 14));
+            r3Script.TimeOutLocation = nm.GetNodeWorldPosition(nm.grid.Get(12, 14));
+            r4Script.TimeOutLocation = nm.GetNodeWorldPosition(nm.grid.Get(13, 14));
+
+            r1Script.Active = true;
+            r2Script.Active = true;
+            r3Script.Active = true;
+            r4Script.Active = true;
         }
     }
 }

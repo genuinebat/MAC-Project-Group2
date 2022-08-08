@@ -22,6 +22,7 @@ namespace Pathfinding
         [Header("Reference Variables")]
         public Transform ImageTarget;
         public GameObject Back;
+        public RansomMan.ByteTracker BTScript;
 
         // grid object of nodes
         public PFGrid<Node> grid;
@@ -80,16 +81,26 @@ namespace Pathfinding
                         if (grid.Get(x, y).Obstacle)
                         {
                             cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+
+                            grid.Get(x, y).Object = cube;
                         }
                         else
                         {
                             cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+
+                            grid.Get(x, y).Object = cube;
                         }
                         cube.transform.parent = transform;
+                    }
+                    else
+                    {
+                        grid.Get(x, y).Object = null;
                     }
                 }
             }
             Back.SetActive(true);
+
+            BTScript.SetTotal();
         }
 
         void SetupRansomManMap()

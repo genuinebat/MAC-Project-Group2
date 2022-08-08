@@ -320,6 +320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderSpeed: 0.3
-  ChaseSpeed: 1.2
+  ChaseSpeed: 1.1
   GameStarted: 0
   nm: {fileID: 0}
