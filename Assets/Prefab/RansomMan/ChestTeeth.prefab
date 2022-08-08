@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720639922647751283}
   - component: {fileID: 5540096934502638121}
+  - component: {fileID: -1521790064644781604}
   m_Layer: 0
   m_Name: ChestTeeth
   m_TagString: Untagged
@@ -55,6 +56,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1521790064644781604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93426179785228489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b781131f430d5cb41acc00964f57a608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ByteTrackerScript: {fileID: 0}
 --- !u!1 &1590495610741015426
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,29 @@ namespace RansomMan
 {
     public class RansomManCollector : MonoBehaviour
     {
-        // Start is called before the first frame update
+        public ByteTracker ByteTrackerScript;
+
         void Start()
         {
+            ByteTrackerScript = GameObject.Find("RansomMan").GetComponent<ByteTracker>();
 
         }
-
-        // Update is called once per frame
-        void Update()
+        private void OnTriggerEnter(Collider other)
         {
-
+            if (other.gameObject.tag == "Byte")
+            {
+                ByteTrackerScript.CurrentByte -= 1;
+                ByteTrackerScript.TempByte.Add(other.gameObject);
+                other.gameObject.SetActive(false);
+            }
+            else if (other.gameObject.tag == "Backup")
+            {
+                int i = 0;
+                while (i < ByteTrackerScript.TempByte.Count)
+                {
+                    Destroy(ByteTrackerScript.TempByte[i].gameObject);
+                }
+            }
         }
     }
 }

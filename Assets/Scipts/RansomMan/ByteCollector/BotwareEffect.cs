@@ -6,15 +6,19 @@ namespace RansomMan
 {
     public class BotwareEffect : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        public ByteTracker ByteTrackerScript;
 
-        }
-
-        // Update is called once per frame
-        void Update()
+        private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.tag == "Player")
+            {
+                int i = 0;
+                //ByteTrackerScript.TempByte.Add(other.gameObject);
+                while (i < ByteTrackerScript.TempByte.Count)
+                {
+                    ByteTrackerScript.TempByte[i].gameObject.SetActive(true);
+                }
+            }
 
         }
     }
