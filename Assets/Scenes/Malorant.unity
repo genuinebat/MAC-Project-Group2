@@ -3301,13 +3301,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: Target
+  mTrackableName: Trojan
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/MAC_EscapeRoom.xml
-  mAspectRatio: 1.0006894
+  mAspectRatio: 0.9652607
   mImageTargetType: 0
   mWidth: 3
-  mHeight: 3.002068
+  mHeight: 2.895782
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mPreview: {fileID: 1110621570}
@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1110621569}
   mHiddenRoot: {fileID: 0}
-  mTargetName: Target
+  mTargetName: Trojan
   mDatasetName: Vuforia/MAC_EscapeRoom.xml
   mCastedBehaviour: {fileID: 1110621569}
   mMeshFilter: {fileID: 0}
@@ -6967,7 +6967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.3137255, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -139,7 +139,7 @@ namespace Pathfinding
                     Vector3 nodePos = GetNodeWorldPosition(node);
                     float dist = Vector3.Distance(pos, nodePos);
 
-                    if (dist < closestDist)
+                    if (dist < closestDist && !node.Obstacle)
                     {
                         closestDist = dist;
                         closest = node;

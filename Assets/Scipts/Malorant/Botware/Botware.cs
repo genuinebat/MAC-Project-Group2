@@ -23,7 +23,7 @@ namespace Malorant
         {
             //assigns the spawnner gameobejct to the enemystore variable
             enemyStore = GameObject.Find("Spawner");
-            imageTarget = GameObject.Find("Target").transform;
+            imageTarget = GameObject.Find("ImageTarget").transform;
 
             StartCoroutine(SpawnEgg(timebetweenSpawn));
             StartCoroutine(PeriodicallySetBoundaries());

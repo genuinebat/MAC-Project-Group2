@@ -37,7 +37,7 @@ namespace RansomMan
 
             SwipeInput();
 
-            path = pf.GetPath(transform.position, transform.position + (transform.forward * nm.CellSize));
+            path = pf.GetPath(transform.position, transform.position + (transform.forward * (nm.CellSize * 0.8f)));
 
             if (path.Count > 0) targetLocation = path[0];
 
@@ -72,7 +72,7 @@ namespace RansomMan
                     {
                         if (turningCor != null) StopCoroutine(turningCor);
 
-                        turningCor = StartCoroutine(Turn(Quaternion.Euler(-90f, 0f, 0f)));
+                        turningCor = StartCoroutine(Turn(Quaternion.Euler(-90f, 90f, -90f)));
                     }
                     
                     //swipe down
@@ -88,7 +88,7 @@ namespace RansomMan
                     {
                         if (turningCor != null) StopCoroutine(turningCor);
 
-                        turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, -90f, 90f)));
+                        turningCor = StartCoroutine(Turn(Quaternion.Euler(180f, 90f, -90f)));
                     }
 
                     //swipe right

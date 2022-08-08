@@ -14,6 +14,7 @@ namespace RansomMan
         public GameObject HintTxt;
         public GameObject UI;
         public GameObject Player;
+        public RansomwareSpawner Spawner;
         public NodeManager nm;
 
         [Header("Hint Text")]
@@ -173,6 +174,8 @@ namespace RansomMan
 
             pm.PlayerStartPosition();
             pm.GameStarted = true;
+
+            Spawner.SpawnRansomwares();
         }
 
         public override void Cancel()

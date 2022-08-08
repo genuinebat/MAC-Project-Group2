@@ -33,7 +33,7 @@ namespace Malorant
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
             lockUI = GameObject.Find("Locked");
             unlockUI = GameObject.Find("Unlocked");
-            imageTarget = GameObject.Find("Target").transform;
+            imageTarget = GameObject.Find("ImageTarget").transform;
             anim = GetComponent<Animator>();
 
             unlockUI.SetActive(false);
