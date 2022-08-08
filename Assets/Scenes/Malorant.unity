@@ -2721,8 +2721,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3210,7 +3210,7 @@ GameObject:
   - component: {fileID: 1110621568}
   - component: {fileID: 1110621570}
   m_Layer: 0
-  m_Name: Target
+  m_Name: ImageTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5687,6 +5687,7 @@ MonoBehaviour:
   UnlockUI: {fileID: 1311609533}
   WeaponNotificationUI: {fileID: 905995695}
   malorantState: {fileID: 1873579883}
+  HintText: you should always have a target in mind
 --- !u!114 &1873579881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6730,8 +6731,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -16,6 +16,9 @@ namespace RansomMan
         public GameObject Player;
         public NodeManager nm;
 
+        [Header("Hint Text")]
+        public string HintText;
+
         Coroutine closingCor;
 
         float popupHeight, popupWidth;
@@ -25,7 +28,7 @@ namespace RansomMan
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
-            HintTxt.GetComponent<TMP_Text>().text = "hint: the gears do be working";
+            HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
 

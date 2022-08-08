@@ -344,8 +344,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -444,6 +444,7 @@ MonoBehaviour:
   UI: {fileID: 1025354175}
   Player: {fileID: 1148656935}
   nm: {fileID: 1846003980}
+  HintText: what do you call the top of your lap?
 --- !u!1 &358410675
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &439784122
 GameObject:
@@ -1636,7 +1637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1846003980
 MonoBehaviour:
@@ -1876,8 +1877,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2150,13 +2151,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: Trojan
+  mTrackableName: Computer
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/MAC_EscapeRoom.xml
-  mAspectRatio: 0.9535007
+  mAspectRatio: 0.969501
   mImageTargetType: 0
-  mWidth: 3
-  mHeight: 2.860502
+  mWidth: 2
+  mHeight: 1.939002
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mPreview: {fileID: 2083121282}
@@ -2173,7 +2174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!114 &2083121282
 MonoBehaviour:
@@ -2189,7 +2190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 2083121280}
   mHiddenRoot: {fileID: 0}
-  mTargetName: Trojan
+  mTargetName: Computer
   mDatasetName: Vuforia/MAC_EscapeRoom.xml
   mCastedBehaviour: {fileID: 2083121280}
   mMeshFilter: {fileID: 0}

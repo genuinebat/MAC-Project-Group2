@@ -22,6 +22,9 @@ namespace Malorant
         public GameObject WeaponNotificationUI;
         public MalorantGameState malorantState;
 
+        [Header("Hint Text")]
+        public string HintText;
+
         Malorant_Spawner spawnerScript;
         Dialogue dialogueScript;
         Weapons weaponScript;
@@ -44,7 +47,7 @@ namespace Malorant
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
-            HintTxt.GetComponent<TMP_Text>().text = "hint: you should always have a target in mind";
+            HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
         }

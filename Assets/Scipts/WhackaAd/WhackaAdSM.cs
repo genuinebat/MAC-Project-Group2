@@ -19,6 +19,9 @@ namespace WhackaAd
         public GameObject TutorialPanel;
         public Button AntivirusBtn;
 
+        [Header("Hint Text")]
+        public string HintText;
+
         Coroutine closingCor;
         WhackaAdSpawner spawner;
         WhackaAdTime timer;
@@ -33,7 +36,7 @@ namespace WhackaAd
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
-            HintTxt.GetComponent<TMP_Text>().text = "hint: my wall is on fire lol";
+            HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
         }
