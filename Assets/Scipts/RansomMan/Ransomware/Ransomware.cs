@@ -24,11 +24,11 @@ namespace RansomMan
         Pathfinder pf;
         BackupSpawner bs;
 
-        GameObject player;
+        GameObject player, loseUI;
         List<Vector3> chasePlayerPath, wanderPath;
         Vector3 spawnLocation;
 
-        bool chase;
+        bool chase, lost;
         int wanderNode;
         float minX, maxX, minY, maxY, z;
 
@@ -40,10 +40,14 @@ namespace RansomMan
             bs = GameObject.Find("Spawner").GetComponent<BackupSpawner>();
 
             player = GameObject.Find("Player");
+            loseUI = GameObject.Find("UI").transform.Find("LoseUI").gameObject;
+            Debug.Log(loseUI);
 
             chase = false;
             wanderPath = new List<Vector3>();
             wanderNode = int.MaxValue;
+
+            lost = false;
         }
         
         void Update()
@@ -155,8 +159,7 @@ namespace RansomMan
             }
             else
             {
-                // end game
-                Debug.Log("YOU LOSE!");
+                if (!lost) LoseGame();
             }
         }
 
@@ -172,6 +175,13 @@ namespace RansomMan
 
             // spawn backup
             bs.SpawnBackup(quad);
+        }
+
+        void LoseGame()
+        {
+            lost = true;
+            Time.timeScale = 0f;
+            loseUI.SetActive(true);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace RansomMan
         public GameObject PopupDisplay;
         public GameObject HintTxt;
         public GameObject UI;
+        public GameObject WinUI;
+        public GameObject LoseUI;
         public GameObject Player;
         public RansomwareSpawner Spawner;
         public NodeManager nm;
@@ -176,15 +178,23 @@ namespace RansomMan
             pm.GameStarted = true;
 
             Spawner.SpawnRansomwares();
+
+            GetComponent<ByteTracker>().GameStarted = true;
         }
 
         public override void Cancel()
         {
             base.Cancel();
 
+            Time.timeScale = 1f;
+
             UI.SetActive(false);
             HintTxt.SetActive(true);
+            WinUI.SetActive(false);
+            LoseUI.SetActive(false);
             Player.transform.position = new Vector3(100, 100, 100);
+
+            // reset nodemanager, ransomwares, player and turn off all gameobject associated with it
         }
     }
 }
