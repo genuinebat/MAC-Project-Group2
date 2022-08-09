@@ -49,7 +49,7 @@ namespace Malorant
         void Update()
         {
             // checking if the game has started already
-            if (GameStarted == true)
+            if (GameStarted)
             {
                 if (!won) timeLeft -= Time.deltaTime;
 
@@ -62,6 +62,7 @@ namespace Malorant
                 {
                     timeLeft = 0;
                     Time.timeScale = 0;
+                    GameStarted = false;
 
                     LoseUI.SetActive(true);
                 }

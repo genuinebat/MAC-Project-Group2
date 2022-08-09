@@ -6,8 +6,18 @@ namespace WhackaAd
 {
     public class TappedOnAdware : MonoBehaviour
     {
+        [HideInInspector]
+        public bool GameEnd;
+
+        void Start()
+        {
+            GameEnd = false;
+        }
+
         void Update()
         {
+            if (GameEnd) return;
+
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

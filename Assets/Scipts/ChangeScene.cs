@@ -11,6 +11,7 @@ public class ChangeScene : MonoBehaviour
     
     public void nextScene(string scenename)
     {
+        Time.timeScale = 1f;
         StartCoroutine(NextSceneCor(scenename));
     }
 

@@ -8,28 +8,24 @@ namespace WhackaAd
 {
     public class WhackaAdTime : MonoBehaviour
     {
-        [Header("Referencce variables")]
+        [Header("Reference variables")]
         public TMP_Text TimerUI;
-
         public TMP_Text EnemyCounter;
-
         public GameObject WinUI;
-
         public GameObject LoseUI;
-
         public Image EnemyCounterFill;
 
         [Header("Functionality Variables")]
         public float TimeMin;
-
         public float TimeSec;
-
         public int MaxAds;
 
         [HideInInspector]
         public float TimeLeft;
 
         public bool GameStarted { private get; set; }
+
+        TappedOnAdware tapScript;
 
         Transform spawner;
 
@@ -39,6 +35,8 @@ namespace WhackaAd
         void Start()
         {
             spawner = GameObject.Find("Spawner").transform;
+
+            tapScript = GetComponent<TappedOnAdware>();
 
             TimeLeft = TimeMin * 60 + TimeSec;
 
@@ -87,6 +85,8 @@ namespace WhackaAd
         // function to and the game
         public void GameOver()
         {
+            tapScript.GameEnd = true;
+            GameStarted = false;
             Time.timeScale = 0;
             LoseUI.SetActive(true);
         }

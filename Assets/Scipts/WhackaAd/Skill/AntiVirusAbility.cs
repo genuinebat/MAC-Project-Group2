@@ -7,7 +7,7 @@ namespace WhackaAd
 {
     public class AntiVirusAbility : MonoBehaviour
     {
-        public WhackaAdSpawner Spawnner;
+        public WhackaAdSpawner Spawner;
         public GameObject AntivirusUI;
         public Image Icon;
         public float AntiVirusCooldownTime;
@@ -20,17 +20,25 @@ namespace WhackaAd
             AntivirusUI.SetActive(true);
         }
 
+        public void CloseAntiVirusMenu()
+        {
+            AntivirusUI.SetActive(false);
+        }
+
         public void AntiVirus(int index)
         {
+            Debug.Log(Spawner.AdwareTemp.Count);
             Time.timeScale = 0.2f;
-            if (Spawnner.AdwareTemp.Count == 1)
+            if (Spawner.AdwareTemp.Count == 1)
             {
-                Spawnner.AdwareTemp.Add(Spawnner.Adwares[removed]);
-                Spawnner.AdwareTemp.RemoveAt(0);
+                Debug.Log("Changed!");
+                Spawner.AdwareTemp.Add(Spawner.Adwares[removed]);
+                Spawner.AdwareTemp.RemoveAt(0);
             }
-            else if (Spawnner.AdwareTemp.Count > 1)
+            else if (Spawner.AdwareTemp.Count > 1)
             {
-                Spawnner.AdwareTemp.RemoveAt(index);
+                Debug.Log("Removed!");
+                Spawner.AdwareTemp.RemoveAt(index);
             }
 
             removed = index;

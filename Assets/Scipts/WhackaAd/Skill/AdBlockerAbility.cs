@@ -33,7 +33,7 @@ namespace WhackaAd
         IEnumerator AdblockerUIFade()
         {
             AdblockerUI.SetActive(true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2f);
             AdblockerUI.SetActive(false);
         }
 

@@ -21,13 +21,7 @@ namespace WhackaAd
 
         public bool GameStarted { get; set; }
         
-        float elap,
-            minX,
-            maxX,
-            minY,
-            maxY;
-
-
+        float elap, minX, maxX, minY, maxY;
 
         void Start()
         {

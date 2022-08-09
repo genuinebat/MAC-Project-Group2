@@ -43,12 +43,9 @@ namespace WhackaAd
 
         public override void EnablePopup()
         {
-            Debug.Log("called");
             if (IsRunning || IsCompleted) return;
 
             base.EnablePopup();
-
-            Debug.Log("got thru");
 
             if (closingCor != null) StopCoroutine(closingCor);
 
@@ -187,8 +184,6 @@ namespace WhackaAd
             spawner.GameStarted = false;
             AntivirusBtn.enabled = true;
             HintTxt.SetActive(true);
-
-            spawner.AdwareTemp.AddRange(spawner.Adwares);
 
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)
