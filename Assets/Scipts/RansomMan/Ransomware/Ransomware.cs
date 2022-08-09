@@ -7,9 +7,10 @@ namespace RansomMan
 {
     public class Ransomware : MonoBehaviour
     {
-        [Header("Movement Values")]
+        [Header("Gameplay Values")]
         public float WanderSpeed;
         public float ChaseSpeed;
+        public float TimeOutDuration;
 
         [HideInInspector]
         public bool Active = false;
@@ -17,8 +18,11 @@ namespace RansomMan
         public NodeManager nm;
         [HideInInspector]
         public Vector3 TimeOutLocation;
+        [HideInInspector]
+        public int quad;
 
         Pathfinder pf;
+        BackupSpawner bs;
 
         GameObject player;
         List<Vector3> chasePlayerPath, wanderPath;
@@ -33,6 +37,7 @@ namespace RansomMan
             nm = GameObject.Find("NodeManager").GetComponent<NodeManager>();
 
             pf = new Pathfinder(nm, false);
+            bs = GameObject.Find("Spawner").GetComponent<BackupSpawner>();
 
             player = GameObject.Find("Player");
 
@@ -104,6 +109,12 @@ namespace RansomMan
 
         void CheckChasePlayer()
         {
+            if (player.GetComponent<RansomManCollector>().Reverting)
+            {
+                chase = false;
+                return;
+            }
+
             chasePlayerPath = pf.GetPath(transform.position, player.transform.position);
 
             if (chase)
@@ -139,7 +150,7 @@ namespace RansomMan
 
             if (rmCollector.BackedUp)
             {
-                rmCollector.RevertToBackup();
+                StartCoroutine(rmCollector.RevertToBackup());
                 StartCoroutine(TimeOut());
             }
             else
@@ -154,12 +165,13 @@ namespace RansomMan
             Active = false;
             transform.position = TimeOutLocation;
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(TimeOutDuration);
 
             transform.position = spawnLocation;
             Active = true;
 
-            //spawn backup
+            // spawn backup
+            bs.SpawnBackup(quad);
         }
     }
 }

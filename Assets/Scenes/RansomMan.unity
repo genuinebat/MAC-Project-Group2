@@ -1525,6 +1525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033928460}
   - component: {fileID: 1033928461}
+  - component: {fileID: 1033928462}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -1560,6 +1561,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ransomware: {fileID: 8748724431958235070, guid: b8a08e541436a55408902f1e7ce0b2b8, type: 3}
+  nm: {fileID: 1846003980}
+--- !u!114 &1033928462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033928459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9e8593f7e779d4f908f678f26e483b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Backup: {fileID: 5162061013997079763, guid: 1a426e3aef247a44db5157aa4895e6d6, type: 3}
   nm: {fileID: 1846003980}
 --- !u!1001 &1148656934
 PrefabInstance:
@@ -1624,6 +1639,10 @@ PrefabInstance:
       propertyPath: nm
       value: 
       objectReference: {fileID: 1846003980}
+    - target: {fileID: 3840752724653792237, guid: bec34122cbf6cf7418251f8ca805c328, type: 3}
+      propertyPath: BTScript
+      value: 
+      objectReference: {fileID: 222514057}
     - target: {fileID: 3840752724653792237, guid: bec34122cbf6cf7418251f8ca805c328, type: 3}
       propertyPath: ByteTrackerScript
       value: 
@@ -1870,6 +1889,7 @@ MonoBehaviour:
   ImageTarget: {fileID: 2083121281}
   Back: {fileID: 358410675}
   BTScript: {fileID: 222514057}
+  BSScript: {fileID: 1033928462}
 --- !u!1 &1928599301
 GameObject:
   m_ObjectHideFlags: 0

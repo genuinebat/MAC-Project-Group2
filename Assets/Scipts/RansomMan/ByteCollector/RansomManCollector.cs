@@ -12,16 +12,45 @@ namespace RansomMan
 
         [HideInInspector]
         public bool BackedUp;
+        [HideInInspector]
+        public bool Reverting;
 
+        List<Vector3> backupPath = new List<Vector3>();
         Vector3 backupLocation;
 
         void Start()
         {
             BackedUp = false;
+            Reverting = false;
+        }
+        
+        void Update()
+        {
+            if (BackedUp)
+            {
+                Node n = nm.GetNearestNodeToPosition(transform.position, 0.1f);
+
+                if (n != null)
+                {
+                    if (backupPath.Count > 0)
+                    {
+                        if (nm.GetNodeWorldPosition(n) != backupPath[backupPath.Count - 1])
+                        {
+                            backupPath.Add(nm.GetNodeWorldPosition(n));
+                        }
+                    }
+                    else
+                    {
+                        backupPath.Add(nm.GetNodeWorldPosition(n));
+                    }
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (Reverting) return;
+
             if (other.gameObject.tag == "Byte")
             {
                 Node node = nm.GetNearestNodeToPosition(other.gameObject.transform.position);
@@ -35,50 +64,70 @@ namespace RansomMan
             {
                 if (BackedUp)
                 {
+                    BTScript.Collected += BTScript.Temp.Count;
 
+                    BTScript.Temp.Clear();
+                    backupPath.Clear();
                 }
                 else
                 {
-                    BackedUp = true;
-                    backupLocation = gameObject.transform.position;
                     Destroy(other.gameObject);
+
+                    BackedUp = true;
+
+                    backupLocation = gameObject.transform.position;
                 }
             }
         }
 
         public IEnumerator RevertToBackup()
         {
+            BackedUp = false;
+            Reverting = true;
+
             PlayerMovement movementScript = GetComponent<PlayerMovement>();
 
             movementScript.enabled = false;
 
-            List<Vector3> path = new List<Vector3>();
+            backupPath.Reverse();
 
-            foreach (Node node in BTScript.Temp)
-            {
-                path.Add(nm.GetNodeWorldPosition(node));
-            }
-
-            path.Reverse();
-            
             int n = 0;
-            while (n < path.Count)
+            while (n < backupPath.Count)
             {
-                if (Vector3.Distance(transform.position, path[n]) < 0.02f)
+                if (Vector3.Distance(transform.position, backupPath[n]) < 0.02f)
                 {
+                    Node node = nm.GetNearestNodeToPosition(backupPath[n]);
+
+                    if (BTScript.Temp.Contains(node))
+                    {
+                        node.Object.SetActive(true);
+                        BTScript.Temp.Remove(node);
+                    }
                     n++;
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, path[n], 10 * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, backupPath[n], 8 * Time.deltaTime);
+
+                    if (n > 0)
+                    {
+                        Quaternion lookRot = Quaternion.LookRotation((backupPath[n - 1] - transform.position), -Vector3.forward);
+
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, 720 * Time.deltaTime);
+                    }
                 }
                 yield return null;
             }
 
+            BTScript.Collected += BTScript.Temp.Count;
+
+            BTScript.Temp.Clear();
+            backupPath.Clear();
+
             transform.position = backupLocation;
 
-            transform.rotation = Quaternion.LookRotation((path[n - 2] - transform.position), -Vector3.forward);
-
+            Reverting = false;
+            
             movementScript.enabled = true;
         }
     }

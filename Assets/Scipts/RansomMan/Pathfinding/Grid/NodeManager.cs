@@ -23,6 +23,7 @@ namespace Pathfinding
         public Transform ImageTarget;
         public GameObject Back;
         public RansomMan.ByteTracker BTScript;
+        public RansomMan.BackupSpawner BSScript;
 
         // grid object of nodes
         public PFGrid<Node> grid;
@@ -31,7 +32,7 @@ namespace Pathfinding
         {
             StartCoroutine(UpdatePosition());
 
-            Back.transform.localScale = new Vector3(Width / 2, Height / 2, 0.01f);
+            Back.transform.localScale = new Vector3((Width * CellSize), (Height * CellSize), 0.01f);
             Back.transform.position = new Vector3(ImageTarget.position.x, ImageTarget.position.y, ImageTarget.position.z + 0.05f);
             Back.SetActive(false);
 
@@ -46,6 +47,9 @@ namespace Pathfinding
             }
 
             SetupRansomManMap();
+
+            BSScript.nm = this;
+            BSScript.CreateQuads();
         }
 
         IEnumerator UpdatePosition()
@@ -101,6 +105,11 @@ namespace Pathfinding
             Back.SetActive(true);
 
             BTScript.SetTotal();
+
+            BSScript.SpawnBackup(0);
+            BSScript.SpawnBackup(1);
+            BSScript.SpawnBackup(2);
+            BSScript.SpawnBackup(3);
         }
 
         void SetupRansomManMap()
@@ -159,6 +168,31 @@ namespace Pathfinding
             }
 
             return closest;
+        }
+
+        // overload function to that takes in a minimum distance
+        public Node GetNearestNodeToPosition(Vector3 pos, float minDist)
+        {
+            float closestDist = Mathf.Infinity;
+            Node closest = null;
+
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    Node node = grid.Get(x, y);
+                    Vector3 nodePos = GetNodeWorldPosition(node);
+                    float dist = Vector3.Distance(pos, nodePos);
+
+                    if (dist < closestDist && !node.Obstacle)
+                    {
+                        closestDist = dist;
+                        closest = node;
+                    }
+                }
+            }
+
+            return Vector3.Distance(pos, GetNodeWorldPosition(closest)) <= minDist ? closest : null;
         }
 
         // function for returning all neighboring nodes to the given node (minimum of 3, maximum of 8)
