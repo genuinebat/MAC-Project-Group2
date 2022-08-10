@@ -70,7 +70,6 @@ namespace RansomMan
         
         public void SpawnBackup(int q)
         {
-            Debug.Log(q);
             Quad quad = quads[q];
 
             Node node = null;

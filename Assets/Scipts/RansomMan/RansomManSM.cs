@@ -16,6 +16,7 @@ namespace RansomMan
         public GameObject WinUI;
         public GameObject LoseUI;
         public GameObject Player;
+        public GameObject Back;
         public RansomwareSpawner Spawner;
         public NodeManager nm;
 
@@ -195,6 +196,15 @@ namespace RansomMan
             Player.transform.position = new Vector3(100, 100, 100);
 
             // reset nodemanager, ransomwares, player and turn off all gameobject associated with it
+            foreach (Transform child in Spawner.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (Transform child in nm.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            Back.SetActive(false);
         }
     }
 }

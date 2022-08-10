@@ -70,6 +70,8 @@ namespace RansomMan
 
                     BTScript.Temp.Clear();
                     backupPath.Clear();
+
+                    backupLocation = gameObject.transform.position;
                 }
                 else
                 {
@@ -93,11 +95,13 @@ namespace RansomMan
 
             backupPath.Reverse();
 
+            List<Vector3> tempBackupPath = backupPath;
+
             int n = 0;
             while (n < backupPath.Count)
             {
                 if (Vector3.Distance(transform.position, backupPath[n]) < 0.02f)
-                {
+                {                    
                     Node node = nm.GetNearestNodeToPosition(backupPath[n]);
 
                     if (BTScript.Temp.Contains(node))
@@ -113,9 +117,7 @@ namespace RansomMan
 
                     if (n > 0)
                     {
-                        Quaternion lookRot = Quaternion.LookRotation((backupPath[n - 1] - transform.position), -Vector3.forward);
-
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, 720 * Time.deltaTime);
+                        transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - transform.position), -Vector3.forward);
                     }
                 }
                 yield return null;

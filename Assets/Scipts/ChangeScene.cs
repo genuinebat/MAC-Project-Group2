@@ -25,7 +25,7 @@ public class ChangeScene : MonoBehaviour
         doors.SetTrigger("RotateAntiClockwise");
 
         yield return new WaitForSeconds(0.5f);
-
+    
         SceneManager.LoadScene(scenename);
     }
 }
