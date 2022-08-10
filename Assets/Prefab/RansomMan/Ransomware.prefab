@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderSpeed: 0.3
-  ChaseSpeed: 1.1
+  ChaseSpeed: 1
   TimeOutDuration: 20
   Active: 0
   nm: {fileID: 0}

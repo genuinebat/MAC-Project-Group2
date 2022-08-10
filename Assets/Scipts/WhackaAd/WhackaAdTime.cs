@@ -71,9 +71,7 @@ namespace WhackaAd
 
             if (TimeLeft < 0)
             {
-                TimeLeft = 0;
-                Time.timeScale = 0;
-                WinUI.SetActive(true);
+                WinGame();
             }
 
             if (spawner.childCount >= MaxAds)
@@ -82,9 +80,19 @@ namespace WhackaAd
             }
         }
 
+        public void WinGame()
+        {
+            GetComponent<AntiVirusAbility>().CloseAntiVirusMenu();
+            
+            TimeLeft = 0;
+            Time.timeScale = 0;
+            WinUI.SetActive(true);
+        }
+
         // function to and the game
         public void GameOver()
         {
+            EnemyCounterFill.fillAmount = 1f;
             tapScript.GameEnd = true;
             GameStarted = false;
             Time.timeScale = 0;

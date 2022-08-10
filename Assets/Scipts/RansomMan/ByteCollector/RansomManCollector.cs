@@ -28,7 +28,7 @@ namespace RansomMan
         {
             if (BackedUp)
             {
-                Node n = nm.GetNearestNodeToPosition(transform.position, 0.1f);
+                Node n = nm.GetNearestNodeToPosition(transform.position, 0.2f);
 
                 if (n != null)
                 {
@@ -64,6 +64,8 @@ namespace RansomMan
             {
                 if (BackedUp)
                 {
+                    Destroy(other.gameObject);
+
                     BTScript.Collected += BTScript.Temp.Count;
 
                     BTScript.Temp.Clear();
@@ -107,7 +109,7 @@ namespace RansomMan
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, backupPath[n], 8 * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, backupPath[n], 6 * Time.deltaTime);
 
                     if (n > 0)
                     {

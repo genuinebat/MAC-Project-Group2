@@ -20,11 +20,11 @@ public class ChangeScene : MonoBehaviour
         door1.SetTrigger("CloseDoor");
         door2.SetTrigger("CloseDoor");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         doors.SetTrigger("RotateAntiClockwise");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(scenename);
     }

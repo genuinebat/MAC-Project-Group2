@@ -19,7 +19,7 @@ namespace RansomMan
         [HideInInspector]
         public Vector3 TimeOutLocation;
         [HideInInspector]
-        public int quad;
+        public int quadrant;
 
         Pathfinder pf;
         BackupSpawner bs;
@@ -41,7 +41,6 @@ namespace RansomMan
 
             player = GameObject.Find("Player");
             loseUI = GameObject.Find("UI").transform.Find("LoseUI").gameObject;
-            Debug.Log(loseUI);
 
             chase = false;
             wanderPath = new List<Vector3>();
@@ -52,7 +51,7 @@ namespace RansomMan
         
         void Update()
         {
-            if (!Active) return;
+            if (!Active || lost) return;
 
             CheckChasePlayer();
 
@@ -124,7 +123,7 @@ namespace RansomMan
             if (chase)
             {
                 if (chasePlayerPath.Count <= 0) CatchPlayer();
-                if (chasePlayerPath.Count > 10)
+                if (chasePlayerPath.Count > 8)
                 {
                     chase = false;
                     wanderNode = int.MaxValue;
@@ -132,7 +131,7 @@ namespace RansomMan
             }
             else
             {
-                if (chasePlayerPath.Count <= 6) chase = true;
+                if (chasePlayerPath.Count <= 5) chase = true;
             }
         }
 
@@ -159,7 +158,7 @@ namespace RansomMan
             }
             else
             {
-                if (!lost) LoseGame();
+                LoseGame();
             }
         }
 
@@ -174,7 +173,7 @@ namespace RansomMan
             Active = true;
 
             // spawn backup
-            bs.SpawnBackup(quad);
+            bs.SpawnBackup(quadrant);
         }
 
         void LoseGame()
