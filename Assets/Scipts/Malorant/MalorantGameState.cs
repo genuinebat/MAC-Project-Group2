@@ -11,6 +11,7 @@ namespace Malorant
         [Header("Reference Variables")]
         public GameObject LoseUI;
         public GameObject WinUI;
+        public GameObject GameUI;
         public TMP_Text TimerUI;
 
         [Header("Functionality Variables")]
@@ -63,7 +64,7 @@ namespace Malorant
                     timeLeft = 0;
                     Time.timeScale = 0;
                     GameStarted = false;
-
+                    GameUI.SetActive(false);
                     LoseUI.SetActive(true);
                 }
 
