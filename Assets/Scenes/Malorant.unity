@@ -5953,8 +5953,8 @@ MonoBehaviour:
   WinUI: {fileID: 1204962268}
   GameUI: {fileID: 653220820}
   TimerUI: {fileID: 865017098}
-  TimeMin: 0
-  TimeSec: 10
+  TimeMin: 1
+  TimeSec: 0
   Enemies: {fileID: 0}
   GameStarted: 0
   timeLeft: 0
