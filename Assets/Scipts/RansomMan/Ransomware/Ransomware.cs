@@ -115,6 +115,7 @@ namespace RansomMan
             if (player.GetComponent<RansomManCollector>().Reverting)
             {
                 chase = false;
+                wanderNode = wanderPath.Count;
                 return;
             }
 

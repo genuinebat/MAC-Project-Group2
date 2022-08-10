@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RansomMan.unity
     guid: 601d6e456d817e1408fcd7bb96940d15
+  - enabled: 1
+    path: Assets/Scenes/SpotTheBot.unity
+    guid: 43578294a8f52474185becc6e9cb95e0
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: a9dcc235f707aa047a272edeffbb6e84, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 40f4e0b7a90ea1549b7a86c5fc4b686c, type: 2}

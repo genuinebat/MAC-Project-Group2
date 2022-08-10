@@ -24,11 +24,14 @@ namespace RansomMan
         public string HintText;
 
         Coroutine closingCor;
+        ByteTracker bt;
 
         float popupHeight, popupWidth;
 
         void Start()
         {
+            bt = GetComponent<ByteTracker>();
+
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
@@ -180,7 +183,8 @@ namespace RansomMan
 
             Spawner.SpawnRansomwares();
 
-            GetComponent<ByteTracker>().GameStarted = true;
+            bt.Collected = 0;
+            bt.GameStarted = true;
         }
 
         public override void Cancel()
