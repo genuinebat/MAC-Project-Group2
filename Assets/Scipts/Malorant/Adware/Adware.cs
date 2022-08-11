@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Malorant
 {
-    public class Adware : MonoBehaviour, IScannable
+    public class Adware : MonoBehaviour, IScannable, IDamageable
     {
         struct Quad
         {
