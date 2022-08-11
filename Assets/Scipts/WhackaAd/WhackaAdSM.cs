@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 namespace WhackaAd
@@ -19,9 +20,13 @@ namespace WhackaAd
         public GameObject SpawnStore;
         public GameObject TutorialPanel;
         public Button AntivirusBtn;
+        public Button SkipButton;
+
 
         [Header("Hint Text")]
         public string HintText;
+        int tryCount;
+
 
         Coroutine closingCor;
         WhackaAdSpawner spawner;
@@ -158,8 +163,15 @@ namespace WhackaAd
 
         public override void Initialize()
         {
+            tryCount++;
             if (IsRunning) return;
 
+            base.Initialize();
+
+            if (tryCount >= 2)
+            {
+                SkipButton.interactable = true;
+            }
             base.Initialize();
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
@@ -212,6 +224,17 @@ namespace WhackaAd
         {
             TutorialPanel.SetActive(true);
             DisablePopup();
+        }
+        public void SkipGame(string TargetSceneName)
+        {
+            if (tryCount >= 2)
+            {
+                SceneManager.LoadScene(TargetSceneName);
+            }
+            else
+            {
+
+            }
         }
     }
 }

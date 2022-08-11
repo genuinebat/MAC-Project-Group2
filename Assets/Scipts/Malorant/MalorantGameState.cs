@@ -66,6 +66,7 @@ namespace Malorant
                     GameStarted = false;
                     GameUI.SetActive(false);
                     LoseUI.SetActive(true);
+
                 }
 
                 if (Enemies.transform.childCount == 1)

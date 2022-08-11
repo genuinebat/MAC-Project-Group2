@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Pathfinding;
 
@@ -20,11 +22,15 @@ namespace RansomMan
         public GameObject Back;
         public GameObject ARCam;
         public GameObject Cam;
+        public GameObject WeaponNotificationUI;
+        public Button SkipButton;
         public RansomwareSpawner Spawner;
         public NodeManager nm;
 
         [Header("Hint Text")]
         public string HintText;
+        int tryCount;
+
 
         Coroutine closingCor;
         ByteTracker bt;
@@ -168,8 +174,15 @@ namespace RansomMan
 
         public override void Initialize()
         {
+            tryCount++;
             if (IsRunning) return;
 
+            base.Initialize();
+
+            if (tryCount >= 2)
+            {
+                SkipButton.interactable = true;
+            }
             base.Initialize();
 
             ARCam.SetActive(false);
@@ -230,6 +243,17 @@ namespace RansomMan
             Cancel();
             yield return new WaitForSeconds(.1f);
             Initialize();
+        }
+        public void SkipGame(string TargetSceneName)
+        {
+            if (tryCount >= 2)
+            {
+                SceneManager.LoadScene(TargetSceneName);
+            }
+            else
+            {
+
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 namespace Malorant
@@ -21,7 +22,9 @@ namespace Malorant
         public GameObject LockUI;
         public GameObject UnlockUI;
         public GameObject WeaponNotificationUI;
+        public Button SkipButton;
         public MalorantGameState malorantState;
+        int tryCount;
 
         [Header("Hint Text")]
         public string HintText;
@@ -172,10 +175,15 @@ namespace Malorant
         // function that is called to start the game
         public override void Initialize()
         {
+            tryCount++;
             if (IsRunning) return;
 
             base.Initialize();
 
+            if (tryCount >= 2)
+            {
+                SkipButton.interactable = true;
+            }
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             spawnerScript.SpawnMalwares();
@@ -231,6 +239,18 @@ namespace Malorant
             Cancel();
             yield return new WaitForSeconds(.1f);
             Initialize();
+        }
+
+        public void SkipGame(string TargetSceneName)
+        {
+            if (tryCount >= 2)
+            {
+                SceneManager.LoadScene(TargetSceneName);
+            }
+            else
+            {
+
+            }
         }
     }
 }

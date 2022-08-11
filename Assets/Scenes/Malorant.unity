@@ -4103,7 +4103,7 @@ GameObject:
   - component: {fileID: 1242150603}
   - component: {fileID: 1242150602}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Skip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4155,9 +4155,9 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.09
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -4169,21 +4169,21 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1242150603}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 415520126}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: nextScene
+      - m_Target: {fileID: 1873579880}
+        m_TargetAssemblyTypeName: Malorant.MalorantSM, Assembly-CSharp
+        m_MethodName: SkipGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Main
+          m_StringArgument: WhackaAd
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1242150603
@@ -5900,7 +5900,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: a4d935ec745c8254ba53f94ff8d8b265, type: 3}
-    m_FontSize: 100
+    m_FontSize: 68
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5911,7 +5911,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: Skip level
 --- !u!222 &1735333558
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6308,6 +6308,7 @@ MonoBehaviour:
   LockUI: {fileID: 647291828}
   UnlockUI: {fileID: 1311609533}
   WeaponNotificationUI: {fileID: 905995695}
+  SkipButton: {fileID: 1242150602}
   malorantState: {fileID: 1873579883}
   HintText: you won't believe it but there is a horse around here
 --- !u!114 &1873579881
@@ -6364,8 +6365,8 @@ MonoBehaviour:
   WinUI: {fileID: 1204962268}
   GameUI: {fileID: 653220820}
   TimerUI: {fileID: 865017098}
-  TimeMin: 1
-  TimeSec: 0
+  TimeMin: 0
+  TimeSec: 10
   Enemies: {fileID: 0}
   GameStarted: 0
   timeLeft: 0

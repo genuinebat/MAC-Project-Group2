@@ -451,6 +451,8 @@ MonoBehaviour:
   Back: {fileID: 358410675}
   ARCam: {fileID: 933652212}
   Cam: {fileID: 782452261}
+  WeaponNotificationUI: {fileID: 0}
+  SkipButton: {fileID: 516310086}
   Spawner: {fileID: 1033928461}
   nm: {fileID: 1846003980}
   HintText: what do you call the top of your lap?
@@ -485,7 +487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &321843171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -851,7 +853,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: Skip
 --- !u!222 &441063999
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1176,7 +1178,7 @@ GameObject:
   - component: {fileID: 516310087}
   - component: {fileID: 516310086}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Skip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1230,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1242,21 +1244,21 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 516310087}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 608248853}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: nextScene
+      - m_Target: {fileID: 222514056}
+        m_TargetAssemblyTypeName: RansomMan.RansomManSM, Assembly-CSharp
+        m_MethodName: SkipGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Main
+          m_StringArgument: SpotTheBot
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &516310087
