@@ -13,6 +13,7 @@ namespace WhackaAd
         public TMP_Text EnemyCounter;
         public GameObject WinUI;
         public GameObject LoseUI;
+        public GameObject AdblockNotifUI;
         public Image EnemyCounterFill;
 
         [Header("Functionality Variables")]
@@ -58,13 +59,13 @@ namespace WhackaAd
             EnemyCounterFill.fillAmount =
                 Mathf
                     .Lerp(EnemyCounterFill.fillAmount,
-                    (float) spawner.childCount / MaxAds,
+                    (float)spawner.childCount / MaxAds,
                     Time.deltaTime * 10);
 
             // updating and changing the timer UI
             TimeLeft -= Time.deltaTime;
 
-            string minutes = ((int) TimeLeft / 60).ToString("00");
+            string minutes = ((int)TimeLeft / 60).ToString("00");
             string seconds = Mathf.Round(TimeLeft % 60).ToString("00");
 
             TimerUI.text = minutes + ":" + seconds;
@@ -85,7 +86,7 @@ namespace WhackaAd
             GameStarted = false;
 
             GetComponent<AntiVirusAbility>().CloseAntiVirusMenu();
-            
+
             TimeLeft = 0;
             Time.timeScale = 0;
             WinUI.SetActive(true);
@@ -94,6 +95,7 @@ namespace WhackaAd
         // function to and the game
         public void GameOver()
         {
+            AdblockNotifUI.SetActive(false);
             GameStarted = false;
             EnemyCounterFill.fillAmount = 1f;
             tapScript.GameEnd = true;
