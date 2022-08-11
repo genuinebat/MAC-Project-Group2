@@ -14,6 +14,7 @@ namespace WhackaAd
         public GameObject WinUI;
         public GameObject LoseUI;
         public GameObject AdblockNotifUI;
+        public GameObject AntiVirusUI;
         public Image EnemyCounterFill;
 
         [Header("Functionality Variables")]
@@ -83,6 +84,7 @@ namespace WhackaAd
 
         public void WinGame()
         {
+            AdblockNotifUI.SetActive(false);
             GameStarted = false;
 
             GetComponent<AntiVirusAbility>().CloseAntiVirusMenu();
@@ -95,7 +97,7 @@ namespace WhackaAd
         // function to and the game
         public void GameOver()
         {
-            AdblockNotifUI.SetActive(false);
+            AntiVirusUI.SetActive(false);
             GameStarted = false;
             EnemyCounterFill.fillAmount = 1f;
             tapScript.GameEnd = true;

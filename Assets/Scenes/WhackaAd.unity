@@ -4823,6 +4823,7 @@ MonoBehaviour:
   WinUI: {fileID: 814893271}
   LoseUI: {fileID: 1905369273}
   AdblockNotifUI: {fileID: 1168325405}
+  AntiVirusUI: {fileID: 1229197748}
   EnemyCounterFill: {fileID: 2141958024}
   TimeMin: 0
   TimeSec: 30

@@ -10,17 +10,14 @@ namespace WhackaAd
     {
         [Header("Reference Variables")]
         public GameObject SpawnnerHolder;
-
         public Image Icon;
-
         public float AdBlockerCooldownTime;
-
         public GameObject AdblockerUI;
-
         float fill;
 
         public void AdBlockerPressed()
         {
+            AdblockerUI.SetActive(true);
             StartCoroutine(AdblockerUIFade());
             foreach (Transform child in SpawnnerHolder.transform)
             {
@@ -32,7 +29,6 @@ namespace WhackaAd
 
         IEnumerator AdblockerUIFade()
         {
-            AdblockerUI.SetActive(true);
             yield return new WaitForSeconds(2f);
             AdblockerUI.SetActive(false);
         }
