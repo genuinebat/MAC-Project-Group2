@@ -37,7 +37,6 @@ namespace WhackaAd
             {
                 Spawner.AdwareTemp.RemoveAt(index);
             }
-            StartCoroutine(RevertAntivirus());
             removed = index;
             AntivirusUI.SetActive(false);
             Time.timeScale = 1f;
@@ -64,13 +63,6 @@ namespace WhackaAd
             }
 
             Icon.fillAmount = 1f;
-        }
-
-        IEnumerator RevertAntivirus()
-        {
-            yield return new WaitForSeconds(5);
-            Spawner.AdwareTemp.AddRange(Spawner.Adwares);
-            Spawner.AdwareTemp.RemoveAt(0);
         }
     }
 }
