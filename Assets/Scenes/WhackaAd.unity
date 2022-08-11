@@ -5104,7 +5104,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'When using the security suite you can select one type of enemy to prevent
-    from spawnning
+    from spawnning for 5 seconds.
 
     *Does not reduce the amount of enemies spawnned'
   m_isRightToLeft: 0
