@@ -129,6 +129,8 @@ namespace Malorant
 
                 if (hit.transform.tag == "Scannable")
                 {
+                    InstructionTxt.SetActive(true);
+
                     ScannerFillBack.SetActive(true);
                     TargetFoundTxt.text = "???";
                     scannable = true;
@@ -149,6 +151,8 @@ namespace Malorant
             else
             {
                 TargetFoundTxt.color = Color.white;
+                InstructionTxt.SetActive(false);
+
             }
 
             ScannerFillBack.SetActive(false);
@@ -167,7 +171,7 @@ namespace Malorant
             scannableObj.GetComponentInParent<IScannable>().Scan();
 
             StartCoroutine(ScannedText());
-            InstructionTxt.SetActive(true);
+            //InstructionTxt.SetActive(true);
 
         }
 
