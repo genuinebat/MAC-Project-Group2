@@ -165,6 +165,7 @@ namespace WhackaAd
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             spawner.GameStarted = true;
+            GetComponent<TappedOnAdware>().GameEnd = false;
 
             TutorialPanel.SetActive(false);
             HintTxt.SetActive(false);

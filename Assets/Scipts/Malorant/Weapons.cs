@@ -17,6 +17,7 @@ namespace Malorant
     {
         bool Scanned { get; }
         void Scan();
+        void GetHit();
     }
 
     // enumerator of all types of guns
