@@ -217,5 +217,17 @@ namespace Malorant
 
             HintTxt.SetActive(true);
         }
+
+        public void Retry()
+        {
+            StartCoroutine(RetryCor());
+        }
+        
+        IEnumerator RetryCor()
+        {
+            Cancel();
+            yield return new WaitForSeconds(.1f);
+            Initialize();
+        }
     }
 }

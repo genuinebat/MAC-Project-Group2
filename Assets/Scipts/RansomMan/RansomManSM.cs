@@ -17,6 +17,8 @@ namespace RansomMan
         public GameObject LoseUI;
         public GameObject Player;
         public GameObject Back;
+        public GameObject ARCam;
+        public GameObject Cam;
         public RansomwareSpawner Spawner;
         public NodeManager nm;
 
@@ -169,6 +171,9 @@ namespace RansomMan
 
             base.Initialize();
 
+            ARCam.SetActive(false);
+            Cam.SetActive(true);
+
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             HintTxt.SetActive(false);
@@ -208,7 +213,20 @@ namespace RansomMan
             {
                 Destroy(child.gameObject);
             }
+            Debug.Log(GameObject.FindGameObjectsWithTag("Byte").Length);
             Back.SetActive(false);
+        }
+
+        public void Retry()
+        {
+            StartCoroutine(RetryCor());
+        }
+        
+        IEnumerator RetryCor()
+        {
+            Cancel();
+            yield return new WaitForSeconds(.1f);
+            Initialize();
         }
     }
 }
