@@ -33,6 +33,7 @@ namespace Malorant
         public GameObject ScannerFillBack;
         public GameObject ScannedTxt;
         public GameObject WeaponNotification;
+        public GameObject InstructionTxt;
         public Image ScannerFill;
         public TextMeshProUGUI TargetFoundTxt;
 
@@ -76,6 +77,8 @@ namespace Malorant
                     // checking if the shoot button is being held down
                     if (pressShootScript.Pressing)
                     {
+                        InstructionTxt.SetActive(false);
+
                         // updating the scanner fill amount based on
                         // the required scan duration and the amount
                         // of time that has been spent scanning
@@ -164,6 +167,8 @@ namespace Malorant
             scannableObj.GetComponentInParent<IScannable>().Scan();
 
             StartCoroutine(ScannedText());
+            InstructionTxt.SetActive(true);
+
         }
 
         // function that calls when switching to the raygun

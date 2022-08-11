@@ -7800,6 +7800,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 540564192}
     m_Modifications:
+    - target: {fileID: 8192447315304307137, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -311
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192447315304307137, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 729
+      objectReference: {fileID: 0}
     - target: {fileID: 8192447315507606439, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
