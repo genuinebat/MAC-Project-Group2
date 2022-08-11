@@ -69,12 +69,12 @@ namespace WhackaAd
 
             TimerUI.text = minutes + ":" + seconds;
 
-            if (TimeLeft < 0)
+            if (TimeLeft < 0 && GameStarted)
             {
                 WinGame();
             }
 
-            if (spawner.childCount >= MaxAds)
+            if (spawner.childCount >= MaxAds && GameStarted)
             {
                 GameOver();
             }
@@ -82,6 +82,8 @@ namespace WhackaAd
 
         public void WinGame()
         {
+            GameStarted = false;
+
             GetComponent<AntiVirusAbility>().CloseAntiVirusMenu();
             
             TimeLeft = 0;
@@ -92,9 +94,9 @@ namespace WhackaAd
         // function to and the game
         public void GameOver()
         {
+            GameStarted = false;
             EnemyCounterFill.fillAmount = 1f;
             tapScript.GameEnd = true;
-            GameStarted = false;
             Time.timeScale = 0;
             LoseUI.SetActive(true);
         }
