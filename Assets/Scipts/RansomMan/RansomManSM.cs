@@ -15,6 +15,7 @@ namespace RansomMan
         public GameObject UI;
         public GameObject WinUI;
         public GameObject LoseUI;
+        public GameObject PauseUI;
         public GameObject Player;
         public GameObject Back;
         public GameObject ARCam;
@@ -178,6 +179,7 @@ namespace RansomMan
 
             HintTxt.SetActive(false);
             UI.SetActive(true);
+            PauseUI.SetActive(true);
 
             nm.SpawnMapPrefabs();
 
@@ -202,6 +204,7 @@ namespace RansomMan
             HintTxt.SetActive(true);
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
+            PauseUI.SetActive(false);
             Player.transform.position = new Vector3(100, 100, 100);
 
             // reset nodemanager, ransomwares, player and turn off all gameobject associated with it
@@ -221,7 +224,7 @@ namespace RansomMan
         {
             StartCoroutine(RetryCor());
         }
-        
+
         IEnumerator RetryCor()
         {
             Cancel();

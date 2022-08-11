@@ -15,6 +15,7 @@ namespace WhackaAd
         public GameObject HintTxt;
         public GameObject UI;
         public GameObject LoseUI;
+        public GameObject PauseUI;
         public GameObject SpawnStore;
         public GameObject TutorialPanel;
         public Button AntivirusBtn;
@@ -168,6 +169,7 @@ namespace WhackaAd
             TutorialPanel.SetActive(false);
             HintTxt.SetActive(false);
             UI.SetActive(true);
+            PauseUI.SetActive(true);
 
             timer.GameStarted = true;
         }
@@ -184,6 +186,7 @@ namespace WhackaAd
             spawner.GameStarted = false;
             AntivirusBtn.enabled = true;
             HintTxt.SetActive(true);
+            PauseUI.SetActive(false);
 
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)
@@ -196,7 +199,7 @@ namespace WhackaAd
         {
             StartCoroutine(RetryCor());
         }
-        
+
         IEnumerator RetryCor()
         {
             Cancel();

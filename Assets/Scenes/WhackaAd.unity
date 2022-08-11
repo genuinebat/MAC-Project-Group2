@@ -4692,6 +4692,7 @@ MonoBehaviour:
   HintTxt: {fileID: 2087307522}
   UI: {fileID: 1465802092}
   LoseUI: {fileID: 1905369273}
+  PauseUI: {fileID: 1695470956}
   SpawnStore: {fileID: 669202767}
   TutorialPanel: {fileID: 60913387}
   AntivirusBtn: {fileID: 1181522406}
@@ -5875,6 +5876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8192447316282534533, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5980,6 +5985,11 @@ PrefabInstance:
 --- !u!224 &1695470955 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+  m_PrefabInstance: {fileID: 1695470954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1695470956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8192447316282534533, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
   m_PrefabInstance: {fileID: 1695470954}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1720261084

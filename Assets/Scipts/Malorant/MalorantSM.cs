@@ -15,6 +15,7 @@ namespace Malorant
         public GameObject PopupDisplay;
         public GameObject LoseUI;
         public GameObject WinUI;
+        public GameObject PauseUI;
         public GameObject ScannerUnlockUI;
         public GameObject HintTxt;
         public GameObject LockUI;
@@ -187,6 +188,7 @@ namespace Malorant
             LockUI.SetActive(true);
             UnlockUI.SetActive(true);
             WeaponNotificationUI.SetActive(false);
+            PauseUI.SetActive(true);
 
             malorantState.GameStarted = true;
 
@@ -212,6 +214,7 @@ namespace Malorant
             //make sure lose UI is closed
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
+            PauseUI.SetActive(false);
             spawnerScript.ResetMalorant();
             malorantState.GameStarted = false;
 
@@ -222,7 +225,7 @@ namespace Malorant
         {
             StartCoroutine(RetryCor());
         }
-        
+
         IEnumerator RetryCor()
         {
             Cancel();
