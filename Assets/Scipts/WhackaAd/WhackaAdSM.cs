@@ -192,6 +192,17 @@ namespace WhackaAd
             }
         }
 
+        public void Retry()
+        {
+            StartCoroutine(RetryCor());
+        }
+        
+        IEnumerator RetryCor()
+        {
+            Cancel();
+            yield return new WaitForSeconds(.1f);
+            Initialize();
+        }
 
         public void OpenTutorialPanel()
         {
