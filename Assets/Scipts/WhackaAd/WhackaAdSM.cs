@@ -192,6 +192,9 @@ namespace WhackaAd
             base.Cancel();
 
             Time.timeScale = 1f;
+            
+            GetComponent<AdBlockerAbility>().ResetCooldown();
+            GetComponent<AntiVirusAbility>().ResetCooldown();
 
             UI.SetActive(false);
             LoseUI.SetActive(false);
@@ -200,6 +203,7 @@ namespace WhackaAd
             AntivirusBtn.enabled = true;
             HintTxt.SetActive(true);
             PauseUI.SetActive(false);
+
 
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)

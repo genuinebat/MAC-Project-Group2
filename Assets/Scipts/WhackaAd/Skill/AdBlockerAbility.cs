@@ -13,7 +13,10 @@ namespace WhackaAd
         public Image Icon;
         public float AdBlockerCooldownTime;
         public GameObject AdblockerUI;
+        Coroutine cooldownCor, fillCor;
+
         float fill;
+        bool breakCor = false;
 
         public void AdBlockerPressed()
         {
@@ -22,8 +25,8 @@ namespace WhackaAd
             foreach (Transform child in SpawnnerHolder.transform)
             {
                 GameObject.Destroy(child.gameObject);
-                StartCoroutine(ChangeFill());
-                StartCoroutine(ADBlockCooldown());
+                fillCor = StartCoroutine(ChangeFill());
+                cooldownCor = StartCoroutine(ADBlockCooldown());
             }
         }
 
@@ -37,9 +40,33 @@ namespace WhackaAd
         {
             GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
                 false;
-            yield return new WaitForSeconds(AdBlockerCooldownTime);
+
+            float elap = 0f;
+            while (elap < AdBlockerCooldownTime)
+            {
+                if (breakCor) yield break;
+                yield return null;
+            }
+
             GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
                 true;
+        }
+
+        public void ResetCooldown()
+        {
+            StartCoroutine(StopEverything());
+
+            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
+                true;
+            
+            Icon.fillAmount = 1f;
+        }
+
+        IEnumerator StopEverything()
+        {
+            breakCor = true;
+            yield return new WaitForSeconds(.1f);
+            breakCor = false;
         }
 
         IEnumerator ChangeFill()
@@ -48,6 +75,11 @@ namespace WhackaAd
 
             while (elap < AdBlockerCooldownTime)
             {
+                if (breakCor)
+                {
+                    yield break;
+                }
+
                 Icon.fillAmount = elap / AdBlockerCooldownTime;
                 elap += Time.deltaTime;
                 yield return null;

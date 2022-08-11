@@ -10,10 +10,12 @@ namespace WhackaAd
         public WhackaAdSpawner Spawner;
         public GameObject AntivirusUI;
         public Image Icon;
+        public float AntiVirusDuration;
         public float AntiVirusCooldownTime;
         public Button AntivirusBtn;
 
-        int removed;
+        Coroutine cooldownCor, fillCor, effectCor;
+        bool breakCor = false;
 
         public void AntiVirusMenu()
         {
@@ -27,28 +29,48 @@ namespace WhackaAd
 
         public void AntiVirus(int index)
         {
-            Time.timeScale = 0.2f;
-            if (Spawner.AdwareTemp.Count == 1)
-            {
-                Spawner.AdwareTemp.Add(Spawner.Adwares[removed]);
-                Spawner.AdwareTemp.RemoveAt(0);
-            }
-            else if (Spawner.AdwareTemp.Count > 1)
-            {
-                Spawner.AdwareTemp.RemoveAt(index);
-            }
-            removed = index;
             AntivirusUI.SetActive(false);
-            Time.timeScale = 1f;
-            StartCoroutine(ChangeFill());
-            StartCoroutine(AntiVirusCooldown());
+            effectCor = StartCoroutine(AntiVirusActivate(index));
+            fillCor = StartCoroutine(ChangeFill());
+            cooldownCor = StartCoroutine(AntiVirusCooldown());
+        }
+
+        IEnumerator AntiVirusActivate(int index)
+        {
+            Spawner.AdwareTemp.RemoveAt(index);
+            yield return new WaitForSeconds(AntiVirusDuration);
+            Spawner.AdwareTemp.Clear();
+            Spawner.AdwareTemp.AddRange(Spawner.Adwares);
         }
 
         IEnumerator AntiVirusCooldown()
         {
             AntivirusBtn.enabled = false;
-            yield return new WaitForSeconds(AntiVirusCooldownTime);
+
+            float elap = 0f;
+            while (elap < AntiVirusCooldownTime)
+            {
+                if (breakCor) yield break;
+                yield return null;
+            }
             AntivirusBtn.enabled = true;
+        }
+
+        public void ResetCooldown()
+        {
+            StartCoroutine(StopEverything());
+
+            AntivirusBtn.enabled = true;
+            Icon.fillAmount = 1f;
+            Spawner.AdwareTemp.Clear();
+            Spawner.AdwareTemp.AddRange(Spawner.Adwares);
+        }
+
+        IEnumerator StopEverything()
+        {
+            breakCor = true;
+            yield return new WaitForSeconds(.1f);
+            breakCor = false;
         }
 
         IEnumerator ChangeFill()
@@ -57,6 +79,8 @@ namespace WhackaAd
 
             while (elap < AntiVirusCooldownTime)
             {
+                if (breakCor) yield break;
+
                 Icon.fillAmount = elap / AntiVirusCooldownTime;
                 elap += Time.deltaTime;
                 yield return null;
