@@ -191,7 +191,7 @@ namespace WhackaAd
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)
             {
-                GameObject.Destroy(child.gameObject);
+                Destroy(child.gameObject);
             }
         }
 
