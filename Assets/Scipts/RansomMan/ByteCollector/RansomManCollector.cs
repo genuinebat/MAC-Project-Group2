@@ -26,7 +26,7 @@ namespace RansomMan
             BackedUp = false;
             Reverting = false;
         }
-        
+
         void Update()
         {
             if (BackedUp)
@@ -118,7 +118,7 @@ namespace RansomMan
             while (n < backupPath.Count)
             {
                 if (Vector3.Distance(transform.position, backupPath[n]) < 0.02f)
-                {                    
+                {
                     Node node = nm.GetNearestNodeToPosition(backupPath[n]);
 
                     if (BTScript.Temp.Contains(node))
@@ -148,7 +148,7 @@ namespace RansomMan
             transform.position = backupLocation;
 
             Reverting = false;
-            
+
             movementScript.enabled = true;
         }
     }
