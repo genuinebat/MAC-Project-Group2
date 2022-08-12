@@ -4789,7 +4789,7 @@ MonoBehaviour:
   Spawner: {fileID: 669202769}
   AntivirusUI: {fileID: 1229197748}
   Icon: {fileID: 1729823184}
-  AntiVirusDuriation: 10
+  AntiVirusDuration: 0
   AntiVirusCooldownTime: 20
   AntivirusBtn: {fileID: 1181522406}
 --- !u!114 &1443064773
