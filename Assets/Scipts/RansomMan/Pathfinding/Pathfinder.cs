@@ -39,7 +39,7 @@ namespace Pathfinding
         }
 
         // functon for getting the list of nodes that form the shortest path from a starting node to an ending node
-        List<Node> FindPath(Node start, Node end)
+        public List<Node> FindPath(Node start, Node end)
         {
             // an open list to store the nodes that are to be searched in the next iteration of the main loop
             open = new List<Node>() { start };

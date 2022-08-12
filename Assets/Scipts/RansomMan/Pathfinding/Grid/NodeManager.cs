@@ -11,6 +11,7 @@ namespace Pathfinding
         [Header("Prefabs")]
         public GameObject BytePrefab;
         public GameObject ObstaclePrefab;
+        public GameObject ParticlePrefab;
 
         [Header("grid width, height and spacing")]
         // the length of the grid on the x and y axis respectively
@@ -59,6 +60,25 @@ namespace Pathfinding
                 SetPositionInfronOfImageTarget();
                 yield return new WaitForSeconds(1f);
             }
+        }
+
+        public List<Node> GetAllByteNodes()
+        {
+            List<Node> byteNodes = new List<Node>();
+
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    Node n = grid.Get(x, y);
+                    if (!n.Obstacle && !n.Empty)
+                    {
+                        byteNodes.Add(n);
+                    }
+                }
+            }
+
+            return byteNodes;
         }
 
         void SetPositionInfronOfImageTarget()

@@ -319,10 +319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ecf2a895beffc419c07fdae1c453e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WanderSpeed: 0.3
-  ChaseSpeed: 1
+  WanderSpeed: 0.5
+  ChaseSpeed: 1.5
   TimeOutDuration: 20
+  DetectionRange: 6
+  StopChaseRange: 8
   Active: 0
   nm: {fileID: 0}
   TimeOutLocation: {x: 0, y: 0, z: 0}
-  quad: 0
+  quadrant: 0

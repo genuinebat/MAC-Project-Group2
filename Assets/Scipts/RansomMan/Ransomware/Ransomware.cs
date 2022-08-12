@@ -11,6 +11,8 @@ namespace RansomMan
         public float WanderSpeed;
         public float ChaseSpeed;
         public float TimeOutDuration;
+        public int DetectionRange;
+        public int StopChaseRange;
 
         [HideInInspector]
         public bool Active = false;
@@ -124,7 +126,7 @@ namespace RansomMan
             if (chase)
             {
                 if (chasePlayerPath.Count <= 0) CatchPlayer();
-                if (chasePlayerPath.Count > 8)
+                if (chasePlayerPath.Count > StopChaseRange)
                 {
                     chase = false;
                     wanderNode = int.MaxValue;
@@ -132,7 +134,7 @@ namespace RansomMan
             }
             else
             {
-                if (chasePlayerPath.Count <= 5) chase = true;
+                if (chasePlayerPath.Count <= DetectionRange) chase = true;
             }
         }
 

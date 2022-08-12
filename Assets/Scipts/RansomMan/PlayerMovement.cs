@@ -46,7 +46,9 @@ namespace RansomMan
 
         public void PlayerStartPosition()
         {
-            transform.position = nm.GetNodeWorldPosition(nm.grid.Get(11, 11));
+            if (turningCor != null) StopCoroutine(turningCor);
+
+            transform.position = nm.GetNodeWorldPosition(nm.grid.Get(7, 11));
             transform.rotation = Quaternion.Euler(0f, 90f, -90f);
         }
 

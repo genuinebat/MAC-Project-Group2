@@ -15,11 +15,14 @@ namespace RansomMan
         [HideInInspector]
         public bool Reverting;
 
+        Pathfinder pf;
         List<Vector3> backupPath = new List<Vector3>();
         Vector3 backupLocation;
 
         void Start()
         {
+            pf = new Pathfinder(nm, false);
+
             BackedUp = false;
             Reverting = false;
         }
@@ -28,6 +31,20 @@ namespace RansomMan
         {
             if (BackedUp)
             {
+                List<Node> toBackup = pf.FindPath(nm.GetNearestNodeToPosition(transform.position), nm.GetNearestNodeToPosition(backupLocation));
+
+                foreach (Node node in nm.GetAllByteNodes())
+                {
+                    if (toBackup.Contains(node))
+                    {
+                        node.Particle.SetActive(true);
+                    }
+                    else
+                    {
+                        node.Particle.SetActive(false);
+                    }
+                }
+
                 Node n = nm.GetNearestNodeToPosition(transform.position, 0.2f);
 
                 if (n != null)

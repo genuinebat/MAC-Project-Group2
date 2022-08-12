@@ -19,6 +19,9 @@ namespace Pathfinding
         // variable to store the object that is associated with this node (either Byte or Obstacle)
         public GameObject Object { get; set; }
 
+        // variable to store the particle system attached to this node's position
+        public GameObject Particle { get; set; }
+
         // the x and y coordinates of this node in the figurative grid created by the node manager
         public int GridX { get; private set; }
         public int GridY { get; private set; }
