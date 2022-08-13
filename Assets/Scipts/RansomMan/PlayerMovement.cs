@@ -108,7 +108,7 @@ namespace RansomMan
         {
             for (;;)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * 720);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * 960);
 
                 yield return null;
             }

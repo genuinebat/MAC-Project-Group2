@@ -25,6 +25,7 @@ namespace RansomMan
 
         Pathfinder pf;
         BackupSpawner bs;
+        RansomManCollector rmc;
 
         GameObject player, loseUI;
         List<Vector3> chasePlayerPath, wanderPath;
@@ -41,9 +42,12 @@ namespace RansomMan
             pf = new Pathfinder(nm, false);
             bs = GameObject.Find("Spawner").GetComponent<BackupSpawner>();
 
+
             player = GameObject.Find("Player");
             loseUI = GameObject.Find("UI").transform.Find("LoseUI").gameObject;
 
+            rmc = player.GetComponent<RansomManCollector>();
+            
             chase = false;
             wanderPath = new List<Vector3>();
             wanderNode = int.MaxValue;
@@ -96,15 +100,16 @@ namespace RansomMan
             }
             else
             {
-                if (Vector3.Distance(transform.position, wanderPath[wanderNode]) < 0.02f)
+                Vector3 pos = wanderPath[wanderNode];
+                if (Vector3.Distance(transform.position, pos) < 0.02f)
                 {
                     wanderNode++;
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, wanderPath[wanderNode], WanderSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, pos, WanderSpeed * Time.deltaTime);
                     
-                    Quaternion lookRotation = Quaternion.LookRotation((wanderPath[wanderNode] - transform.position), -Vector3.forward);
+                    Quaternion lookRotation = Quaternion.LookRotation((pos - transform.position), -Vector3.forward);
 
                     transform.rotation =
                         Quaternion.RotateTowards(transform.rotation, lookRotation, 360 * Time.deltaTime);
@@ -114,7 +119,7 @@ namespace RansomMan
 
         void CheckChasePlayer()
         {
-            if (player.GetComponent<RansomManCollector>().Reverting)
+            if (rmc.Reverting)
             {
                 chase = false;
                 wanderNode = wanderPath.Count;

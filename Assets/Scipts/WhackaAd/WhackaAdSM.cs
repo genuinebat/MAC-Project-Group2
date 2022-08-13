@@ -22,17 +22,15 @@ namespace WhackaAd
         public Button AntivirusBtn;
         public Button SkipButton;
 
-
         [Header("Hint Text")]
         public string HintText;
-        int tryCount;
-
 
         Coroutine closingCor;
         WhackaAdSpawner spawner;
         WhackaAdTime timer;
 
         float popupHeight, popupWidth;
+        int tryCount;
 
         void Start()
         {
@@ -71,7 +69,6 @@ namespace WhackaAd
         // coroutine for the opening popup animation
         IEnumerator OpenPopup()
         {
-
             // expanding the popup horizontally
             while (Popup.transform.localScale.x < (popupWidth - 0.02f))
             {
@@ -163,16 +160,16 @@ namespace WhackaAd
 
         public override void Initialize()
         {
-            tryCount++;
             if (IsRunning) return;
 
             base.Initialize();
+
+            tryCount++;
 
             if (tryCount >= 2)
             {
                 SkipButton.interactable = true;
             }
-            base.Initialize();
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
@@ -204,7 +201,6 @@ namespace WhackaAd
             HintTxt.SetActive(true);
             PauseUI.SetActive(false);
 
-
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)
             {
@@ -229,15 +225,12 @@ namespace WhackaAd
             TutorialPanel.SetActive(true);
             DisablePopup();
         }
+        
         public void SkipGame(string TargetSceneName)
         {
             if (tryCount >= 2)
             {
                 SceneManager.LoadScene(TargetSceneName);
-            }
-            else
-            {
-
             }
         }
     }
