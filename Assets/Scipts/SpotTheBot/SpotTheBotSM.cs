@@ -37,6 +37,7 @@ namespace SpotTheBot
 
         public override void EnablePopup()
         {
+            return;
             if (IsRunning || IsCompleted) return;
 
             base.EnablePopup();

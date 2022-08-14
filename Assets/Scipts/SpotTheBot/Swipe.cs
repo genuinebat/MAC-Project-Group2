@@ -6,9 +6,17 @@ namespace SpotTheBot
 {
     public class Swipe : MonoBehaviour
     {
-        public Transform SwipePanel;
+        public Transform ImageTarget;
+        public Transform SwipeCanvas;
 
         Vector2 firstPressPos, secondPressPos, currentSwipe;
+
+        Vector3 ogPos;
+
+        void Start()
+        {
+            ogPos = new Vector3(ImageTarget.position.x, ImageTarget.position.y, ImageTarget.position.z - 1);
+        }
 
         void Update()
         {
@@ -33,7 +41,10 @@ namespace SpotTheBot
                         // swipe left
                         if (currentSwipe.x < 0)
                         {
+                            Debug.Log("SwipedLeft");
+                            Vector3 left = new Vector3(SwipeCanvas.position.x - 2, SwipeCanvas.position.y, SwipeCanvas.position.z );
 
+                            SwipeCanvas.position =  Vector3.Lerp(SwipeCanvas.position, left, Mathf.Abs(SwipeCanvas.position.x) / 300);
                         }
 
                         // swipe right
@@ -43,6 +54,10 @@ namespace SpotTheBot
                         }
                     }
                 }
+            }
+            else
+            {
+                SwipeCanvas.position = Vector3.MoveTowards(SwipeCanvas.position, ogPos, 0.1f  * Time.deltaTime);
             }
         }
     }
