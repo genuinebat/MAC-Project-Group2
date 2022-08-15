@@ -4571,7 +4571,7 @@ GameObject:
   - component: {fileID: 2137599195}
   - component: {fileID: 2137599196}
   m_Layer: 0
-  m_Name: SpotTheBot
+  m_Name: OKB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4601,9 +4601,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2137599190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cc83a393e6213040b4c320e8155814d, type: 3}
+  m_Script: {fileID: 11500000, guid: 48b9b013fbab8db4a8974c2f02d09f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Popup: {fileID: 1914894150}
+  PopupDisplay: {fileID: 688399005}
+  UI: {fileID: 1507969747}
+  HintTxt: {fileID: 883941879}
+  PauseUI: {fileID: 0}
+  SkipButton: {fileID: 0}
+  HintText: crank crank goes the gears
 --- !u!114 &2137599196
 MonoBehaviour:
   m_ObjectHideFlags: 0
