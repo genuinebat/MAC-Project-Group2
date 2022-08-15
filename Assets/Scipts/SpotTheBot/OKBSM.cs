@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-namespace SpotTheBot
+namespace OKB
 {
-    public class SpotTheBotSM : PuzzleSM
+    public class OKBSM : PuzzleSM
     {
         [Header("Reference Varaibles")]
         public GameObject Popup;

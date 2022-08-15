@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpotTheBot
+namespace OKB
 {
     public class Swipe : MonoBehaviour
     {
@@ -10,6 +10,7 @@ namespace SpotTheBot
         public Transform SwipeObj;
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
+        public 
 
         Vector2 firstPressPos, secondPressPos, currentSwipe;
 
@@ -17,9 +18,12 @@ namespace SpotTheBot
         Vector3 left, right;
         Quaternion ogRot, targetRotLeft, targetRotRight;
 
+        Vector3 targetPosition;
+        Quaternion targetRot;
+
         void Start()
         {
-            ogPos = new Vector3(AnchorPoint.position.x, AnchorPoint.position.y, AnchorPoint.position.z - 1.5f);
+            ogPos = new Vector3(AnchorPoint.position.x, AnchorPoint.position.y, AnchorPoint.position.z - 1f);
             
             ogRot = Quaternion.Euler(0f, 0f, 0f);
 
@@ -27,9 +31,9 @@ namespace SpotTheBot
             
             targetRotRight = Quaternion.Euler(0f, 0f, -15f);
 
-            left = new Vector3(SwipeObj.position.x - 1, SwipeObj.position.y, SwipeObj.position.z);
+            left = new Vector3(SwipeObj.position.x - 0.8f, SwipeObj.position.y, SwipeObj.position.z);
 
-            right = new Vector3(SwipeObj.position.x + 1, SwipeObj.position.y, SwipeObj.position.z);
+            right = new Vector3(SwipeObj.position.x + 0.8f, SwipeObj.position.y, SwipeObj.position.z);
         }
 
         void Update()
@@ -50,40 +54,41 @@ namespace SpotTheBot
 
                     Vector3 currentSwipeNorm = currentSwipe.normalized;
 
-                    if (currentSwipeNorm.y > - 0.5f && currentSwipeNorm.y < 0.5f)
+                    if (currentSwipe.x < -200)
                     {
-                        if (currentSwipe.x < -250)
-                        {
-                            CorrectPanel.SetActive(false);
-                            WrongPanel.SetActive(true);
-                        }
-                        else if (currentSwipe.x > 250)
-                        {
-                            CorrectPanel.SetActive(true);
-                            WrongPanel.SetActive(false);
-                        }
-                        else
-                        {
-                            CorrectPanel.SetActive(false);
-                            WrongPanel.SetActive(false);
-                        }
-
-                        // swipe left
-                        if (currentSwipe.x < 0)
-                        {
-                            SwipeObj.position =  Vector3.Lerp(ogPos, left, Mathf.Abs(currentSwipe.x) / 300);
-
-                            SwipeObj.rotation = Quaternion.Lerp(ogRot, targetRotLeft, Mathf.Abs(currentSwipe.x) / 300);
-                        }
-
-                        // swipe right
-                        if (currentSwipe.x > 0)
-                        {
-                            SwipeObj.position =  Vector3.Lerp(ogPos, right, Mathf.Abs(currentSwipe.x) / 300);
-
-                            SwipeObj.rotation = Quaternion.Lerp(ogRot, targetRotRight, Mathf.Abs(currentSwipe.x) / 300);
-                        }
+                        CorrectPanel.SetActive(false);
+                        WrongPanel.SetActive(true);
                     }
+                    else if (currentSwipe.x > 200)
+                    {
+                        CorrectPanel.SetActive(true);
+                        WrongPanel.SetActive(false);
+                    }
+                    else
+                    {
+                        CorrectPanel.SetActive(false);
+                        WrongPanel.SetActive(false);
+                    }
+
+                    // swipe left
+                    if (currentSwipe.x < 0)
+                    {
+                        targetPosition =  Vector3.Lerp(ogPos, left, Mathf.Abs(currentSwipe.x) / 250);
+
+                        targetRot = Quaternion.Lerp(ogRot, targetRotLeft, Mathf.Abs(currentSwipe.x) / 250);
+                    }
+
+                    // swipe right
+                    if (currentSwipe.x > 0)
+                    {
+                        targetPosition =  Vector3.Lerp(ogPos, right, Mathf.Abs(currentSwipe.x) / 250);
+
+                        targetRot = Quaternion.Lerp(ogRot, targetRotRight, Mathf.Abs(currentSwipe.x) / 250);
+                    }
+
+                    SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, targetPosition, 20 * Time.deltaTime);
+
+                    SwipeObj.rotation = Quaternion.RotateTowards(SwipeObj.rotation, targetRot, 100 * Time.deltaTime);
                 }
             }
             else
@@ -91,9 +96,9 @@ namespace SpotTheBot
                 CorrectPanel.SetActive(false);
                 WrongPanel.SetActive(false);
 
-                SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, ogPos, 10  * Time.deltaTime);
+                SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, ogPos, 8  * Time.deltaTime);
 
-                SwipeObj.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, 0f), 50 * Time.deltaTime);
+                SwipeObj.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, 0f), 5 * Time.deltaTime);
             }
         }
     }
