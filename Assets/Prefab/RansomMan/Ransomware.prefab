@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderSpeed: 0.5
-  ChaseSpeed: 1.5
+  ChaseSpeed: 1.4
   TimeOutDuration: 20
   DetectionRange: 6
   StopChaseRange: 8

@@ -31,20 +31,6 @@ namespace RansomMan
         {
             if (BackedUp)
             {
-                List<Node> toBackup = pf.FindPath(nm.GetNearestNodeToPosition(transform.position), nm.GetNearestNodeToPosition(backupLocation));
-
-                foreach (Node node in nm.GetAllByteNodes())
-                {
-                    if (toBackup.Contains(node))
-                    {
-                        node.Particle.SetActive(true);
-                    }
-                    else
-                    {
-                        node.Particle.SetActive(false);
-                    }
-                }
-
                 Node n = nm.GetNearestNodeToPosition(transform.position, 0.2f);
 
                 if (n != null)
@@ -88,7 +74,11 @@ namespace RansomMan
                     BTScript.Temp.Clear();
                     backupPath.Clear();
 
-                    backupLocation = gameObject.transform.position;
+                    nm.GetNearestNodeToPosition(backupLocation).Particle.SetActive(false);
+
+                    backupLocation = other.gameObject.transform.position;
+
+                    nm.GetNearestNodeToPosition(backupLocation).Particle.SetActive(true);
                 }
                 else
                 {
@@ -96,7 +86,9 @@ namespace RansomMan
 
                     BackedUp = true;
 
-                    backupLocation = gameObject.transform.position;
+                    backupLocation = other.gameObject.transform.position;
+
+                    nm.GetNearestNodeToPosition(backupLocation).Particle.SetActive(true);
                 }
             }
         }
@@ -110,9 +102,12 @@ namespace RansomMan
 
             movementScript.enabled = false;
 
+            backupPath.RemoveAt(0);
+
             backupPath.Reverse();
 
             List<Vector3> tempBackupPath = backupPath;
+
 
             int n = 0;
             while (n < backupPath.Count)
@@ -140,12 +135,20 @@ namespace RansomMan
                 yield return null;
             }
 
+            Node backupNode = nm.GetNearestNodeToPosition(backupLocation);
+
+            backupNode.Particle.SetActive(false);
+            backupNode.Object.SetActive(false);
+            BTScript.Temp.Add(backupNode);
+
+            transform.position = backupLocation;
+
+            transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
+
             BTScript.Collected += BTScript.Temp.Count;
 
             BTScript.Temp.Clear();
             backupPath.Clear();
-
-            transform.position = backupLocation;
 
             Reverting = false;
 

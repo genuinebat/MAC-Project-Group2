@@ -98,21 +98,26 @@ namespace Pathfinding
             {
                 for (int y = 0; y < Height; y++)
                 {
-
-                    if (!grid.Get(x, y).Empty)
+                    Node n = grid.Get(x, y);
+            
+                    if (!n.Empty)
                     {
                         GameObject cube = null;
-                        if (grid.Get(x, y).Obstacle)
+                        if (n.Obstacle)
                         {
-                            cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                            cube = Instantiate(ObstaclePrefab, GetNodeWorldPosition(n), Quaternion.identity);
 
-                            grid.Get(x, y).Object = cube;
+                            n.Object = cube;
                         }
                         else
                         {
-                            cube = Instantiate(BytePrefab, GetNodeWorldPosition(grid.Get(x, y)), Quaternion.identity);
+                            cube = Instantiate(BytePrefab, GetNodeWorldPosition(n), Quaternion.identity);
 
-                            grid.Get(x, y).Object = cube;
+                            n.Object = cube;
+
+                            n.Particle = Instantiate(ParticlePrefab, GetNodeWorldPosition(n), Quaternion.Euler(180f, 0f, 0f));
+
+                            n.Particle.SetActive(false);
                         }
                         cube.transform.parent = transform;
                     }
