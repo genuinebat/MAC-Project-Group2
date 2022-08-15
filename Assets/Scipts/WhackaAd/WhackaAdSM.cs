@@ -12,7 +12,6 @@ namespace WhackaAd
         [Header("Reference Variables")]
         public GameObject Popup;
         public GameObject PopupDisplay;
-        public GameObject TutorialPanelDisplay;
         public GameObject HintTxt;
         public GameObject UI;
         public GameObject LoseUI;
@@ -189,7 +188,7 @@ namespace WhackaAd
             base.Cancel();
 
             Time.timeScale = 1f;
-            
+
             GetComponent<AdBlockerAbility>().ResetCooldown();
             GetComponent<AntiVirusAbility>().ResetCooldown();
 
@@ -225,7 +224,7 @@ namespace WhackaAd
             TutorialPanel.SetActive(true);
             DisablePopup();
         }
-        
+
         public void SkipGame(string TargetSceneName)
         {
             if (tryCount >= 2)

@@ -7,6 +7,7 @@ namespace WhackaAd
     public class BaseAdware : MonoBehaviour
     {
         public GameObject AdwarePrefab;
+        public GameObject DupParticles;
 
         public bool IsDestroyable { get; set; }
         public bool IsTeleport { get; set; }
@@ -47,6 +48,7 @@ namespace WhackaAd
             );
 
             dup.transform.parent = transform.parent;
+            Instantiate(DupParticles, new Vector3(dup.transform.position.x, dup.transform.position.y, (dup.transform.position.z - 1)), Quaternion.identity);
         }
     }
 }

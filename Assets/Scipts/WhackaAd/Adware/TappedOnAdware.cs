@@ -6,6 +6,8 @@ namespace WhackaAd
 {
     public class TappedOnAdware : MonoBehaviour
     {
+        public GameObject CloseParticles;
+        public GameObject SpawnParticles;
         [HideInInspector]
         public bool GameEnd;
 
@@ -28,33 +30,22 @@ namespace WhackaAd
                     if (hit.transform.gameObject.name == "CloseAD")
                     {
                         AdwareEffects effects =
-                            hit
-                                .transform
-                                .gameObject
-                                .GetComponentInParent<AdwareEffects>();
+                            hit.transform.gameObject.GetComponentInParent<AdwareEffects>();
 
                         if (effects.Teleport)
                         {
-                            //GameObject.Instantiate(TeleEffect, CurrentLocation.position, Quaternion.identity);
-
                             effects.CheckTeleport(hit.transform);
                         }
                         else
                         {
-                            hit
-                                .transform
-                                .gameObject
-                                .GetComponentInParent<BaseAdware>()
-                                .CloseAd();
+                            //Instantiate(CloseParticles, hit.transform.parent.GetChild(0).position, Quaternion.identity); 
+                            hit.transform.gameObject.GetComponentInParent<BaseAdware>().CloseAd();
                         }
                     }
                     else if (hit.transform.gameObject.tag == "ADWare")
                     {
-                        hit
-                            .transform
-                            .gameObject
-                            .GetComponentInParent<BaseAdware>()
-                            .DuplicateEnemy();
+                        hit.transform.gameObject.GetComponentInParent<BaseAdware>().DuplicateEnemy();
+
                     }
                 }
             }

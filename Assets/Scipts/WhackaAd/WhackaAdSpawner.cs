@@ -11,6 +11,7 @@ namespace WhackaAd
 
         [Header("Reference Variables")]
         public Transform ImageTarget;
+        public GameObject SpawnParticles;
 
         [Header("Function Variables")]
         public float SpawnTime;
@@ -20,7 +21,7 @@ namespace WhackaAd
         public List<GameObject> AdwareTemp = new List<GameObject>();
 
         public bool GameStarted { get; set; }
-        
+
         float elap, minX, maxX, minY, maxY;
 
         void Start()
@@ -62,11 +63,12 @@ namespace WhackaAd
                 AdwareTemp[Random.Range(0, AdwareTemp.Count)],
                 new Vector3(
                     Random.Range(minX, maxX),
-                    Random.Range(minY, maxY), 
+                    Random.Range(minY, maxY),
                     ImageTarget.position.z - 1
                 ),
                 Quaternion.Euler(0f, 0f, 0f)
             );
+            // Instantiate(SpawnParticles, new Vector3(adware.transform.position.x, adware.transform.position.y, (adware.transform.position.z - 1)), Quaternion.identity);
 
             adware.transform.parent = transform;
 

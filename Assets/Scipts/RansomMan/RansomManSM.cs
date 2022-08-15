@@ -22,7 +22,8 @@ namespace RansomMan
         public GameObject Back;
         public GameObject ARCam;
         public GameObject Cam;
-        public GameObject WeaponNotificationUI;
+        public GameObject TutorialPanel;
+
         public Button SkipButton;
         public RansomwareSpawner Spawner;
         public NodeManager nm;
@@ -185,6 +186,7 @@ namespace RansomMan
             }
             base.Initialize();
 
+            TutorialPanel.SetActive(false);
             ARCam.SetActive(false);
             Cam.SetActive(true);
 
@@ -254,6 +256,11 @@ namespace RansomMan
             {
 
             }
+        }
+        public void OpenTutorialPanel()
+        {
+            TutorialPanel.SetActive(true);
+            DisablePopup();
         }
     }
 }

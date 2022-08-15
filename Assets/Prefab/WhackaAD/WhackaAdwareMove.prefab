@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AdwarePrefab: {fileID: 5525115819334006352}
+  DupParticles: {fileID: 1581880309163514976, guid: 01c2bb97e4c44524e88b2e0f08bf7557, type: 3}
 --- !u!114 &2995216055123006131
 MonoBehaviour:
   m_ObjectHideFlags: 0

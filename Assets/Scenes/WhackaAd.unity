@@ -2183,6 +2183,7 @@ MonoBehaviour:
   - {fileID: 5525115819334006352, guid: 631885c6aee0ad64b8ca8953b16cf17a, type: 3}
   - {fileID: 6978472487029639089, guid: 2b27ab49e62a8bf479d48a57c63a2541, type: 3}
   ImageTarget: {fileID: 5181100262180990186, guid: 631885c6aee0ad64b8ca8953b16cf17a, type: 3}
+  SpawnParticles: {fileID: 1581880309163514976, guid: 01c2bb97e4c44524e88b2e0f08bf7557, type: 3}
   SpawnTime: 1
   SpawnRadius: 2
   AdwareTemp: []
@@ -4751,7 +4752,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Popup: {fileID: 852204608}
   PopupDisplay: {fileID: 1254923539}
-  TutorialPanelDisplay: {fileID: 60913387}
   HintTxt: {fileID: 2087307522}
   UI: {fileID: 1465802092}
   LoseUI: {fileID: 1905369273}
@@ -4773,6 +4773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0948371c3555614e8f05cef49bf4965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CloseParticles: {fileID: 1581880309163514976, guid: 01c2bb97e4c44524e88b2e0f08bf7557, type: 3}
   GameEnd: 0
 --- !u!114 &1443064772
 MonoBehaviour:
@@ -7443,9 +7444,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Skip
-
-'
+  m_Text: Skip
 --- !u!222 &2023501615
 CanvasRenderer:
   m_ObjectHideFlags: 0
