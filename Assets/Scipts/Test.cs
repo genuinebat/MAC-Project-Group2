@@ -1,48 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Pathfinding;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using Pathfinding;
 
-public class Test : MonoBehaviour
-{
-    public NodeManager nm;
+// public class Test : MonoBehaviour
+// {
+//     [System.Serializable]
+//     public struct JustTesting
+//     {
+//         // variables
+//         public string Name;
+//         public GameObject Template;
+//         public bool First, Second, Third;
 
-    Pathfinder pf;
-    List<Vector3> path;
+//         // constructor
+//         public JustTesting(string _name, GameObject _temp, bool _f, bool _s, bool _t)
+//         {
+//             Name = _name;
+//             Template = _temp;
+//             First = _f;
+//             Second = _s;
+//             Third = _t;
+//         }
+//     }
 
-    int a = 0;
-    bool dir = true;
+//     public List<JustTesting> Botwares;
 
-    void Start()
-    {
-        pf = new Pathfinder(nm, false);
-        
-        StartCoroutine(Move());
-    }
+//     void Update()
+//     {
+//         int decide = Random.Range(
+//             0,
+//             Botwares.Count - 1
+//         );
 
-    IEnumerator Move()
-    {
-        yield return new WaitForSeconds(1f);
-        path = dir ? pf.GetPath(transform.position, new Vector3(13, 14, -1)) : pf.GetPath(transform.position, new Vector3(-13, -14, -1));
-        for (;;)
-        {
-            if (Vector3.Distance(transform.position, path[a]) <= 0.02f)
-            {
-                a++;
-            }
-            else {
-                transform.position =
-                    Vector3.MoveTowards(transform.position, path[a], 1 * Time.deltaTime);
-            }
-
-            if (a > path.Count - 1)
-            {
-                dir = !dir;
-                a = 0;
-                StartCoroutine(Move());
-                yield break;
-            }
-            yield return null;
-        }
-    }
-}
+//         Botwares.RemoveAt(decide);
+//     }
+// }

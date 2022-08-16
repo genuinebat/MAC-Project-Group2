@@ -8,10 +8,12 @@ namespace OKB
     {
         public Transform AnchorPoint;
         public Transform SwipeObj;
+        public GameObject GoodBotPanel;
+        public GameObject BadBotPanel;
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
-        public 
-
+        public bool Active;
+    
         Vector2 firstPressPos, secondPressPos, currentSwipe;
 
         Vector3 ogPos;
@@ -34,10 +36,14 @@ namespace OKB
             left = new Vector3(SwipeObj.position.x - 0.8f, SwipeObj.position.y, SwipeObj.position.z);
 
             right = new Vector3(SwipeObj.position.x + 0.8f, SwipeObj.position.y, SwipeObj.position.z);
+
+            Active = false;
         }
 
         void Update()
         {
+            if (!Active) return;
+
             if (Input.touches.Length > 0)
             {
                 Touch t = Input.GetTouch(0);
@@ -56,25 +62,25 @@ namespace OKB
 
                     if (currentSwipe.x < -200)
                     {
-                        CorrectPanel.SetActive(false);
-                        WrongPanel.SetActive(true);
+                        GoodBotPanel.SetActive(false);
+                        BadBotPanel.SetActive(true);
                     }
                     else if (currentSwipe.x > 200)
                     {
-                        CorrectPanel.SetActive(true);
-                        WrongPanel.SetActive(false);
+                        GoodBotPanel.SetActive(true);
+                        BadBotPanel.SetActive(false);
                     }
                     else
                     {
-                        CorrectPanel.SetActive(false);
-                        WrongPanel.SetActive(false);
+                        GoodBotPanel.SetActive(false);
+                        BadBotPanel.SetActive(false);
                     }
 
                     // swipe left
                     if (currentSwipe.x < 0)
                     {
                         targetPosition =  Vector3.Lerp(ogPos, left, Mathf.Abs(currentSwipe.x) / 250);
-
+                    
                         targetRot = Quaternion.Lerp(ogRot, targetRotLeft, Mathf.Abs(currentSwipe.x) / 250);
                     }
 
@@ -93,8 +99,8 @@ namespace OKB
             }
             else
             {
-                CorrectPanel.SetActive(false);
-                WrongPanel.SetActive(false);
+                GoodBotPanel.SetActive(false);
+                BadBotPanel.SetActive(false);
 
                 SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, ogPos, 8  * Time.deltaTime);
 

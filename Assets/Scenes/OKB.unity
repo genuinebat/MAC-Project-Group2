@@ -4570,6 +4570,7 @@ GameObject:
   - component: {fileID: 2137599194}
   - component: {fileID: 2137599195}
   - component: {fileID: 2137599196}
+  - component: {fileID: 2137599197}
   m_Layer: 0
   m_Name: OKB
   m_TagString: Untagged
@@ -4630,3 +4631,21 @@ MonoBehaviour:
   firstPressPos: {x: 0, y: 0}
   secondPressPos: {x: 0, y: 0}
   currentSwipe: {x: 0, y: 0}
+--- !u!114 &2137599197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137599190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab24e0cba9328849a7d396013bc3c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IAmTesting:
+  - Name: 
+    Template: {fileID: 0}
+    First: 1
+    Second: 1
+    Third: 0
