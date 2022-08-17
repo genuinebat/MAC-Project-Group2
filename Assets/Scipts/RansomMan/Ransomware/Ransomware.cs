@@ -47,14 +47,14 @@ namespace RansomMan
             loseUI = GameObject.Find("UI").transform.Find("LoseUI").gameObject;
 
             rmc = player.GetComponent<RansomManCollector>();
-            
+
             chase = false;
             wanderPath = new List<Vector3>();
             wanderNode = int.MaxValue;
 
             lost = false;
         }
-        
+
         void Update()
         {
             if (!Active || lost) return;
@@ -69,9 +69,9 @@ namespace RansomMan
         {
             transform.position = nm.GetNodeWorldPosition(nm.grid.Get(x, y));
             transform.rotation = Quaternion.Euler(-90f, 90f, -90f);
-            
+
             spawnLocation = transform.position;
-            
+
             SetWanderBoundaries();
         }
 
@@ -108,7 +108,7 @@ namespace RansomMan
                 else
                 {
                     transform.position = Vector3.MoveTowards(transform.position, pos, WanderSpeed * Time.deltaTime);
-                    
+
                     Quaternion lookRotation = Quaternion.LookRotation((pos - transform.position), -Vector3.forward);
 
                     transform.rotation =
@@ -135,17 +135,20 @@ namespace RansomMan
                 {
                     chase = false;
                     wanderNode = int.MaxValue;
-                    StartCoroutine(SpeedUp());
                 }
             }
             else
             {
-                if (chasePlayerPath.Count <= DetectionRange) chase = true;
+                if (chasePlayerPath.Count <= DetectionRange)
+                {
+                    chase = true;
+                    StartCoroutine(SpeedUp());
+                }
             }
         }
 
         void ChasePlayer()
-        {   
+        {
             if (chasePlayerPath.Count <= 0) return;
 
             transform.position = Vector3.MoveTowards(transform.position, chasePlayerPath[0], ChaseSpeed * Time.deltaTime);
@@ -173,9 +176,9 @@ namespace RansomMan
 
         IEnumerator SpeedUp()
         {
-            ChaseSpeed += 0.3f;
-            yield return new WaitForSeconds(2f);
-            ChaseSpeed -= 0.3f;
+            ChaseSpeed += 0.4f;
+            yield return new WaitForSeconds(1f);
+            ChaseSpeed -= 0.4f;
         }
 
         IEnumerator TimeOut()
