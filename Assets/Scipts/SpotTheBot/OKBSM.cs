@@ -15,6 +15,8 @@ namespace OKB
         public GameObject UI;
         public GameObject HintTxt;
         public GameObject PauseUI;
+        public GameObject ARCam;
+        public GameObject GameCam;
         public Button SkipButton;
 
         [Header("Hint Text")]
@@ -37,7 +39,6 @@ namespace OKB
 
         public override void EnablePopup()
         {
-            return;
             if (IsRunning || IsCompleted) return;
 
             base.EnablePopup();
@@ -166,6 +167,11 @@ namespace OKB
 
             HintTxt.SetActive(false);
             UI.SetActive(true);
+
+            ARCam.SetActive(false);
+            GameCam.SetActive(true);
+
+            GetComponent<Swipe>().Active = true;
             //PauseUI.SetActive(true);
         }
 

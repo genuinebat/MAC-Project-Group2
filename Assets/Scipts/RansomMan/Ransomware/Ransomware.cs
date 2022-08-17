@@ -135,6 +135,7 @@ namespace RansomMan
                 {
                     chase = false;
                     wanderNode = int.MaxValue;
+                    StartCoroutine(SpeedUp());
                 }
             }
             else
@@ -168,6 +169,13 @@ namespace RansomMan
             {
                 LoseGame();
             }
+        }
+
+        IEnumerator SpeedUp()
+        {
+            ChaseSpeed += 0.3f;
+            yield return new WaitForSeconds(2f);
+            ChaseSpeed -= 0.3f;
         }
 
         IEnumerator TimeOut()

@@ -13,6 +13,8 @@ namespace OKB
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
         public bool Active;
+
+        TemplateManager tm;
     
         Vector2 firstPressPos, secondPressPos, currentSwipe;
 
@@ -25,6 +27,8 @@ namespace OKB
 
         void Start()
         {
+            tm = GetComponent<TemplateManager>();
+
             ogPos = new Vector3(AnchorPoint.position.x, AnchorPoint.position.y, AnchorPoint.position.z - 1f);
             
             ogRot = Quaternion.Euler(0f, 0f, 0f);
@@ -95,6 +99,11 @@ namespace OKB
                     SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, targetPosition, 20 * Time.deltaTime);
 
                     SwipeObj.rotation = Quaternion.RotateTowards(SwipeObj.rotation, targetRot, 100 * Time.deltaTime);
+                }
+
+                if (t.phase == TouchPhase.Ended)
+                {
+                    
                 }
             }
             else

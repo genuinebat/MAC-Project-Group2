@@ -276,7 +276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WELCOME TO MALSCAPE ROOM
+  m_Text: WELCOME TO MALWARE HUNT
 --- !u!222 &141674021
 CanvasRenderer:
   m_ObjectHideFlags: 0

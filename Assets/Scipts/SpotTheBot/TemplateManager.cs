@@ -5,47 +5,47 @@ using UnityEngine;
 namespace OKB
 {
     public class TemplateManager : MonoBehaviour
-    {
-        [System.Serializable]
-        public struct BotwareTemplate
-        {
-            public string Name;
-            public GameObject Template;
-            public bool FirstStatementCorrect, SecondStatementCorrect, ThirdStatementCorrect;
+    {   
+        public GameObject Template;
 
-            public BotwareTemplate(string _n, GameObject _temp, bool _f, bool _s, bool _t)
-            {
-                Name = _n;
-                Template = _temp;
-                FirstStatementCorrect = _f;
-                SecondStatementCorrect = _s;
-                ThirdStatementCorrect = _t;
-            }
-        }
+        Swipe sw;
 
-        public List<BotwareTemplate> BotwareCards;
-
-        Swipe swipeScript;
+        List<int> botwareCards;
 
         int current;
 
         void Start()
         {
-            swipeScript = GetComponent<Swipe>();
+            sw = GetComponent<Swipe>();
 
-            SetNewBot();
+            botwareCards.Add(0);
+            botwareCards.Add(1);
+            botwareCards.Add(2);
+            botwareCards.Add(3);
+            botwareCards.Add(4);
+            botwareCards.Add(5);
+            botwareCards.Add(6);
+            botwareCards.Add(7);
+            botwareCards.Add(8);
+            botwareCards.Add(9);
         }
 
         int NewCurrent()
         {
-            return Random.Range(0, BotwareCards.Count - 1);
+            int a = Random.Range(0, botwareCards.Count - 1);
+
+            int c = botwareCards[a];
+
+            botwareCards.RemoveAt(a);
+
+            return c;
         }
 
         public void SetNewBot()
         {
             current = NewCurrent();
 
-            swipeScript.Active = true;
+            sw.Active = true;
         }
 
         public void GoodBot()
