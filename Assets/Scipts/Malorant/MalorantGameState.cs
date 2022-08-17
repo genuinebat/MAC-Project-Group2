@@ -67,6 +67,7 @@ namespace Malorant
                     GameUI.SetActive(false);
                     LoseUI.SetActive(true);
 
+
                 }
 
                 if (Enemies.transform.childCount == 1)
@@ -94,6 +95,8 @@ namespace Malorant
             {
                 won = true;
                 StartCoroutine(WaitForDialogue());
+                PlayerPrefs.SetString("NextStage", "WhackaAd");
+
             }
         }
 

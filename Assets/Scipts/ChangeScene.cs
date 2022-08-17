@@ -8,11 +8,23 @@ public class ChangeScene : MonoBehaviour
     public Animator doors;
     public Animator door1;
     public Animator door2;
-    
+
     public void nextScene(string scenename)
     {
         Time.timeScale = 1f;
         StartCoroutine(NextSceneCor(scenename));
+    }
+
+    public void StartNew()
+    {
+        Time.timeScale = 1f;
+        PlayerPrefs.SetString("NextStage", "Malorant");
+        StartCoroutine(NextSceneCor("Malorant"));
+    }
+    public void LoadGame()
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(NextSceneCor(PlayerPrefs.GetString("NextStage")));
     }
 
     IEnumerator NextSceneCor(string scenename)
@@ -25,7 +37,9 @@ public class ChangeScene : MonoBehaviour
         doors.SetTrigger("RotateAntiClockwise");
 
         yield return new WaitForSeconds(0.5f);
-    
+
         SceneManager.LoadScene(scenename);
     }
+
+
 }
