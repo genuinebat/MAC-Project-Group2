@@ -229,7 +229,10 @@ namespace WhackaAd
         {
             if (tryCount >= 2)
             {
-                SceneManager.LoadScene(TargetSceneName);
+                GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
+                //SceneManager.LoadScene(TargetSceneName);
+                PlayerPrefs.SetString("NextStage", TargetSceneName);
+
             }
         }
     }
