@@ -13,10 +13,10 @@ namespace OKB
         public GameObject WrongPanel;
         public GameObject StatementSelect;
 
-
-
         [HideInInspector]
         public List<int> TempStatementCorrect;
+
+        GameObject statements;
 
         BotContents bc;
         Swipe sw;
@@ -88,7 +88,6 @@ namespace OKB
             current = NewCurrent();
 
             if (current < 0) return;
-
 
 
             sw.Active = true;
