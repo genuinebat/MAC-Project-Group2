@@ -3,9 +3,9 @@
         {
             "name" : "G.W.",
             "statements" : [
-                "Statement 1",
-                "Statement 2",
-                "Statement 3"
+                "Statement 1 GW",
+                "Statement 2 GW",
+                "Statement 3 GW"
             ],
             "correct" : [
                 1,
@@ -13,17 +13,17 @@
                 1
             ],
             "reasons" : [
-                "Reason 1",
-                "Reason 2",
-                "Reason 3"  
+                "Reason 1 GW",
+                "Reason 2 GW",
+                "Reason 3 GW"  
             ]
         },
         {
-            "name" : "W.Q.",
+            "name" : "W.Q",
             "statements" : [
-                "Statement 1",
-                "StatementTest 2",
-                "Statement 3"
+                "Statement 1 WQ",
+                "StatementTest 2 WQ",
+                "Statement 3 WQ"
             ],
             "correct" : [
                 1,
@@ -31,9 +31,9 @@
                 1
             ],
             "reasons" : [
-                "Reason 1",
-                "ReasonTest 2",
-                "Reason 3"
+                "Reason 1 WQ",
+                "ReasonTest 2 WQ",
+                "Reason 3 WQ"
             ]
         }
     ]

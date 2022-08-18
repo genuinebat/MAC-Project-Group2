@@ -12,6 +12,7 @@ namespace OKB
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
         public GameObject StatementSelect;
+        public BotContents BotContent;
 
         [HideInInspector]
         public List<int> TempStatementCorrect;
@@ -31,7 +32,7 @@ namespace OKB
         {
             bc = GetComponent<BotContents>();
             sw = GetComponent<Swipe>();
-            
+
             statement1 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement1").gameObject.GetComponent<TMP_Text>();
             statement2 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement2").gameObject.GetComponent<TMP_Text>();
             statement3 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement3").gameObject.GetComponent<TMP_Text>();
@@ -46,16 +47,10 @@ namespace OKB
 
             StatementSelect.SetActive(false);
 
-            botwareCards.Add(0);
-            botwareCards.Add(1);
-            botwareCards.Add(2);
-            botwareCards.Add(3);
-            botwareCards.Add(4);
-            botwareCards.Add(5);
-            botwareCards.Add(6);
-            botwareCards.Add(7);
-            botwareCards.Add(8);
-            botwareCards.Add(9);
+            for (int i = 0; i <= BotContent.Contents.botwares.Length; i++)
+            {
+                botwareCards.Add(i);
+            }
         }
 
         public void SetNewBot()
@@ -64,8 +59,18 @@ namespace OKB
 
             if (current < 0) return;
 
-            // set statements over here
-            statement1.text = "just testing";
+            //set statements in the swiping cards
+            statement1.text = (BotContent.Contents.botwares[current].statements[0]);
+            statement2.text = (BotContent.Contents.botwares[current].statements[1]);
+            statement3.text = (BotContent.Contents.botwares[current].statements[2]);
+
+            //sets statements in the picking page
+            selectStatement1.text = (BotContent.Contents.botwares[current].statements[0]);
+            selectStatement2.text = (BotContent.Contents.botwares[current].statements[1]);
+            selectStatement3.text = (BotContent.Contents.botwares[current].statements[2]);
+
+
+
 
             sw.Active = true;
         }
@@ -105,7 +110,7 @@ namespace OKB
                     if (check) selectStatement1Back.SetActive(false);
                     else selectStatement1Back.SetActive(true);
                     break;
-                
+
                 case 1:
                     if (check) selectStatement2Back.SetActive(false);
                     else selectStatement2Back.SetActive(true);

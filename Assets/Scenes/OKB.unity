@@ -6296,6 +6296,7 @@ MonoBehaviour:
   CorrectPanel: {fileID: 417114018}
   WrongPanel: {fileID: 1238318966}
   StatementSelect: {fileID: 1422156014}
+  BotContent: {fileID: 2137599197}
   TempStatementCorrect: 
 --- !u!1 &102450499864767921
 GameObject:

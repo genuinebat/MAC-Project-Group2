@@ -7,7 +7,7 @@ namespace OKB
 {
     public class BotContents : MonoBehaviour
     {
-        [HideInInspector]
+        //[HideInInspector]
         public Puzzle4Contents Contents;
 
 
