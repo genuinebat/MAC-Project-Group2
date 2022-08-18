@@ -22,6 +22,8 @@ namespace OKB
         [Header("Hint Text")]
         public string HintText;
 
+        TemplateManager tm;
+
         Coroutine closingCor;
 
         float popupHeight, popupWidth;
@@ -29,6 +31,8 @@ namespace OKB
 
         void Start()
         {
+            tm = GetComponent<TemplateManager>();
+
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
 
@@ -180,6 +184,8 @@ namespace OKB
 
             GetComponent<Swipe>().Active = true;
             //PauseUI.SetActive(true);
+
+            tm.SetNewBot();
         }
 
         public override void Cancel()

@@ -16,7 +16,9 @@ namespace OKB
         [HideInInspector]
         public List<int> TempStatementCorrect;
 
-        TMP_Text statements, selectStatement1, selectStatement2, selectStatement3;
+        GameObject selectStatement1Back, selectStatement2Back, selectStatement3Back;
+
+        TMP_Text statement1, statement2, statement3, selectStatement1, selectStatement2, selectStatement3;
 
         BotContents bc;
         Swipe sw;
@@ -29,6 +31,18 @@ namespace OKB
         {
             bc = GetComponent<BotContents>();
             sw = GetComponent<Swipe>();
+            
+            statement1 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement1").gameObject.GetComponent<TMP_Text>();
+            statement2 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement2").gameObject.GetComponent<TMP_Text>();
+            statement3 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement3").gameObject.GetComponent<TMP_Text>();
+
+            selectStatement1 = StatementSelect.transform.Find("Background").Find("Statement1").gameObject.GetComponent<TMP_Text>();
+            selectStatement2 = StatementSelect.transform.Find("Background").Find("Statement2").gameObject.GetComponent<TMP_Text>();
+            selectStatement3 = StatementSelect.transform.Find("Background").Find("Statement3").gameObject.GetComponent<TMP_Text>();
+
+            selectStatement1Back = StatementSelect.transform.Find("Background").Find("Statement1Back").gameObject;
+            selectStatement2Back = StatementSelect.transform.Find("Background").Find("Statement2Back").gameObject;
+            selectStatement3Back = StatementSelect.transform.Find("Background").Find("Statement3Back").gameObject;
 
             StatementSelect.SetActive(false);
 
@@ -50,7 +64,8 @@ namespace OKB
 
             if (current < 0) return;
 
-
+            // set statements over here
+            statement1.text = "just testing";
 
             sw.Active = true;
         }
@@ -72,17 +87,34 @@ namespace OKB
             return c;
         }
 
-        public void SelectStatement(int s, GameObject back)
+        public void SelectStatement(int s)
         {
-            if (TempStatementCorrect.Contains(s))
+            bool check = TempStatementCorrect.Contains(s);
+            if (check)
             {
                 TempStatementCorrect.Remove(s);
-                back.SetActive(false);
             }
             else
             {
                 TempStatementCorrect.Add(s);
-                back.SetActive(true);
+            }
+
+            switch (s)
+            {
+                case 0:
+                    if (check) selectStatement1Back.SetActive(false);
+                    else selectStatement1Back.SetActive(true);
+                    break;
+                
+                case 1:
+                    if (check) selectStatement2Back.SetActive(false);
+                    else selectStatement2Back.SetActive(true);
+                    break;
+
+                case 2:
+                    if (check) selectStatement3Back.SetActive(false);
+                    else selectStatement3Back.SetActive(true);
+                    break;
             }
         }
 
