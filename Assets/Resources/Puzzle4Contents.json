@@ -1,7 +1,6 @@
 {
     "botwares" : [
         {
-            "index" : 0,
             "name" : "G.W.",
             "statements" : [
                 "Statement 1",
@@ -16,25 +15,24 @@
             "reasons" : [
                 "Reason 1",
                 "Reason 2",
-                "Reason 3"
+                "Reason 3"  
             ]
         },
         {
-            "index" : 1,
             "name" : "W.Q.",
             "statements" : [
                 "Statement 1",
-                "Statement 2",
+                "StatementTest 2",
                 "Statement 3"
             ],
             "correct" : [
                 1,
-                1,
+                0,
                 1
             ],
             "reasons" : [
                 "Reason 1",
-                "Reason 2",
+                "ReasonTest 2",
                 "Reason 3"
             ]
         }
