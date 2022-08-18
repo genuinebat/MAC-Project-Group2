@@ -97,9 +97,9 @@ namespace OKB
                         targetRot = Quaternion.Lerp(ogRot, targetRotRight, Mathf.Abs(currentSwipe.x) / 250);
                     }
 
-                    SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, targetPosition, 20 * Time.deltaTime);
+                    SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, targetPosition, 10 * Time.deltaTime);
 
-                    SwipeObj.rotation = Quaternion.RotateTowards(SwipeObj.rotation, targetRot, 100 * Time.deltaTime);
+                    SwipeObj.rotation = Quaternion.RotateTowards(SwipeObj.rotation, targetRot, 80 * Time.deltaTime);
                 }
 
                 if (t.phase == TouchPhase.Ended)
@@ -111,12 +111,12 @@ namespace OKB
                     // bad bot (left)
                     if (currentSwipe.x < -200)
                     {
-                        tm.GoodBot();
+                        tm.SetStatementSelect();
                     }
                     // good bot (right)
                     else if (currentSwipe.x > 200)
                     {
-                        tm.SetStatementSelect();
+                        tm.GoodBot();
                     }
                 }
             }

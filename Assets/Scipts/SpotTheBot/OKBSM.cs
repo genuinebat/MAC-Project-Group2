@@ -35,6 +35,13 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
+            StartCoroutine(DelayStart());
+        }
+
+        IEnumerator DelayStart()
+        {
+            yield return new WaitForSeconds(1f);
+            Initialize();
         }
 
         public override void EnablePopup()

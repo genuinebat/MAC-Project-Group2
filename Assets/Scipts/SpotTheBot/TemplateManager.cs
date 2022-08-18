@@ -16,7 +16,7 @@ namespace OKB
         [HideInInspector]
         public List<int> TempStatementCorrect;
 
-        GameObject statements;
+        TMP_Text statements, selectStatement1, selectStatement2, selectStatement3;
 
         BotContents bc;
         Swipe sw;
@@ -42,6 +42,17 @@ namespace OKB
             botwareCards.Add(7);
             botwareCards.Add(8);
             botwareCards.Add(9);
+        }
+
+        public void SetNewBot()
+        {
+            current = NewCurrent();
+
+            if (current < 0) return;
+
+
+
+            sw.Active = true;
         }
 
         int NewCurrent()
@@ -81,16 +92,6 @@ namespace OKB
 
             TempStatementCorrect.Clear();
             StatementSelect.SetActive(true);
-        }
-
-        public void SetNewBot()
-        {
-            current = NewCurrent();
-
-            if (current < 0) return;
-
-
-            sw.Active = true;
         }
 
         public void GoodBot()
