@@ -6,7 +6,8 @@ namespace OKB
 {
     public class BotContents : MonoBehaviour
     {
-        public BotDetails Botwares;
+        [HideInInspector]
+        public Puzzle4Contents Contents;
 
         [System.Serializable]
         public class Bot
@@ -18,16 +19,16 @@ namespace OKB
         }
 
         [System.Serializable]
-        public class BotDetails
+        public class Puzzle4Contents
         {
             public Bot[] botwares;
         }
 
         void Start()
         {
-            TextAsset contents = Resources.Load<TextAsset>("Puzzle4Contents");
+            TextAsset jsonContents = Resources.Load<TextAsset>("Puzzle4Contents");
 
-            Botwares = JsonUtility.FromJson<BotDetails>(contents.text);
+            Contents = JsonUtility.FromJson<Puzzle4Contents>(jsonContents.text);
         }
     }
 }

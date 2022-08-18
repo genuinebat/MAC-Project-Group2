@@ -15,6 +15,7 @@ namespace OKB
         [HideInInspector]
         public List<int> TempStatementCorrect;
 
+        BotContents bc;
         Swipe sw;
 
         List<int> botwareCards;
@@ -23,6 +24,7 @@ namespace OKB
 
         void Start()
         {
+            bc = GetComponent<BotContents>();
             sw = GetComponent<Swipe>();
 
             StatementSelect.SetActive(false);
