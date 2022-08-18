@@ -12,14 +12,13 @@ namespace OKB
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
         public GameObject StatementSelect;
-        public BotContents BotContent;
 
         [HideInInspector]
         public List<int> TempStatementCorrect;
 
         GameObject selectStatement1Back, selectStatement2Back, selectStatement3Back;
 
-        TMP_Text statement1, statement2, statement3, selectStatement1, selectStatement2, selectStatement3;
+        TMP_Text statement1, statement2, statement3, selectStatement1, selectStatement2, selectStatement3, botName;
 
         BotContents bc;
         Swipe sw;
@@ -32,6 +31,8 @@ namespace OKB
         {
             bc = GetComponent<BotContents>();
             sw = GetComponent<Swipe>();
+
+            botName = Template.transform.Find("SwipeCanvas").Find("Back").Find("NameBack").Find("Name").gameObject.GetComponent<TMP_Text>();
 
             statement1 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement1").gameObject.GetComponent<TMP_Text>();
             statement2 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement2").gameObject.GetComponent<TMP_Text>();
@@ -47,7 +48,7 @@ namespace OKB
 
             StatementSelect.SetActive(false);
 
-            for (int i = 0; i <= BotContent.Contents.botwares.Length; i++)
+            for (int i = 0; i < bc.Contents.botwares.Length; i++)
             {
                 botwareCards.Add(i);
             }
@@ -59,18 +60,13 @@ namespace OKB
 
             if (current < 0) return;
 
-            //set statements in the swiping cards
-            statement1.text = (BotContent.Contents.botwares[current].statements[0]);
-            statement2.text = (BotContent.Contents.botwares[current].statements[1]);
-            statement3.text = (BotContent.Contents.botwares[current].statements[2]);
+            // set bot name
+            botName.text = bc.Contents.botwares[current].name + " Bot";
 
-            //sets statements in the picking page
-            selectStatement1.text = (BotContent.Contents.botwares[current].statements[0]);
-            selectStatement2.text = (BotContent.Contents.botwares[current].statements[1]);
-            selectStatement3.text = (BotContent.Contents.botwares[current].statements[2]);
-
-
-
+            // set statements in the swiping cards
+            statement1.text = bc.Contents.botwares[current].statements[0];
+            statement2.text = bc.Contents.botwares[current].statements[1];
+            statement3.text = bc.Contents.botwares[current].statements[2];
 
             sw.Active = true;
         }
@@ -83,7 +79,7 @@ namespace OKB
                 return -1;
             }
 
-            int a = Random.Range(0, botwareCards.Count - 1);
+            int a = Random.Range(0, botwareCards.Count);
 
             int c = botwareCards[a];
 
@@ -125,7 +121,10 @@ namespace OKB
 
         public void SetStatementSelect()
         {
-            // set the statements
+            // sets statements in the picking page
+            selectStatement1.text = (bc.Contents.botwares[current].statements[0]);
+            selectStatement2.text = (bc.Contents.botwares[current].statements[1]);
+            selectStatement3.text = (bc.Contents.botwares[current].statements[2]);
 
             TempStatementCorrect.Clear();
             StatementSelect.SetActive(true);
