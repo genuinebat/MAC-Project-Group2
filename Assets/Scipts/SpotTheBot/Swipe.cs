@@ -6,12 +6,13 @@ namespace OKB
 {
     public class Swipe : MonoBehaviour
     {
+        [Header("Reference Variables")]
         public Transform AnchorPoint;
         public Transform SwipeObj;
         public GameObject GoodBotPanel;
         public GameObject BadBotPanel;
-        public GameObject CorrectPanel;
-        public GameObject WrongPanel;
+
+        [HideInInspector]
         public bool Active;
 
         TemplateManager tm;
@@ -103,7 +104,20 @@ namespace OKB
 
                 if (t.phase == TouchPhase.Ended)
                 {
-                    
+                    secondPressPos = new Vector2(t.position.x, t.position.y);
+
+                    currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+
+                    // bad bot (left)
+                    if (currentSwipe.x < -200)
+                    {
+                        tm.GoodBot();
+                    }
+                    // good bot (right)
+                    else if (currentSwipe.x > 200)
+                    {
+                        tm.SetStatementSelect();
+                    }
                 }
             }
             else

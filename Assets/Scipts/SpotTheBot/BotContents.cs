@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace OKB
 {
-    public class BotContent : MonoBehaviour
+    public class BotContents : MonoBehaviour
     {
-        public TextAsset BotDetailsJson;
+        public BotDetails Botwares;
 
         [System.Serializable]
         public class Bot
@@ -21,23 +21,13 @@ namespace OKB
         public class BotDetails
         {
             public Bot[] botwares;
-
         }
 
-        public BotDetails BotArray = new BotDetails();
-        //public Bot BotDetails = new Bot();
-        // Start is called before the first frame update
         void Start()
         {
-            BotArray = JsonUtility.FromJson<BotDetails>(BotDetailsJson.text);
-            //BotDetails = JsonUtility.FromJson<Bot>(BotDetails.text);
+            TextAsset contents = Resources.Load<TextAsset>("Puzzle4Contents");
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            Botwares = JsonUtility.FromJson<BotDetails>(contents.text);
         }
     }
 }
