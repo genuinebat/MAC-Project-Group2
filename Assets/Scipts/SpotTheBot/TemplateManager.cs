@@ -21,7 +21,7 @@ namespace OKB
         BotContents bc;
         Swipe sw;
 
-        List<int> botwareCards;
+        List<int> botwareCards = new List<int>();
 
         int current;
 
