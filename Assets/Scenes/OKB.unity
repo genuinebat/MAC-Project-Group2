@@ -5591,6 +5591,7 @@ GameObject:
   - component: {fileID: 2137599198}
   - component: {fileID: 2137599196}
   - component: {fileID: 2137599197}
+  - component: {fileID: 2137599198}
   m_Layer: 0
   m_Name: OKB
   m_TagString: Untagged

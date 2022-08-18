@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace OKB
 {
     public class TemplateManager : MonoBehaviour
-    {   
+    {
         [Header("Reference Variables")]
         public GameObject Template;
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
         public GameObject StatementSelect;
+
+
 
         [HideInInspector]
         public List<int> TempStatementCorrect;

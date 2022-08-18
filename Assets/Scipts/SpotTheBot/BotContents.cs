@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace OKB
 {
@@ -8,6 +9,7 @@ namespace OKB
     {
         [HideInInspector]
         public Puzzle4Contents Contents;
+
 
         [System.Serializable]
         public class Bot
@@ -27,7 +29,6 @@ namespace OKB
         void Start()
         {
             TextAsset jsonContents = Resources.Load<TextAsset>("Puzzle4Contents");
-
             Contents = JsonUtility.FromJson<Puzzle4Contents>(jsonContents.text);
         }
     }
