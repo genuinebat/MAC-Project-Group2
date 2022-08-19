@@ -70,6 +70,8 @@ namespace OKB
 
         public void SetNewBot()
         {
+            ReasonPanel.SetActive(false);
+
             current = NewCurrent();
 
             if (current < 0) return;
@@ -220,7 +222,7 @@ namespace OKB
             }
         }
 
-        public void ReasonPopup(List<int> wrongAns)
+        void ReasonPopup(List<int> wrongAns)
         {
             ReasonPanel.SetActive(true);
             //set reasons for the statements
@@ -229,8 +231,7 @@ namespace OKB
                 GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
 
                 currentReason.SetActive(true);
-                currentReason.GetComponent<TMP_Text>().text = bc.Contents.botwares[current].reasons[wrongAns[i]];
-
+                currentReason.GetComponent<TMP_Text>().text = "STATEMENT " + (wrongAns[i] + 1).ToString() + " REASON:\n" + bc.Contents.botwares[current].reasons[wrongAns[i]];
             }
         }
 
@@ -257,9 +258,6 @@ namespace OKB
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
 
-            // SHOW REASONS OVER HERE
-            // AFTER SHOWING REASONING CALL SetNewBot()
-            // TO START THE NEXT BOT CARD
             ReasonPopup(wrong);
         }
 

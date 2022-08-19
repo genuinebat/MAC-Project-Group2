@@ -148,7 +148,6 @@ namespace OKB
                 if (StopFly) yield break;
 
                 SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, target, 10 * Time.deltaTime);
-                Debug.Log("running");
 
                 yield return null;
             }

@@ -3,9 +3,9 @@
         {
             "name" : "G.W.",
             "statements" : [
-                "Statement 1 GW",
-                "Statement 2 GW",
-                "Statement 3 GW"
+                "Good GW Statement 1",
+                "Good GW Statement 2",
+                "Good GW Statement 3"
             ],
             "correct" : [
                 1,
@@ -13,17 +13,17 @@
                 1
             ],
             "reasons" : [
-                "Reason 1 GW",
-                "Reason 2 GW",
-                "Reason 3 GW"  
+                "This is the reason why statement 1 is what it is",
+                "This is the reason why statement 2 is what it is",
+                "This is the reason why statement 3 is what it is"  
             ]
         },
         {
             "name" : "W.Q.",
             "statements" : [
-                "Statement 1 WQ",
-                "StatementTest 2 WQ",
-                "Statement 3 WQ"
+                "Good WQ Statement 1",
+                "Bad WQ Statement 2",
+                "Good WQ Statement 3"
             ],
             "correct" : [
                 1,
@@ -31,9 +31,9 @@
                 1
             ],
             "reasons" : [
-                "Reason 1 WQ",
-                "ReasonTest 2 WQ",
-                "Reason 3 WQ"
+                "This is the reason why statement 1 is what it is",
+                "This is the reason why statement 2 is what it is",
+                "This is the reason why statement 3 is what it is"
             ]
         }
     ]
