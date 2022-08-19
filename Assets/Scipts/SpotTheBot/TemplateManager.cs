@@ -16,9 +16,14 @@ namespace OKB
         public GameObject StatementSelect;
         public OKBSM OKBSMScript;
         public int PlayerHealth;
+        public int NumberOfHearts;
+        public Sprite FullHeart;
+        public Sprite EmptyHeart;
+        public Image[] Hearts;
+
         int tryCount;
 
-        public List<Image> health;
+        public List<Image> HealthImages;
 
         [HideInInspector]
         public List<int> TempStatementWrong;
@@ -40,6 +45,7 @@ namespace OKB
         {
             bc = GetComponent<BotContents>();
             sw = GetComponent<Swipe>();
+            PlayerHealth = Hearts.Length;
 
             //TMPro for the botname
             botName = Template.transform.Find("SwipeCanvas").Find("Back").Find("NameBack").Find("Name").gameObject.GetComponent<TMP_Text>();
@@ -67,6 +73,22 @@ namespace OKB
 
             StatementSelect.SetActive(false);
 
+        }
+        void Update()
+        {
+
+
+            for (int i = 0; i < Hearts.Length; i++)
+            {
+                if (i < PlayerHealth)
+                {
+                    Hearts[i].sprite = FullHeart;
+                }
+                else
+                {
+                    Hearts[i].sprite = EmptyHeart;
+                }
+            }
         }
 
         public void NewGameFunc()
