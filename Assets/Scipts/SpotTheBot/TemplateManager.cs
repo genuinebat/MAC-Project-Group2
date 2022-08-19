@@ -70,7 +70,6 @@ namespace OKB
 
         public void SetNewBot()
         {
-            StatementSelect.SetActive(false);
             ReasonPanel.SetActive(false);
 
             current = NewCurrent();
