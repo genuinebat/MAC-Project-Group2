@@ -14,20 +14,23 @@ namespace OKB
         public GameObject PopupDisplay;
         public GameObject UI;
         public GameObject HintTxt;
+        public GameObject WinUI;
+        public GameObject LoseUI;
         public GameObject PauseUI;
         public GameObject ARCam;
         public GameObject GameCam;
         public Button SkipButton;
+        public OKBTimer TimerScript;
 
         [Header("Hint Text")]
         public string HintText;
+        public int tryCount;
 
         TemplateManager tm;
 
         Coroutine closingCor;
 
         float popupHeight, popupWidth;
-        int tryCount;
 
         void Start()
         {
@@ -163,15 +166,19 @@ namespace OKB
 
         public override void Initialize()
         {
+
             if (IsRunning) return;
 
             base.Initialize();
+            tm.NewGameFunc();
+            TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
+            //Time.timeScale = 1;
 
             tryCount++;
 
             if (tryCount >= 2)
             {
-                //SkipButton.interactable = true;
+                SkipButton.interactable = true;
             }
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
@@ -184,7 +191,7 @@ namespace OKB
             GameCam.SetActive(true);
 
             tm.SetNewBot();
-            
+
             GetComponent<Swipe>().Active = true;
         }
 
@@ -206,6 +213,7 @@ namespace OKB
 
         IEnumerator RetryCor()
         {
+            LoseUI.SetActive(false);
             Cancel();
             yield return new WaitForSeconds(.1f);
             Initialize();
@@ -215,7 +223,8 @@ namespace OKB
         {
             if (tryCount >= 2)
             {
-                SceneManager.LoadScene(TargetSceneName);
+                GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
+                PlayerPrefs.SetString("NextStage", "Completed");
             }
         }
     }

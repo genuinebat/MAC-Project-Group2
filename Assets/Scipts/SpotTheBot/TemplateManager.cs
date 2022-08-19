@@ -14,6 +14,11 @@ namespace OKB
         public GameObject WrongPanel;
         public GameObject ReasonPanel;
         public GameObject StatementSelect;
+        public OKBSM OKBSMScript;
+        public int PlayerHealth;
+        int tryCount;
+
+        public List<Image> health;
 
         [HideInInspector]
         public List<int> TempStatementWrong;
@@ -62,6 +67,11 @@ namespace OKB
 
             StatementSelect.SetActive(false);
 
+        }
+
+        public void NewGameFunc()
+        {
+            PlayerHealth = 2;
             for (int i = 0; i < bc.Contents.botwares.Length; i++)
             {
                 botwareCards.Add(i);
@@ -70,6 +80,7 @@ namespace OKB
 
         public void SetNewBot()
         {
+            StatementSelect.SetActive(false);
             ReasonPanel.SetActive(false);
 
             current = NewCurrent();
@@ -172,7 +183,7 @@ namespace OKB
         {
             // list containing the index of the statements the player got wrong
             List<int> wrong = new List<int>();
-
+            Debug.Log(current);
             bool[] corr = bc.Contents.botwares[current].correct;
 
             for (int i = 0; i < corr.Length; i++)
@@ -183,7 +194,6 @@ namespace OKB
             if (wrong.Count > 0)
             {
                 StartCoroutine(FlashRed(wrong));
-                // LOSE HEALTH CODE WILL BE HERE
             }
             else
             {
@@ -203,7 +213,7 @@ namespace OKB
                 if (!corr[i] && !TempStatementWrong.Contains(i))
                 {
                     wrong.Add(i);
-                    // LOSE HEALTH CODE WILL BE HERE
+
                 }
                 else if (corr[i] && TempStatementWrong.Contains(i))
                 {
@@ -214,7 +224,6 @@ namespace OKB
             if (wrong.Count > 0)
             {
                 StartCoroutine(FlashRed(wrong));
-                // LOSE HEALTH CODE WILL BE HERE
             }
             else
             {
@@ -257,6 +266,13 @@ namespace OKB
 
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
+            PlayerHealth--;
+            if (PlayerHealth == 0)
+            {
+                Time.timeScale = 0;
+                OKBSMScript.LoseUI.SetActive(true);
+
+            }
 
             ReasonPopup(wrong);
         }
