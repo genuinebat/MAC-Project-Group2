@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace OKB
 {
@@ -19,6 +20,8 @@ namespace OKB
         GameObject selectStatement1Back, selectStatement2Back, selectStatement3Back;
 
         TMP_Text statement1, statement2, statement3, selectStatement1, selectStatement2, selectStatement3, botName;
+
+        Button confBtn;
 
         BotContents bc;
         Swipe sw;
@@ -45,6 +48,8 @@ namespace OKB
             selectStatement1Back = StatementSelect.transform.Find("Background").Find("Statement1Back").gameObject;
             selectStatement2Back = StatementSelect.transform.Find("Background").Find("Statement2Back").gameObject;
             selectStatement3Back = StatementSelect.transform.Find("Background").Find("Statement3Back").gameObject;
+
+            confBtn = StatementSelect.transform.Find("Background").Find("ConfirmBtn").gameObject.GetComponent<Button>();
 
             StatementSelect.SetActive(false);
 
@@ -117,6 +122,8 @@ namespace OKB
                     else selectStatement3Back.SetActive(true);
                     break;
             }
+
+            confBtn.enabled = TempStatementCorrect.Count > 0 ? true : false;
         }
 
         public void SetStatementSelect()
@@ -127,6 +134,7 @@ namespace OKB
             selectStatement3.text = (bc.Contents.botwares[current].statements[2]);
 
             TempStatementCorrect.Clear();
+            confBtn.enabled = false;
             StatementSelect.SetActive(true);
         }
 
@@ -137,6 +145,8 @@ namespace OKB
             // show reasons
             // else flash green
             // next bot
+
+            //if (bc.Contents.botwares[current].correct !=)
         }
 
         public void BadBot()
