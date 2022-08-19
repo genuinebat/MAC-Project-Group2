@@ -50,13 +50,13 @@ namespace RansomMan
             Cancel();
 
             // FOR DEVLOPMENT ONLY
-            //StartCoroutine(LateStart());
+            StartCoroutine(LateStart());
         }
 
         // FOR DEVELOPMENT ONLY
         IEnumerator LateStart()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             Initialize();
         }
 
