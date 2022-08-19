@@ -178,14 +178,14 @@ namespace OKB
 
             HintTxt.SetActive(false);
             UI.SetActive(true);
+            //PauseUI.SetActive(true);
 
             ARCam.SetActive(false);
             GameCam.SetActive(true);
 
-            GetComponent<Swipe>().Active = true;
-            //PauseUI.SetActive(true);
-
             tm.SetNewBot();
+            
+            GetComponent<Swipe>().Active = true;
         }
 
         public override void Cancel()

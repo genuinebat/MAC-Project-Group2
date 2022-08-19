@@ -14,12 +14,15 @@ namespace OKB
 
         [HideInInspector]
         public bool Active;
+        [HideInInspector]
+        public Vector3 ogPos;
+        [HideInInspector]
+        public bool StopFly;
 
         TemplateManager tm;
     
         Vector2 firstPressPos, secondPressPos, currentSwipe;
 
-        Vector3 ogPos;
         Vector3 left, right;
         Quaternion ogRot, targetRotLeft, targetRotRight;
 
@@ -108,14 +111,19 @@ namespace OKB
 
                     currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
 
+                    Active = false;
+                    StopFly = false;
+
                     // bad bot (left)
                     if (currentSwipe.x < -200)
                     {
+                        StartCoroutine(FlyLeft());
                         tm.SetStatementSelect();
                     }
                     // good bot (right)
                     else if (currentSwipe.x > 200)
                     {
+                        StartCoroutine(FlyRight());
                         tm.GoodBot();
                     }
                 }
@@ -128,6 +136,35 @@ namespace OKB
                 SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, ogPos, 8  * Time.deltaTime);
 
                 SwipeObj.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, 0f), 5 * Time.deltaTime);
+            }
+        }
+
+        IEnumerator FlyRight()
+        {
+            Vector3 target = SwipeObj.position + (5 * SwipeObj.right);
+
+            while (Vector3.Distance(SwipeObj.position, target) > 0.02f)
+            {
+                if (StopFly) yield break;
+
+                SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, target, 10 * Time.deltaTime);
+                Debug.Log("running");
+
+                yield return null;
+            }
+        }
+
+        IEnumerator FlyLeft()
+        {
+            Vector3 target = SwipeObj.position - (5 * SwipeObj.right);
+
+            while (Vector3.Distance(SwipeObj.position, target) > 0.02f)
+            {
+                if (StopFly) yield break;
+
+                SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, target, 10 * Time.deltaTime);
+
+                yield return null;
             }
         }
     }

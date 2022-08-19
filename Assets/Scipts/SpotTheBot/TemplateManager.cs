@@ -15,7 +15,7 @@ namespace OKB
         public GameObject StatementSelect;
 
         [HideInInspector]
-        public List<int> TempStatementCorrect;
+        public List<int> TempStatementWrong;
 
         GameObject selectStatement1Back, selectStatement2Back, selectStatement3Back;
 
@@ -73,6 +73,25 @@ namespace OKB
             statement2.text = bc.Contents.botwares[current].statements[1];
             statement3.text = bc.Contents.botwares[current].statements[2];
 
+            sw.StopFly = true;
+            StartCoroutine(SlideUp());
+        }
+
+        IEnumerator SlideUp()
+        {
+            Transform obj = Template.transform;
+
+            obj.position = new Vector3(sw.ogPos.x, sw.ogPos.y - 5, sw.ogPos.z);
+
+            obj.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+            while (Vector3.Distance(obj.position, sw.ogPos) > 0.02f)
+            {
+                obj.position = Vector3.MoveTowards(obj.position, sw.ogPos, 8 * Time.deltaTime);
+
+                yield return null;
+            }
+
             sw.Active = true;
         }
 
@@ -95,14 +114,14 @@ namespace OKB
 
         public void SelectStatement(int s)
         {
-            bool check = TempStatementCorrect.Contains(s);
+            bool check = TempStatementWrong.Contains(s);
             if (check)
             {
-                TempStatementCorrect.Remove(s);
+                TempStatementWrong.Remove(s);
             }
             else
             {
-                TempStatementCorrect.Add(s);
+                TempStatementWrong.Add(s);
             }
 
             switch (s)
@@ -123,7 +142,7 @@ namespace OKB
                     break;
             }
 
-            confBtn.enabled = TempStatementCorrect.Count > 0 ? true : false;
+            confBtn.interactable = TempStatementWrong.Count > 0 ? true : false;
         }
 
         public void SetStatementSelect()
@@ -133,31 +152,63 @@ namespace OKB
             selectStatement2.text = (bc.Contents.botwares[current].statements[1]);
             selectStatement3.text = (bc.Contents.botwares[current].statements[2]);
 
-            TempStatementCorrect.Clear();
-            confBtn.enabled = false;
+            TempStatementWrong.Clear();
+            confBtn.interactable = false;
             StatementSelect.SetActive(true);
         }
 
         public void GoodBot()
         {
-            // if current bot not all correct
-            // lose health flash red
-            // show reasons
-            // else flash green
-            // next bot
+            // list containing the index of the statements the player got wrong
+            List<int> wrong = new List<int>();
 
-            //if (bc.Contents.botwares[current].correct !=)
+            bool[] corr = bc.Contents.botwares[current].correct;
+
+            for (int i = 0; i < corr.Length; i++)
+            {
+                if (!corr[i]) wrong.Add(i);
+            }
+
+            if (wrong.Count > 0)
+            {
+                StartCoroutine(FlashRed(wrong));
+                // LOSE HEALTH CODE WILL BE HERE
+            }
+            else
+            {
+                StartCoroutine(FlashGreen());
+            }
         }
 
         public void BadBot()
         {
+            // list containing the index of the statements the player got wrong
             List<int> wrong = new List<int>();
 
-            // if current bot correct does not match TempStatementCorrect
-            // lose health flash red
-            // show reasons based on which the player got wrong
-            // else flash green
-            // next bot
+            bool[] corr = bc.Contents.botwares[current].correct;
+
+            for (int i = 0; i < corr.Length; i++)
+            {
+                if (!corr[i] && !TempStatementWrong.Contains(i))
+                {
+                    wrong.Add(i);
+                    // LOSE HEALTH CODE WILL BE HERE
+                }
+                else if (corr[i] && TempStatementWrong.Contains(i))
+                {
+                    wrong.Add(i);
+                }
+            }
+
+            if (wrong.Count > 0)
+            {
+                StartCoroutine(FlashRed(wrong));
+                // LOSE HEALTH CODE WILL BE HERE
+            }
+            else
+            {
+                StartCoroutine(FlashGreen());
+            }
         }
 
         IEnumerator FlashGreen()
@@ -165,21 +216,27 @@ namespace OKB
             CorrectPanel.SetActive(true);
             WrongPanel.SetActive(false);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
 
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
+            
+            SetNewBot();
         }
 
-        IEnumerator FlashRed()
+        IEnumerator FlashRed(List<int> wrong)
         {
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(true);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
 
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
+
+            // SHOW REASONS OVER HERE
+            // AFTER SHOWING REASONING CALL SetNewBot()
+            // TO START THE NEXT BOT CARD
         }
 
         void StartTrojan()
