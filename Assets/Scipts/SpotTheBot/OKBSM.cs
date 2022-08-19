@@ -170,7 +170,7 @@ namespace OKB
             if (IsRunning) return;
 
             base.Initialize();
-            tm.NewGameFunc();
+            
             TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
             //Time.timeScale = 1;
 
@@ -190,6 +190,7 @@ namespace OKB
             ARCam.SetActive(false);
             GameCam.SetActive(true);
 
+            tm.NewGameFunc();
             tm.SetNewBot();
 
             GetComponent<Swipe>().Active = true;

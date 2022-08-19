@@ -14,6 +14,7 @@ namespace OKB
         public GameObject WrongPanel;
         public GameObject ReasonPanel;
         public GameObject StatementSelect;
+        public TMP_Text BotCounter;
         public OKBSM OKBSMScript;
         public int PlayerHealth;
         public int NumberOfHearts;
@@ -40,6 +41,7 @@ namespace OKB
         List<int> botwareCards = new List<int>();
 
         int current;
+        int totalBots;
 
         void Start()
         {
@@ -76,8 +78,6 @@ namespace OKB
         }
         void Update()
         {
-
-
             for (int i = 0; i < Hearts.Length; i++)
             {
                 if (i < PlayerHealth)
@@ -98,6 +98,8 @@ namespace OKB
             {
                 botwareCards.Add(i);
             }
+
+            totalBots = botwareCards.Count;
         }
 
         public void SetNewBot()
@@ -107,7 +109,11 @@ namespace OKB
 
             current = NewCurrent();
 
-            if (current < 0) return;
+            if (current == -1)
+            {
+                StartTrojan();
+                return;
+            }
 
             // set bot name
             botName.text = bc.Contents.botwares[current].name + " Bot";
@@ -143,7 +149,6 @@ namespace OKB
         {
             if (botwareCards.Count == 0)
             {
-                StartTrojan();
                 return -1;
             }
 
@@ -152,6 +157,8 @@ namespace OKB
             int c = botwareCards[a];
 
             botwareCards.RemoveAt(a);
+
+            BotCounter.text = "Botwares: " + (totalBots - botwareCards.Count).ToString() + " / " + totalBots;
 
             return c;
         }
@@ -302,8 +309,8 @@ namespace OKB
         void StartTrojan()
         {
             // trojan botware spawns
+            Debug.Log("TROJAN STARTED");
+            // CODE FOR TROJAN EVENT WILL BE HERE
         }
-
-
     }
 }
