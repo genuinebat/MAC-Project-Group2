@@ -12,6 +12,7 @@ namespace OKB
         public GameObject Template;
         public GameObject CorrectPanel;
         public GameObject WrongPanel;
+        public GameObject ReasonPanel;
         public GameObject StatementSelect;
 
         [HideInInspector]
@@ -19,7 +20,7 @@ namespace OKB
 
         GameObject selectStatement1Back, selectStatement2Back, selectStatement3Back;
 
-        TMP_Text statement1, statement2, statement3, selectStatement1, selectStatement2, selectStatement3, botName;
+        TMP_Text statement1, statement2, statement3, selectStatement1, selectStatement2, selectStatement3, reasonStatement1, reasonStatement2, reasonStatement3, botName;
 
         Button confBtn;
 
@@ -35,15 +36,23 @@ namespace OKB
             bc = GetComponent<BotContents>();
             sw = GetComponent<Swipe>();
 
+            //TMPro for the botname
             botName = Template.transform.Find("SwipeCanvas").Find("Back").Find("NameBack").Find("Name").gameObject.GetComponent<TMP_Text>();
 
+            //TMPro for the deescription text
             statement1 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement1").gameObject.GetComponent<TMP_Text>();
             statement2 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement2").gameObject.GetComponent<TMP_Text>();
             statement3 = Template.transform.Find("SwipeCanvas").Find("Back").Find("Statement3").gameObject.GetComponent<TMP_Text>();
 
+            //TMPro for the selection screen
             selectStatement1 = StatementSelect.transform.Find("Background").Find("Statement1").gameObject.GetComponent<TMP_Text>();
             selectStatement2 = StatementSelect.transform.Find("Background").Find("Statement2").gameObject.GetComponent<TMP_Text>();
             selectStatement3 = StatementSelect.transform.Find("Background").Find("Statement3").gameObject.GetComponent<TMP_Text>();
+
+            //TMPro for the reasons
+            reasonStatement1 = ReasonPanel.transform.Find("Background").Find("Reason Container").Find("Reason1").gameObject.GetComponent<TMP_Text>();
+            reasonStatement2 = ReasonPanel.transform.Find("Background").Find("Reason Container").Find("Reason2").gameObject.GetComponent<TMP_Text>();
+            reasonStatement3 = ReasonPanel.transform.Find("Background").Find("Reason Container").Find("Reason3").gameObject.GetComponent<TMP_Text>();
 
             selectStatement1Back = StatementSelect.transform.Find("Background").Find("Statement1Back").gameObject;
             selectStatement2Back = StatementSelect.transform.Find("Background").Find("Statement2Back").gameObject;
@@ -211,6 +220,20 @@ namespace OKB
             }
         }
 
+        public void ReasonPopup(List<int> wrongAns)
+        {
+            ReasonPanel.SetActive(true);
+            //set reasons for the statements
+            for (int i = 0; i < wrongAns.Count; i++)
+            {
+                GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
+
+                currentReason.SetActive(true);
+                currentReason.GetComponent<TMP_Text>().text = bc.Contents.botwares[current].reasons[wrongAns[i]];
+
+            }
+        }
+
         IEnumerator FlashGreen()
         {
             CorrectPanel.SetActive(true);
@@ -220,7 +243,7 @@ namespace OKB
 
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
-            
+
             SetNewBot();
         }
 
@@ -237,11 +260,14 @@ namespace OKB
             // SHOW REASONS OVER HERE
             // AFTER SHOWING REASONING CALL SetNewBot()
             // TO START THE NEXT BOT CARD
+            ReasonPopup(wrong);
         }
 
         void StartTrojan()
         {
             // trojan botware spawns
         }
+
+
     }
 }
