@@ -19,6 +19,7 @@ namespace OKB
         public GameObject PauseUI;
         public GameObject ARCam;
         public GameObject GameCam;
+        public GameObject TutorialUI;
         public Button SkipButton;
         public OKBTimer TimerScript;
 
@@ -42,14 +43,15 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-            StartCoroutine(DelayStart());
+            //StartCoroutine(DelayStart());
         }
 
-        IEnumerator DelayStart()
-        {
-            yield return new WaitForSeconds(1f);
-            Initialize();
-        }
+        // IEnumerator DelayStart()
+        // {
+        //     yield return new WaitForSeconds(1f);
+        //     Initialize();
+        // }
+
 
         public override void EnablePopup()
         {
@@ -170,9 +172,10 @@ namespace OKB
             if (IsRunning) return;
 
             base.Initialize();
-            
+
             TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
-            //Time.timeScale = 1;
+            TutorialUI.SetActive(false);
+            Time.timeScale = 1;
 
             tryCount++;
 

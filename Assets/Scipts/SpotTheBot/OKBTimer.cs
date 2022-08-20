@@ -19,7 +19,8 @@ namespace OKB
         // Start is called before the first frame update
         void Start()
         {
-
+            //set timescale to zero and only set it back to 1 in initialize (OKBSM)
+            Time.timeScale = 0;
             timeLeft = TimeMin * 60 + TimeSec;
         }
 
