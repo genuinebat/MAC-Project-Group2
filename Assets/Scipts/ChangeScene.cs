@@ -39,6 +39,10 @@ public class ChangeScene : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(scenename);
+        if (PlayerPrefs.GetString("NextStage") != "Completed")
+        {
+            PlayerPrefs.SetString("NextStage", scenename);
+        }
     }
 
 

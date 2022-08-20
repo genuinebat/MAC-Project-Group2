@@ -9644,7 +9644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04c1650455f300040b39528c4df1fe88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37965b6a4ed2b6d4ca1d920a222ae971, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9932,7 +9932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04c1650455f300040b39528c4df1fe88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37965b6a4ed2b6d4ca1d920a222ae971, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10201,8 +10201,8 @@ MonoBehaviour:
   OKBSMScript: {fileID: 2137599195}
   PlayerHealth: 2
   NumberOfHearts: 2
-  FullHeart: {fileID: 21300000, guid: 04c1650455f300040b39528c4df1fe88, type: 3}
-  EmptyHeart: {fileID: 21300000, guid: ea87b53f44993e44ba7b1efb233623a7, type: 3}
+  FullHeart: {fileID: 21300000, guid: 37965b6a4ed2b6d4ca1d920a222ae971, type: 3}
+  EmptyHeart: {fileID: 21300000, guid: cdb55af97f014ac47aa7737e16abe003, type: 3}
   Hearts:
   - {fileID: 2035341909}
   - {fileID: 1963394963}

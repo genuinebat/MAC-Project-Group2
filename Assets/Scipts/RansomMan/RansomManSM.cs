@@ -252,7 +252,10 @@ namespace RansomMan
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
                 //SceneManager.LoadScene(TargetSceneName);
-                PlayerPrefs.SetString("NextStage", TargetSceneName);
+                if (PlayerPrefs.GetString("NextStage") != "Completed")
+                {
+                    PlayerPrefs.SetString("NextStage", TargetSceneName);
+                }
             }
             else
             {
