@@ -215,6 +215,11 @@ namespace OKB
             StartCoroutine(RetryCor());
         }
 
+        public void OpenTutorial()
+        {
+            TutorialUI.SetActive(true);
+        }
+
         IEnumerator RetryCor()
         {
             LoseUI.SetActive(false);

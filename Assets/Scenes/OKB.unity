@@ -581,8 +581,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2137599195}
-        m_TargetAssemblyTypeName: SpotTheBot.SpotTheBotSM, Assembly-CSharp
-        m_MethodName: Initialize
+        m_TargetAssemblyTypeName: OKB.OKBSM, Assembly-CSharp
+        m_MethodName: OpenTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9019,7 +9019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1831794395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10279,6 +10279,7 @@ MonoBehaviour:
   PauseUI: {fileID: 1111214956}
   ARCam: {fileID: 833023623}
   GameCam: {fileID: 1745932410}
+  TutorialUI: {fileID: 1831794394}
   SkipButton: {fileID: 832004411}
   TimerScript: {fileID: 2137599199}
   HintText: crank crank goes the gears
