@@ -38,27 +38,26 @@ namespace WhackaAd
 
         IEnumerator ADBlockCooldown()
         {
-            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
-                false;
+            GameObject.Find("AdBlockerBtn").GetComponent<Button>().interactable = false;
 
-            float elap = 0f;
-            while (elap < AdBlockerCooldownTime)
-            {
-                if (breakCor) yield break;
-                yield return null;
-            }
+            // float elap = 0f;
+            // while (elap < AdBlockerCooldownTime)
+            // {
+            //     if (breakCor) yield break;
+            //     yield return null;
+            // }
+            yield return new WaitForSeconds(AdBlockerCooldownTime);
 
-            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
-                true;
+            GameObject.Find("AdBlockerBtn").GetComponent<Button>().interactable = true;
+
         }
 
         public void ResetCooldown()
         {
             StartCoroutine(StopEverything());
 
-            GameObject.Find("AdBlockerBtn").GetComponent<Button>().enabled =
-                true;
-            
+            GameObject.Find("AdBlockerBtn").GetComponent<Button>().interactable = true;
+
             Icon.fillAmount = 1f;
         }
 
