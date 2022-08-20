@@ -40,13 +40,18 @@ namespace WhackaAd
         {
             GameObject.Find("AdBlockerBtn").GetComponent<Button>().interactable = false;
 
-            // float elap = 0f;
-            // while (elap < AdBlockerCooldownTime)
-            // {
-            //     if (breakCor) yield break;
-            //     yield return null;
-            // }
-            yield return new WaitForSeconds(AdBlockerCooldownTime);
+            float elap = 0f;
+            while (elap < AdBlockerCooldownTime)
+            {
+                if (breakCor)
+                {
+                    yield break;
+                }
+
+                elap += Time.deltaTime;
+                yield return null;
+            }
+            //yield return new WaitForSeconds(AdBlockerCooldownTime);
 
             GameObject.Find("AdBlockerBtn").GetComponent<Button>().interactable = true;
 
