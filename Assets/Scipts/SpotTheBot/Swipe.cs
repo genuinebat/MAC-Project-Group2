@@ -111,18 +111,21 @@ namespace OKB
 
                     currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
 
-                    Active = false;
-                    StopFly = false;
-
                     // bad bot (left)
                     if (currentSwipe.x < -200)
                     {
+                        Active = false;
+                        StopFly = false;
+
                         StartCoroutine(FlyLeft());
                         tm.SetStatementSelect();
                     }
                     // good bot (right)
                     else if (currentSwipe.x > 200)
                     {
+                        Active = false;
+                        StopFly = false;
+                        
                         StartCoroutine(FlyRight());
                         tm.GoodBot();
                     }
@@ -130,6 +133,7 @@ namespace OKB
             }
             else
             {
+                Debug.Log("running");
                 GoodBotPanel.SetActive(false);
                 BadBotPanel.SetActive(false);
 

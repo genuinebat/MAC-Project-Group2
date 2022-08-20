@@ -28,6 +28,7 @@ namespace OKB
         public int tryCount;
 
         TemplateManager tm;
+        Swipe sw;
 
         Coroutine closingCor;
 
@@ -36,6 +37,7 @@ namespace OKB
         void Start()
         {
             tm = GetComponent<TemplateManager>();
+            sw = GetComponent<Swipe>();
 
             popupHeight = Popup.transform.localScale.y;
             popupWidth = Popup.transform.localScale.x;
@@ -43,14 +45,16 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-            //StartCoroutine(DelayStart());
+            StartCoroutine(DelayStart());
         }
 
-        // IEnumerator DelayStart()
-        // {
-        //     yield return new WaitForSeconds(1f);
-        //     Initialize();
-        // }
+        IEnumerator DelayStart()
+        {
+            Debug.Log("before wait");
+            yield return new WaitForSeconds(1f);
+            Debug.Log('e');
+            OpenTutorial();
+        }
 
 
         public override void EnablePopup()
@@ -168,7 +172,6 @@ namespace OKB
 
         public override void Initialize()
         {
-
             if (IsRunning) return;
 
             base.Initialize();
@@ -196,7 +199,7 @@ namespace OKB
             tm.NewGameFunc();
             tm.SetNewBot();
 
-            GetComponent<Swipe>().Active = true;
+            TimerScript.GameStart = true;
         }
 
         public override void Cancel()
@@ -208,6 +211,8 @@ namespace OKB
             UI.SetActive(false);
             HintTxt.SetActive(true);
             //PauseUI.SetActive(false);
+
+            sw.Active = false;
         }
 
         public void Retry()

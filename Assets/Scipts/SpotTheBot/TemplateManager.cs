@@ -194,6 +194,10 @@ namespace OKB
             }
 
             confBtn.interactable = TempStatementWrong.Count > 0 ? true : false;
+
+            selectStatement1Back.SetActive(false);
+            selectStatement2Back.SetActive(false);
+            selectStatement3Back.SetActive(false);
         }
 
         public void SetStatementSelect()
@@ -212,7 +216,7 @@ namespace OKB
         {
             // list containing the index of the statements the player got wrong
             List<int> wrong = new List<int>();
-            Debug.Log(current);
+
             bool[] corr = bc.Contents.botwares[current].correct;
 
             for (int i = 0; i < corr.Length; i++)

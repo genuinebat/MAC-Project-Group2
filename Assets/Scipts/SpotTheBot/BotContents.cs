@@ -21,9 +21,16 @@ namespace OKB
         }
 
         [System.Serializable]
+        public class Trojan
+        {
+
+        }
+
+        [System.Serializable]
         public class Puzzle4Contents
         {
             public Bot[] botwares;
+            public Trojan[] trojan;
         }
 
         void Start()
