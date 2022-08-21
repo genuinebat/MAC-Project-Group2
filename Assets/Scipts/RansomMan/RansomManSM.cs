@@ -50,7 +50,7 @@ namespace RansomMan
             Cancel();
 
             // FOR DEVLOPMENT ONLY
-            //StartCoroutine(LateStart());
+            StartCoroutine(LateStart());
         }
 
         // FOR DEVELOPMENT ONLY
@@ -220,6 +220,7 @@ namespace RansomMan
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
             PauseUI.SetActive(false);
+
             Player.transform.position = new Vector3(100, 100, 100);
 
             // reset nodemanager, ransomwares, player and turn off all gameobject associated with it
@@ -231,7 +232,7 @@ namespace RansomMan
             {
                 Destroy(child.gameObject);
             }
-            Debug.Log(GameObject.FindGameObjectsWithTag("Byte").Length);
+
             Back.SetActive(false);
         }
 

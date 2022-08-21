@@ -20,11 +20,9 @@ namespace RansomMan
         public bool GameStarted;
 
         int total;
-        bool won;
 
         void Start()
         {
-            won = false;
             Collected = 0;
             GameStarted = false;
         }
@@ -33,8 +31,13 @@ namespace RansomMan
         {
             TrackerTxt.text = "Bytes Collected: " + (Collected + Temp.Count).ToString() +  " / " + total;
 
-            if (GameStarted && Collected >= total && !won)
+            Debug.Log(Collected);
+            Debug.Log(total);
+            Debug.Log("GameStarted");
+            Debug.Log(GameStarted);
+            if (GameStarted && Collected >= total)
             {
+                Debug.Log("Inside");
                 WinGame();
             }
         }
@@ -46,9 +49,10 @@ namespace RansomMan
 
         void WinGame()
         {
-            won = true;
-            Time.timeScale = 0f;
+            Debug.Log("running funciton");
+            GameStarted = false;
             WinUI.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
