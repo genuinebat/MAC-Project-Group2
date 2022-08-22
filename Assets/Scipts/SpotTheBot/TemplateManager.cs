@@ -22,8 +22,18 @@ namespace OKB
         public Sprite EmptyHeart;
         public Image[] Hearts;
 
+        [Header("Botware Parts")]
+        public GameObject Face;
+        public GameObject Halo;
+        public GameObject Horns;
+        public GameObject LWing;
+        public GameObject RWing;
+        public GameObject Nails;
+        public Material[] Faces;
+
         int tryCount;
 
+        [HideInInspector]
         public List<Image> HealthImages;
 
         [HideInInspector]
@@ -109,6 +119,8 @@ namespace OKB
 
             current = NewCurrent();
 
+            RandomiseAppearance();
+
             if (current == -1)
             {
                 StartTrojan();
@@ -143,6 +155,37 @@ namespace OKB
             }
 
             sw.Active = true;
+        }
+
+        void RandomiseAppearance()
+        {
+            int face = Random.Range(0, Faces.Length);
+            bool wings = Random.Range(0, 2) == 1 ? true : false;
+            bool nails = Random.Range(0, 2) == 1 ? true : false;
+            bool halo = Random.Range(0, 2) == 1 ? true : false;
+            bool horns = Random.Range(0, 2) == 1 ? true : false;
+
+            Face.GetComponent<Renderer>().material = Faces[face];
+
+            if (wings)
+            {
+                RWing.SetActive(true);
+                LWing.SetActive(true);
+            }
+            else
+            {
+                RWing.SetActive(false);
+                LWing.SetActive(false);
+            }
+
+            if (nails) Nails.SetActive(true);
+            else Nails.SetActive(false);
+
+            if (halo) Halo.SetActive(true);
+            else Halo.SetActive(false);
+            
+            if (horns) Horns.SetActive(true);
+            else Horns.SetActive(false);
         }
 
         int NewCurrent()
