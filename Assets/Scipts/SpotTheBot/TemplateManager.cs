@@ -116,6 +116,7 @@ namespace OKB
 
         public void SetNewBot()
         {
+            Time.timeScale = 1;
             StatementSelect.SetActive(false);
             ReasonPanel.SetActive(false);
 
@@ -185,7 +186,7 @@ namespace OKB
 
             if (halo) Halo.SetActive(true);
             else Halo.SetActive(false);
-            
+
             if (horns) Horns.SetActive(true);
             else Horns.SetActive(false);
         }
@@ -256,7 +257,7 @@ namespace OKB
             selectStatement1Back.SetActive(false);
             selectStatement2Back.SetActive(false);
             selectStatement3Back.SetActive(false);
-            
+
             StatementSelect.SetActive(true);
         }
 
@@ -314,19 +315,23 @@ namespace OKB
 
         void ReasonPopup(List<int> wrongAns)
         {
-            ReasonPanel.SetActive(true);
-
-            foreach (Transform child in ReasonPanel.transform.Find("Background").Find("Reason Container"))
+            if (PlayerHealth > 0)
             {
-                child.gameObject.SetActive(false);
-            }
+                Time.timeScale = 0;
+                ReasonPanel.SetActive(true);
 
-            for (int i = 0; i < wrongAns.Count; i++)
-            {
-                GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
+                foreach (Transform child in ReasonPanel.transform.Find("Background").Find("Reason Container"))
+                {
+                    child.gameObject.SetActive(false);
+                }
 
-                currentReason.SetActive(true);
-                currentReason.GetComponent<TMP_Text>().text = "STATEMENT " + (wrongAns[i] + 1).ToString() + " REASON:\n" + bc.Contents.botwares[current].reasons[wrongAns[i]];
+                for (int i = 0; i < wrongAns.Count; i++)
+                {
+                    GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
+
+                    currentReason.SetActive(true);
+                    currentReason.GetComponent<TMP_Text>().text = "STATEMENT " + (wrongAns[i] + 1).ToString() + " REASON:\n" + bc.Contents.botwares[current].reasons[wrongAns[i]];
+                }
             }
         }
 
@@ -364,6 +369,8 @@ namespace OKB
         public void LoseGame()
         {
             Time.timeScale = 0;
+            ReasonPanel.SetActive(false);
+            StatementSelect.SetActive(false);
             OKBSMScript.LoseUI.SetActive(true);
         }
 

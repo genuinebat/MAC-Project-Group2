@@ -217,6 +217,7 @@ namespace OKB
 
         public void Retry()
         {
+            TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
             StartCoroutine(RetryCor());
         }
 
