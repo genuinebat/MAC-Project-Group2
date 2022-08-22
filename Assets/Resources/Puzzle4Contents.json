@@ -3,9 +3,9 @@
         {
             "name" : "G.W.",
             "statements" : [
-                "Good GW Statement 1",
-                "Good GW Statement 2",
-                "Good GW Statement 3"
+                "Turns whatever the user types into art whenever they want to create art from words",
+                "Sends an email with a link that the user requested from a large corporation",
+                "Stores user’s vital information at a trusted source"
             ],
             "correct" : [
                 1,
@@ -13,17 +13,107 @@
                 1
             ],
             "reasons" : [
-                "This is the reason why statement 1 is what it is",
-                "This is the reason why statement 2 is what it is",
-                "This is the reason why statement 3 is what it is"  
+                "This action is good as it entertains the user and creates art from the words that the user types",
+                "This action is good as the link is from a large corporation and is requested by the user, hence it is relatively safe to click",
+                "This action is good as a trusted source can help store information for easier access to different websites in the future"  
             ]
         },
         {
             "name" : "W.Q.",
             "statements" : [
-                "Good WQ Statement 1",
-                "Bad WQ Statement 2",
-                "Good WQ Statement 3"
+                "Crawls the web to provide better responses for voice assistant devices",
+                "Provides up-to-the-minute information when users ask for it",
+                "Employs computer programs to automate interactions with customers "
+            ],
+            "correct" : [
+                1,
+                1,
+                1
+            ],
+            "reasons" : [
+                "This action is good as it helps by giving users more accurate data when asked",
+                "This action is good as it gives users easy access on things like the whether, news, and currency rates",
+                "This action is good as it provides customer support 24/7 and answers the customers questions in real time, enhancing customer interactions"
+            ]
+        },
+        {
+            "name" : "M.L.",
+            "statements" : [
+                "Crawls the internet to improve search engine results with user’s approval",
+                "Searches the web for content that has potentially been plagiarised",
+                "Detects if your website has gone down and notifies you"
+            ],
+            "correct" : [
+                1,
+                1,
+                1
+            ],
+            "reasons" : [
+                "This action is good as it indexes the content of websites all across the internet so that those websites can appear in search engine results",
+                "This action is good as it ensures there are no illegal uploads or copying of someone else's work without proper attribution",
+                "This action is good as it ensures the website is running smoothly without any issues"
+            ]
+        },
+        {
+            "name" : "J.A.",
+            "statements" : [
+                "Monitors visitors to websites and updates the owner with insights",
+                "Locates the best price for a product the user is interested in",
+                "Automates tasks without needing manual intervention by humans"
+            ],
+            "correct" : [
+                1,
+                1,
+                1
+            ],
+            "reasons" : [
+                "This action is good as it helps the owner of that site in terms of future functionality and content improvements",
+                "This action is good as it helps users find the cheapest place to buy a product from",
+                "This action is good as it  makes things such as blocking a stolen credit card or confirming a bank’s hours of operation easier"
+            ]
+        },
+        {
+            "name" : "J.Y.",
+            "statements" : [
+                "Allows customer service to handle requests easier through automated services",
+                "Helps users keep track of their bot conversations",
+                "Automatically manages candidates and schedules interviews for recruitment"
+            ],
+            "correct" : [
+                1,
+                1,
+                1
+            ],
+            "reasons" : [
+                "This action is good as it provides non-stop customer service, giving instant answers to common questions and forwards them to a human if in need",
+                "This action is good as it allows users to monitor messages that their bot sends and receives, and make changes if the bot is not serving its purpose well",
+                "This action is good as it  makes employing faster and simpler"
+            ]
+        },
+        {
+            "name" : "A.J.",
+            "statements" : [
+                "Manages user appointments in the healthcare industry",
+                "Teaches different languages that users might be interested in",
+                "Sends overwhelming requests to a targeted server"
+            ],
+            "correct" : [
+                1,
+                1,
+                0
+            ],
+            "reasons" : [
+                "This action is good as it makes appointments easier to handle, not needing to worry about overlaps",
+                "This action is good as it teaches the users the languages that they want to learn",
+                "This action is bad as overwhelming request to a targeted server can cause it to crash, this is called a DDos attack"
+            ]
+        },
+        {
+            "name" : "J.T.",
+            "statements" : [
+                "Proofreads and suggest ways to improve the user’s grammar",
+                "Sends an email with an unknown link asking the user to click on it",
+                "Detects errors and autocorrects words when the user requests for it"
             ],
             "correct" : [
                 1,
@@ -31,9 +121,63 @@
                 1
             ],
             "reasons" : [
-                "This is the reason why statement 1 is what it is",
-                "This is the reason why statement 2 is what it is",
-                "This is the reason why statement 3 is what it is"
+                "This action is good as it helps the user with their grammar if there are any errors with it",
+                "This action is bad as clicking on random links in which you did not request for may take you to a website that has malicious intent",
+                "This action is good as it helps users autocorrect words when a typo is mad"
+            ]
+        },
+        {
+            "name" : "K.Y.",
+            "statements" : [
+                "Carries out tasks, and provides essential business services to large corporations",
+                "Application using large amount of computer resources for no additional purpose",
+                "Stores user’s vital information at an untrusted source"
+            ],
+            "correct" : [
+                1,
+                0,
+                0
+            ],
+            "reasons" : [
+                "This action is good as it helps large corporations cut down on cost as bots can automate the simple tasks",
+                "This action is bad as using computer resources, and causing it to run slower, makes the user incur mining costs",
+                "This action is bad as your vital information could be used for malicious intent as the source is not reliable"
+            ]
+        },
+        {
+            "name" : "O.K.",
+            "statements" : [
+                "Crawls the web without approval and consumes resources",
+                "Reads and logs keystrokes, recognizing user’s patterns",
+                "Sends a single authorised request to a targeted server"
+            ],
+            "correct" : [
+                0,
+                0,
+                1
+            ],
+            "reasons" : [
+                "This action is bad as it could impact page load times via high server load",
+                "This action is bad as it helps attackers quickly locate passwords",
+                "This action is good as a single request will not flood a targeted server"
+            ]
+        },
+        {
+            "name" : "V.I.",
+            "statements" : [
+                "Scrapes contact information and creates fake user accounts",
+                "Steals sensitive and vital information",
+                "Repeatedly attacks a group of targeted devices and guesses the users’ credentials"
+            ],
+            "correct" : [
+                0,
+                0,
+                0
+            ],
+            "reasons" : [
+                "This action is bad as it helps to spread spam across the internet",
+                "This action is bad as sensitive information such as your credit card data can be stolen for malicious intent",
+                "This action is bad as it achieves unauthorised access to the target system"
             ]
         }
     ],
