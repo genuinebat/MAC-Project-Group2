@@ -45,14 +45,12 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-            StartCoroutine(DelayStart());
+            //StartCoroutine(DelayStart());
         }
 
         IEnumerator DelayStart()
         {
-            Debug.Log("before wait");
             yield return new WaitForSeconds(1f);
-            Debug.Log('e');
             OpenTutorial();
         }
 
@@ -195,6 +193,8 @@ namespace OKB
 
             ARCam.SetActive(false);
             GameCam.SetActive(true);
+
+            sw.Trojan = false;
 
             tm.NewGameFunc();
             tm.SetNewBot();

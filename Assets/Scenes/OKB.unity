@@ -10166,6 +10166,7 @@ MonoBehaviour:
   Active: 0
   ogPos: {x: 0, y: 0, z: 0}
   StopFly: 0
+  Trojan: 0
 --- !u!114 &2137599197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10198,7 +10199,8 @@ MonoBehaviour:
   WrongPanel: {fileID: 1238318966}
   ReasonPanel: {fileID: 1679155309}
   StatementSelect: {fileID: 1422156014}
-  Bot: {fileID: 0}
+  Bot: {fileID: 924562238131037385}
+  Troy: {fileID: 4085352039742091411}
   BotCounter: {fileID: 1799542753}
   OKBSMScript: {fileID: 2137599195}
   PlayerHealth: 2
@@ -10459,13 +10461,27 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 549268565320679027}
+  - component: {fileID: 924562238131037386}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &924562238131037386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924562238131037385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b8eeb5f720fac4997c48c09e1e8f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotateSpeed: 0.3
 --- !u!4 &1009623178517332784
 Transform:
   m_ObjectHideFlags: 0
@@ -11102,8 +11118,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4085352039742091411}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -1.2, z: -0.2}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: -1.3, z: -0.2}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9199046891873012413}
@@ -11205,13 +11221,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3745242974650296873}
   - component: {fileID: 7285111642913976403}
+  - component: {fileID: 7285111642913976404}
   m_Layer: 0
   m_Name: Troy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4122417570311888690
 Transform:
   m_ObjectHideFlags: 0
@@ -11905,6 +11922,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7285111642913976404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085352039742091411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b8eeb5f720fac4997c48c09e1e8f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotateSpeed: 0.5
 --- !u!4 &7319849486942730410
 Transform:
   m_ObjectHideFlags: 0

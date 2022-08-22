@@ -18,6 +18,8 @@ namespace OKB
         public Vector3 ogPos;
         [HideInInspector]
         public bool StopFly;
+        [HideInInspector]
+        public bool Trojan;
 
         TemplateManager tm;
     
@@ -46,6 +48,7 @@ namespace OKB
             right = new Vector3(SwipeObj.position.x + 0.8f, SwipeObj.position.y, SwipeObj.position.z);
 
             Active = false;
+            Trojan = false;
         }
 
         void Update()
@@ -117,23 +120,36 @@ namespace OKB
                         Active = false;
                         StopFly = false;
 
-                        StartCoroutine(FlyLeft());
-                        tm.SetStatementSelect();
+                        if (Trojan)
+                        {
+                            // END CREDITS
+                        }
+                        else
+                        {
+                            StartCoroutine(FlyLeft());
+                            tm.SetStatementSelect();
+                        }
                     }
                     // good bot (right)
                     else if (currentSwipe.x > 200)
                     {
                         Active = false;
                         StopFly = false;
-                        
-                        StartCoroutine(FlyRight());
-                        tm.GoodBot();
+
+                        if (Trojan)
+                        {
+                            tm.LoseGame();
+                        }
+                        else
+                        {
+                            StartCoroutine(FlyRight());
+                            tm.GoodBot();
+                        }
                     }
                 }
             }
             else
             {
-                Debug.Log("running");
                 GoodBotPanel.SetActive(false);
                 BadBotPanel.SetActive(false);
 
