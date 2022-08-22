@@ -28,7 +28,7 @@ namespace Malorant
         //if the egg is shot destroy itself
         public void GetHit()
         {
-            Destroy (gameObject);
+            Destroy(gameObject);
         }
 
         IEnumerator FadeInMaterial()
@@ -40,19 +40,19 @@ namespace Malorant
             Color matColor = rend.material.color;
 
             //get the starting alpha value
-            float alphaValue = rend.material.color.a;
+            float blueValue = rend.material.color.b;
 
             //while the alpha value of the egg is more than zero
-            while (rend.material.color.a < 1)
+            while (rend.material.color.b < 1)
             {
                 //slowly decrease the colour of the egg
-                alphaValue += Time.deltaTime / 1f;
+                blueValue += Time.deltaTime / 1f;
                 rend.material.color =
-                    new Color(matColor.r, matColor.g, matColor.b, alphaValue);
+                    new Color(matColor.r, matColor.g, blueValue);
                 yield return null;
             }
 
-            if (rend.material.color.a >= 0.9)
+            if (rend.material.color.b >= 0.9)
             {
                 //when the egg is completely see through
                 GameObject newEnemy =
@@ -64,7 +64,7 @@ namespace Malorant
                 newEnemy.transform.parent = enemyStore.transform;
 
                 //destroys the egg
-                Destroy (gameObject);
+                Destroy(gameObject);
             }
         }
     }

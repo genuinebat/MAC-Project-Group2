@@ -7362,7 +7362,7 @@ RectTransform:
   m_Children:
   - {fileID: 305368182}
   m_Father: {fileID: 1027048254}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8543,7 +8543,7 @@ RectTransform:
   m_Children:
   - {fileID: 1896192712}
   m_Father: {fileID: 1027048254}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9731,7 +9731,7 @@ RectTransform:
   - {fileID: 410081923}
   - {fileID: 1322081639}
   m_Father: {fileID: 1027048254}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10553,7 +10553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 37965b6a4ed2b6d4ca1d920a222ae971, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 127792762eb071a40ada45fd950ed68c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10917,7 +10917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 37965b6a4ed2b6d4ca1d920a222ae971, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 127792762eb071a40ada45fd950ed68c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11266,8 +11266,8 @@ MonoBehaviour:
   OKBSMScript: {fileID: 2137599195}
   PlayerHealth: 2
   NumberOfHearts: 2
-  FullHeart: {fileID: 21300000, guid: 37965b6a4ed2b6d4ca1d920a222ae971, type: 3}
-  EmptyHeart: {fileID: 21300000, guid: cdb55af97f014ac47aa7737e16abe003, type: 3}
+  FullHeart: {fileID: 21300000, guid: 127792762eb071a40ada45fd950ed68c, type: 3}
+  EmptyHeart: {fileID: 21300000, guid: a837d2091ff6692428dd5fae3cbc18ba, type: 3}
   Hearts:
   - {fileID: 2035341909}
   - {fileID: 1963394963}
