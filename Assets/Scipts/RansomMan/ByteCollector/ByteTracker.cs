@@ -31,13 +31,8 @@ namespace RansomMan
         {
             TrackerTxt.text = "Bytes Collected: " + (Collected + Temp.Count).ToString() +  " / " + total;
 
-            Debug.Log(Collected);
-            Debug.Log(total);
-            Debug.Log("GameStarted");
-            Debug.Log(GameStarted);
-            if (GameStarted && Collected >= total)
+            if (GameStarted && (Collected + Temp.Count) >= total)
             {
-                Debug.Log("Inside");
                 WinGame();
             }
         }
@@ -49,7 +44,6 @@ namespace RansomMan
 
         void WinGame()
         {
-            Debug.Log("running funciton");
             GameStarted = false;
             WinUI.SetActive(true);
             Time.timeScale = 0f;

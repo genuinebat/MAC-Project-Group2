@@ -58,10 +58,10 @@ namespace RansomMan
             {
                 Node node = nm.GetNearestNodeToPosition(other.gameObject.transform.position);
 
+                node.Object.SetActive(false);
+
                 if (BackedUp) BTScript.Temp.Add(node);
                 else BTScript.Collected++;
-
-                node.Object.SetActive(false);
             }
             else if (other.gameObject.tag == "Backup")
             {
@@ -90,6 +90,8 @@ namespace RansomMan
 
                     nm.GetNearestNodeToPosition(backupLocation).Particle.SetActive(true);
                 }
+
+                
             }
         }
 
@@ -143,7 +145,7 @@ namespace RansomMan
 
             transform.position = backupLocation;
 
-            transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
+            transform.rotation = Quaternion.LookRotation((backupPath[n - 2] - backupLocation), -Vector3.forward);
 
             BTScript.Collected += BTScript.Temp.Count;
 

@@ -322,8 +322,8 @@ MonoBehaviour:
   WanderSpeed: 0.5
   ChaseSpeed: 1.2
   TimeOutDuration: 20
-  DetectionRange: 6
-  StopChaseRange: 8
+  DetectionRange: 5
+  StopChaseRange: 6
   Active: 0
   nm: {fileID: 0}
   TimeOutLocation: {x: 0, y: 0, z: 0}

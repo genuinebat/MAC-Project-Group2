@@ -205,9 +205,7 @@ namespace OKB
             botwareCards.RemoveAt(a);
 
             BotCounter.text = "Botwares: " + (totalBots - botwareCards.Count).ToString() + " / " + totalBots;
-
-            Debug.Log(c);
-
+            
             return c;
         }
 

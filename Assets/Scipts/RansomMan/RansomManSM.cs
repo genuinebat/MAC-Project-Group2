@@ -255,7 +255,7 @@ namespace RansomMan
             if (tryCount >= 2)
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
-                //SceneManager.LoadScene(TargetSceneName);
+
                 if (PlayerPrefs.GetString("NextStage") != "Completed")
                 {
                     PlayerPrefs.SetString("NextStage", TargetSceneName);
