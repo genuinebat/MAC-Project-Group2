@@ -28,22 +28,18 @@ namespace RansomMan
             Ransomware r1Script = r1.GetComponent<Ransomware>();
             r1Script.nm = nm;
             r1Script.SetSpawnPosition(5, 4);
-            r1Script.quadrant = 0;
 
             Ransomware r2Script = r2.GetComponent<Ransomware>();
             r2Script.nm = nm;
             r2Script.SetSpawnPosition(17, 4);
-            r2Script.quadrant = 1;
 
             Ransomware r3Script = r3.GetComponent<Ransomware>();
             r3Script.nm = nm;
             r3Script.SetSpawnPosition(4, 20);
-            r3Script.quadrant = 2;
 
             Ransomware r4Script = r4.GetComponent<Ransomware>();
             r4Script.nm = nm;
             r4Script.SetSpawnPosition(18, 20);
-            r4Script.quadrant = 3;
 
             r1Script.TimeOutLocation = nm.GetNodeWorldPosition(nm.grid.Get(9, 14));
             r2Script.TimeOutLocation = nm.GetNodeWorldPosition(nm.grid.Get(10, 14));

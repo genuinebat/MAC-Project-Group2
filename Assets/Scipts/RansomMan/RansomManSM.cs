@@ -51,7 +51,7 @@ namespace RansomMan
             Cancel();
 
             // FOR DEVLOPMENT ONLY
-            StartCoroutine(LateStart());
+            //StartCoroutine(LateStart());
         }
 
         // FOR DEVELOPMENT ONLY

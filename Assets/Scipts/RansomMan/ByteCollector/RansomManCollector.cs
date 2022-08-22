@@ -9,6 +9,7 @@ namespace RansomMan
     {
         public ByteTracker BTScript;
         public NodeManager nm;
+        public BackupSpawner bs;
 
         [HideInInspector]
         public bool BackedUp;
@@ -91,7 +92,7 @@ namespace RansomMan
                     nm.GetNearestNodeToPosition(backupLocation).Particle.SetActive(true);
                 }
 
-                
+                StartCoroutine(bs.SpawnBackup(other.gameObject));
             }
         }
 
@@ -145,7 +146,7 @@ namespace RansomMan
 
             transform.position = backupLocation;
 
-            transform.rotation = Quaternion.LookRotation((backupPath[n - 2] - backupLocation), -Vector3.forward);
+            transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
 
             BTScript.Collected += BTScript.Temp.Count;
 

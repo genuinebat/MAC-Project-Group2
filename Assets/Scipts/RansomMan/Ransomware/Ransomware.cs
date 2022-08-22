@@ -20,8 +20,6 @@ namespace RansomMan
         public NodeManager nm;
         [HideInInspector]
         public Vector3 TimeOutLocation;
-        [HideInInspector]
-        public int quadrant;
 
         Pathfinder pf;
         BackupSpawner bs;
@@ -190,9 +188,6 @@ namespace RansomMan
 
             transform.position = spawnLocation;
             Active = true;
-
-            // spawn backup
-            bs.SpawnBackup(quadrant);
         }
 
         void LoseGame()

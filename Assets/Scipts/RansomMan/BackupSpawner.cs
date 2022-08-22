@@ -20,11 +20,24 @@ namespace RansomMan
             }
         }
 
+        struct BackupObject
+        {
+            public int Q;
+            public GameObject BackupObj;
+            public BackupObject(int _q, GameObject _obj)
+            {
+                Q = _q;
+                BackupObj = _obj;
+            }
+        }
+
         [Header("Prefab")]
         public GameObject Backup;
 
         [HideInInspector]
         public NodeManager nm;
+        [HideInInspector]
+        BackupObject[] backupObjects = new BackupObject[4];
 
         List<Quad> quads = new List<Quad>();
 
@@ -67,9 +80,9 @@ namespace RansomMan
             quads.Add(q3);
             quads.Add(q4);
         }
-        
-        public void SpawnBackup(int q)
-        {
+
+        public void CreateBackup(int q)
+        {            
             Quad quad = quads[q];
 
             Node node = null;
@@ -86,6 +99,41 @@ namespace RansomMan
             }
 
             GameObject backup = Instantiate(Backup, nm.GetNodeWorldPosition(node), Quaternion.identity);
+
+            backupObjects[q] = new BackupObject(q, backup);
+
+            backup.transform.parent = transform;
+        }
+        
+        public IEnumerator SpawnBackup(GameObject obj)
+        {
+            yield return new WaitForSeconds(20f);
+
+            int bo = 0;
+
+            for (int i = 0; i < backupObjects.Length; i++)
+            {
+                if (backupObjects[i].BackupObj == obj) bo = i;
+            }
+            
+            Quad quad = quads[backupObjects[bo].Q];
+
+            Node node = null;
+
+            while (node == null || node.Obstacle)
+            {
+                node = nm.GetNearestNodeToPosition(
+                    new Vector3(
+                        Random.Range(quad.MinX, quad.MaxX),
+                        Random.Range(quad.MinY, quad.MaxY),
+                        quad.Z
+                    )
+                );
+            }
+
+            GameObject backup = Instantiate(Backup, nm.GetNodeWorldPosition(node), Quaternion.identity);
+
+            backupObjects[bo] = new BackupObject(backupObjects[bo].Q, backup);
 
             backup.transform.parent = transform;
         }

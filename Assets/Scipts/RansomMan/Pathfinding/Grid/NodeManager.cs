@@ -131,10 +131,10 @@ namespace Pathfinding
 
             BTScript.SetTotal();
 
-            BSScript.SpawnBackup(0);
-            BSScript.SpawnBackup(1);
-            BSScript.SpawnBackup(2);
-            BSScript.SpawnBackup(3);
+            BSScript.CreateBackup(0);
+            BSScript.CreateBackup(1);
+            BSScript.CreateBackup(2);
+            BSScript.CreateBackup(3);
         }
 
         void SetupRansomManMap()

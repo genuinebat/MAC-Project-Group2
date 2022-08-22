@@ -24,7 +24,6 @@ public class ChangeScene : MonoBehaviour
     public void LoadGame()
     {
         Time.timeScale = 1f;
-        Debug.Log(PlayerPrefs.GetString("NextStage"));
         StartCoroutine(NextSceneCor(PlayerPrefs.GetString("NextStage")));
     }
 
