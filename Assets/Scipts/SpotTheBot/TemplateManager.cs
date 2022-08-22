@@ -15,6 +15,7 @@ namespace OKB
         public GameObject ReasonPanel;
         public GameObject StatementSelect;
         public GameObject Bot;
+        public GameObject Troy;
         public TMP_Text BotCounter;
         public OKBSM OKBSMScript;
         public int PlayerHealth;
@@ -238,10 +239,6 @@ namespace OKB
             }
 
             confBtn.interactable = TempStatementWrong.Count > 0 ? true : false;
-
-            selectStatement1Back.SetActive(false);
-            selectStatement2Back.SetActive(false);
-            selectStatement3Back.SetActive(false);
         }
 
         public void SetStatementSelect()
@@ -253,6 +250,11 @@ namespace OKB
 
             TempStatementWrong.Clear();
             confBtn.interactable = false;
+
+            selectStatement1Back.SetActive(false);
+            selectStatement2Back.SetActive(false);
+            selectStatement3Back.SetActive(false);
+            
             StatementSelect.SetActive(true);
         }
 
@@ -344,19 +346,39 @@ namespace OKB
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
             PlayerHealth--;
-            if (PlayerHealth == 0)
+            if (PlayerHealth <= 0)
             {
-                Time.timeScale = 0;
-                OKBSMScript.LoseUI.SetActive(true);
-
+                LoseGame();
             }
 
             ReasonPopup(wrong);
         }
 
+        public void LoseGame()
+        {
+            Time.timeScale = 0;
+            OKBSMScript.LoseUI.SetActive(true);
+        }
+
         void StartTrojan()
         {
-            
+            StatementSelect.SetActive(false);
+            ReasonPanel.SetActive(false);
+
+            Bot.SetActive(false);
+            Troy.SetActive(true);
+
+            BotCounter.text = "Botwares: " + ((totalBots + 1).ToString() + "? / " + totalBots);
+
+            botName.text = bc.Contents.trojan[0].name;
+
+            statement1.text = bc.Contents.trojan[0].statements[0];
+            statement2.text = bc.Contents.trojan[0].statements[1];
+            statement3.text = bc.Contents.trojan[0].statements[2];
+
+            sw.StopFly = true;
+            sw.Trojan = true;
+            StartCoroutine(SlideUp());
         }
     }
 }
