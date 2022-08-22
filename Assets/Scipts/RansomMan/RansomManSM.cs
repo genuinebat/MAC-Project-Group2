@@ -14,6 +14,7 @@ namespace RansomMan
         public GameObject Popup;
         public GameObject PopupDisplay;
         public GameObject HintTxt;
+        public GameObject HintTxtBack;
         public GameObject UI;
         public GameObject WinUI;
         public GameObject LoseUI;
@@ -193,6 +194,7 @@ namespace RansomMan
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             HintTxt.SetActive(false);
+            HintTxtBack.SetActive(false);
             UI.SetActive(true);
             PauseUI.SetActive(true);
 
@@ -217,6 +219,7 @@ namespace RansomMan
 
             UI.SetActive(false);
             HintTxt.SetActive(true);
+            HintTxtBack.SetActive(true);
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
             PauseUI.SetActive(false);

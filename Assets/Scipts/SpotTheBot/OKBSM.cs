@@ -14,6 +14,7 @@ namespace OKB
         public GameObject PopupDisplay;
         public GameObject UI;
         public GameObject HintTxt;
+        public GameObject HintTxtBack;
         public GameObject WinUI;
         public GameObject LoseUI;
         public GameObject PauseUI;
@@ -45,7 +46,7 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-            StartCoroutine(DelayStart());
+            //StartCoroutine(DelayStart());
         }
 
         IEnumerator DelayStart()
@@ -188,6 +189,7 @@ namespace OKB
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             HintTxt.SetActive(false);
+            HintTxtBack.SetActive(false);
             UI.SetActive(true);
             //PauseUI.SetActive(true);
 
@@ -209,6 +211,7 @@ namespace OKB
             Time.timeScale = 1f;
 
             UI.SetActive(false);
+            HintTxtBack.SetActive(true);
             HintTxt.SetActive(true);
             //PauseUI.SetActive(false);
 
