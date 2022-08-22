@@ -5,21 +5,28 @@ using UnityEngine.UI;
 
 public class ProgressTracker : MonoBehaviour
 {
-    public GameObject ContinueBtn;
+    public GameObject PlayButtons;
     public GameObject LevelSelectUI;
-    public Button StartBtn;
-    // Start is called before the first frame update
-    void Start()
+    public Button ContinueBtn;
+    void OnEnable()
     {
         if (PlayerPrefs.GetString("NextStage") == "Completed")
         {
             LevelSelectUI.SetActive(true);
-            StartBtn.interactable = false;
-            ContinueBtn.GetComponent<Button>().interactable = false;
+            PlayButtons.SetActive(false);
         }
         if (PlayerPrefs.GetString("NextStage") != "Malorant")
         {
-            ContinueBtn.SetActive(true);
+            if (PlayerPrefs.GetString("NextStage") != "Completed")
+            {
+                PlayButtons.SetActive(true);
+            }
+            ContinueBtn.interactable = true;
+        }
+        else
+        {
+            ContinueBtn.interactable = false;
+
         }
     }
 }
