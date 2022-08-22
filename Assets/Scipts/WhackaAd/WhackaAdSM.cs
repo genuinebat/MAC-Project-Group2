@@ -13,6 +13,7 @@ namespace WhackaAd
         public GameObject Popup;
         public GameObject PopupDisplay;
         public GameObject HintTxt;
+        public GameObject HintTxtBack;
         public GameObject UI;
         public GameObject LoseUI;
         public GameObject PauseUI;
@@ -177,6 +178,7 @@ namespace WhackaAd
 
             TutorialPanel.SetActive(false);
             HintTxt.SetActive(false);
+            HintTxtBack.SetActive(false);
             UI.SetActive(true);
             PauseUI.SetActive(true);
 
@@ -198,6 +200,7 @@ namespace WhackaAd
             spawner.GameStarted = false;
             AntivirusBtn.enabled = true;
             HintTxt.SetActive(true);
+            HintTxtBack.SetActive(true);
             PauseUI.SetActive(false);
 
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;

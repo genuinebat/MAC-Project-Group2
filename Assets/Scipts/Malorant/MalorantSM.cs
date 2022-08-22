@@ -19,6 +19,7 @@ namespace Malorant
         public GameObject PauseUI;
         public GameObject ScannerUnlockUI;
         public GameObject HintTxt;
+        public GameObject HintTxtBack;
         public GameObject LockUI;
         public GameObject UnlockUI;
         public GameObject WeaponNotificationUI;
@@ -189,6 +190,7 @@ namespace Malorant
             spawnerScript.SpawnMalwares();
 
             HintTxt.SetActive(false);
+            HintTxtBack.SetActive(false);
             UI.SetActive(true);
             ScannerUnlockUI.SetActive(true);
             Popup.SetActive(false);
@@ -227,6 +229,7 @@ namespace Malorant
             malorantState.GameStarted = false;
 
             HintTxt.SetActive(true);
+            HintTxtBack.SetActive(true);
         }
 
         public void Retry()
