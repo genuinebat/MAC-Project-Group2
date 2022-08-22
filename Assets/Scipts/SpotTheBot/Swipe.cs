@@ -71,12 +71,12 @@ namespace OKB
 
                     Vector3 currentSwipeNorm = currentSwipe.normalized;
 
-                    if (currentSwipe.x < -200)
+                    if (currentSwipe.x < -250)
                     {
                         GoodBotPanel.SetActive(false);
                         BadBotPanel.SetActive(true);
                     }
-                    else if (currentSwipe.x > 200)
+                    else if (currentSwipe.x > 250)
                     {
                         GoodBotPanel.SetActive(true);
                         BadBotPanel.SetActive(false);
@@ -90,17 +90,17 @@ namespace OKB
                     // swipe left
                     if (currentSwipe.x < 0)
                     {
-                        targetPosition =  Vector3.Lerp(ogPos, left, Mathf.Abs(currentSwipe.x) / 250);
+                        targetPosition =  Vector3.Lerp(ogPos, left, Mathf.Abs(currentSwipe.x) / 300);
                     
-                        targetRot = Quaternion.Lerp(ogRot, targetRotLeft, Mathf.Abs(currentSwipe.x) / 250);
+                        targetRot = Quaternion.Lerp(ogRot, targetRotLeft, Mathf.Abs(currentSwipe.x) / 300);
                     }
 
                     // swipe right
                     if (currentSwipe.x > 0)
                     {
-                        targetPosition =  Vector3.Lerp(ogPos, right, Mathf.Abs(currentSwipe.x) / 250);
+                        targetPosition =  Vector3.Lerp(ogPos, right, Mathf.Abs(currentSwipe.x) / 300);
 
-                        targetRot = Quaternion.Lerp(ogRot, targetRotRight, Mathf.Abs(currentSwipe.x) / 250);
+                        targetRot = Quaternion.Lerp(ogRot, targetRotRight, Mathf.Abs(currentSwipe.x) / 300);
                     }
 
                     SwipeObj.position = Vector3.MoveTowards(SwipeObj.position, targetPosition, 10 * Time.deltaTime);
@@ -115,7 +115,7 @@ namespace OKB
                     currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
 
                     // bad bot (left)
-                    if (currentSwipe.x < -200)
+                    if (currentSwipe.x < -250)
                     {
                         Active = false;
                         StopFly = false;
@@ -131,7 +131,7 @@ namespace OKB
                         }
                     }
                     // good bot (right)
-                    else if (currentSwipe.x > 200)
+                    else if (currentSwipe.x > 250)
                     {
                         Active = false;
                         StopFly = false;
