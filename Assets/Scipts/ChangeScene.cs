@@ -24,6 +24,7 @@ public class ChangeScene : MonoBehaviour
     public void LoadGame()
     {
         Time.timeScale = 1f;
+        Debug.Log(PlayerPrefs.GetString("NextStage"));
         StartCoroutine(NextSceneCor(PlayerPrefs.GetString("NextStage")));
     }
 
@@ -39,7 +40,7 @@ public class ChangeScene : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(scenename);
-        if (PlayerPrefs.GetString("NextStage") != "Completed")
+        if (PlayerPrefs.GetString("NextStage") != "Completed" || PlayerPrefs.GetString("NextStage") != "Main")
         {
             PlayerPrefs.SetString("NextStage", scenename);
         }

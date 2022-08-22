@@ -24,7 +24,7 @@ namespace Malorant
         [HideInInspector]
         public bool GameStarted;
 
-        [HideInInspector]
+        //[HideInInspector]
         public float timeLeft;
 
         public bool DialogueEnd { private get; set; }

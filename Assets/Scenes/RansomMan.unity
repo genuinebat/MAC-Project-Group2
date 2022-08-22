@@ -718,7 +718,7 @@ MonoBehaviour:
   UI: {fileID: 1025354175}
   WinUI: {fileID: 1779827321}
   LoseUI: {fileID: 321843170}
-  PauseUI: {fileID: 0}
+  PauseUI: {fileID: 1462785927}
   Player: {fileID: 1148656935}
   Back: {fileID: 358410675}
   ARCam: {fileID: 933652212}
@@ -4176,6 +4176,11 @@ PrefabInstance:
 --- !u!224 &1462785926 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+  m_PrefabInstance: {fileID: 1462785925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1462785927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8192447316282534533, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
   m_PrefabInstance: {fileID: 1462785925}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506891387
