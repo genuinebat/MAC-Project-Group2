@@ -23,7 +23,8 @@ namespace OKB
         [System.Serializable]
         public class Trojan
         {
-
+            public string name;
+            public string[] statements;
         }
 
         [System.Serializable]

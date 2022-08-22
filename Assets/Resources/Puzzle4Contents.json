@@ -163,7 +163,7 @@
             ]
         },
         {
-            "name" : "V.I.",
+            "name" : "B.W.",
             "statements" : [
                 "Scrapes contact information and creates fake user accounts",
                 "Steals sensitive and vital information",
@@ -183,7 +183,12 @@
     ],
     "trojan" : [
         {
-            
+            "name" : "tRo.Y?!.",
+            "statements" : [
+                "aCTs LIke A LeGitaMaTE apPliCatIon oR fILe uNtIl eXEcUted",
+                "SEeks tO DeCeIve tHE UseR iNto lOAding aNd EXecutInG tHE MaLwarE oN tHEir DeVice",
+                "iNFliCts haRmfUl aCTionS On uSEr's dATa oR nETworK"
+            ]
         }
     ]
 }

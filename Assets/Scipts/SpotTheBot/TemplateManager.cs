@@ -14,6 +14,7 @@ namespace OKB
         public GameObject WrongPanel;
         public GameObject ReasonPanel;
         public GameObject StatementSelect;
+        public GameObject Bot;
         public TMP_Text BotCounter;
         public OKBSM OKBSMScript;
         public int PlayerHealth;
@@ -355,9 +356,7 @@ namespace OKB
 
         void StartTrojan()
         {
-            // trojan botware spawns
-            Debug.Log("TROJAN STARTED");
-            // CODE FOR TROJAN EVENT WILL BE HERE
+            
         }
     }
 }
