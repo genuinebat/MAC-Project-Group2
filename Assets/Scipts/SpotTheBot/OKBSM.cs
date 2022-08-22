@@ -45,7 +45,7 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-            StartCoroutine(DelayStart());
+            //StartCoroutine(DelayStart());
         }
 
         IEnumerator DelayStart()
