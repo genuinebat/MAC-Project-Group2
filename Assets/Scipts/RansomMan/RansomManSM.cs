@@ -258,10 +258,6 @@ namespace RansomMan
                     PlayerPrefs.SetString("NextStage", TargetSceneName);
                 }
             }
-            else
-            {
-
-            }
         }
         public void OpenTutorialPanel()
         {

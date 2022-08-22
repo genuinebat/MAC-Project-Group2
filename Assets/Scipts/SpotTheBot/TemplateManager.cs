@@ -86,7 +86,6 @@ namespace OKB
             confBtn = StatementSelect.transform.Find("Background").Find("ConfirmBtn").gameObject.GetComponent<Button>();
 
             StatementSelect.SetActive(false);
-
         }
         void Update()
         {
@@ -106,6 +105,7 @@ namespace OKB
         public void NewGameFunc()
         {
             PlayerHealth = 2;
+            botwareCards.Clear();
             for (int i = 0; i < bc.Contents.botwares.Length; i++)
             {
                 botwareCards.Add(i);
@@ -204,6 +204,8 @@ namespace OKB
             botwareCards.RemoveAt(a);
 
             BotCounter.text = "Botwares: " + (totalBots - botwareCards.Count).ToString() + " / " + totalBots;
+
+            Debug.Log(c);
 
             return c;
         }
@@ -313,7 +315,12 @@ namespace OKB
         void ReasonPopup(List<int> wrongAns)
         {
             ReasonPanel.SetActive(true);
-            //set reasons for the statements
+
+            foreach (Transform child in ReasonPanel.transform.Find("Background").Find("Reason Container"))
+            {
+                child.gameObject.SetActive(false);
+            }
+
             for (int i = 0; i < wrongAns.Count; i++)
             {
                 GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
