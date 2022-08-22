@@ -29,9 +29,11 @@ namespace RansomMan
 
         void Update()
         {
-            TrackerTxt.text = "Bytes Collected: " + (Collected + Temp.Count).ToString() +  " / " + total;
+            int subTotal = Collected + Temp.Count;
 
-            if (GameStarted && (Collected + Temp.Count) >= total)
+            TrackerTxt.text = "Bytes Collected: " + subTotal +  " / " + total;
+
+            if (GameStarted && subTotal >= total)
             {
                 WinGame();
             }

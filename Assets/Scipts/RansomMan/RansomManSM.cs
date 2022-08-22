@@ -51,7 +51,7 @@ namespace RansomMan
             Cancel();
 
             // FOR DEVLOPMENT ONLY
-            //StartCoroutine(LateStart());
+            StartCoroutine(LateStart());
         }
 
         // FOR DEVELOPMENT ONLY
@@ -176,16 +176,16 @@ namespace RansomMan
 
         public override void Initialize()
         {
-            tryCount++;
             if (IsRunning) return;
 
             base.Initialize();
+
+            tryCount++;
 
             if (tryCount >= 2)
             {
                 SkipButton.interactable = true;
             }
-            base.Initialize();
 
             TutorialPanel.SetActive(false);
             ARCam.SetActive(false);
@@ -216,6 +216,8 @@ namespace RansomMan
             base.Cancel();
 
             Time.timeScale = 1f;
+
+            Player.GetComponent<RansomManCollector>().StopAllCoroutines();
 
             UI.SetActive(false);
             HintTxt.SetActive(true);
@@ -252,6 +254,8 @@ namespace RansomMan
         }
         public void SkipGame(string TargetSceneName)
         {
+            Time.timeScale = 1f;
+
             if (tryCount >= 2)
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);

@@ -111,7 +111,6 @@ namespace RansomMan
 
             List<Vector3> tempBackupPath = backupPath;
 
-
             int n = 0;
             while (n < backupPath.Count)
             {

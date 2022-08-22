@@ -168,7 +168,7 @@ namespace RansomMan
             }
             else
             {
-                LoseGame();
+                if (!lost) LoseGame();
             }
         }
 
