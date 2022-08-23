@@ -253,7 +253,6 @@ namespace OKB
             if (tryCount >= 2)
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
-                PlayerPrefs.SetString("NextStage", "Completed");
             }
         }
     }

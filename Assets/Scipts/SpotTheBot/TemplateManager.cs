@@ -335,6 +335,8 @@ namespace OKB
         {
             if (PlayerHealth <= 0)
             {
+                sw.GoodBotPanel.SetActive(false);
+                sw.BadBotPanel.SetActive(false);
                 LoseGame();
             }
             else
@@ -387,6 +389,14 @@ namespace OKB
             OKBSMScript.TrojanLoseUI.SetActive(true);
         }
 
+        public void Win()
+        {
+            Time.timeScale = 0;
+            ReasonPanel.SetActive(false);
+            StatementSelect.SetActive(false);
+            GetComponent<OKBSM>().WinUI.SetActive(true);
+        }
+
         void StartTrojan()
         {
             StartCoroutine(PopupBonusQn());
@@ -407,6 +417,7 @@ namespace OKB
 
             sw.StopFly = true;
             sw.Trojan = true;
+
             StartCoroutine(SlideUp());
         }
 

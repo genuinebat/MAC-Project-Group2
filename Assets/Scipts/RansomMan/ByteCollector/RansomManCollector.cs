@@ -109,8 +109,6 @@ namespace RansomMan
 
             backupPath.Reverse();
 
-            List<Vector3> tempBackupPath = backupPath;
-
             int n = 0;
             while (n < backupPath.Count)
             {
@@ -137,14 +135,15 @@ namespace RansomMan
                 yield return null;
             }
 
-            Node backupNode = nm.GetNearestNodeToPosition(backupLocation);
-
-            backupNode.Particle.SetActive(false);
-            backupNode.Object.SetActive(false);
-
             transform.position = backupLocation;
 
             transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
+
+            Node backupNode = nm.GetNearestNodeToPosition(backupLocation);
+
+            backupNode.Particle.SetActive(false);
+
+            BTScript.Collected += BTScript.Temp.Count;
 
             BTScript.Temp.Clear();
             backupPath.Clear();

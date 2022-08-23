@@ -89,11 +89,10 @@ namespace WhackaAd
 
             GetComponent<AntiVirusAbility>().CloseAntiVirusMenu();
 
+            tapScript.GameEnd = true;
             TimeLeft = 0;
             Time.timeScale = 0;
             WinUI.SetActive(true);
-            PlayerPrefs.SetString("NextStage", "RansomMan");
-
         }
 
         // function to and the game

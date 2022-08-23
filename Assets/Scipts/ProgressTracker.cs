@@ -9,13 +9,9 @@ public class ProgressTracker : MonoBehaviour
     public GameObject LevelSelectUI;
     public Button ContinueBtn;
 
-    public void Testing()
-    {
-        PlayerPrefs.DeleteAll();
-    }
-
     void OnEnable()
     {
+        Debug.Log(PlayerPrefs.GetString("NextStage"));
         if (PlayerPrefs.GetString("NextStage") == "Completed")
         {
             LevelSelectUI.SetActive(true);
@@ -30,7 +26,7 @@ public class ProgressTracker : MonoBehaviour
             }
             ContinueBtn.interactable = true;
         }
-        else if (PlayerPrefs.GetString("NextStage") == "" || PlayerPrefs.GetString("NextStage") == null)
+        if (PlayerPrefs.GetString("NextStage") == "" || PlayerPrefs.GetString("NextStage") == null)
         {
             LevelSelectUI.SetActive(false);
             PlayButtons.SetActive(true);

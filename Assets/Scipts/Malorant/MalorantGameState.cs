@@ -80,9 +80,7 @@ namespace Malorant
                         if (trojan.gameObject.tag == "Trojan")
                         {
                             trojan.gameObject.tag = "Scannable";
-
                         }
-
                     }
                 }
             }
@@ -95,8 +93,6 @@ namespace Malorant
             {
                 won = true;
                 StartCoroutine(WaitForDialogue());
-                PlayerPrefs.SetString("NextStage", "WhackaAd");
-
             }
         }
 

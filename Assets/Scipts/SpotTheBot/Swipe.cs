@@ -122,7 +122,8 @@ namespace OKB
 
                         if (Trojan)
                         {
-                            // END CREDITS
+                            StartCoroutine(FlyRight());
+                            tm.Win();
                         }
                         else
                         {

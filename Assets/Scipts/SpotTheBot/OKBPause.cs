@@ -19,8 +19,14 @@ namespace OKB
 
         public void ResumeOKB()
         {
-            s.Active = true;
+            StartCoroutine(ResumeGameCor());
+        }
+
+        IEnumerator ResumeGameCor()
+        {
             P.ResumeGame();
+            yield return new WaitForSeconds(.1f);
+            s.Active = true;
         }
     }
 }
