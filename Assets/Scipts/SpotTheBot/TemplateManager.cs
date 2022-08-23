@@ -16,6 +16,7 @@ namespace OKB
         public GameObject StatementSelect;
         public GameObject Bot;
         public GameObject Troy;
+        public GameObject BonusQnPopup;
         public TMP_Text BotCounter;
         public OKBSM OKBSMScript;
         public int PlayerHealth;
@@ -313,23 +314,32 @@ namespace OKB
 
         void ReasonPopup(List<int> wrongAns)
         {
-            if (PlayerHealth > 0)
+            Time.timeScale = 0;
+            ReasonPanel.SetActive(true);
+
+            foreach (Transform child in ReasonPanel.transform.Find("Background").Find("Reason Container"))
             {
-                Time.timeScale = 0;
-                ReasonPanel.SetActive(true);
+                child.gameObject.SetActive(false);
+            }
 
-                foreach (Transform child in ReasonPanel.transform.Find("Background").Find("Reason Container"))
-                {
-                    child.gameObject.SetActive(false);
-                }
+            for (int i = 0; i < wrongAns.Count; i++)
+            {
+                GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
 
-                for (int i = 0; i < wrongAns.Count; i++)
-                {
-                    GameObject currentReason = ReasonPanel.transform.Find("Background").Find("Reason Container").GetChild(i).gameObject;
+                currentReason.SetActive(true);
+                currentReason.GetComponent<TMP_Text>().text = "STATEMENT " + (wrongAns[i] + 1).ToString() + " REASON:\n" + bc.Contents.botwares[current].reasons[wrongAns[i]];
+            }
+        }
 
-                    currentReason.SetActive(true);
-                    currentReason.GetComponent<TMP_Text>().text = "STATEMENT " + (wrongAns[i] + 1).ToString() + " REASON:\n" + bc.Contents.botwares[current].reasons[wrongAns[i]];
-                }
+        public void CloseReasonPopup()
+        {
+            if (PlayerHealth <= 0)
+            {
+                LoseGame();
+            }
+            else
+            {
+                SetNewBot();
             }
         }
 
@@ -355,11 +365,8 @@ namespace OKB
 
             CorrectPanel.SetActive(false);
             WrongPanel.SetActive(false);
+
             PlayerHealth--;
-            if (PlayerHealth <= 0)
-            {
-                LoseGame();
-            }
 
             ReasonPopup(wrong);
         }
@@ -372,8 +379,18 @@ namespace OKB
             OKBSMScript.LoseUI.SetActive(true);
         }
 
+        public void LoseTrojan()
+        {
+            Time.timeScale = 0;
+            ReasonPanel.SetActive(false);
+            StatementSelect.SetActive(false);
+            OKBSMScript.TrojanLoseUI.SetActive(true);
+        }
+
         void StartTrojan()
         {
+            StartCoroutine(PopupBonusQn());
+
             StatementSelect.SetActive(false);
             ReasonPanel.SetActive(false);
 
@@ -391,6 +408,13 @@ namespace OKB
             sw.StopFly = true;
             sw.Trojan = true;
             StartCoroutine(SlideUp());
+        }
+
+        IEnumerator PopupBonusQn()
+        {
+            BonusQnPopup.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            BonusQnPopup.SetActive(false);
         }
     }
 }

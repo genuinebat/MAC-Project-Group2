@@ -17,6 +17,7 @@ namespace OKB
         public GameObject HintTxtBack;
         public GameObject WinUI;
         public GameObject LoseUI;
+        public GameObject TrojanLoseUI;
         public GameObject PauseUI;
         public GameObject ARCam;
         public GameObject GameCam;
@@ -191,12 +192,15 @@ namespace OKB
             HintTxt.SetActive(false);
             HintTxtBack.SetActive(false);
             UI.SetActive(true);
-            //PauseUI.SetActive(true);
+            PauseUI.SetActive(true);
 
             ARCam.SetActive(false);
             GameCam.SetActive(true);
 
             sw.Trojan = false;
+
+            tm.Bot.transform.localPosition = new Vector3(0f, -1.4f, -0.4f);
+            tm.Troy.transform.localPosition = new Vector3(0, -1.3f, -0.2f);
 
             tm.NewGameFunc();
             tm.SetNewBot();
@@ -210,10 +214,16 @@ namespace OKB
 
             Time.timeScale = 1f;
 
+            tm.Bot.SetActive(true);
+            tm.Troy.SetActive(false);
+
             UI.SetActive(false);
             HintTxtBack.SetActive(true);
             HintTxt.SetActive(true);
-            //PauseUI.SetActive(false);
+            PauseUI.SetActive(false);
+            WinUI.SetActive(false);
+            LoseUI.SetActive(false);
+            TrojanLoseUI.SetActive(false);
 
             sw.Active = false;
         }
@@ -226,6 +236,7 @@ namespace OKB
 
         public void OpenTutorial()
         {
+            DisablePopup();
             TutorialUI.SetActive(true);
         }
 

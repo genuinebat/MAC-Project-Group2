@@ -141,7 +141,6 @@ namespace RansomMan
 
             backupNode.Particle.SetActive(false);
             backupNode.Object.SetActive(false);
-            BTScript.Temp.Add(backupNode);
 
             transform.position = backupLocation;
 

@@ -55,7 +55,7 @@
             ]
         },
         {
-            "name" : "J.A.",
+            "name" : "J.E.",
             "statements" : [
                 "Monitors visitors to websites and updates the owner with insights",
                 "Locates the best price for a product the user is interested in",
@@ -73,7 +73,7 @@
             ]
         },
         {
-            "name" : "J.Y.",
+            "name" : "A.J.",
             "statements" : [
                 "Allows customer service to handle requests easier through automated services",
                 "Helps users keep track of their bot conversations",
@@ -91,7 +91,7 @@
             ]
         },
         {
-            "name" : "A.J.",
+            "name" : "J.A.",
             "statements" : [
                 "Manages user appointments in the healthcare industry",
                 "Teaches different languages that users might be interested in",
@@ -183,7 +183,7 @@
     ],
     "trojan" : [
         {
-            "name" : "tRo.Y?!.",
+            "name" : "TR~O.Y?!.",
             "statements" : [
                 "aCts LIkE A lEGitIMate ApPLicAtioN oR FIle UntIL eXECutED",
                 "seeKs to DeCeIVE thE USEr InTo loADinG And EXEcutING tHe mALwarE on ThEir deVicE",

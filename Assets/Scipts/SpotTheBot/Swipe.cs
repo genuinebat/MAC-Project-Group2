@@ -138,7 +138,8 @@ namespace OKB
 
                         if (Trojan)
                         {
-                            tm.LoseGame();
+                            tm.PlayerHealth = 0;
+                            tm.LoseTrojan();
                         }
                         else
                         {
