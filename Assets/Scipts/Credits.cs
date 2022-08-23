@@ -8,6 +8,7 @@ public class Credits : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetString("NextStage", "Completed");
         StartCoroutine(Delay());
     }
 

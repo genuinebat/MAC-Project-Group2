@@ -137,7 +137,7 @@ namespace RansomMan
 
             transform.position = backupLocation;
 
-            transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
+            if (backupPath.Count > 0) transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
 
             Node backupNode = nm.GetNearestNodeToPosition(backupLocation);
 

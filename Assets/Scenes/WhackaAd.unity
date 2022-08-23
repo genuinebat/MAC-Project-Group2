@@ -4781,6 +4781,7 @@ GameObject:
   - component: {fileID: 1443064772}
   - component: {fileID: 1443064773}
   - component: {fileID: 1443064774}
+  - component: {fileID: 1443064775}
   m_Layer: 0
   m_Name: WhackaAd
   m_TagString: Untagged
@@ -4843,6 +4844,7 @@ MonoBehaviour:
   CloseParticles: {fileID: 1581880309163514976, guid: 01c2bb97e4c44524e88b2e0f08bf7557, type: 3}
   SpawnParticles: {fileID: 1581880309163514976, guid: 01c2bb97e4c44524e88b2e0f08bf7557, type: 3}
   GameEnd: 0
+  Paused: 0
 --- !u!114 &1443064772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4900,6 +4902,20 @@ MonoBehaviour:
   TimeSec: 30
   MaxAds: 10
   TimeLeft: 0
+--- !u!114 &1443064775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443064767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fceff2125305bd479ec66516e541f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  P: {fileID: 1695470957}
+  T: {fileID: 1443064771}
 --- !u!1 &1455808263
 GameObject:
   m_ObjectHideFlags: 0
@@ -6084,6 +6100,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 540564192}
     m_Modifications:
+    - target: {fileID: 8192447315304307142, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1443064775}
+    - target: {fileID: 8192447315304307142, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseWA
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192447315304307142, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WhackaAd.WhackAdPause, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8192447315507606439, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6184,6 +6212,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8192447316886478067, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1443064775}
+    - target: {fileID: 8192447316886478067, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeWA
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192447316886478067, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WhackaAd.WhackAdPause, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6212,6 +6252,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8192447316282534533, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
   m_PrefabInstance: {fileID: 1695470954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1695470957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8192447316282534555, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+  m_PrefabInstance: {fileID: 1695470954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695470956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac95549d89198d04fae73d45d287a18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1720261084
 GameObject:
   m_ObjectHideFlags: 0

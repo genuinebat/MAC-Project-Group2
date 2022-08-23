@@ -10,15 +10,18 @@ namespace WhackaAd
         public GameObject SpawnParticles;
         [HideInInspector]
         public bool GameEnd;
+        [HideInInspector]
+        public bool Paused;
 
         void Start()
         {
             GameEnd = false;
+            Paused = false;
         }
 
         void Update()
         {
-            if (GameEnd) return;
+            if (GameEnd || Paused) return;
 
             if (Input.GetMouseButtonDown(0))
             {

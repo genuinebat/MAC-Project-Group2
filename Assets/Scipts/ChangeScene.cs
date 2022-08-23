@@ -40,7 +40,7 @@ public class ChangeScene : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        if (PlayerPrefs.GetString("NextStage") == "Completed" || scenename != "Main")
+        if (PlayerPrefs.GetString("NextStage") != "Completed" || scenename != "Main")
         {
             PlayerPrefs.SetString("NextStage", scenename);
         }
