@@ -118,6 +118,8 @@ namespace Pathfinding
                             n.Particle = Instantiate(ParticlePrefab, GetNodeWorldPosition(n), Quaternion.Euler(180f, 0f, 0f));
 
                             n.Particle.SetActive(false);
+
+                            n.Particle.transform.parent = transform;
                         }
                         cube.transform.parent = transform;
                     }

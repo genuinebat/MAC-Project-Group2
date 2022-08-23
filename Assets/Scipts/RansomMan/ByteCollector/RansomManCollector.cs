@@ -146,8 +146,6 @@ namespace RansomMan
 
             transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
 
-            BTScript.Collected += BTScript.Temp.Count;
-
             BTScript.Temp.Clear();
             backupPath.Clear();
 

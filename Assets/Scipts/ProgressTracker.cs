@@ -13,33 +13,33 @@ public class ProgressTracker : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+
     void OnEnable()
     {
         if (PlayerPrefs.GetString("NextStage") == "Completed")
         {
-            Debug.Log("Comepleted");
             LevelSelectUI.SetActive(true);
             PlayButtons.SetActive(false);
         }
         if (PlayerPrefs.GetString("NextStage") != "Malorant")
         {
-            Debug.Log("started");
             if (PlayerPrefs.GetString("NextStage") != "Completed")
             {
-                Debug.Log("Ongoing");
                 LevelSelectUI.SetActive(false);
                 PlayButtons.SetActive(true);
             }
             ContinueBtn.interactable = true;
         }
-        else
+        else if (PlayerPrefs.GetString("NextStage") == "" || PlayerPrefs.GetString("NextStage") == null)
         {
-            Debug.Log("not started");
             LevelSelectUI.SetActive(false);
             PlayButtons.SetActive(true);
 
             ContinueBtn.interactable = false;
-
+        }
+        else
+        {
+            ContinueBtn.interactable = true;
         }
     }
 }

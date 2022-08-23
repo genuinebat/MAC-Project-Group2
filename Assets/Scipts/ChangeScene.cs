@@ -21,9 +21,11 @@ public class ChangeScene : MonoBehaviour
         PlayerPrefs.SetString("NextStage", "Malorant");
         StartCoroutine(NextSceneCor("Malorant"));
     }
+
     public void LoadGame()
     {
         Time.timeScale = 1f;
+        Debug.Log(PlayerPrefs.GetString("NextStage"));
         StartCoroutine(NextSceneCor(PlayerPrefs.GetString("NextStage")));
     }
 
@@ -45,6 +47,4 @@ public class ChangeScene : MonoBehaviour
         }
 
     }
-
-
 }
