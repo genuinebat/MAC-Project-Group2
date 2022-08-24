@@ -192,7 +192,6 @@ namespace OKB
             HintTxt.SetActive(false);
             HintTxtBack.SetActive(false);
             UI.SetActive(true);
-            PauseUI.SetActive(true);
 
             ARCam.SetActive(false);
             GameCam.SetActive(true);
@@ -220,7 +219,6 @@ namespace OKB
             UI.SetActive(false);
             HintTxtBack.SetActive(true);
             HintTxt.SetActive(true);
-            PauseUI.SetActive(false);
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
             TrojanLoseUI.SetActive(false);
@@ -253,6 +251,22 @@ namespace OKB
             if (tryCount >= 2)
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
+            }
+        }
+        public void RestartGame()
+        {
+            //actual restart is using whatever sm and attaching cancel and initialize
+            //this script is used only to close the UI
+            if (IsRunning == false)
+            {
+                PauseUI.SetActive(false);
+
+            }
+            else
+            {
+                PauseUI.SetActive(false);
+                Cancel();
+                Initialize();
             }
         }
     }

@@ -22,11 +22,4 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         PauseUI.SetActive(false);
     }
-
-    public void RestartGame()
-    {
-        //actual restart is using whatever sm and attaching cancel and initialize
-        //this script is used only to close the UI
-        PauseUI.SetActive(false);
-    }
 }

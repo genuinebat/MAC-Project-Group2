@@ -196,7 +196,6 @@ namespace RansomMan
             HintTxt.SetActive(false);
             HintTxtBack.SetActive(false);
             UI.SetActive(true);
-            PauseUI.SetActive(true);
 
             nm.SpawnMapPrefabs();
 
@@ -224,7 +223,6 @@ namespace RansomMan
             HintTxtBack.SetActive(true);
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
-            PauseUI.SetActive(false);
 
             Player.transform.position = new Vector3(100, 100, 100);
 
@@ -270,6 +268,22 @@ namespace RansomMan
         {
             TutorialPanel.SetActive(true);
             DisablePopup();
+        }
+        public void RestartGame()
+        {
+            //actual restart is using whatever sm and attaching cancel and initialize
+            //this script is used only to close the UI
+            if (IsRunning == false)
+            {
+                PauseUI.SetActive(false);
+
+            }
+            else
+            {
+                PauseUI.SetActive(false);
+                Cancel();
+                Initialize();
+            }
         }
     }
 }

@@ -198,7 +198,6 @@ namespace Malorant
             LockUI.SetActive(true);
             UnlockUI.SetActive(true);
             WeaponNotificationUI.SetActive(false);
-            PauseUI.SetActive(true);
 
             malorantState.GameStarted = true;
 
@@ -224,7 +223,7 @@ namespace Malorant
             //make sure lose UI is closed
             WinUI.SetActive(false);
             LoseUI.SetActive(false);
-            PauseUI.SetActive(false);
+
             spawnerScript.ResetMalorant();
             malorantState.GameStarted = false;
 
@@ -258,6 +257,22 @@ namespace Malorant
             else
             {
 
+            }
+        }
+        public void RestartGame()
+        {
+            //actual restart is using whatever sm and attaching cancel and initialize
+            //this script is used only to close the UI
+            if (IsRunning == false)
+            {
+                PauseUI.SetActive(false);
+
+            }
+            else
+            {
+                PauseUI.SetActive(false);
+                Cancel();
+                Initialize();
             }
         }
     }

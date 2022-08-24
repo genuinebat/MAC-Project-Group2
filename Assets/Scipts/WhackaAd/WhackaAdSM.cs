@@ -180,7 +180,6 @@ namespace WhackaAd
             HintTxt.SetActive(false);
             HintTxtBack.SetActive(false);
             UI.SetActive(true);
-            PauseUI.SetActive(true);
 
             timer.GameStarted = true;
         }
@@ -201,7 +200,6 @@ namespace WhackaAd
             AntivirusBtn.enabled = true;
             HintTxt.SetActive(true);
             HintTxtBack.SetActive(true);
-            PauseUI.SetActive(false);
 
             timer.TimeLeft = timer.TimeMin * 60 + timer.TimeSec;
             foreach (Transform child in SpawnStore.transform)
@@ -238,6 +236,22 @@ namespace WhackaAd
                     PlayerPrefs.SetString("NextStage", TargetSceneName);
                 }
 
+            }
+        }
+        public void RestartGame()
+        {
+            //actual restart is using whatever sm and attaching cancel and initialize
+            //this script is used only to close the UI
+            if (IsRunning == false)
+            {
+                PauseUI.SetActive(false);
+
+            }
+            else
+            {
+                PauseUI.SetActive(false);
+                Cancel();
+                Initialize();
             }
         }
     }
