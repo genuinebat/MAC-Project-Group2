@@ -181,6 +181,7 @@ namespace WhackaAd
 
             spawner.GameStarted = true;
             GetComponent<TappedOnAdware>().GameEnd = false;
+            GetComponent<TappedOnAdware>().Paused = false;
 
             TutorialPanel.SetActive(false);
             HintTxt.SetActive(false);

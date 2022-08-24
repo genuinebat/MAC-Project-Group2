@@ -47,8 +47,9 @@ namespace RansomMan
         void WinGame()
         {
             GameStarted = false;
-            WinUI.SetActive(true);
             Time.timeScale = 0f;
+            PlayerPrefs.SetInt("Puzzle4", 1);
+            WinUI.SetActive(true);
         }
     }
 }

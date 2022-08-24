@@ -92,6 +92,7 @@ namespace WhackaAd
             tapScript.GameEnd = true;
             TimeLeft = 0;
             Time.timeScale = 0;
+            PlayerPrefs.SetInt("Puzzle3", 1);
             WinUI.SetActive(true);
         }
 

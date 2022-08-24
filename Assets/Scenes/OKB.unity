@@ -4875,7 +4875,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -9017,6 +9017,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2137599195}
     - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1608199151}
+    - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Cancel
       objectReference: {fileID: 0}
@@ -9025,12 +9029,20 @@ PrefabInstance:
       value: Retry
       objectReference: {fileID: 0}
     - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: OKB.OKBSM, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: OKB.OKBSM, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Pause, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}

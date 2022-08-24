@@ -5,37 +5,16 @@ using UnityEngine.UI;
 
 public class ProgressTracker : MonoBehaviour
 {
-    public GameObject PlayButtons;
-    public GameObject LevelSelectUI;
-    public Button ContinueBtn;
+    public Button P2, P3, P4;
+    public GameObject CBtn;
 
-    void OnEnable()
+    void Start()
     {
-        Debug.Log(PlayerPrefs.GetString("NextStage"));
-        if (PlayerPrefs.GetString("NextStage") == "Completed")
-        {
-            LevelSelectUI.SetActive(true);
-            PlayButtons.SetActive(false);
-        }
-        if (PlayerPrefs.GetString("NextStage") != "Malorant")
-        {
-            if (PlayerPrefs.GetString("NextStage") != "Completed")
-            {
-                LevelSelectUI.SetActive(false);
-                PlayButtons.SetActive(true);
-            }
-            ContinueBtn.interactable = true;
-        }
-        if (PlayerPrefs.GetString("NextStage") == "" || PlayerPrefs.GetString("NextStage") == null)
-        {
-            LevelSelectUI.SetActive(false);
-            PlayButtons.SetActive(true);
-
-            ContinueBtn.interactable = false;
-        }
-        else
-        {
-            ContinueBtn.interactable = true;
-        }
+        P2.interactable = PlayerPrefs.GetInt("Puzzle2") == 1 ? true : false;
+        P3.interactable = PlayerPrefs.GetInt("Puzzle3") == 1 ? true : false;
+        P4.interactable = PlayerPrefs.GetInt("Puzzle4") == 1 ? true : false;
+        
+        if (PlayerPrefs.GetInt("Credits") == 1) CBtn.SetActive(true);
+        else CBtn.SetActive(false);
     }
 }

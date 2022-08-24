@@ -5,22 +5,48 @@ using UnityEngine;
 public class Credits : MonoBehaviour
 {
     public GameObject Obj;
+    
+    float elap;
+    bool open, wait;
 
     void Start()
     {
         PlayerPrefs.SetString("NextStage", "Completed");
-        StartCoroutine(Delay());
+
+        open = false;
+        wait = false;
+        Obj.SetActive(false);
     }
 
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position + transform.up, Time.deltaTime);
+
+        if (Input.GetMouseButtonDown(0) && !wait)
+        {
+            if (open) StartCoroutine(Close());
+            else
+            {
+                open = true;
+                Obj.SetActive(true);
+            }
+        }
     }
 
-    IEnumerator Delay()
+    IEnumerator Close()
     {
+        yield return new WaitForSeconds(.2f);
+        
         Obj.SetActive(false);
-        yield return new WaitForSeconds(20f);
-        Obj.SetActive(true);
+        open = false;
+
+        StartCoroutine(Wait());
+    }
+
+    IEnumerator Wait()
+    {
+        wait = true;
+        yield return new WaitForSeconds(.3f);
+        wait = false;
     }
 }

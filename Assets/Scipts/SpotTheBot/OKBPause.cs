@@ -9,11 +9,11 @@ namespace OKB
     public class OKBPause : MonoBehaviour
     {
         public Pause P;
-        public Swipe s;
+        public Swipe S;
 
         public void PauseOKB()
         {
-            s.Active = false;
+            S.Active = false;
             P.PauseGame();
         }
 
@@ -26,7 +26,7 @@ namespace OKB
         {
             P.ResumeGame();
             yield return new WaitForSeconds(.1f);
-            s.Active = true;
+            S.Active = true;
         }
     }
 }

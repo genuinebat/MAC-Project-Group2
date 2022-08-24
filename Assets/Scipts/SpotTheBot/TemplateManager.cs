@@ -394,6 +394,7 @@ namespace OKB
             Time.timeScale = 0;
             ReasonPanel.SetActive(false);
             StatementSelect.SetActive(false);
+            PlayerPrefs.SetInt("Credits", 1);
             GetComponent<OKBSM>().WinUI.SetActive(true);
         }
 

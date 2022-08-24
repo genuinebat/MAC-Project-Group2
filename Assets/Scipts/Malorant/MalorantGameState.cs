@@ -106,6 +106,7 @@ namespace Malorant
                 if (DialogueEnd)
                 {
                     WinUI.SetActive(true);
+                    PlayerPrefs.SetInt("Puzzle2", 1);
                     yield break;
                 }
 

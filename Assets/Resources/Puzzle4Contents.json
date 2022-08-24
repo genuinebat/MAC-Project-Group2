@@ -183,11 +183,11 @@
     ],
     "trojan" : [
         {
-            "name" : "TR~O.Y?!.",
+            "name" : "tR~O.y?!.",
             "statements" : [
-                "aCts LIkE A lEGitIMate ApPLicAtioN oR FIle UntIL eXECutED",
-                "seeKs to DeCeIVE thE USEr InTo loADinG And EXEcutING tHe mALwarE on ThEir deVicE",
-                "inFLicts HaRmful aCtiONs ON UseR’S dAta Or netWoRK"    
+                "Acts like a legitimate application or file until executed",
+                "Seeks to deceive the user into loading and executing the malware on their device",
+                "Inflicts harmful actions on user's data or network"
             ]
         }
     ]
