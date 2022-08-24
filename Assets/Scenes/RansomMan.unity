@@ -719,7 +719,7 @@ MonoBehaviour:
   UI: {fileID: 1025354175}
   WinUI: {fileID: 1779827321}
   LoseUI: {fileID: 321843170}
-  PauseUI: {fileID: 1462785927}
+  PauseRetry: {fileID: 1462785927}
   Player: {fileID: 1148656935}
   Back: {fileID: 358410675}
   ARCam: {fileID: 933652212}
@@ -4218,7 +4218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8192447316282534533, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_Pivot.x
@@ -4335,11 +4335,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
   m_PrefabInstance: {fileID: 1462785925}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1462785927 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8192447316282534533, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+--- !u!114 &1462785927 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
   m_PrefabInstance: {fileID: 1462785925}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1506891387
 GameObject:
   m_ObjectHideFlags: 0

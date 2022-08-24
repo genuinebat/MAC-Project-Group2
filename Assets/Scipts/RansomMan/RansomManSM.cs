@@ -18,7 +18,7 @@ namespace RansomMan
         public GameObject UI;
         public GameObject WinUI;
         public GameObject LoseUI;
-        public GameObject PauseUI;
+        public Button PauseRetry;
         public GameObject Player;
         public GameObject Back;
         public GameObject ARCam;
@@ -52,6 +52,11 @@ namespace RansomMan
 
             // FOR DEVLOPMENT ONLY
             //StartCoroutine(LateStart());
+        }
+        void Update()
+        {
+            PauseRetry.interactable = IsRunning;
+
         }
 
         // FOR DEVELOPMENT ONLY
@@ -268,22 +273,6 @@ namespace RansomMan
         {
             TutorialPanel.SetActive(true);
             DisablePopup();
-        }
-        public void RestartGame()
-        {
-            //actual restart is using whatever sm and attaching cancel and initialize
-            //this script is used only to close the UI
-            if (IsRunning == false)
-            {
-                PauseUI.SetActive(false);
-
-            }
-            else
-            {
-                PauseUI.SetActive(false);
-                Cancel();
-                Initialize();
-            }
         }
     }
 }

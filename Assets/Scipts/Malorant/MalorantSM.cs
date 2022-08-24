@@ -16,7 +16,7 @@ namespace Malorant
         public GameObject PopupDisplay;
         public GameObject LoseUI;
         public GameObject WinUI;
-        public GameObject PauseUI;
+        public Button PauseRetry;
         public GameObject ScannerUnlockUI;
         public GameObject HintTxt;
         public GameObject HintTxtBack;
@@ -55,6 +55,12 @@ namespace Malorant
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
+        }
+
+        void Update()
+        {
+            PauseRetry.interactable = IsRunning;
+
         }
 
         // function that is called when the image target is first detected
@@ -253,26 +259,6 @@ namespace Malorant
                 {
                     PlayerPrefs.SetString("NextStage", TargetSceneName);
                 }
-            }
-            else
-            {
-
-            }
-        }
-        public void RestartGame()
-        {
-            //actual restart is using whatever sm and attaching cancel and initialize
-            //this script is used only to close the UI
-            if (IsRunning == false)
-            {
-                PauseUI.SetActive(false);
-
-            }
-            else
-            {
-                PauseUI.SetActive(false);
-                Cancel();
-                Initialize();
             }
         }
     }

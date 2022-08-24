@@ -4491,6 +4491,7 @@ RectTransform:
   - {fileID: 1679155310}
   - {fileID: 1831794395}
   - {fileID: 155740982}
+  - {fileID: 1608199150}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8486,7 +8487,6 @@ RectTransform:
   - {fileID: 1799542752}
   - {fileID: 1244338795}
   - {fileID: 1052402145}
-  - {fileID: 1608199150}
   m_Father: {fileID: 1027048254}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8874,7 +8874,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1507969748}
+    m_TransformParent: {fileID: 1027048254}
     m_Modifications:
     - target: {fileID: 8192447315304307142, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8914,7 +8914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8192447316282534554, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9064,6 +9064,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P: {fileID: 1608199151}
   s: {fileID: 2137599196}
+--- !u!114 &1608199153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8192447317054895310, guid: 8cf13b033fc99ab4d85dec567f1f88ef, type: 3}
+  m_PrefabInstance: {fileID: 1608199149}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1631998283
 GameObject:
   m_ObjectHideFlags: 0
@@ -11994,7 +12005,7 @@ MonoBehaviour:
   WinUI: {fileID: 1279983303}
   LoseUI: {fileID: 932830514}
   TrojanLoseUI: {fileID: 1383924306}
-  PauseUI: {fileID: 1111214956}
+  PauseRetry: {fileID: 1608199153}
   ARCam: {fileID: 833023623}
   GameCam: {fileID: 1745932410}
   TutorialUI: {fileID: 1831794394}

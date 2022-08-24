@@ -16,7 +16,7 @@ namespace WhackaAd
         public GameObject HintTxtBack;
         public GameObject UI;
         public GameObject LoseUI;
-        public GameObject PauseUI;
+        public Button PauseRetry;
         public GameObject SpawnStore;
         public GameObject TutorialPanel;
         public Button AntivirusBtn;
@@ -45,6 +45,12 @@ namespace WhackaAd
             Cancel();
         }
 
+
+        void Update()
+        {
+            PauseRetry.interactable = IsRunning;
+
+        }
         public override void EnablePopup()
         {
             if (IsRunning || IsCompleted) return;
@@ -236,22 +242,6 @@ namespace WhackaAd
                     PlayerPrefs.SetString("NextStage", TargetSceneName);
                 }
 
-            }
-        }
-        public void RestartGame()
-        {
-            //actual restart is using whatever sm and attaching cancel and initialize
-            //this script is used only to close the UI
-            if (IsRunning == false)
-            {
-                PauseUI.SetActive(false);
-
-            }
-            else
-            {
-                PauseUI.SetActive(false);
-                Cancel();
-                Initialize();
             }
         }
     }
