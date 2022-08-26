@@ -53,10 +53,10 @@ namespace RansomMan
             // FOR DEVLOPMENT ONLY
             //StartCoroutine(LateStart());
         }
+        
         void Update()
         {
             PauseRetry.interactable = IsRunning;
-
         }
 
         // FOR DEVELOPMENT ONLY
