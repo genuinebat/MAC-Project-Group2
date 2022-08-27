@@ -35,16 +35,14 @@ namespace RansomMan
 
         void Start()
         {
+            player = GameObject.Find("Player");
+            rmc = player.GetComponent<RansomManCollector>();
+
             nm = GameObject.Find("NodeManager").GetComponent<NodeManager>();
+            loseUI = GameObject.Find("LoseUI");
 
             pf = new Pathfinder(nm, false);
             bs = GameObject.Find("Spawner").GetComponent<BackupSpawner>();
-
-
-            player = GameObject.Find("Player");
-            loseUI = GameObject.Find("UI").transform.Find("LoseUI").gameObject;
-
-            rmc = player.GetComponent<RansomManCollector>();
 
             chase = false;
             wanderPath = new List<Vector3>();
