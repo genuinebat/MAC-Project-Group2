@@ -27,6 +27,7 @@ namespace OKB
 
         [Header("Hint Text")]
         public string HintText;
+        [HideInInspector]
         public int tryCount;
 
         TemplateManager tm;

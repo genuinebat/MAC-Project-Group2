@@ -93,6 +93,7 @@ namespace WhackaAd
             TimeLeft = 0;
             Time.timeScale = 0;
             PlayerPrefs.SetInt("Puzzle3", 1);
+            GetComponent<WhackaAdSM>().UI.SetActive(false);
             WinUI.SetActive(true);
         }
 

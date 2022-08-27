@@ -49,6 +49,7 @@ namespace RansomMan
             GameStarted = false;
             Time.timeScale = 0f;
             PlayerPrefs.SetInt("Puzzle4", 1);
+            GetComponent<RansomManSM>().UI.SetActive(false);
             WinUI.SetActive(true);
         }
     }

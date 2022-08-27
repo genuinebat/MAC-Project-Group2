@@ -383,6 +383,13 @@ namespace OKB
 
         public void LoseTrojan()
         {
+            StartCoroutine(LoseTrojCor());
+        }
+
+        IEnumerator LoseTrojCor()
+        {
+            yield return new WaitForSeconds(.5f);
+
             Time.timeScale = 0;
             ReasonPanel.SetActive(false);
             StatementSelect.SetActive(false);
@@ -395,6 +402,7 @@ namespace OKB
             ReasonPanel.SetActive(false);
             StatementSelect.SetActive(false);
             PlayerPrefs.SetInt("Credits", 1);
+            GetComponent<OKBSM>().UI.SetActive(true);
             GetComponent<OKBSM>().WinUI.SetActive(true);
         }
 
