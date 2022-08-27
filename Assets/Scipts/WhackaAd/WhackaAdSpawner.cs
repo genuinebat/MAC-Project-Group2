@@ -44,8 +44,7 @@ namespace WhackaAd
                 SpawnAdware();
                 elap = 0f;
             }
-            else
-                elap += Time.deltaTime;
+            else elap += Time.deltaTime;
         }
 
         void SetBoundaries()
@@ -68,7 +67,6 @@ namespace WhackaAd
                 ),
                 Quaternion.Euler(0f, 0f, 0f)
             );
-            // Instantiate(SpawnParticles, new Vector3(adware.transform.position.x, adware.transform.position.y, (adware.transform.position.z - 1)), Quaternion.identity);
 
             adware.transform.parent = transform;
 

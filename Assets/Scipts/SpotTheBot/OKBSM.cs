@@ -54,7 +54,6 @@ namespace OKB
         void Update()
         {
             PauseRetry.interactable = IsRunning;
-
         }
 
         IEnumerator DelayStart()
@@ -191,7 +190,7 @@ namespace OKB
 
             if (tryCount >= 2)
             {
-                SkipButton.interactable = true;
+                StartCoroutine(DelaySkipBtn());
             }
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
@@ -212,6 +211,12 @@ namespace OKB
             tm.SetNewBot();
 
             TimerScript.GameStart = true;
+        }
+
+        IEnumerator DelaySkipBtn()
+        {
+            yield return new WaitForSeconds(.5f);
+            SkipButton.interactable = true;
         }
 
         public override void Cancel()

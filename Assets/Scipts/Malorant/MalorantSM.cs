@@ -189,7 +189,7 @@ namespace Malorant
 
             if (tryCount >= 2)
             {
-                SkipButton.interactable = true;
+                StartCoroutine(DelaySkipBtn());
             }
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
@@ -210,6 +210,12 @@ namespace Malorant
             if (runDialogueCor != null) StopCoroutine(runDialogueCor);
 
             runDialogueCor = StartCoroutine(dialogueScript.RunDialogue());
+        }
+        
+        IEnumerator DelaySkipBtn()
+        {
+            yield return new WaitForSeconds(.5f);
+            SkipButton.interactable = true;
         }
 
         // function that is called to close and restart the game

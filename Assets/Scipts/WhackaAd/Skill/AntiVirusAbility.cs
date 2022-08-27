@@ -14,7 +14,6 @@ namespace WhackaAd
         public float AntiVirusCooldownTime;
         public Button AntivirusBtn;
 
-        Coroutine cooldownCor, fillCor, effectCor;
         bool breakCor = false;
 
         public void AntiVirusMenu()
@@ -30,9 +29,9 @@ namespace WhackaAd
         public void AntiVirus(int index)
         {
             AntivirusUI.SetActive(false);
-            effectCor = StartCoroutine(AntiVirusActivate(index));
-            fillCor = StartCoroutine(ChangeFill());
-            cooldownCor = StartCoroutine(AntiVirusCooldown());
+            StartCoroutine(AntiVirusActivate(index));
+            StartCoroutine(ChangeFill());
+            StartCoroutine(AntiVirusCooldown());
         }
 
         IEnumerator AntiVirusActivate(int index)
