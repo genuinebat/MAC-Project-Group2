@@ -12,16 +12,17 @@ public class ProgressTracker : MonoBehaviour
     {
         P2.interactable = PlayerPrefs.GetInt("Puzzle2") == 1 ? true : false;
         P3.interactable = PlayerPrefs.GetInt("Puzzle3") == 1 ? true : false;
-    P4.interactable = PlayerPrefs.GetInt("Puzzle4") == 1 ? true : false
-        
+        P4.interactable = PlayerPrefs.GetInt("Puzzle4") == 1 ? true : false;
+
+
         if (PlayerPrefs.GetInt("Credits") == 1)
         {
-            P4.interactable = true;
+            //P4.interactable = true;
             CBtn.SetActive(true);
         }
         else
         {
-            P4.interactable = false;
+            //P4.interactable = false;
             CBtn.SetActive(false);
         }
     }

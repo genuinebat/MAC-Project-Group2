@@ -11,7 +11,7 @@ namespace RansomMan
     {
         public TMP_Text TrackerTxt;
         public GameObject WinUI;
-        
+
         [HideInInspector]
         public int Collected;
         [HideInInspector]
@@ -31,7 +31,7 @@ namespace RansomMan
         {
             int subTotal = Collected + Temp.Count;
 
-            TrackerTxt.text = "Bytes Collected: " + subTotal +  " / " + total;
+            TrackerTxt.text = "Bytes Collected: " + subTotal + " / " + total;
 
             if (GameStarted && subTotal >= total)
             {

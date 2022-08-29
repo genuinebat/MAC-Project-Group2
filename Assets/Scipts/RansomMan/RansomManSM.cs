@@ -264,6 +264,7 @@ namespace RansomMan
         public void SkipGame(string TargetSceneName)
         {
             Time.timeScale = 1f;
+            PlayerPrefs.SetInt("Puzzle4", 1);
 
             if (tryCount >= 2)
             {

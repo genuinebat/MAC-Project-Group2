@@ -13,8 +13,11 @@ public class Pause : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
-        PauseUI.SetActive(true);
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            PauseUI.SetActive(true);
+        }
     }
 
     public void ResumeGame()

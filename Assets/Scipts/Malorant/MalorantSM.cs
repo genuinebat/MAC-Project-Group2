@@ -211,7 +211,7 @@ namespace Malorant
 
             runDialogueCor = StartCoroutine(dialogueScript.RunDialogue());
         }
-        
+
         IEnumerator DelaySkipBtn()
         {
             yield return new WaitForSeconds(.5f);
@@ -261,10 +261,11 @@ namespace Malorant
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
                 //SceneManager.LoadScene(TargetSceneName);
-                if (PlayerPrefs.GetString("NextStage") != "Completed")
-                {
-                    PlayerPrefs.SetString("NextStage", TargetSceneName);
-                }
+                // if (PlayerPrefs.GetString("NextStage") != "Completed")
+                // {
+                //     PlayerPrefs.SetString("NextStage", TargetSceneName);
+                // }
+                PlayerPrefs.SetInt("Puzzle2", 1);
             }
         }
     }

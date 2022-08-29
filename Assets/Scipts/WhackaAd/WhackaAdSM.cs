@@ -244,10 +244,11 @@ namespace WhackaAd
             if (tryCount >= 2)
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
-                if (PlayerPrefs.GetString("NextStage") != "Completed")
-                {
-                    PlayerPrefs.SetString("NextStage", TargetSceneName);
-                }
+                // if (PlayerPrefs.GetString("NextStage") != "Completed")
+                // {
+                //     PlayerPrefs.SetString("NextStage", TargetSceneName);
+                // }
+                PlayerPrefs.SetInt("Puzzle3", 1);
 
             }
         }
