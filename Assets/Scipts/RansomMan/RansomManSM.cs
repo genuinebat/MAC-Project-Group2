@@ -53,7 +53,7 @@ namespace RansomMan
             // FOR DEVLOPMENT ONLY
             //StartCoroutine(LateStart());
         }
-        
+
         void Update()
         {
             PauseRetry.interactable = IsRunning;
@@ -279,6 +279,13 @@ namespace RansomMan
         {
             TutorialPanel.SetActive(true);
             DisablePopup();
+        }
+
+        //this is referenced in Ransomware because LoseUI gameobject cant be aassigned if it is not active
+        public void LoseGameUIActive()
+        {
+            Time.timeScale = 0f;
+            LoseUI.SetActive(true);
         }
     }
 }

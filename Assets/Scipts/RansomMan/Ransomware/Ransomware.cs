@@ -24,8 +24,9 @@ namespace RansomMan
         Pathfinder pf;
         BackupSpawner bs;
         RansomManCollector rmc;
+        RansomManSM RMSM;
 
-        GameObject player, loseUI;
+        public GameObject player; //loseUI;
         List<Vector3> chasePlayerPath, wanderPath;
         Vector3 spawnLocation;
 
@@ -39,7 +40,7 @@ namespace RansomMan
             rmc = player.GetComponent<RansomManCollector>();
 
             nm = GameObject.Find("NodeManager").GetComponent<NodeManager>();
-            loseUI = GameObject.Find("LoseUI");
+            //loseUI = GameObject.Find("LoseUI");
 
             pf = new Pathfinder(nm, false);
             bs = GameObject.Find("Spawner").GetComponent<BackupSpawner>();
@@ -47,6 +48,8 @@ namespace RansomMan
             chase = false;
             wanderPath = new List<Vector3>();
             wanderNode = int.MaxValue;
+
+            RMSM = GameObject.Find("RansomMan").GetComponent<RansomManSM>();
 
             lost = false;
         }
@@ -191,8 +194,7 @@ namespace RansomMan
         void LoseGame()
         {
             lost = true;
-            Time.timeScale = 0f;
-            loseUI.SetActive(true);
+            RMSM.LoseGameUIActive();
         }
     }
 }
