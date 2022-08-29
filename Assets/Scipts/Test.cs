@@ -24,15 +24,6 @@ public class Test : MonoBehaviour
             Third = _t;
         }
     }
-    public class DeletePlayerPrefsScript : EditorWindow
-    {
-        [MenuItem("Window/Delete PlayerPrefs (All)")]
-        static void DeleteAllPlayerPrefs()
-        {
-            PlayerPrefs.DeleteAll();
-        }
-    }
-
     public List<JustTesting> Botwares;
 }
 

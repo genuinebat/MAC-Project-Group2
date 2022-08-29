@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 namespace OKB
 {
@@ -206,7 +208,7 @@ namespace OKB
             botwareCards.RemoveAt(a);
 
             BotCounter.text = "Botwares: " + (totalBots - botwareCards.Count).ToString() + " / " + totalBots;
-            
+
             return c;
         }
 
