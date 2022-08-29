@@ -12,6 +12,7 @@ public class ProgressTracker : MonoBehaviour
     {
         P2.interactable = PlayerPrefs.GetInt("Puzzle2") == 1 ? true : false;
         P3.interactable = PlayerPrefs.GetInt("Puzzle3") == 1 ? true : false;
+    P4.interactable = PlayerPrefs.GetInt("Puzzle4") == 1 ? true : false
         
         if (PlayerPrefs.GetInt("Credits") == 1)
         {
