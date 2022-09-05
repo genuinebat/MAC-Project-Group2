@@ -174,18 +174,19 @@ namespace OKB
             if (IsRunning) return;
 
             base.Initialize();
-            GetComponent<TemplateManager>().Template.SetActive(true);
-
-            TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
-            TutorialUI.SetActive(false);
-            Time.timeScale = 1;
 
             tryCount++;
 
             if (tryCount >= 2)
             {
-                StartCoroutine(DelaySkipBtn());
+                SkipButton.interactable = true;
             }
+
+            GetComponent<TemplateManager>().Template.SetActive(true);
+
+            TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
+            TutorialUI.SetActive(false);
+            Time.timeScale = 1;
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
@@ -205,12 +206,6 @@ namespace OKB
             tm.SetNewBot();
 
             TimerScript.GameStart = true;
-        }
-
-        IEnumerator DelaySkipBtn()
-        {
-            yield return new WaitForSeconds(.5f);
-            SkipButton.interactable = true;
         }
 
         public override void Cancel()

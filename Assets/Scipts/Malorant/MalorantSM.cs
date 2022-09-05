@@ -182,15 +182,17 @@ namespace Malorant
         // function that is called to start the game
         public override void Initialize()
         {
-            tryCount++;
             if (IsRunning) return;
 
             base.Initialize();
 
+            tryCount++;
+
             if (tryCount >= 2)
             {
-                StartCoroutine(DelaySkipBtn());
+                SkipButton.interactable = true;
             }
+
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
 
             spawnerScript.SpawnMalwares();
@@ -210,12 +212,6 @@ namespace Malorant
             if (runDialogueCor != null) StopCoroutine(runDialogueCor);
 
             runDialogueCor = StartCoroutine(dialogueScript.RunDialogue());
-        }
-
-        IEnumerator DelaySkipBtn()
-        {
-            yield return new WaitForSeconds(2f);
-            SkipButton.interactable = true;
         }
 
         // function that is called to close and restart the game

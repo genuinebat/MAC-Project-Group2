@@ -380,8 +380,8 @@ namespace OKB
             Time.timeScale = 0;
             ReasonPanel.SetActive(false);
             StatementSelect.SetActive(false);
-            OKBSMScript.LoseUI.SetActive(true);
             Template.SetActive(false);
+            OKBSMScript.LoseUI.SetActive(true);
         }
 
         public void LoseTrojan()

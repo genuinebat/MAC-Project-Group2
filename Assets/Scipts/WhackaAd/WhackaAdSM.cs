@@ -49,8 +49,8 @@ namespace WhackaAd
         void Update()
         {
             PauseRetry.interactable = IsRunning;
-
         }
+        
         public override void EnablePopup()
         {
             if (IsRunning || IsCompleted) return;
@@ -175,7 +175,7 @@ namespace WhackaAd
 
             if (tryCount >= 2)
             {
-                StartCoroutine(DelaySkipBtn());
+                SkipButton.interactable = true;
             }
 
             Popup.transform.localScale = new Vector3(0f, 0.1f, Popup.transform.localScale.z);
@@ -190,12 +190,6 @@ namespace WhackaAd
             UI.SetActive(true);
 
             timer.GameStarted = true;
-        }
-
-        IEnumerator DelaySkipBtn()
-        {
-            yield return new WaitForSeconds(.5f);
-            SkipButton.interactable = true;
         }
 
         public override void Cancel()

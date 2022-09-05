@@ -180,7 +180,7 @@ namespace RansomMan
 
             if (tryCount >= 2)
             {
-                StartCoroutine(DelaySkipBtn());
+                SkipButton.interactable = true;
             }
 
             TutorialPanel.SetActive(false);
@@ -207,12 +207,6 @@ namespace RansomMan
 
             Player.GetComponent<PlayerMovement>().enabled = true;
             Player.GetComponent<RansomManCollector>().Reverting = false;
-        }
-
-        IEnumerator DelaySkipBtn()
-        {
-            yield return new WaitForSeconds(.5f);
-            SkipButton.interactable = true;
         }
 
         public override void Cancel()
