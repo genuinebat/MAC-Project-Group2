@@ -7175,7 +7175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaec99a56e457d144b9dcb07192e487c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitEffect: {fileID: 0}
+  HitEffect: {fileID: 6875097227069700382, guid: 639425aaf36f92d418b145eac62eba3e, type: 3}
   timer: {fileID: 1873579883}
 --- !u!114 &1873579882
 MonoBehaviour:
@@ -7217,8 +7217,8 @@ MonoBehaviour:
   WinUI: {fileID: 1204962268}
   GameUI: {fileID: 653220820}
   TimerUI: {fileID: 865017098}
-  TimeMin: 1
-  TimeSec: 0
+  TimeMin: 0
+  TimeSec: 10
   Enemies: {fileID: 0}
   GameStarted: 0
   timeLeft: 0

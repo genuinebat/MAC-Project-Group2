@@ -214,7 +214,7 @@ namespace Malorant
 
         IEnumerator DelaySkipBtn()
         {
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(2f);
             SkipButton.interactable = true;
         }
 

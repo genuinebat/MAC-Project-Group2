@@ -2005,15 +2005,12 @@ MonoBehaviour:
     You would have to scan
     images around the MAC to start each mini-game.
 
-    
 
-    Make sure the images
-    fill up at least 30% - 40% of your screen when scanning
+    Make sure the images fill
+    up at least 30% - 40% of your screen when scanning
 
-    
 
-    Hope you
-    enjoy the game!'
+    Hope you enjoy the game!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d176f9fa89314f469f2cf801a2bccb2, type: 2}
   m_sharedMaterial: {fileID: -5916297375740702924, guid: 1d176f9fa89314f469f2cf801a2bccb2, type: 2}
