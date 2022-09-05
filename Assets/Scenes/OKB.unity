@@ -1030,19 +1030,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This level focuses on Botware, which is one a type of malware
+  m_text: 'This level focuses on Botware, which is one type of malware.
 
 
     The
-    main emotion the game aims to make you feel is CONFUSION
+    primary emotion the game aims to make you feel is CONFUSION
 
     This represents
     what people would feel when dealing with Botware on their devices
 
 
     It also
-    aims to give you some examples on different bot functions, enabling you to differentiate
-    good and bad bots'
+    aims to give you some examples of different bot functions, enabling you to differentiate
+    between good and bad bots'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d176f9fa89314f469f2cf801a2bccb2, type: 2}
   m_sharedMaterial: {fileID: -5916297375740702924, guid: 1d176f9fa89314f469f2cf801a2bccb2, type: 2}
@@ -11855,7 +11855,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congradulations on completing level 4
+  m_text: 'Congratulations on completing level 4
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e74ddd0afc81dd4cb841e15a8e2c142, type: 2}
   m_sharedMaterial: {fileID: -3412428676038638241, guid: 8e74ddd0afc81dd4cb841e15a8e2c142, type: 2}
