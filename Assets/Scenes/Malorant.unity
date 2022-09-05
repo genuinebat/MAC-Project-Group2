@@ -329,7 +329,7 @@ MonoBehaviour:
 
 
     It also aims to give you a rough
-    idea on what the different malwares do'
+    idea of what the different malwares do'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d176f9fa89314f469f2cf801a2bccb2, type: 2}
   m_sharedMaterial: {fileID: -5916297375740702924, guid: 1d176f9fa89314f469f2cf801a2bccb2, type: 2}
@@ -7175,7 +7175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaec99a56e457d144b9dcb07192e487c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 6875097227069700382, guid: 639425aaf36f92d418b145eac62eba3e, type: 3}
+  HitEffect: {fileID: 0}
   timer: {fileID: 1873579883}
 --- !u!114 &1873579882
 MonoBehaviour:

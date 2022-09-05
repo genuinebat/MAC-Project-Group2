@@ -122,7 +122,7 @@ namespace OKB
 
                         if (Trojan)
                         {
-                            StartCoroutine(FlyRight());
+                            StartCoroutine(FlyLeft());
                             tm.Win();
                         }
                         else
@@ -139,6 +139,7 @@ namespace OKB
 
                         if (Trojan)
                         {
+                            StartCoroutine(FlyRight());
                             tm.PlayerHealth = 0;
                             tm.LoseTrojan();
                         }

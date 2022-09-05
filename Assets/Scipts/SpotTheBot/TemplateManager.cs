@@ -386,6 +386,7 @@ namespace OKB
 
         public void LoseTrojan()
         {
+            BonusQnPopup.SetActive(false);
             StartCoroutine(LoseTrojCor());
         }
 
@@ -394,6 +395,8 @@ namespace OKB
             yield return new WaitForSeconds(.5f);
 
             Time.timeScale = 0;
+            sw.GoodBotPanel.SetActive(false);
+            sw.BadBotPanel.SetActive(false);
             ReasonPanel.SetActive(false);
             StatementSelect.SetActive(false);
             OKBSMScript.TrojanLoseUI.SetActive(true);
