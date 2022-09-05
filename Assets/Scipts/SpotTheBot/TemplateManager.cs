@@ -406,6 +406,9 @@ namespace OKB
             PlayerPrefs.SetInt("Credits", 1);
             GetComponent<OKBSM>().UI.SetActive(true);
             GetComponent<OKBSM>().WinUI.SetActive(true);
+            GetComponent<OKBSM>().LoseUI.SetActive(false);
+            Template.SetActive(false);
+
         }
 
         void StartTrojan()
