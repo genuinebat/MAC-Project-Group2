@@ -381,6 +381,7 @@ namespace OKB
             ReasonPanel.SetActive(false);
             StatementSelect.SetActive(false);
             OKBSMScript.LoseUI.SetActive(true);
+            Template.SetActive(false);
         }
 
         public void LoseTrojan()

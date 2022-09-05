@@ -181,6 +181,7 @@ namespace OKB
             if (IsRunning) return;
 
             base.Initialize();
+            GetComponent<TemplateManager>().Template.SetActive(true);
 
             TimerScript.timeLeft = TimerScript.TimeMin * 60 + TimerScript.TimeSec;
             TutorialUI.SetActive(false);
