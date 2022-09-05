@@ -7,7 +7,7 @@ namespace Malorant
     public class BangBang : MonoBehaviour
     {
         [Header("Prefabs")]
-        public GameObject hitEffect;
+        public GameObject HitEffect;
 
         [Header("Reference Variables")]
         public MalorantGameState timer;
@@ -22,7 +22,7 @@ namespace Malorant
             if (Physics.Raycast(ray, out hit))
             {
                 // spawning the particle effect
-                Instantiate(hitEffect, hit.point, Quaternion.identity);
+                Instantiate(HitEffect, hit.point, Quaternion.identity);
 
                 IDamageable d = hit.transform.gameObject.GetComponent<IDamageable>();
 

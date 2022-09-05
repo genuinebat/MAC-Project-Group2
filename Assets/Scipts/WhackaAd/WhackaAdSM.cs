@@ -25,7 +25,7 @@ namespace WhackaAd
         [Header("Hint Text")]
         public string HintText;
 
-        Coroutine closingCor;
+        Coroutine openCor, closingCor;
         WhackaAdSpawner spawner;
         WhackaAdTime timer;
 
@@ -64,11 +64,12 @@ namespace WhackaAd
             PopupDisplay.SetActive(false);
             Popup.SetActive(true);
 
-            StartCoroutine(OpenPopup());
+            openCor = StartCoroutine(OpenPopup());
         }
 
         public override void DisablePopup()
         {
+            if (openCor != null) StopCoroutine(openCor);
             closingCor = StartCoroutine(ClosePopup());
         }
 

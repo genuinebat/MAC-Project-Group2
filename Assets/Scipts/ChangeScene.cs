@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public Animator doors;
-    public Animator door1;
-    public Animator door2;
+    public Animator Doors;
+    public Animator Door1;
+    public Animator Door2;
 
     public void nextScene(string scenename)
     {
@@ -31,12 +31,12 @@ public class ChangeScene : MonoBehaviour
 
     IEnumerator NextSceneCor(string scenename)
     {
-        door1.SetTrigger("CloseDoor");
-        door2.SetTrigger("CloseDoor");
+        Door1.SetTrigger("CloseDoor");
+        Door2.SetTrigger("CloseDoor");
 
         yield return new WaitForSeconds(0.5f);
 
-        doors.SetTrigger("RotateAntiClockwise");
+        Doors.SetTrigger("RotateAntiClockwise");
 
         yield return new WaitForSeconds(0.5f);
 

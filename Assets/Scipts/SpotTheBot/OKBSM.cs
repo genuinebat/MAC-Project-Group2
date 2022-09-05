@@ -33,7 +33,7 @@ namespace OKB
         TemplateManager tm;
         Swipe sw;
 
-        Coroutine closingCor;
+        Coroutine openCor, closingCor;
 
         float popupHeight, popupWidth;
 
@@ -48,20 +48,12 @@ namespace OKB
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-            //StartCoroutine(DelayStart());
         }
 
         void Update()
         {
             PauseRetry.interactable = IsRunning;
         }
-
-        IEnumerator DelayStart()
-        {
-            yield return new WaitForSeconds(1f);
-            OpenTutorial();
-        }
-
 
         public override void EnablePopup()
         {
@@ -76,11 +68,12 @@ namespace OKB
             PopupDisplay.SetActive(false);
             Popup.SetActive(true);
 
-            StartCoroutine(OpenPopup());
+            openCor = StartCoroutine(OpenPopup());
         }
 
         public override void DisablePopup()
         {
+            if (openCor != null) StopCoroutine(openCor);
             closingCor = StartCoroutine(ClosePopup());
         }
 

@@ -34,7 +34,7 @@ namespace RansomMan
         int tryCount;
 
 
-        Coroutine closingCor;
+        Coroutine openCor, closingCor;
         ByteTracker bt;
 
         float popupHeight, popupWidth;
@@ -49,21 +49,11 @@ namespace RansomMan
             HintTxt.GetComponent<TMP_Text>().text = "hint: " + HintText;
 
             Cancel();
-
-            // FOR DEVLOPMENT ONLY
-            //StartCoroutine(LateStart());
         }
 
         void Update()
         {
             PauseRetry.interactable = IsRunning;
-        }
-
-        // FOR DEVELOPMENT ONLY
-        IEnumerator LateStart()
-        {
-            yield return new WaitForSeconds(3f);
-            Initialize();
         }
 
         public override void EnablePopup()
@@ -79,11 +69,12 @@ namespace RansomMan
             PopupDisplay.SetActive(false);
             Popup.SetActive(true);
 
-            StartCoroutine(OpenPopup());
+            openCor = StartCoroutine(OpenPopup());
         }
 
         public override void DisablePopup()
         {
+            if (openCor != null) StopCoroutine(openCor);
             closingCor = StartCoroutine(ClosePopup());
         }
 
@@ -213,6 +204,9 @@ namespace RansomMan
 
             bt.Collected = 0;
             bt.GameStarted = true;
+
+            Player.GetComponent<PlayerMovement>().enabled = true;
+            Player.GetComponent<RansomManCollector>().Reverting = false;
         }
 
         IEnumerator DelaySkipBtn()

@@ -141,6 +141,12 @@ namespace RansomMan
 
             Node backupNode = nm.GetNearestNodeToPosition(backupLocation);
 
+            if (backupNode.Object.activeSelf)
+            {
+                BTScript.Collected++;
+                backupNode.Object.SetActive(false);
+            }
+
             backupNode.Particle.SetActive(false);
 
             BTScript.Collected += BTScript.Temp.Count;

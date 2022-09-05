@@ -7,7 +7,9 @@ namespace RansomMan
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [Header("Player Movement Variables")]
         public float Speed;
+        public float TurningSpeed;
 
         [HideInInspector]
         public bool GameStarted;
@@ -31,9 +33,6 @@ namespace RansomMan
         void Update()
         {
             if (!GameStarted) return;
-
-            // FOR DEVELOPMENT ONLY
-            ArrowInput();
 
             SwipeInput();
 
@@ -108,39 +107,39 @@ namespace RansomMan
         {
             for (;;)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * 960);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, Time.deltaTime * TurningSpeed);
 
                 yield return null;
             }
         }
 
         // FOR DEVELOPMENT ONLY
-        void ArrowInput()
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                if (turningCor != null) StopCoroutine(turningCor);
+        // void ArrowInput()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.UpArrow))
+        //     {
+        //         if (turningCor != null) StopCoroutine(turningCor);
 
-                turningCor = StartCoroutine(Turn(Quaternion.Euler(-90f, 0f, 0f)));
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                if (turningCor != null) StopCoroutine(turningCor);
+        //         turningCor = StartCoroutine(Turn(Quaternion.Euler(-90f, 0f, 0f)));
+        //     }
+        //     else if (Input.GetKeyDown(KeyCode.DownArrow))
+        //     {
+        //         if (turningCor != null) StopCoroutine(turningCor);
 
-                turningCor = StartCoroutine(Turn(Quaternion.Euler(90f, 180f, 0f)));
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                if (turningCor != null) StopCoroutine(turningCor);
+        //         turningCor = StartCoroutine(Turn(Quaternion.Euler(90f, 180f, 0f)));
+        //     }
+        //     else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //     {
+        //         if (turningCor != null) StopCoroutine(turningCor);
 
-                turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, -90f, 90f)));
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                if (turningCor != null) StopCoroutine(turningCor);
+        //         turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, -90f, 90f)));
+        //     }
+        //     else if (Input.GetKeyDown(KeyCode.RightArrow))
+        //     {
+        //         if (turningCor != null) StopCoroutine(turningCor);
 
-                turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, 90f, -90f)));
-            }
-        }
+        //         turningCor = StartCoroutine(Turn(Quaternion.Euler(0f, 90f, -90f)));
+        //     }
+        // }
     }
 }

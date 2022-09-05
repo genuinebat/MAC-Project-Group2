@@ -33,7 +33,7 @@ namespace Malorant
         Malorant_Spawner spawnerScript;
         Dialogue dialogueScript;
         Weapons weaponScript;
-        Coroutine closingCor;
+        Coroutine openCor,closingCor;
         Coroutine runDialogueCor;
 
         Button scannerUI;
@@ -60,7 +60,6 @@ namespace Malorant
         void Update()
         {
             PauseRetry.interactable = IsRunning;
-
         }
 
         // function that is called when the image target is first detected
@@ -78,12 +77,13 @@ namespace Malorant
             PopupDisplay.SetActive(false);
             Popup.SetActive(true);
 
-            StartCoroutine(OpenPopup());
+            openCor = StartCoroutine(OpenPopup());
         }
 
         // function that is called if the player chooses to not start the puzzle
         public override void DisablePopup()
         {
+            if (openCor != null) StopCoroutine(openCor);
             closingCor = StartCoroutine(ClosePopup());
         }
 
