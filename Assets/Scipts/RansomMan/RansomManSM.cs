@@ -203,10 +203,12 @@ namespace RansomMan
             Spawner.SpawnRansomwares();
 
             bt.Collected = 0;
+            bt.Temp.Clear();
             bt.GameStarted = true;
 
             Player.GetComponent<PlayerMovement>().enabled = true;
             Player.GetComponent<RansomManCollector>().Reverting = false;
+            Player.GetComponent<RansomManCollector>().BackupPath.Clear();
         }
 
         public override void Cancel()

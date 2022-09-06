@@ -15,9 +15,10 @@ namespace RansomMan
         public bool BackedUp;
         [HideInInspector]
         public bool Reverting;
+        [HideInInspector]
+        public List<Vector3> BackupPath = new List<Vector3>();
 
         Pathfinder pf;
-        List<Vector3> backupPath = new List<Vector3>();
         Vector3 backupLocation;
 
         void Start()
@@ -36,16 +37,16 @@ namespace RansomMan
 
                 if (n != null)
                 {
-                    if (backupPath.Count > 0)
+                    if (BackupPath.Count > 0)
                     {
-                        if (nm.GetNodeWorldPosition(n) != backupPath[backupPath.Count - 1])
+                        if (nm.GetNodeWorldPosition(n) != BackupPath[BackupPath.Count - 1])
                         {
-                            backupPath.Add(nm.GetNodeWorldPosition(n));
+                            BackupPath.Add(nm.GetNodeWorldPosition(n));
                         }
                     }
                     else
                     {
-                        backupPath.Add(nm.GetNodeWorldPosition(n));
+                        BackupPath.Add(nm.GetNodeWorldPosition(n));
                     }
                 }
             }
@@ -73,7 +74,7 @@ namespace RansomMan
                     BTScript.Collected += BTScript.Temp.Count;
 
                     BTScript.Temp.Clear();
-                    backupPath.Clear();
+                    BackupPath.Clear();
 
                     nm.GetNearestNodeToPosition(backupLocation).Particle.SetActive(false);
 
@@ -105,16 +106,16 @@ namespace RansomMan
 
             movementScript.enabled = false;
 
-            backupPath.RemoveAt(0);
+            BackupPath.RemoveAt(0);
 
-            backupPath.Reverse();
+            BackupPath.Reverse();
 
             int n = 0;
-            while (n < backupPath.Count)
+            while (n < BackupPath.Count)
             {
-                if (Vector3.Distance(transform.position, backupPath[n]) < 0.02f)
+                if (Vector3.Distance(transform.position, BackupPath[n]) < 0.02f)
                 {
-                    Node node = nm.GetNearestNodeToPosition(backupPath[n]);
+                    Node node = nm.GetNearestNodeToPosition(BackupPath[n]);
 
                     if (BTScript.Temp.Contains(node))
                     {
@@ -125,11 +126,11 @@ namespace RansomMan
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, backupPath[n], 6 * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, BackupPath[n], 6 * Time.deltaTime);
 
                     if (n > 0)
                     {
-                        transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - transform.position), -Vector3.forward);
+                        transform.rotation = Quaternion.LookRotation((BackupPath[n - 1] - transform.position), -Vector3.forward);
                     }
                 }
                 yield return null;
@@ -137,7 +138,7 @@ namespace RansomMan
 
             transform.position = backupLocation;
 
-            if (backupPath.Count > 0) transform.rotation = Quaternion.LookRotation((backupPath[n - 1] - backupLocation), -Vector3.forward);
+            if (BackupPath.Count > 0) transform.rotation = Quaternion.LookRotation((BackupPath[n - 1] - backupLocation), -Vector3.forward);
 
             Node backupNode = nm.GetNearestNodeToPosition(backupLocation);
 
@@ -152,7 +153,7 @@ namespace RansomMan
             BTScript.Collected += BTScript.Temp.Count;
 
             BTScript.Temp.Clear();
-            backupPath.Clear();
+            BackupPath.Clear();
 
             Reverting = false;
 
