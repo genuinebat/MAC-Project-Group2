@@ -31,7 +31,6 @@ namespace Malorant
             Scanned = true;
             //change the tag of the enemy to be Enemy
             gameObject.tag = "Enemy";
-            Debug.Log(gameObject.tag);
         }
     }
 }

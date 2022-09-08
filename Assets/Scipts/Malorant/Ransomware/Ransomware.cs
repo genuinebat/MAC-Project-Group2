@@ -10,14 +10,12 @@ namespace Malorant
         [Header("Function Variables")]
         public float Speed;
 
-        GameObject lockedIcon;
         GameObject lockUI;
         GameObject unlockUI;
         Transform imageTarget;
         Button scanner;
         Image scannerIcon;
         Malorant_Spawner spawnnerScript;
-        Dialogue dialogueScript;
         Animator anim;
 
         Vector3 targetLocation;
@@ -27,7 +25,6 @@ namespace Malorant
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(GameObject.Find("Scanner"));
             scannerIcon = GameObject.Find("ScannerImg").GetComponent<Image>();
             scanner = GameObject.Find("Scanner").GetComponent<Button>();
             spawnnerScript = GameObject.Find("Spawner").GetComponent<Malorant_Spawner>();
@@ -66,7 +63,7 @@ namespace Malorant
 
             StartCoroutine(OpenLid());
             StartCoroutine(Unlock());
-            
+
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
             GameObject.Find("Malorant").GetComponent<Dialogue>().NextPhase = true;
@@ -84,7 +81,7 @@ namespace Malorant
 
         IEnumerator PeriodicallySetBoundaries()
         {
-            for (;;)
+            for (; ; )
             {
                 SetBoundaries();
                 yield return new WaitForSeconds(.5f);
@@ -145,7 +142,7 @@ namespace Malorant
         {
             move = false;
             anim.SetTrigger("OpenLid");
-                
+
             yield return new WaitForSeconds(1f);
 
             GameObject top = transform.Find("Top").gameObject;

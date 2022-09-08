@@ -2056,13 +2056,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: GearCrank
+  mTrackableName: OKB_ImageTarget
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/MAC_EscapeRoom.xml
-  mAspectRatio: 0.974537
+  mDataSetPath: Vuforia/MAC_MalwareHunt.xml
+  mAspectRatio: 1.3333335
   mImageTargetType: 0
   mWidth: 2
-  mHeight: 1.949074
+  mHeight: 2.666667
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mPreview: {fileID: 396224631}
@@ -2095,8 +2095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 396224629}
   mHiddenRoot: {fileID: 0}
-  mTargetName: GearCrank
-  mDatasetName: Vuforia/MAC_EscapeRoom.xml
+  mTargetName: OKB_ImageTarget
+  mDatasetName: Vuforia/MAC_MalwareHunt.xml
   mCastedBehaviour: {fileID: 396224629}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

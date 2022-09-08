@@ -6594,13 +6594,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: spam
+  mTrackableName: WhackaAD_ImageTarget
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/MAC_EscapeRoom.xml
-  mAspectRatio: 1.0986615
+  mDataSetPath: Vuforia/MAC_MalwareHunt.xml
+  mAspectRatio: 1.3333335
   mImageTargetType: 0
   mWidth: 2
-  mHeight: 2.197323
+  mHeight: 2.666667
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mPreview: {fileID: 1592802142}
@@ -6633,8 +6633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1592802140}
   mHiddenRoot: {fileID: 0}
-  mTargetName: spam
-  mDatasetName: Vuforia/MAC_EscapeRoom.xml
+  mTargetName: WhackaAD_ImageTarget
+  mDatasetName: Vuforia/MAC_MalwareHunt.xml
   mCastedBehaviour: {fileID: 1592802140}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

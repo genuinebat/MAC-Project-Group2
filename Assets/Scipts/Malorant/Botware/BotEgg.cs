@@ -7,7 +7,7 @@ namespace Malorant
     public class BotEgg : MonoBehaviour, IDamageable
     {
         //botware prefab
-        public GameObject enemyPrefab;
+        public GameObject EnemyPrefab;
 
         //renderer of the egg (to change the alpha values
         public Renderer rend;
@@ -20,7 +20,6 @@ namespace Malorant
             //start the coroutine to make the egg fade away
             StartCoroutine(FadeInMaterial());
 
-            // FadeOutMaterial();
             //assign the enemystore Gameobject
             enemyStore = GameObject.Find("Spawner");
         }
@@ -56,7 +55,7 @@ namespace Malorant
             {
                 //when the egg is completely see through
                 GameObject newEnemy =
-                    Instantiate(enemyPrefab,
+                    Instantiate(EnemyPrefab,
                     gameObject.transform.position,
                     Quaternion.Euler(0f, 90f, 0f));
 

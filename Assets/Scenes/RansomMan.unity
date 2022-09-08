@@ -6717,13 +6717,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreviewVisible: 1
   RuntimeOcclusion: 0
-  mTrackableName: Computer
+  mTrackableName: RansomMan_ImageTarget
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/MAC_EscapeRoom.xml
-  mAspectRatio: 0.969501
+  mDataSetPath: Vuforia/MAC_MalwareHunt.xml
+  mAspectRatio: 1.3333335
   mImageTargetType: 0
   mWidth: 2
-  mHeight: 1.939002
+  mHeight: 2.666667
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mPreview: {fileID: 2083121282}
@@ -6756,8 +6756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 2083121280}
   mHiddenRoot: {fileID: 0}
-  mTargetName: Computer
-  mDatasetName: Vuforia/MAC_EscapeRoom.xml
+  mTargetName: RansomMan_ImageTarget
+  mDatasetName: Vuforia/MAC_MalwareHunt.xml
   mCastedBehaviour: {fileID: 2083121280}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

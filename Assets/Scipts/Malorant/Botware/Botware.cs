@@ -15,8 +15,11 @@ namespace Malorant
 
         //gameobject to child what is being spawnned
         GameObject enemyStore;
+        //transform (world position) of where the image target is
         Transform imageTarget;
+        //where the bot is heading to 
         Vector3 targetLocation;
+        //constraints on how far away the botware can move
         float minX, maxX, minY, maxY, minZ, maxZ;
 
         void Start()
@@ -67,7 +70,7 @@ namespace Malorant
         {
             minX = imageTarget.position.x - 5;
             maxX = imageTarget.position.x + 5;
-            minY = imageTarget.position.y -  5;
+            minY = imageTarget.position.y - 5;
             maxY = imageTarget.position.y + 5;
             minZ = imageTarget.position.z - 3;
             maxZ = imageTarget.position.z;
@@ -75,7 +78,7 @@ namespace Malorant
 
         IEnumerator PeriodicallySetBoundaries()
         {
-            for (;;)
+            for (; ; )
             {
                 SetBoundaries();
                 yield return new WaitForSeconds(.5f);
@@ -84,10 +87,10 @@ namespace Malorant
 
         void MoveToTargetLocation()
         {
-            transform.position = 
+            transform.position =
                 Vector3.MoveTowards(
                     transform.position,
-                    targetLocation, 
+                    targetLocation,
                     Speed * Time.deltaTime
                 );
         }
