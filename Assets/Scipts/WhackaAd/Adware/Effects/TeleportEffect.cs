@@ -13,11 +13,7 @@ namespace WhackaAd
         MonoBehaviour mb;
         GameObject adware;
 
-        float
-
-                cooldown,
-                range,
-                elap;
+        float cooldown, range, elap;
 
         public TeleportEffect(GameObject _adware, float _cooldown, float _range, MonoBehaviour _mb)
         {

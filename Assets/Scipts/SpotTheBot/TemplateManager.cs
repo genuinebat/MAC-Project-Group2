@@ -21,8 +21,6 @@ namespace OKB
         public GameObject BonusQnPopup;
         public TMP_Text BotCounter;
         public OKBSM OKBSMScript;
-        public int PlayerHealth;
-        public int NumberOfHearts;
         public Sprite FullHeart;
         public Sprite EmptyHeart;
         public Image[] Hearts;
@@ -36,13 +34,14 @@ namespace OKB
         public GameObject Nails;
         public Material[] Faces;
 
-        int tryCount;
-
         [HideInInspector]
-        public List<Image> HealthImages;
-
+        public int PlayerHealth;
+        [HideInInspector]
+        public int NumberOfHearts;
         [HideInInspector]
         public List<int> TempStatementWrong;
+
+        int tryCount;
 
         GameObject selectStatement1Back, selectStatement2Back, selectStatement3Back;
 
