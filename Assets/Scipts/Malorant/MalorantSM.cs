@@ -33,7 +33,7 @@ namespace Malorant
         Malorant_Spawner spawnerScript;
         Dialogue dialogueScript;
         Weapons weaponScript;
-        Coroutine openCor,closingCor;
+        Coroutine openCor, closingCor;
         Coroutine runDialogueCor;
 
         Button scannerUI;
@@ -256,11 +256,6 @@ namespace Malorant
             if (tryCount >= 2)
             {
                 GameObject.Find("TransitionAnimator").GetComponent<ChangeScene>().nextScene(TargetSceneName);
-                //SceneManager.LoadScene(TargetSceneName);
-                // if (PlayerPrefs.GetString("NextStage") != "Completed")
-                // {
-                //     PlayerPrefs.SetString("NextStage", TargetSceneName);
-                // }
                 PlayerPrefs.SetInt("Puzzle2", 1);
             }
         }

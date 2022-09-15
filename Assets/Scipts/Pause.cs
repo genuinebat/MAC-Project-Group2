@@ -30,9 +30,4 @@ public class Pause : MonoBehaviour
     {
         PauseUI.SetActive(false);
     }
-    public void Test()
-    {
-        Debug.Log("fuck");
-    }
-
 }

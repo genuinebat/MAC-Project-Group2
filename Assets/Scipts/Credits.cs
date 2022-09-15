@@ -5,8 +5,7 @@ using UnityEngine;
 public class Credits : MonoBehaviour
 {
     public GameObject Obj;
-    
-    float elap;
+
     bool open, wait;
 
     void Start()
@@ -36,7 +35,7 @@ public class Credits : MonoBehaviour
     IEnumerator Close()
     {
         yield return new WaitForSeconds(.2f);
-        
+
         Obj.SetActive(false);
         open = false;
 
