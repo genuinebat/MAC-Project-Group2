@@ -12143,8 +12143,6 @@ MonoBehaviour:
   BonusQnPopup: {fileID: 155740981}
   BotCounter: {fileID: 1799542753}
   OKBSMScript: {fileID: 2137599195}
-  PlayerHealth: 2
-  NumberOfHearts: 2
   FullHeart: {fileID: 21300000, guid: 127792762eb071a40ada45fd950ed68c, type: 3}
   EmptyHeart: {fileID: 21300000, guid: a837d2091ff6692428dd5fae3cbc18ba, type: 3}
   Hearts:
@@ -12163,7 +12161,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0179d9323ec277e43a8e64cc4aeef4e8, type: 2}
   - {fileID: 2100000, guid: d2e56f3e1ba44a44bb270e923794c23a, type: 2}
   - {fileID: 2100000, guid: fbc9e2c2bccbec34f9c97df8b85f41ff, type: 2}
-  HealthImages: []
+  PlayerHealth: 2
+  NumberOfHearts: 2
   TempStatementWrong: 
 --- !u!114 &2137599199
 MonoBehaviour:
